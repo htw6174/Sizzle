@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/cutting board.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/kitchen.png" type="Texture" id=7]
 [ext_resource path="res://Ingredient.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface_logic/item_slot.gd" type="Script" id=9]
+[ext_resource path="res://testing/Light.png" type="Texture" id=10]
+[ext_resource path="res://sprites/bin_front.png" type="Texture" id=11]
+[ext_resource path="res://sprites/bin_back.png" type="Texture" id=12]
+[ext_resource path="res://interface_logic/item_trash.gd" type="Script" id=13]
 
 [node name="Main" type="Node"]
 
@@ -19,16 +24,19 @@
 position = Vector2( 199, 112 )
 texture = ExtResource( 7 )
 
+[node name="Light2D" type="Light2D" parent="World"]
+position = Vector2( 191, 0 )
+texture = ExtResource( 10 )
+range_item_cull_mask = 2
+
 [node name="Tools" type="Node2D" parent="World"]
 position = Vector2( 199, 112 )
 
-[node name="Cutting board" type="Sprite" parent="World/Tools"]
-position = Vector2( 110, 85 )
-scale = Vector2( 2, 1 )
-texture = ExtResource( 1 )
-
 [node name="Pot" parent="World/Tools" instance=ExtResource( 6 )]
 position = Vector2( -96, 74 )
+script = ExtResource( 9 )
+pickable_item = null
+item_sprite_path = NodePath("ActiveIngredientSprite")
 
 [node name="Sprite" parent="World/Tools/Pot" index="0"]
 visible = true
@@ -37,18 +45,53 @@ texture = ExtResource( 5 )
 [node name="CollisionPolygon2D" parent="World/Tools/Pot/Area2D" index="0"]
 polygon = PoolVector2Array( 28, -12, 28, 28, -29, 28, -29, -13, -13, -19, 11, -19 )
 
+[node name="CuttingBoard" parent="World/Tools" instance=ExtResource( 6 )]
+position = Vector2( 110, 85 )
+script = ExtResource( 9 )
+pickable_item = null
+item_sprite_path = NodePath("ActiveIngredientSprite")
+
+[node name="Sprite" parent="World/Tools/CuttingBoard" index="0"]
+visible = true
+scale = Vector2( 2, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="World/Tools/CuttingBoard/Area2D" index="0"]
+polygon = PoolVector2Array( 60, 1, 60, 10, -44, 23, -60, -3, -60, -10, 43, -23 )
+
+[node name="Bin" type="Sprite" parent="World/Tools"]
+position = Vector2( -11, 88 )
+z_index = 2
+texture = ExtResource( 11 )
+script = ExtResource( 13 )
+item_sprite_path = NodePath("ItemDisplay")
+
+[node name="ItemDisplay" type="Sprite" parent="World/Tools/Bin"]
+position = Vector2( 1, 10 )
+z_index = -1
+
+[node name="BinBack" type="Sprite" parent="World/Tools/Bin"]
+z_index = -2
+texture = ExtResource( 12 )
+
+[node name="Area2D" type="Area2D" parent="World/Tools/Bin"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Tools/Bin/Area2D"]
+polygon = PoolVector2Array( 24, -4, 20, 32, -16, 32, -17, 4, -17, -2, 1, -8 )
+
 [node name="HandDisplay" type="Sprite" parent="World"]
+z_index = 10
 script = ExtResource( 3 )
 
-[node name="Node2D" type="Node2D" parent="World"]
+[node name="Ingredients" type="Node2D" parent="World"]
 
-[node name="Steak" parent="World/Node2D" instance=ExtResource( 8 )]
+[node name="Steak" parent="World/Ingredients" instance=ExtResource( 8 )]
 
-[node name="Potato" parent="World/Node2D" instance=ExtResource( 8 )]
+[node name="Potato" parent="World/Ingredients" instance=ExtResource( 8 )]
 position = Vector2( 39, 204 )
 ingredient = ExtResource( 4 )
 
-[node name="Carrot" parent="World/Node2D" instance=ExtResource( 8 )]
+[node name="Carrot" parent="World/Ingredients" instance=ExtResource( 8 )]
 position = Vector2( 25, 154 )
 ingredient = ExtResource( 2 )
 
@@ -67,4 +110,9 @@ margin_top = -10.0
 margin_right = -7.0
 margin_bottom = 10.0
 
+[connection signal="input_event" from="World/Tools/Pot/Area2D" to="World/Tools/Pot" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="World/Tools/CuttingBoard/Area2D" to="World/Tools/CuttingBoard" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="World/Tools/Bin/Area2D" to="World/Tools/Bin" method="_on_Area2D_input_event"]
+
 [editable path="World/Tools/Pot"]
+[editable path="World/Tools/CuttingBoard"]
