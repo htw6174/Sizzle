@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://custom_resources/recipe.gd" type="Script" id=1]
+[ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
+[ext_resource path="res://custom_resources/ingredients/chopped_carrot.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+primary_ingredient = ExtResource( 2 )
+is_recipe_ordered = false
+components = [  ]
+result_ingredient = ExtResource( 3 )

@@ -1,4 +1,4 @@
-extends Node2D
+extends Sprite
 
 signal object_picked
 signal object_dropped
@@ -8,10 +8,12 @@ signal object_dropped
 # var b = "text"
 
 var isPicked: bool = false
+export(Resource) var ingredient
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if ingredient != null:
+		self.texture = ingredient.texture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,5 +28,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			isPicked = not isPicked
 			if isPicked:
 				emit_signal("object_picked")
+				PlayerHand.player_pickup(ingredient)
 			else:
 				emit_signal("object_dropped")
+				PlayerHand.player_drop()

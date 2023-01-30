@@ -8,12 +8,44 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Dish",
+"language": "GDScript",
+"path": "res://custom_resources/dish.gd"
+}, {
+"base": "Resource",
+"class": "Ingredient",
+"language": "GDScript",
+"path": "res://custom_resources/ingredient.gd"
+}, {
+"base": "Resource",
+"class": "PreperationProcess",
+"language": "GDScript",
+"path": "res://custom_resources/preperation_process.gd"
+}, {
+"base": "Resource",
+"class": "Recipe",
+"language": "GDScript",
+"path": "res://custom_resources/recipe.gd"
+} ]
+_global_script_class_icons={
+"Dish": "res://sprites/kitchen.png",
+"Ingredient": "res://sprites/carrot.png",
+"PreperationProcess": "res://sprites/pot.png",
+"Recipe": "res://sprites/chopped veg.png"
+}
+
 [application]
 
 config/name="Sizzle"
 config/description="This demo showcases how 2D particle systems work in Godot."
 run/main_scene="res://Main.tscn"
 config/icon="res://sprites/carrot.png"
+
+[autoload]
+
+PlayerHand="*res://interface_logic/player_hand.gd"
 
 [display]
 
