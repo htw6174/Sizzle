@@ -1,9 +1,13 @@
 extends ItemSlot
 
 func handle_interaction():
-	var held_item = PlayerHand.player_drop()
-	if held_item != null:
-		pickable_item = held_item
-		item_sprite.texture = pickable_item.texture
-	else:
-		take_item()
+	PlayerHand.notify_interaction(self, pickable_item, true)
+
+func notify_item_taken(item: Ingredient):
+	pickable_item = null
+	item_sprite.texture = null
+
+func try_insert_item(item: Ingredient) -> bool:
+	pickable_item = item
+	item_sprite.texture = pickable_item.texture
+	return true

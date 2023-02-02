@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sprites/cutting board.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -8,11 +8,16 @@
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/kitchen.png" type="Texture" id=7]
 [ext_resource path="res://Ingredient.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface_logic/item_slot.gd" type="Script" id=9]
+[ext_resource path="res://custom_resources/processes/process_boil.tres" type="Resource" id=9]
 [ext_resource path="res://testing/Light.png" type="Texture" id=10]
 [ext_resource path="res://sprites/bin_front.png" type="Texture" id=11]
 [ext_resource path="res://sprites/bin_back.png" type="Texture" id=12]
 [ext_resource path="res://interface_logic/item_trash.gd" type="Script" id=13]
+[ext_resource path="res://ServingPlate.tscn" type="PackedScene" id=14]
+[ext_resource path="res://custom_resources/dishes/bowl_stew.tres" type="Resource" id=15]
+[ext_resource path="res://custom_resources/dishes/raw_steak.tres" type="Resource" id=16]
+[ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=17]
+[ext_resource path="res://custom_resources/processes/process_chop.tres" type="Resource" id=18]
 
 [node name="Main" type="Node"]
 
@@ -34,9 +39,7 @@ position = Vector2( 199, 112 )
 
 [node name="Pot" parent="World/Tools" instance=ExtResource( 6 )]
 position = Vector2( -96, 74 )
-script = ExtResource( 9 )
-pickable_item = null
-item_sprite_path = NodePath("ActiveIngredientSprite")
+preperation_process = ExtResource( 9 )
 
 [node name="Sprite" parent="World/Tools/Pot" index="0"]
 visible = true
@@ -47,9 +50,7 @@ polygon = PoolVector2Array( 28, -12, 28, 28, -29, 28, -29, -13, -13, -19, 11, -1
 
 [node name="CuttingBoard" parent="World/Tools" instance=ExtResource( 6 )]
 position = Vector2( 110, 85 )
-script = ExtResource( 9 )
-pickable_item = null
-item_sprite_path = NodePath("ActiveIngredientSprite")
+preperation_process = ExtResource( 18 )
 
 [node name="Sprite" parent="World/Tools/CuttingBoard" index="0"]
 visible = true
@@ -79,6 +80,14 @@ texture = ExtResource( 12 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Tools/Bin/Area2D"]
 polygon = PoolVector2Array( 24, -4, 20, 32, -16, 32, -17, 4, -17, -2, 1, -8 )
 
+[node name="ServingStew" parent="World/Tools" instance=ExtResource( 14 )]
+position = Vector2( 23, 42 )
+target_dish = ExtResource( 15 )
+
+[node name="ServingSteak" parent="World/Tools" instance=ExtResource( 14 )]
+position = Vector2( -55, 33 )
+target_dish = ExtResource( 16 )
+
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
@@ -86,14 +95,15 @@ script = ExtResource( 3 )
 [node name="Ingredients" type="Node2D" parent="World"]
 
 [node name="Steak" parent="World/Ingredients" instance=ExtResource( 8 )]
+pickable_item = ExtResource( 17 )
 
 [node name="Potato" parent="World/Ingredients" instance=ExtResource( 8 )]
 position = Vector2( 39, 204 )
-ingredient = ExtResource( 4 )
+pickable_item = ExtResource( 4 )
 
 [node name="Carrot" parent="World/Ingredients" instance=ExtResource( 8 )]
 position = Vector2( 25, 154 )
-ingredient = ExtResource( 2 )
+pickable_item = ExtResource( 2 )
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0

@@ -12,3 +12,21 @@ func _init():
 	components = null
 	result_ingredient = null
 
+func can_add_ingredient(ingredient: Ingredient, added_ingredients: Array) -> bool:
+	if is_recipe_ordered:
+		var next_ingredient_index = added_ingredients.size()
+		if ingredient == self.components[next_ingredient_index]:
+			return true
+		else:
+			return false
+	else:
+		# subtract added_ingredients from components
+		var remaining_ingredients = components.duplicate()
+		for added_ingredient in added_ingredients:
+			if added_ingredient in remaining_ingredients:
+				remaining_ingredients.erase(added_ingredient)
+		
+		if ingredient in remaining_ingredients:
+			return true
+		else:
+			return false

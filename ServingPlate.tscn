@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interface_logic/serving_dish.gd" type="Script" id=2]
+[ext_resource path="res://sprites/plate.png" type="Texture" id=3]
+
+[node name="ServingPlate" type="Sprite"]
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+ingredients_parent_path = NodePath("IngredientsParent")
+
+[node name="IngredientsParent" type="Node2D" parent="."]
+position = Vector2( -1, -1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 33, 1, 17, 15, -17, 15, -33, 1, -17, -13, 17, -13 )
+
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
