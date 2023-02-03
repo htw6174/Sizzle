@@ -1,7 +1,8 @@
 extends Light2D
 
-var radius = 80.0
-var period_seconds = 2.0
+export(float) var radius = 80.0
+export(float) var period_seconds = 2.0
+
 var start_position: Vector2
 
 func _init():
@@ -9,6 +10,7 @@ func _init():
 
 func _process(delta):
 	var seconds = Time.get_ticks_msec() / 1000.0
-	var x = sin(seconds) * radius
-	var y = cos(seconds) * radius
+	var theta = (seconds * TAU) / period_seconds
+	var x = sin(theta) * radius
+	var y = cos(theta) * radius
 	self.position = start_position + Vector2(x, y)

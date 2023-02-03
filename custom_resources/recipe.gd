@@ -3,7 +3,7 @@ extends Resource
 class_name Recipe, "res://sprites/chopped veg.png"
 
 export(Resource) var primary_ingredient
-export(bool) var is_recipe_ordered
+export(bool) var is_ordered
 export(float) var processing_time = 1.0
 export(Array, Resource) var components
 export(Resource) var result_ingredient
@@ -14,7 +14,7 @@ func _init():
 	result_ingredient = null
 
 func can_add_ingredient(ingredient: Ingredient, added_ingredients: Array) -> bool:
-	if is_recipe_ordered:
+	if is_ordered:
 		var next_ingredient_index = added_ingredients.size()
 		if ingredient == self.components[next_ingredient_index]:
 			return true

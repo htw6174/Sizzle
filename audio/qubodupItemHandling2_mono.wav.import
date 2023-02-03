@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/qubodupItemHandling2.wav-04d8fbde2bf2aa5d238fc13748489c46.sample"
+path="res://.import/qubodupItemHandling2_mono.wav-7865f49a93b3339dd8b47dfcc0edbb66.sample"
 
 [deps]
 
-source_file="res://audio/qubodupItemHandling2.wav"
-dest_files=[ "res://.import/qubodupItemHandling2.wav-04d8fbde2bf2aa5d238fc13748489c46.sample" ]
+source_file="res://audio/qubodupItemHandling2_mono.wav"
+dest_files=[ "res://.import/qubodupItemHandling2_mono.wav-7865f49a93b3339dd8b47dfcc0edbb66.sample" ]
 
 [params]
 

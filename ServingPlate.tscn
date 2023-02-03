@@ -7,10 +7,14 @@
 texture = ExtResource( 3 )
 script = ExtResource( 2 )
 item_sprite_path = NodePath(".")
-ingredients_parent_path = NodePath("IngredientsParent")
+dish_animation_path = NodePath("AnimatedSprite")
+sprites_anchor_path = NodePath("SpritesAnchor")
 
-[node name="IngredientsParent" type="Node2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( -1, -1 )
+
+[node name="SpritesAnchor" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 

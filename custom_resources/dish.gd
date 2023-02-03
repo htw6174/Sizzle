@@ -3,8 +3,8 @@ extends Resource
 class_name Dish, "res://sprites/kitchen.png"
 
 export(String) var display_name
-export(Texture) var texture
-export(bool) var is_dish_ordered
+export(bool) var is_ordered
+export(SpriteFrames) var texture_frames
 export(Array, Resource) var components
 
 func _init(p_display_name = "unnamed dish"):
@@ -12,7 +12,9 @@ func _init(p_display_name = "unnamed dish"):
 	components = null
 
 func can_add_ingredient(ingredient: Ingredient, added_ingredients: Array) -> bool:
-	if is_dish_ordered:
+	if ingredient == null:
+		return false
+	if is_ordered:
 		var next_ingredient_index = added_ingredients.size()
 		if ingredient == self.components[next_ingredient_index]:
 			return true

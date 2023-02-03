@@ -1,10 +1,9 @@
 extends Light2D
 
-var plane_radius = 80.0
-var depth_radius = 20.0
-var vertical_factor = 0.5
-
-var period_seconds = 1.5
+export(float) var plane_radius = 80.0
+export(float) var depth_radius = 20.0
+export(float) var vertical_factor = 0.5
+export(float) var period_seconds = 1.5
 
 var start_position: Vector2
 
