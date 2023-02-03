@@ -5,6 +5,8 @@ export(NodePath) var processing_animation_path
 onready var processing_animation: AnimatedSprite = get_node(processing_animation_path)
 export(NodePath) var timer_path
 onready var timer: Timer = get_node(timer_path)
+export(NodePath) var audio_player_path
+onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
 
 var active_recipe: Recipe = null
 var recipe_component_index: int = 0
@@ -50,7 +52,6 @@ func set_display_name():
 	var base_name = "{0}ing {1}".format([preperation_process.display_name, primary_ingredient.display_name])
 	var ingredient_name_array = PoolStringArray()
 	ingredient_name_array.append(base_name)
-	#ingredient_name_array.resize(secondary_ingredients.size())
 	for ingredient in secondary_ingredients:
 		ingredient_name_array.append(ingredient.display_name)
 	display_name = ingredient_name_array.join(", ")
@@ -67,11 +68,13 @@ func check_recipe_complete():
 func start_processing_countdown():
 	processing_animation.visible = true
 	processing_animation.play()
+	audio_player.play()
 	timer.start(active_recipe.processing_time)
 
 func finish_recipe():
 	processing_animation.visible = false
 	processing_animation.stop()
+	audio_player.stop()
 	
 	pickable_item = active_recipe.result_ingredient
 	item_sprite.texture = pickable_item.texture

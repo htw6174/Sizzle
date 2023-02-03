@@ -7,6 +7,8 @@ onready var ingredients_parent: Node2D = get_node(ingredients_parent_path)
 var dish_component_index: int = 0
 var added_ingredients: Array = []
 
+var is_dish_complete: bool = false
+
 func handle_interaction():
 	PlayerHand.notify_interaction(self, null, true)
 

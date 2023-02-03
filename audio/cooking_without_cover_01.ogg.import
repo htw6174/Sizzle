@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cooking_without_cover_01.ogg-127f1d61da69ca8765ff81a1a5a3958e.oggstr"
+
+[deps]
+
+source_file="res://audio/cooking_without_cover_01.ogg"
+dest_files=[ "res://.import/cooking_without_cover_01.ogg-127f1d61da69ca8765ff81a1a5a3958e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
