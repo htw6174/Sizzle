@@ -1,4 +1,4 @@
-extends ItemSlot
+extends Interactable
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -14,7 +14,3 @@ func notify_item_taken(item: Ingredient):
 func try_insert_item(item: Ingredient) -> bool:
 	return false
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			handle_interaction()

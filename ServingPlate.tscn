@@ -6,6 +6,7 @@
 [node name="ServingPlate" type="Sprite"]
 texture = ExtResource( 3 )
 script = ExtResource( 2 )
+item_sprite_path = NodePath(".")
 ingredients_parent_path = NodePath("IngredientsParent")
 
 [node name="IngredientsParent" type="Node2D" parent="."]
@@ -17,3 +18,5 @@ position = Vector2( -1, -1 )
 polygon = PoolVector2Array( 33, 1, 17, 15, -17, 15, -33, 1, -17, -13, 17, -13 )
 
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

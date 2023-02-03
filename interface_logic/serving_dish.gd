@@ -1,4 +1,4 @@
-extends ItemSlot
+extends Interactable
 
 export(Resource) var target_dish
 export(NodePath) var ingredients_parent_path
@@ -30,8 +30,3 @@ func try_insert_item(item: Ingredient) -> bool:
 func check_dish_complete():
 	var dish = target_dish as Dish
 	#TODO
-
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			handle_interaction()

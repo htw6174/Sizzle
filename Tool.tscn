@@ -1,15 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://interface_logic/item_processer.gd" type="Script" id=1]
+[ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=2]
 
 [node name="Tool" type="Node2D"]
 script = ExtResource( 1 )
 item_sprite_path = NodePath("ActiveIngredientSprite")
+processing_animation_path = NodePath("ProcessingAnimation")
+timer_path = NodePath("Timer")
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 
 [node name="ActiveIngredientSprite" type="Sprite" parent="."]
+
+[node name="ProcessingAnimation" type="AnimatedSprite" parent="."]
+visible = false
+frames = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -18,3 +25,8 @@ polygon = PoolVector2Array( 20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

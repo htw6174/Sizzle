@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://sprites/cutting board.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://custom_resources/dishes/raw_steak.tres" type="Resource" id=16]
 [ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=17]
 [ext_resource path="res://custom_resources/processes/process_chop.tres" type="Resource" id=18]
+[ext_resource path="res://pixel_theme.tres" type="Theme" id=19]
 
 [node name="Main" type="Node"]
 
@@ -91,10 +92,18 @@ target_dish = ExtResource( 16 )
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
+label_path = NodePath("Label")
+
+[node name="Label" type="Label" parent="World/HandDisplay"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 19 )
+text = "This is a test label"
 
 [node name="Ingredients" type="Node2D" parent="World"]
 
 [node name="Steak" parent="World/Ingredients" instance=ExtResource( 8 )]
+position = Vector2( 43, 49 )
 pickable_item = ExtResource( 17 )
 
 [node name="Potato" parent="World/Ingredients" instance=ExtResource( 8 )]
@@ -120,9 +129,9 @@ margin_top = -10.0
 margin_right = -7.0
 margin_bottom = 10.0
 
-[connection signal="input_event" from="World/Tools/Pot/Area2D" to="World/Tools/Pot" method="_on_Area2D_input_event"]
-[connection signal="input_event" from="World/Tools/CuttingBoard/Area2D" to="World/Tools/CuttingBoard" method="_on_Area2D_input_event"]
 [connection signal="input_event" from="World/Tools/Bin/Area2D" to="World/Tools/Bin" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="World/Tools/Bin/Area2D" to="World/Tools/Bin" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="World/Tools/Bin/Area2D" to="World/Tools/Bin" method="_on_Area2D_mouse_exited"]
 
 [editable path="World/Tools/Pot"]
 [editable path="World/Tools/CuttingBoard"]

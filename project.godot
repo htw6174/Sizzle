@@ -20,9 +20,9 @@ _global_script_classes=[ {
 "path": "res://custom_resources/ingredient.gd"
 }, {
 "base": "Node",
-"class": "ItemSlot",
+"class": "Interactable",
 "language": "GDScript",
-"path": "res://interface_logic/item_slot.gd"
+"path": "res://interface_logic/interactable.gd"
 }, {
 "base": "Resource",
 "class": "PreperationProcess",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Dish": "res://sprites/kitchen.png",
 "Ingredient": "res://sprites/carrot.png",
-"ItemSlot": "",
+"Interactable": "",
 "PreperationProcess": "res://sprites/pot.png",
 "Recipe": "res://sprites/chopped veg.png"
 }

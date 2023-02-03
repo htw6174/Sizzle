@@ -8,5 +8,6 @@
 script = ExtResource( 1 )
 primary_ingredient = ExtResource( 3 )
 is_recipe_ordered = false
+processing_time = 1.5
 components = [  ]
 result_ingredient = ExtResource( 2 )
