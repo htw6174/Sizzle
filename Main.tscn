@@ -69,6 +69,12 @@ position = Vector2( -1, -22 )
 [node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="1"]
 position = Vector2( -1, -21 )
 
+[node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
+margin_left = -23.0
+margin_top = -50.0
+margin_right = 17.0
+margin_bottom = -36.0
+
 [node name="Area2D" parent="World/Background/Tools/Cauldron" index="2"]
 position = Vector2( -1, -11 )
 
@@ -96,7 +102,6 @@ texture = ExtResource( 24 )
 position = Vector2( 0, -27 )
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="1"]
-visible = true
 position = Vector2( 0, -27 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Pot" index="2"]
@@ -116,7 +121,6 @@ texture = ExtResource( 5 )
 position = Vector2( 0, -7 )
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
-visible = true
 position = Vector2( 0, -7 )
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="3"]
@@ -137,7 +141,6 @@ texture = ExtResource( 31 )
 position = Vector2( 0, -19 )
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="1"]
-visible = true
 position = Vector2( 0, -19 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Skillet" index="2"]
@@ -220,12 +223,16 @@ pickable_item = ExtResource( 23 )
 z_index = 10
 script = ExtResource( 3 )
 label_path = NodePath("Label")
+audio_player_path = NodePath("AudioStreamPlayer")
 
 [node name="Label" type="Label" parent="World/HandDisplay"]
 theme = ExtResource( 19 )
 text = "This is a test label
 With more lines"
 script = ExtResource( 27 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
+mix_target = 2
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
