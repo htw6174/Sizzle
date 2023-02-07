@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fade_gradient.tres" type="Gradient" id=1]
 [ext_resource path="res://interface_logic/serving_dish.gd" type="Script" id=2]
-[ext_resource path="res://sprites/plate.png" type="Texture" id=3]
+[ext_resource path="res://sprites/bowl empty.png" type="Texture" id=3]
 [ext_resource path="res://sprites/star_particle.png" type="Texture" id=4]
 [ext_resource path="res://animations/dish_complete.tres" type="Animation" id=5]
 
