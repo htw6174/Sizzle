@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://custom_resources/dish.gd" type="Script" id=1]
+[ext_resource path="res://animations/spaghetti_frames.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=3]
+[ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=4]
+[ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=5]
+[ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=6]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "Spaghetti"
+is_ordered = false
+texture_frames = ExtResource( 2 )
+components = [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ]

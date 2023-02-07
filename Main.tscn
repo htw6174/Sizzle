@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://custom_resources/ingredients/veg_garlic.tres" type="Resource" id=32]
 [ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=33]
 [ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
+[ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=35]
+[ext_resource path="res://custom_resources/dishes/spaghetti.tres" type="Resource" id=36]
 
 [node name="Main" type="Node"]
 
@@ -176,20 +178,14 @@ texture = ExtResource( 12 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Foreground/Tools/Bin/Area2D"]
 polygon = PoolVector2Array( 24, -4, 20, 32, -16, 32, -17, 4, -17, -2, 1, -8 )
 
-[node name="ServingStew" parent="World/Foreground/Tools" instance=ExtResource( 14 )]
-position = Vector2( 157, -76 )
-target_dish = ExtResource( 15 )
-
-[node name="ServingSteak" parent="World/Foreground/Tools" instance=ExtResource( 14 )]
-position = Vector2( -94, -79 )
-target_dish = ExtResource( 16 )
-
 [node name="ServingCake" parent="World/Foreground/Tools" instance=ExtResource( 14 )]
-position = Vector2( 80, -75 )
+visible = false
+position = Vector2( 160, -79 )
 target_dish = ExtResource( 21 )
 
 [node name="ServingBreakfast" parent="World/Foreground/Tools" instance=ExtResource( 14 )]
-position = Vector2( -7, -77 )
+visible = false
+position = Vector2( 88, -81 )
 target_dish = ExtResource( 22 )
 
 [node name="Ingredients" type="Node2D" parent="World/Foreground"]
@@ -226,8 +222,16 @@ pickable_item = ExtResource( 33 )
 position = Vector2( 375, 128 )
 pickable_item = ExtResource( 23 )
 
+[node name="Herbs" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
+position = Vector2( 358, 180 )
+pickable_item = ExtResource( 35 )
+
 [node name="ServingArea" type="Node2D" parent="World/Foreground"]
 position = Vector2( 142, 204 )
+
+[node name="ServingSpaghetti" parent="World/Foreground/ServingArea" instance=ExtResource( 14 )]
+position = Vector2( 54, -10 )
+target_dish = ExtResource( 36 )
 
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
