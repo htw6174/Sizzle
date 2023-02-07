@@ -5,6 +5,8 @@ export(NodePath) var dish_animation_path
 onready var dish_animation: AnimatedSprite = get_node(dish_animation_path)
 export(NodePath) var sprites_anchor_path
 onready var sprites_anchor: Node2D = get_node(sprites_anchor_path)
+export(NodePath) var animation_player_path
+onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 
 var dish_component_index: int = 0
 var added_ingredients: Array = []
@@ -13,6 +15,7 @@ var is_dish_complete: bool = false
 
 func _ready():
 	dish_animation.frames = target_dish.texture_frames
+	self.display_name = "Serve a {0}".format([target_dish.display_name])
 
 func handle_interaction():
 	PlayerHand.notify_interaction(self, null, not is_dish_complete)
@@ -48,3 +51,4 @@ func check_dish_complete():
 			matching_component_count += 1
 	if matching_component_count == required_component_count:
 		is_dish_complete = true
+		animation_player.play("dish_complete")

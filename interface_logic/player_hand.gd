@@ -19,5 +19,6 @@ func notify_interaction(interactable: Interactable, available_item: Ingredient, 
 		held_item = available_item
 		interactable.notify_item_taken(available_item)
 	else:
-		if interactable.try_insert_item(held_item):
-			held_item = null
+		if can_accept_item:
+			if interactable.try_insert_item(held_item):
+				held_item = null

@@ -1,23 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://interface_logic/item_processer.gd" type="Script" id=1]
 [ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://audio/cooking_without_cover_01.ogg" type="AudioStream" id=3]
+[ext_resource path="res://ui_theme/pixel_theme.tres" type="Theme" id=4]
+[ext_resource path="res://interface_logic/effects_logic/processor_effects.gd" type="Script" id=5]
 
 [node name="Tool" type="Node2D"]
 script = ExtResource( 1 )
-item_sprite_path = NodePath("ActiveIngredientSprite")
-processing_animation_path = NodePath("ProcessingAnimation")
+item_sprite_path = NodePath("ToolEffects/ActiveIngredientSprite")
+processor_effects_path = NodePath("ToolEffects")
 timer_path = NodePath("Timer")
-audio_player_path = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite" parent="."]
 
-[node name="ActiveIngredientSprite" type="Sprite" parent="."]
+[node name="ToolEffects" type="Node2D" parent="."]
+script = ExtResource( 5 )
+processing_animation_path = NodePath("ProcessingAnimation")
+audio_player_path = NodePath("AudioStreamPlayer")
+progress_bar_path = NodePath("ProgressBar")
 
-[node name="ProcessingAnimation" type="AnimatedSprite" parent="."]
+[node name="ActiveIngredientSprite" type="Sprite" parent="ToolEffects"]
+
+[node name="ProcessingAnimation" type="AnimatedSprite" parent="ToolEffects"]
 visible = false
 frames = ExtResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ToolEffects"]
+emitting = false
+lifetime = 1.5
+speed_scale = 1.4
+direction = Vector2( 0, -1 )
+spread = 60.0
+initial_velocity = 50.0
+color = Color( 0.592157, 0.45098, 0.223529, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolEffects"]
+stream = ExtResource( 3 )
+mix_target = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ToolEffects"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+theme = ExtResource( 4 )
+max_value = 1.0
+percent_visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -27,19 +57,14 @@ polygon = PoolVector2Array( 20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15 )
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-lifetime = 1.5
-speed_scale = 1.4
-direction = Vector2( 0, -1 )
-spread = 60.0
-initial_velocity = 50.0
-color = Color( 0.592157, 0.45098, 0.223529, 1 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-mix_target = 2
-
+[connection signal="ingredient_added" from="." to="ToolEffects" method="_on_Tool_ingredient_added"]
+[connection signal="ingredient_removed" from="." to="ToolEffects" method="_on_Tool_ingredient_removed"]
+[connection signal="process_finished" from="." to="ToolEffects" method="_on_Tool_process_finished"]
+[connection signal="process_started" from="." to="ToolEffects" method="_on_Tool_process_started"]
+[connection signal="process_step_changed" from="." to="ToolEffects" method="_on_Tool_process_step_changed"]
+[connection signal="process_step_finished" from="." to="ToolEffects" method="_on_Tool_process_step_finished"]
+[connection signal="process_step_started" from="." to="ToolEffects" method="_on_Tool_process_step_started"]
+[connection signal="result_ingredient_produced" from="." to="ToolEffects" method="_on_Tool_result_ingredient_produced"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

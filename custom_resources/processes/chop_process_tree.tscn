@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://custom_resources/ingredients/veg_potato.tres" type="Resource" id=1]
+[ext_resource path="res://custom_resources/ingredients/chopped_carrot.tres" type="Resource" id=2]
+[ext_resource path="res://custom_resources/ingredients/chopped_potato.tres" type="Resource" id=3]
+[ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=4]
+[ext_resource path="res://custom_resources/process_step.gd" type="Script" id=5]
+[ext_resource path="res://custom_resources/process_result.gd" type="Script" id=6]
+[ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=7]
+[ext_resource path="res://custom_resources/ingredients/chopped_meat.tres" type="Resource" id=8]
+
+[node name="Chop" type="Node"]
+script = ExtResource( 5 )
+
+[node name="ChopCarrot" type="Node" parent="."]
+script = ExtResource( 5 )
+ingredients = [ ExtResource( 4 ) ]
+
+[node name="ChoppedCarrot" type="Node" parent="ChopCarrot"]
+script = ExtResource( 6 )
+ingredient = ExtResource( 2 )
+
+[node name="ChopPotato" type="Node" parent="."]
+script = ExtResource( 5 )
+ingredients = [ ExtResource( 1 ) ]
+time_to_complete = 1.5
+
+[node name="ChoppedPotato" type="Node" parent="ChopPotato"]
+script = ExtResource( 6 )
+ingredient = ExtResource( 3 )
+
+[node name="ChopMeat" type="Node" parent="."]
+script = ExtResource( 5 )
+ingredients = [ ExtResource( 7 ) ]
+
+[node name="ProcessResult" type="Node" parent="ChopMeat"]
+script = ExtResource( 6 )
+ingredient = ExtResource( 8 )

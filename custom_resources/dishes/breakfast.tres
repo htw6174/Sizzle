@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource( 1 )
-display_name = ""
+display_name = "Full Breakfast"
 is_ordered = false
 texture_frames = ExtResource( 6 )
 components = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ) ]
