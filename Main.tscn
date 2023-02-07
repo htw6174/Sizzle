@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -33,10 +33,17 @@
 [ext_resource path="res://sprites/skillet final.png" type="Texture" id=31]
 [ext_resource path="res://custom_resources/ingredients/veg_garlic.tres" type="Resource" id=32]
 [ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=33]
+[ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
 
 [node name="Main" type="Node"]
 
 [node name="OtherLogicHere" type="Node" parent="."]
+
+[node name="ObjectiveController" type="Node" parent="OtherLogicHere"]
+script = ExtResource( 34 )
+serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea")
+serving_dish_scene = ExtResource( 14 )
+objective_dishes = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 22 ) ]
 
 [node name="World" type="Node2D" parent="."]
 
@@ -218,6 +225,9 @@ pickable_item = ExtResource( 33 )
 [node name="Water" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
 position = Vector2( 375, 128 )
 pickable_item = ExtResource( 23 )
+
+[node name="ServingArea" type="Node2D" parent="World/Foreground"]
+position = Vector2( 142, 204 )
 
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10

@@ -13,9 +13,12 @@ var added_ingredients: Array = []
 
 var is_dish_complete: bool = false
 
+signal dish_complete(dish)
+
 func _ready():
-	dish_animation.frames = target_dish.texture_frames
-	self.display_name = "Serve a {0}".format([target_dish.display_name])
+	if target_dish:
+		dish_animation.frames = target_dish.texture_frames
+		self.display_name = "Serve a {0}".format([target_dish.display_name])
 
 func handle_interaction():
 	PlayerHand.notify_interaction(self, null, not is_dish_complete)
@@ -51,4 +54,5 @@ func check_dish_complete():
 			matching_component_count += 1
 	if matching_component_count == required_component_count:
 		is_dish_complete = true
+		emit_signal("dish_complete", target_dish)
 		animation_player.play("dish_complete")
