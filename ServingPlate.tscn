@@ -40,7 +40,7 @@ position = Vector2( -1, -1 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 33, 1, 17, 15, -17, 15, -33, 1, -17, -13, 17, -13 )
+polygon = PoolVector2Array( 30, -10, 30, -1, 16, 15, -16, 15, -30, -1, -30, -10, -16, -16, 16, -16 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
