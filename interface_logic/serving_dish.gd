@@ -16,6 +16,10 @@ var is_dish_complete: bool = false
 signal dish_complete(dish)
 
 func _ready():
+	change_target_dish(target_dish)
+
+func change_target_dish(dish: Dish):
+	target_dish = dish
 	if target_dish:
 		dish_animation.frames = target_dish.texture_frames
 		self.display_name = "Serve a {0}".format([target_dish.display_name])

@@ -45,7 +45,7 @@
 script = ExtResource( 34 )
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea")
 serving_dish_scene = ExtResource( 14 )
-objective_dishes = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 22 ) ]
+objective_dishes = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 36 ) ]
 
 [node name="World" type="Node2D" parent="."]
 
@@ -228,10 +228,6 @@ pickable_item = ExtResource( 35 )
 
 [node name="ServingArea" type="Node2D" parent="World/Foreground"]
 position = Vector2( 142, 204 )
-
-[node name="ServingSpaghetti" parent="World/Foreground/ServingArea" instance=ExtResource( 14 )]
-position = Vector2( 54, -10 )
-target_dish = ExtResource( 36 )
 
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10

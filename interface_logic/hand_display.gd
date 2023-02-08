@@ -13,7 +13,7 @@ func _process(delta):
 	# follow mouse
 	self.position = get_viewport().get_mouse_position()
 	
-	if PlayerHand.hovered_interactable != null:
+	if is_instance_valid(PlayerHand.hovered_interactable):
 		label.text = PlayerHand.hovered_interactable.display_name
 	else:
 		label.text = ""
