@@ -13,17 +13,19 @@ func _ready():
 
 func _process(delta):
 	if current_dish and current_dish.is_inside_tree():
-		current_dish.change_target_dish(objective_dishes[objective_index])
+		#current_dish.change_target_dish(objective_dishes[objective_index])
+		pass
 		
 
 func begin_next_objective():
 	# instantiate serving dish
 	var new_dish = serving_dish_scene.instance()
-	serving_dish_parent.add_child(new_dish)
-	new_dish.set_owner(serving_dish_parent)
 	# set serving dish properties
 	assert(new_dish is Interactable)
-	#new_dish.change_target_dish(objective_dishes[objective_index])
+	new_dish.target_dish = objective_dishes[objective_index]
+	# add to scene
+	serving_dish_parent.add_child(new_dish)
+	new_dish.set_owner(serving_dish_parent)
 	# connect to dish complete signal
 	new_dish.connect("dish_complete", self, "_on_ServingDish_dish_complete")
 	# push dish into frame
