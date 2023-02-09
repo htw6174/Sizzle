@@ -1,5 +1,6 @@
 extends Interactable
 
+export(String) var processing_verb
 export(PackedScene) var preperation_process_scene
 onready var preperation_process: ProcessStep = preperation_process_scene.instance()
 export(NodePath) var processor_effects_path
@@ -54,18 +55,27 @@ func try_insert_item(item: Ingredient) -> bool:
 		return false
 
 func set_display_name():
-	var base_name = "{0}: {1}".format([preperation_process.get_display_name(), process_step.get_display_name()])
+	display_name = preperation_process.get_display_name()
+	if current_step_ingredients.size() > 0:
+		var ingredient_name_array = PoolStringArray()
+		for ingredient in current_step_ingredients:
+			ingredient_name_array.append(ingredient.display_name)
+		var ingredients_list = ingredient_name_array.join(", ")
+		display_name = "{0} with {1}".format([display_name, ingredients_list])
+
+func set_tooltip():
 	var ingredient_name_array = PoolStringArray()
-	ingredient_name_array.append(base_name)
-	for ingredient in current_step_ingredients:
+	for ingredient in previous_step_ingredients:
 		ingredient_name_array.append(ingredient.display_name)
-	display_name = ingredient_name_array.join(", ")
+	var ingredients_list = ingredient_name_array.join(", \n")
+	tooltip = "Previously added: \n{0}".format([ingredients_list])
 
 func check_progress():
 	var next_step = process_step.check_child_requirements(current_step_ingredients)
 	if next_step != null:
 		advance_processing_step(next_step)
 		start_processing_countdown()
+		display_name = processing_verb
 
 func check_for_result():
 	if process_step.has_result():
@@ -77,6 +87,7 @@ func advance_processing_step(next_step: ProcessStep):
 	process_step = next_step
 	previous_step_ingredients.append_array(current_step_ingredients)
 	current_step_ingredients.clear()
+	set_tooltip()
 	emit_signal("process_step_changed", process_step)
 
 func start_processing_countdown():
@@ -90,6 +101,7 @@ func finish_recipe():
 	pickable_item = process_step.get_result()
 	item_sprite.texture = pickable_item.texture
 	display_name = pickable_item.display_name
+	tooltip = ""
 	emit_signal("result_ingredient_produced", pickable_item)
 	
 	process_step = preperation_process
@@ -98,5 +110,6 @@ func finish_recipe():
 
 func _on_Timer_timeout():
 	can_accept_items = true
+	set_display_name()
 	emit_signal("process_step_finished")
 	check_for_result()

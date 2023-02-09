@@ -100,6 +100,7 @@ texture = ExtResource( 30 )
 
 [node name="Cauldron" parent="World/Background/Tools" instance=ExtResource( 6 )]
 position = Vector2( 295, 130 )
+processing_verb = "Boiling..."
 preperation_process_scene = ExtResource( 9 )
 
 [node name="Sprite" parent="World/Background/Tools/Cauldron" index="0"]
@@ -134,6 +135,7 @@ position = Vector2( 199, 112 )
 
 [node name="Pot" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( -46, 54 )
+processing_verb = "Simmering..."
 preperation_process_scene = ExtResource( 25 )
 
 [node name="Sprite" parent="World/Foreground/Tools/Pot" index="0"]
@@ -154,6 +156,7 @@ polygon = PoolVector2Array( 20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12,
 
 [node name="CuttingBoard" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( 67, 92 )
+processing_verb = "Chopping..."
 preperation_process_scene = ExtResource( 18 )
 
 [node name="Sprite" parent="World/Foreground/Tools/CuttingBoard" index="0"]
@@ -173,6 +176,7 @@ polygon = PoolVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20
 
 [node name="Skillet" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( 48, 54 )
+processing_verb = "Frying..."
 preperation_process_scene = ExtResource( 26 )
 
 [node name="Sprite" parent="World/Foreground/Tools/Skillet" index="0"]
@@ -309,20 +313,30 @@ anims/dish_exit = ExtResource( 39 )
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
-label_path = NodePath("Control/Label")
+label_path = NodePath("Control/VBoxContainer/Label")
+tooltip_path = NodePath("Control/VBoxContainer/Tooltip")
 audio_player_path = NodePath("AudioStreamPlayer")
 
 [node name="Control" type="Control" parent="World/HandDisplay"]
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="World/HandDisplay/Control"]
-theme = ExtResource( 19 )
-text = "This is a test label
-With more lines"
+[node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control"]
+mouse_filter = 2
 script = ExtResource( 27 )
 
-[node name="Label" type="Label" parent="World/HandDisplay/Control/Label"]
-anchor_top = 1.0
-anchor_bottom = 1.0
+[node name="Label" type="Label" parent="World/HandDisplay/Control/VBoxContainer"]
+margin_right = 188.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+theme = ExtResource( 19 )
+text = "This is a test label
+with multiple lines"
+
+[node name="Tooltip" type="Label" parent="World/HandDisplay/Control/VBoxContainer"]
+margin_top = 35.0
+margin_right = 188.0
+margin_bottom = 49.0
+text = "Tooltip extra text even longer"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
 mix_target = 2
