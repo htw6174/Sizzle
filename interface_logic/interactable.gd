@@ -10,6 +10,9 @@ export(Resource) var pickable_item
 export(NodePath) var item_sprite_path
 onready var item_sprite: Sprite = get_node(item_sprite_path)
 
+var tooltip_strings: Array = []
+var is_tooltip_hidden: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if pickable_item != null:

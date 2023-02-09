@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -41,6 +41,11 @@
 [ext_resource path="res://animations/dish_exit.tres" type="Animation" id=39]
 [ext_resource path="res://animations/dish_enter.tres" type="Animation" id=40]
 [ext_resource path="res://sprites/mat.png" type="Texture" id=41]
+[ext_resource path="res://item_slot.tscn" type="PackedScene" id=42]
+[ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=43]
+[ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=44]
+[ext_resource path="res://custom_resources/ingredients/pot_stew.tres" type="Resource" id=45]
+[ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=46]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -61,26 +66,6 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("DishParent:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("DishParent:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
@@ -274,11 +259,39 @@ pickable_item = ExtResource( 23 )
 position = Vector2( 358, 180 )
 pickable_item = ExtResource( 35 )
 
-[node name="ServingArea" type="Node2D" parent="World/Foreground"]
-position = Vector2( 142, 204 )
+[node name="Cheat" type="Node2D" parent="World/Foreground/Ingredients"]
+visible = false
+position = Vector2( 191, 35 )
 
-[node name="Sprite" type="Sprite" parent="World/Foreground/ServingArea"]
+[node name="Stew" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
+position = Vector2( -52, -1 )
+pickable_item = ExtResource( 45 )
+
+[node name="Noodles" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
+pickable_item = ExtResource( 44 )
+
+[node name="Meatballs" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
+position = Vector2( 36, 0 )
+pickable_item = ExtResource( 46 )
+
+[node name="Sauce" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
+position = Vector2( 73, 0 )
+pickable_item = ExtResource( 43 )
+
+[node name="ServingArea" type="Node2D" parent="World/Foreground"]
+position = Vector2( 148, 206 )
+
+[node name="Mat" type="Sprite" parent="World/Foreground/ServingArea"]
 texture = ExtResource( 41 )
+
+[node name="StorageSlots" type="Node2D" parent="World/Foreground/ServingArea"]
+position = Vector2( -33, -3 )
+
+[node name="ItemSlot" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
+position = Vector2( -17, 0 )
+
+[node name="ItemSlot2" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
+position = Vector2( 17, 0 )
 
 [node name="DishAnchor" type="Node2D" parent="World/Foreground/ServingArea"]
 position = Vector2( 35, -7 )
@@ -296,14 +309,20 @@ anims/dish_exit = ExtResource( 39 )
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
-label_path = NodePath("Label")
+label_path = NodePath("Control/Label")
 audio_player_path = NodePath("AudioStreamPlayer")
 
-[node name="Label" type="Label" parent="World/HandDisplay"]
+[node name="Control" type="Control" parent="World/HandDisplay"]
+
+[node name="Label" type="Label" parent="World/HandDisplay/Control"]
 theme = ExtResource( 19 )
 text = "This is a test label
 With more lines"
 script = ExtResource( 27 )
+
+[node name="Label" type="Label" parent="World/HandDisplay/Control/Label"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
 mix_target = 2
