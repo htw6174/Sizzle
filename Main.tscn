@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -36,6 +36,54 @@
 [ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
 [ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=35]
 [ext_resource path="res://custom_resources/dishes/spaghetti.tres" type="Resource" id=36]
+[ext_resource path="res://animations/dish_complete.tres" type="Animation" id=37]
+[ext_resource path="res://interface_logic/effects_logic/serving_effects.gd" type="Script" id=38]
+[ext_resource path="res://animations/dish_exit.tres" type="Animation" id=39]
+[ext_resource path="res://animations/dish_enter.tres" type="Animation" id=40]
+[ext_resource path="res://sprites/mat.png" type="Texture" id=41]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("DishParent:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("DishParent:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [node name="Main" type="Node"]
 
@@ -43,7 +91,7 @@
 
 [node name="ObjectiveController" type="Node" parent="OtherLogicHere"]
 script = ExtResource( 34 )
-serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea")
+serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource( 14 )
 objective_dishes = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 36 ) ]
 
@@ -229,6 +277,22 @@ pickable_item = ExtResource( 35 )
 [node name="ServingArea" type="Node2D" parent="World/Foreground"]
 position = Vector2( 142, 204 )
 
+[node name="Sprite" type="Sprite" parent="World/Foreground/ServingArea"]
+texture = ExtResource( 41 )
+
+[node name="DishAnchor" type="Node2D" parent="World/Foreground/ServingArea"]
+position = Vector2( 35, -7 )
+
+[node name="DishParent" type="Node2D" parent="World/Foreground/ServingArea/DishAnchor"]
+script = ExtResource( 38 )
+animation_player_path = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Foreground/ServingArea/DishAnchor/DishParent"]
+anims/RESET = SubResource( 1 )
+anims/dish_complete = ExtResource( 37 )
+anims/dish_enter = ExtResource( 40 )
+anims/dish_exit = ExtResource( 39 )
+
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
@@ -263,6 +327,7 @@ text = "Book"
 [connection signal="input_event" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_exited"]
+[connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="World/Background/Tools/Cauldron"]
 [editable path="World/Foreground/Tools/Pot"]

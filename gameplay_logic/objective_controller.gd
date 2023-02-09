@@ -1,21 +1,24 @@
 extends Node
 
+class_name ObjectiveController
+
 export(NodePath) var serving_dish_parent_path
-onready var serving_dish_parent: Node2D = get_node(serving_dish_parent_path)
+onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
 export(PackedScene) var serving_dish_scene: PackedScene
 export(Array, Resource) var objective_dishes
 
 var objective_index: int = 0
 var current_dish: Interactable = null
 
-func _ready():
-	begin_next_objective()
+signal objective_complete
+signal begin_objective
 
-func _process(delta):
-	if current_dish and current_dish.is_inside_tree():
-		#current_dish.change_target_dish(objective_dishes[objective_index])
-		pass
-		
+func _ready():
+	serving_dish_parent.connect("ready", self, "_on_ServingEffects_ready")
+	serving_dish_parent.connect("dish_begin_effects_finished", self, "_on_ServingEffects_dish_begin_effects_finished")
+	serving_dish_parent.connect("dish_complete_effects_finished", self, "_on_ServingEffects_dish_complete_effects_finished")
+	self.connect("begin_objective", serving_dish_parent, "_on_ObjectiveController_begin_objective")
+	self.connect("objective_complete", serving_dish_parent, "_on_ObjectiveController_objective_complete")
 
 func begin_next_objective():
 	# instantiate serving dish
@@ -29,20 +32,24 @@ func begin_next_objective():
 	# connect to dish complete signal
 	new_dish.connect("dish_complete", self, "_on_ServingDish_dish_complete")
 	# push dish into frame
+	emit_signal("begin_objective")
+	# TODO: update objective tracker text
 	current_dish = new_dish
-	# update objective tracker text
-	pass
-
-func complete_objective():
-	# short delay
-	# show new dish created animation
-	# pull dish out of frame
-	# remove instance
-	current_dish.queue_free()
 	pass
 
 func _on_ServingDish_dish_complete(dish: Dish):
-	complete_objective()
+	emit_signal("objective_complete")
+
+func _on_ServingEffects_ready():
+	begin_next_objective()
+
+func _on_ServingEffects_dish_begin_effects_finished():
+	pass
+
+func _on_ServingEffects_dish_complete_effects_finished():
+	# remove instance
+	current_dish.queue_free()
+	# go to victory screen or next objective
 	if objective_index >= objective_dishes.size() - 1:
 		# TODO: handle game ending
 		print("Victory!")

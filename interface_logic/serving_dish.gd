@@ -58,5 +58,9 @@ func check_dish_complete():
 			matching_component_count += 1
 	if matching_component_count == required_component_count:
 		is_dish_complete = true
-		emit_signal("dish_complete", target_dish)
 		animation_player.play("dish_complete")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "dish_complete":
+		emit_signal("dish_complete", target_dish)

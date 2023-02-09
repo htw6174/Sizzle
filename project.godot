@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://interface_logic/interactable.gd"
 }, {
 "base": "Node",
+"class": "ObjectiveController",
+"language": "GDScript",
+"path": "res://gameplay_logic/objective_controller.gd"
+}, {
+"base": "Node",
 "class": "ProcessResult",
 "language": "GDScript",
 "path": "res://custom_resources/process_result.gd"
@@ -33,13 +38,20 @@ _global_script_classes=[ {
 "class": "ProcessStep",
 "language": "GDScript",
 "path": "res://custom_resources/process_step.gd"
+}, {
+"base": "Node",
+"class": "ServingEffects",
+"language": "GDScript",
+"path": "res://interface_logic/effects_logic/serving_effects.gd"
 } ]
 _global_script_class_icons={
 "Dish": "res://sprites/kitchen.png",
 "Ingredient": "res://sprites/carrot.png",
 "Interactable": "",
+"ObjectiveController": "",
 "ProcessResult": "res://sprites/chopped veg.png",
-"ProcessStep": "res://sprites/cutting board.png"
+"ProcessStep": "res://sprites/cutting board.png",
+"ServingEffects": ""
 }
 
 [application]
