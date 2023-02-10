@@ -457,25 +457,42 @@ anims/dish_exit = ExtResource( 39 )
 [node name="HandDisplay" type="Sprite" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
-label_path = NodePath("Control/VBoxContainer/Label")
-tooltip_path = NodePath("Control/VBoxContainer/Tooltip")
+control_path = NodePath("Control")
+label_path = NodePath("Control/PanelContainer/VBoxContainer/Label")
+tooltip_path = NodePath("Control/PanelContainer/VBoxContainer/Tooltip")
 audio_player_path = NodePath("AudioStreamPlayer")
 
 [node name="Control" type="Control" parent="World/HandDisplay"]
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="World/HandDisplay/Control"]
+self_modulate = Color( 1, 1, 1, 0.682353 )
+margin_right = 14.0
+margin_bottom = 14.0
 mouse_filter = 2
+size_flags_vertical = 9
 script = ExtResource( 27 )
 
-[node name="Label" type="Label" parent="World/HandDisplay/Control/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 76.0
+margin_bottom = 39.0
+mouse_filter = 2
+size_flags_vertical = 9
+
+[node name="Label" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
+margin_right = 69.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 theme = ExtResource( 19 )
+text = "test"
 
-[node name="Tooltip" type="Label" parent="World/HandDisplay/Control/VBoxContainer"]
+[node name="Tooltip" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
 margin_top = 18.0
+margin_right = 69.0
 margin_bottom = 32.0
+text = "longer test"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
 mix_target = 2

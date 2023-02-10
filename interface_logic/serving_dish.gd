@@ -60,11 +60,17 @@ func check_dish_complete():
 		animation_player.play("dish_complete")
 
 func set_tooltip():
-	var ingredient_name_array = PoolStringArray()
-	for ingredient in dish_in_progress.remaining_ingredients:
-		ingredient_name_array.append(ingredient.display_name)
-	var ingredients_list = ingredient_name_array.join("\n- ")
-	tooltip = "- {0}".format([ingredients_list])
+	if dish_in_progress.is_finished():
+		tooltip = ""
+	else:
+		if target_dish.is_ordered:
+			tooltip = "Next step: add {0}".format([dish_in_progress.remaining_ingredients[0].display_name])
+		else:
+			var ingredient_name_array = PoolStringArray()
+			for ingredient in dish_in_progress.remaining_ingredients:
+				ingredient_name_array.append(ingredient.display_name)
+			var ingredients_list = ingredient_name_array.join("\n- add ")
+			tooltip = "Next step: \n- add {0}".format([ingredients_list])
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "dish_complete":

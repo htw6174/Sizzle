@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fade_gradient.tres" type="Gradient" id=1]
 [ext_resource path="res://interface_logic/serving_dish.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/star_particle.png" type="Texture" id=4]
 [ext_resource path="res://animations/dish_complete.tres" type="Animation" id=5]
 [ext_resource path="res://sprites/bowl shadow.png" type="Texture" id=6]
+[ext_resource path="res://audio/149268__organicmanpl__ding-3_doubled.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -62,6 +63,9 @@ initial_velocity_random = 0.6
 angular_velocity = 720.0
 angular_velocity_random = 1.0
 color_ramp = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )

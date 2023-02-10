@@ -67,8 +67,8 @@ func set_tooltip():
 	var ingredient_name_array = PoolStringArray()
 	for ingredient in previous_step_ingredients:
 		ingredient_name_array.append(ingredient.display_name)
-	var ingredients_list = ingredient_name_array.join(", \n")
-	tooltip = "Previously added: \n{0}".format([ingredients_list])
+	var ingredients_list = ingredient_name_array.join("\n- ")
+	tooltip = "Contains: \n- {0}".format([ingredients_list])
 
 func check_progress():
 	var next_step = process_step.check_child_requirements(current_step_ingredients)
