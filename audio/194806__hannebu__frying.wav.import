@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/194806__hannebu__frying.wav-04aad5ef106817738da80faccae373e5.sample"
+
+[deps]
+
+source_file="res://audio/194806__hannebu__frying.wav"
+dest_files=[ "res://.import/194806__hannebu__frying.wav-04aad5ef106817738da80faccae373e5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

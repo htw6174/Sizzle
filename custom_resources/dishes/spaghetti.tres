@@ -10,6 +10,7 @@
 [resource]
 script = ExtResource( 1 )
 display_name = "Spaghetti"
-is_ordered = false
+is_ordered = true
+stack_frames = true
 texture_frames = ExtResource( 2 )
 components = [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ]

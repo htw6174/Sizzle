@@ -30,7 +30,7 @@ sprites_anchor_path = NodePath("Plate/SpritesAnchor")
 animation_player_path = NodePath("AnimationPlayer")
 
 [node name="Drop Shadow" type="Sprite" parent="."]
-position = Vector2( 0, 12 )
+position = Vector2( 0, 8 )
 texture = ExtResource( 6 )
 
 [node name="Plate" type="Sprite" parent="."]

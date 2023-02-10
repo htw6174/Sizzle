@@ -8,8 +8,7 @@ onready var sprites_anchor: Node2D = get_node(sprites_anchor_path)
 export(NodePath) var animation_player_path
 onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 
-var dish_component_index: int = 0
-var added_ingredients: Array = []
+var dish_in_progress: Dish.DishInProgress
 
 var is_dish_complete: bool = false
 
@@ -17,6 +16,10 @@ signal dish_complete(dish)
 
 func _ready():
 	change_target_dish(target_dish)
+	dish_in_progress = Dish.DishInProgress.new(target_dish)
+	set_tooltip()
+	if target_dish.dish_texture != null:
+		item_sprite.texture = target_dish.dish_texture
 
 func change_target_dish(dish: Dish):
 	target_dish = dish
@@ -32,34 +35,36 @@ func notify_item_taken(item: Ingredient):
 	item_sprite.texture = null
 
 func try_insert_item(item: Ingredient) -> bool:
-	if target_dish.can_add_ingredient(item, added_ingredients):
-		if target_dish.is_ordered:
-			# set animation frame
-			dish_animation.visible = true
-			dish_animation.frame = added_ingredients.size()
-		else:
+	if dish_in_progress.can_add_ingredient(item):
+		if target_dish.stack_frames:
 			# create new sprite node
 			var item_sprite = Sprite.new()
 			sprites_anchor.add_child(item_sprite)
 			var frame_index = target_dish.components.find(item)
 			item_sprite.texture = target_dish.texture_frames.get_frame("default", frame_index)
+		else:
+			# set animation frame
+			dish_animation.visible = true
+			dish_animation.frame = dish_in_progress.added_ingredients.size()
 		# check added ingredients against recipe
-		added_ingredients.append(item)
+		dish_in_progress.add_ingredient(item)
 		check_dish_complete()
+		set_tooltip()
 		return true
 	else:
 		return false
 
 func check_dish_complete():
-	var matching_component_count = 0
-	var required_component_count = target_dish.components.size()
-	for component in target_dish.components:
-		if component in added_ingredients:
-			matching_component_count += 1
-	if matching_component_count == required_component_count:
+	if dish_in_progress.is_finished():
 		is_dish_complete = true
 		animation_player.play("dish_complete")
 
+func set_tooltip():
+	var ingredient_name_array = PoolStringArray()
+	for ingredient in dish_in_progress.remaining_ingredients:
+		ingredient_name_array.append(ingredient.display_name)
+	var ingredients_list = ingredient_name_array.join("\n- ")
+	tooltip = "- {0}".format([ingredients_list])
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "dish_complete":

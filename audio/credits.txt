@@ -3,3 +3,9 @@ by user TinyWorlds on opengameart.org, released under CC0
 
 qubodupItemHandling2.wav:
 These sounds were created by Iwan 'qubodup' Gabovitch http://qubodup.net and released under CC-BY 3.0 http://creativecommons.org/licenses/by/3.0/ They are based on the author's own sounds http://freesound.org/people/qubodup/sounds/191575/
+
+194806__hannebu__frying.wav:
+by user Hannebu on freesound.org, released under CC0
+
+sound_fx_-_pick_up.mp3, sound_fx_-_drop.mp3:
+by Kyle Patterson

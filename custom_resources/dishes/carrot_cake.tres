@@ -8,5 +8,6 @@
 script = ExtResource( 1 )
 display_name = "Carrot Cake"
 is_ordered = true
+stack_frames = false
 texture_frames = ExtResource( 3 )
 components = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]

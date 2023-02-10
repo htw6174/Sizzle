@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://custom_resources/dish.gd" type="Script" id=1]
+[ext_resource path="res://custom_resources/ingredients/cooked_kebab.tres" type="Resource" id=2]
+[ext_resource path="res://animations/kebab_frames.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://sprites/plate empty.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "Kebab Platter"
+is_ordered = false
+stack_frames = false
+texture_frames = ExtResource( 3 )
+dish_texture = ExtResource( 4 )
+components = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]

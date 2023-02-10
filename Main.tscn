@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://sprites/bin_back.png" type="Texture" id=12]
 [ext_resource path="res://interface_logic/item_trash.gd" type="Script" id=13]
 [ext_resource path="res://ServingPlate.tscn" type="PackedScene" id=14]
-[ext_resource path="res://custom_resources/dishes/bowl_stew.tres" type="Resource" id=15]
+[ext_resource path="res://audio/194806__hannebu__frying.wav" type="AudioStream" id=15]
 [ext_resource path="res://custom_resources/dishes/raw_steak.tres" type="Resource" id=16]
 [ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=17]
 [ext_resource path="res://custom_resources/processes/chop_process_tree.tscn" type="PackedScene" id=18]
@@ -51,6 +51,7 @@
 [ext_resource path="res://custom_resources/ingredients/skewer.tres" type="Resource" id=49]
 [ext_resource path="res://custom_resources/ingredients/cooked_kebab.tres" type="Resource" id=50]
 [ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=51]
+[ext_resource path="res://custom_resources/dishes/kebab_platter.tres" type="Resource" id=52]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -83,7 +84,7 @@ tracks/1/keys = {
 script = ExtResource( 34 )
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource( 14 )
-objective_dishes = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 36 ) ]
+objective_dishes = [ ExtResource( 52 ), ExtResource( 36 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="World" type="Node2D" parent="."]
 
@@ -116,6 +117,9 @@ position = Vector2( -1, -22 )
 
 [node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="1"]
 position = Vector2( -1, -21 )
+
+[node name="CPUParticles2D" parent="World/Background/Tools/Cauldron/ToolEffects" index="2"]
+position = Vector2( 0, -44 )
 
 [node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
 margin_left = -23.0
@@ -161,6 +165,9 @@ position = Vector2( 3, 20 )
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="1"]
 position = Vector2( 0, 20 )
 
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="3"]
+stream = ExtResource( 15 )
+
 [node name="Area2D" parent="World/Foreground/Tools/Grills/Left" index="2"]
 position = Vector2( -1, -17 )
 
@@ -185,6 +192,9 @@ position = Vector2( 0, 20 )
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="1"]
 position = Vector2( 0, 20 )
 
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="3"]
+stream = ExtResource( 15 )
+
 [node name="Area2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="2"]
 position = Vector2( -1, -17 )
 
@@ -207,6 +217,9 @@ position = Vector2( 0, 20 )
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="1"]
 position = Vector2( 0, 20 )
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="3"]
+stream = ExtResource( 15 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/CenterRight" index="2"]
 position = Vector2( -1, -17 )
@@ -231,6 +244,9 @@ position = Vector2( -3, 20 )
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="1"]
 position = Vector2( 0, 20 )
 
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="3"]
+stream = ExtResource( 15 )
+
 [node name="Area2D" parent="World/Foreground/Tools/Grills/Right" index="2"]
 position = Vector2( -1, -17 )
 
@@ -253,31 +269,14 @@ position = Vector2( 0, -27 )
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="1"]
 position = Vector2( 0, -27 )
 
+[node name="CPUParticles2D" parent="World/Foreground/Tools/Pot/ToolEffects" index="2"]
+position = Vector2( 0, -43 )
+
 [node name="Area2D" parent="World/Foreground/Tools/Pot" index="2"]
 position = Vector2( -1, -17 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Pot/Area2D" index="0"]
 polygon = PoolVector2Array( 20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12, -13, -16, 15, -16 )
-
-[node name="CuttingBoard" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
-position = Vector2( 67, 92 )
-processing_verb = "Chopping..."
-preperation_process_scene = ExtResource( 18 )
-
-[node name="Sprite" parent="World/Foreground/Tools/CuttingBoard" index="0"]
-texture = ExtResource( 5 )
-
-[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
-position = Vector2( 0, -7 )
-
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
-position = Vector2( 0, -7 )
-
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="3"]
-stream = ExtResource( 20 )
-
-[node name="CollisionPolygon2D" parent="World/Foreground/Tools/CuttingBoard/Area2D" index="0"]
-polygon = PoolVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14 )
 
 [node name="Skillet" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( 48, 56 )
@@ -294,11 +293,40 @@ position = Vector2( 0, -19 )
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="1"]
 position = Vector2( 0, -19 )
 
+[node name="CPUParticles2D" parent="World/Foreground/Tools/Skillet/ToolEffects" index="2"]
+position = Vector2( 0, -38 )
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Skillet/ToolEffects" index="3"]
+stream = ExtResource( 15 )
+
 [node name="Area2D" parent="World/Foreground/Tools/Skillet" index="2"]
 position = Vector2( 0, -19 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Skillet/Area2D" index="0"]
 polygon = PoolVector2Array( 34, -7, 34, 8, 25, 16, 0, 20, -25, 17, -35, 6, -36, -7, -31, -15, -1, -19, 28, -15 )
+
+[node name="CuttingBoard" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
+position = Vector2( 67, 92 )
+processing_verb = "Chopping..."
+preperation_process_scene = ExtResource( 18 )
+
+[node name="Sprite" parent="World/Foreground/Tools/CuttingBoard" index="0"]
+texture = ExtResource( 5 )
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
+position = Vector2( 0, -7 )
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
+position = Vector2( 0, -7 )
+
+[node name="CPUParticles2D" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
+visible = false
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="3"]
+stream = ExtResource( 20 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/CuttingBoard/Area2D" index="0"]
+polygon = PoolVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14 )
 
 [node name="Bin" type="Sprite" parent="World/Foreground/Tools"]
 position = Vector2( 126, 98 )
@@ -441,18 +469,13 @@ mouse_filter = 2
 script = ExtResource( 27 )
 
 [node name="Label" type="Label" parent="World/HandDisplay/Control/VBoxContainer"]
-margin_right = 188.0
-margin_bottom = 31.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 theme = ExtResource( 19 )
-text = "This is a test label
-with multiple lines"
 
 [node name="Tooltip" type="Label" parent="World/HandDisplay/Control/VBoxContainer"]
-margin_top = 35.0
-margin_right = 188.0
-margin_bottom = 49.0
-text = "Tooltip extra text even longer"
+margin_top = 18.0
+margin_bottom = 32.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
 mix_target = 2
@@ -484,5 +507,5 @@ text = "Book"
 [editable path="World/Foreground/Tools/Grills/CenterRight"]
 [editable path="World/Foreground/Tools/Grills/Right"]
 [editable path="World/Foreground/Tools/Pot"]
-[editable path="World/Foreground/Tools/CuttingBoard"]
 [editable path="World/Foreground/Tools/Skillet"]
+[editable path="World/Foreground/Tools/CuttingBoard"]

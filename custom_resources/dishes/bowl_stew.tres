@@ -8,5 +8,6 @@
 script = ExtResource( 1 )
 display_name = "Bowl of stew"
 is_ordered = false
+stack_frames = false
 texture_frames = ExtResource( 3 )
 components = [ ExtResource( 2 ) ]

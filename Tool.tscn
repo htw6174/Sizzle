@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://interface_logic/item_processer.gd" type="Script" id=1]
 [ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://audio/cooking_without_cover_01.ogg" type="AudioStream" id=3]
 [ext_resource path="res://ui_theme/pixel_theme.tres" type="Theme" id=4]
 [ext_resource path="res://interface_logic/effects_logic/processor_effects.gd" type="Script" id=5]
+[ext_resource path="res://fade_inout_gradient.tres" type="Gradient" id=6]
+[ext_resource path="res://sprites/steam.png" type="Texture" id=7]
 
 [node name="Tool" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,6 +21,7 @@ script = ExtResource( 5 )
 processing_animation_path = NodePath("ProcessingAnimation")
 audio_player_path = NodePath("AudioStreamPlayer")
 progress_bar_path = NodePath("ProgressBar")
+particles_path = NodePath("CPUParticles2D")
 
 [node name="ActiveIngredientSprite" type="Sprite" parent="ToolEffects"]
 
@@ -29,11 +32,18 @@ frames = ExtResource( 2 )
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ToolEffects"]
 emitting = false
 lifetime = 1.5
-speed_scale = 1.4
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 20, 1 )
 direction = Vector2( 0, -1 )
-spread = 60.0
+spread = 10.0
+gravity = Vector2( 0, -48 )
 initial_velocity = 50.0
-color = Color( 0.592157, 0.45098, 0.223529, 1 )
+angular_velocity = 100.0
+angular_velocity_random = 0.5
+angle = 360.0
+angle_random = 1.0
+color_ramp = ExtResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolEffects"]
 stream = ExtResource( 3 )

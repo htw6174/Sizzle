@@ -6,6 +6,8 @@ export(NodePath) var audio_player_path
 onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
 export(NodePath) var progress_bar_path
 onready var progress_bar: ProgressBar = get_node(progress_bar_path)
+export(NodePath) var particles_path
+onready var particles: CPUParticles2D = get_node(particles_path)
 
 var timer: Timer
 
@@ -37,11 +39,13 @@ func _on_Tool_process_finished():
 func _on_Tool_process_step_started():
 	processing_animation.visible = true
 	processing_animation.play()
+	particles.emitting = true;
 
 
 func _on_Tool_process_step_finished():
 	processing_animation.visible = false
 	processing_animation.stop()
+	particles.emitting = false;
 
 
 func _on_Tool_process_step_changed(process_step):
