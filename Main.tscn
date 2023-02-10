@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -46,6 +46,11 @@
 [ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=44]
 [ext_resource path="res://custom_resources/ingredients/pot_stew.tres" type="Resource" id=45]
 [ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=46]
+[ext_resource path="res://sprites/grill.png" type="Texture" id=47]
+[ext_resource path="res://custom_resources/processes/grill_process_tree.tscn" type="PackedScene" id=48]
+[ext_resource path="res://custom_resources/ingredients/skewer.tres" type="Resource" id=49]
+[ext_resource path="res://custom_resources/ingredients/cooked_kebab.tres" type="Resource" id=50]
+[ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=51]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -99,7 +104,7 @@ texture = ExtResource( 30 )
 [node name="Tools" type="Node2D" parent="World/Background"]
 
 [node name="Cauldron" parent="World/Background/Tools" instance=ExtResource( 6 )]
-position = Vector2( 295, 130 )
+position = Vector2( 334, 130 )
 processing_verb = "Boiling..."
 preperation_process_scene = ExtResource( 9 )
 
@@ -122,7 +127,7 @@ margin_bottom = -36.0
 position = Vector2( -1, -11 )
 
 [node name="CollisionPolygon2D" parent="World/Background/Tools/Cauldron/Area2D" index="0"]
-polygon = PoolVector2Array( 42, -14, 51, 16, -15, 16, -18, 12, -51, 8, -40, -16, -30, -20, 11, -19 )
+polygon = PoolVector2Array( 42, -14, 51, 16, -15, 16, -49, 16, -49, 2, -40, -16, -30, -20, 11, -19 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 
@@ -130,8 +135,108 @@ polygon = PoolVector2Array( 42, -14, 51, 16, -15, 16, -18, 12, -51, 8, -40, -16,
 position = Vector2( 199, 112 )
 texture = ExtResource( 28 )
 
+[node name="Grill" type="Sprite" parent="World/Foreground"]
+position = Vector2( 200, 122 )
+texture = ExtResource( 47 )
+
 [node name="Tools" type="Node2D" parent="World/Foreground"]
 position = Vector2( 199, 112 )
+
+[node name="Grills" type="Node2D" parent="World/Foreground/Tools"]
+
+[node name="Left" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
+position = Vector2( -58, 17 )
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource( 48 )
+
+[node name="Sprite" parent="World/Foreground/Tools/Grills/Left" index="0"]
+position = Vector2( -10, -16 )
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/Left" index="1"]
+position = Vector2( 0, -35 )
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="0"]
+position = Vector2( 3, 20 )
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="1"]
+position = Vector2( 0, 20 )
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/Left" index="2"]
+position = Vector2( -1, -17 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/Left/Area2D" index="0"]
+position = Vector2( 14, 0 )
+polygon = PoolVector2Array( 13, -4, 2, 17, -37, 17, -37, 12, -21, -4 )
+
+[node name="CenterLeft" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
+position = Vector2( -18, 17 )
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource( 48 )
+
+[node name="Sprite" parent="World/Foreground/Tools/Grills/CenterLeft" index="0"]
+position = Vector2( -10, -16 )
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterLeft" index="1"]
+position = Vector2( 0, -35 )
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="0"]
+position = Vector2( 0, 20 )
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="1"]
+position = Vector2( 0, 20 )
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="2"]
+position = Vector2( -1, -17 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/CenterLeft/Area2D" index="0"]
+polygon = PoolVector2Array( 19, -4, 19, 17, -23, 17, -12, -4 )
+
+[node name="CenterRight" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
+position = Vector2( 18, 17 )
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource( 48 )
+
+[node name="Sprite" parent="World/Foreground/Tools/Grills/CenterRight" index="0"]
+position = Vector2( -10, -16 )
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterRight" index="1"]
+position = Vector2( 0, -35 )
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="0"]
+position = Vector2( 0, 20 )
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="1"]
+position = Vector2( 0, 20 )
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/CenterRight" index="2"]
+position = Vector2( -1, -17 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/CenterRight/Area2D" index="0"]
+polygon = PoolVector2Array( 15, -4, 27, 17, -16, 17, -16, -4 )
+
+[node name="Right" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
+position = Vector2( 59, 17 )
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource( 48 )
+
+[node name="Sprite" parent="World/Foreground/Tools/Grills/Right" index="0"]
+position = Vector2( -10, -16 )
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/Right" index="1"]
+position = Vector2( 0, -35 )
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="0"]
+position = Vector2( -3, 20 )
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="1"]
+position = Vector2( 0, 20 )
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/Right" index="2"]
+position = Vector2( -1, -17 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/Right/Area2D" index="0"]
+position = Vector2( -15, 0 )
+polygon = PoolVector2Array( 24, -4, 40, 12, 40, 17, 2, 17, -10, -4 )
 
 [node name="Pot" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( -46, 54 )
@@ -175,7 +280,7 @@ stream = ExtResource( 20 )
 polygon = PoolVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14 )
 
 [node name="Skillet" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
-position = Vector2( 48, 54 )
+position = Vector2( 48, 56 )
 processing_verb = "Frying..."
 preperation_process_scene = ExtResource( 26 )
 
@@ -249,6 +354,10 @@ pickable_item = ExtResource( 10 )
 position = Vector2( 41, 205 )
 pickable_item = ExtResource( 32 )
 
+[node name="Skewer" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
+position = Vector2( 20, 177 )
+pickable_item = ExtResource( 49 )
+
 [node name="RightTable" type="Node2D" parent="World/Foreground/Ingredients"]
 
 [node name="Noodles" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
@@ -256,15 +365,14 @@ position = Vector2( 320, 146 )
 pickable_item = ExtResource( 33 )
 
 [node name="Water" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
-position = Vector2( 375, 128 )
+position = Vector2( 388, 152 )
 pickable_item = ExtResource( 23 )
 
 [node name="Herbs" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
-position = Vector2( 358, 180 )
+position = Vector2( 344, 181 )
 pickable_item = ExtResource( 35 )
 
 [node name="Cheat" type="Node2D" parent="World/Foreground/Ingredients"]
-visible = false
 position = Vector2( 191, 35 )
 
 [node name="Stew" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
@@ -281,6 +389,14 @@ pickable_item = ExtResource( 46 )
 [node name="Sauce" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
 position = Vector2( 73, 0 )
 pickable_item = ExtResource( 43 )
+
+[node name="RawKebab" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
+position = Vector2( 109, 0 )
+pickable_item = ExtResource( 51 )
+
+[node name="CookedKebab" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
+position = Vector2( 146, 0 )
+pickable_item = ExtResource( 50 )
 
 [node name="ServingArea" type="Node2D" parent="World/Foreground"]
 position = Vector2( 148, 206 )
@@ -363,6 +479,10 @@ text = "Book"
 [connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="World/Background/Tools/Cauldron"]
+[editable path="World/Foreground/Tools/Grills/Left"]
+[editable path="World/Foreground/Tools/Grills/CenterLeft"]
+[editable path="World/Foreground/Tools/Grills/CenterRight"]
+[editable path="World/Foreground/Tools/Grills/Right"]
 [editable path="World/Foreground/Tools/Pot"]
 [editable path="World/Foreground/Tools/CuttingBoard"]
 [editable path="World/Foreground/Tools/Skillet"]
