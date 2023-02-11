@@ -57,6 +57,10 @@ func handle_release():
 			else:
 				drop()
 
+func handle_drop():
+	if reserved_item != null:
+		drop()
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
@@ -65,7 +69,7 @@ func _input(event):
 			else:
 				handle_release()
 		if event.button_index == BUTTON_RIGHT and event.pressed:
-			drop()
+			handle_drop()
 
 func _on_Interactable_mouse_entered(interactable: Interactable):
 	hovered_interactable = interactable

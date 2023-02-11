@@ -448,10 +448,22 @@ texture = ExtResource( 41 )
 position = Vector2( -33, -3 )
 
 [node name="ItemSlot" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
-position = Vector2( -17, 0 )
+position = Vector2( -13, -13 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot/Area2D" index="0"]
+polygon = PoolVector2Array( -16, -16, 16, -16, 16, -2, 1, 16, -16, 16 )
 
 [node name="ItemSlot2" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
-position = Vector2( 17, 0 )
+position = Vector2( 21, -13 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot2/Area2D" index="0"]
+polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -1, 16, -16, -2.18425 )
+
+[node name="ItemSlot3" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
+position = Vector2( 4, 1 )
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot3/Area2D" index="0"]
+polygon = PoolVector2Array( -1, -16, 1, -16, 16, 2, 16, 16, -16, 16, -16, 2 )
 
 [node name="DishAnchor" type="Node2D" parent="World/Foreground/ServingArea"]
 position = Vector2( 35, -7 )
@@ -506,6 +518,7 @@ text = "longer test"
 mix_target = 2
 
 [node name="GUI" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -603,3 +616,6 @@ text = "Replay"
 [editable path="World/Foreground/Tools/Pot"]
 [editable path="World/Foreground/Tools/Skillet"]
 [editable path="World/Foreground/Tools/CuttingBoard"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot2"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot3"]
