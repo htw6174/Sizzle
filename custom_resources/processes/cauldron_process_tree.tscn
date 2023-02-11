@@ -31,10 +31,10 @@ ingredients = [ ExtResource( 4 ) ]
 script = ExtResource( 7 )
 ingredient = ExtResource( 6 )
 
-[node name="AddNoodles" type="Node" parent="BoilWater"]
+[node name="AddNoodles" type="Node" parent="."]
 script = ExtResource( 1 )
 ingredients = [ ExtResource( 8 ) ]
 
-[node name="ProcessResult" type="Node" parent="BoilWater/AddNoodles"]
+[node name="ProcessResult" type="Node" parent="AddNoodles"]
 script = ExtResource( 7 )
 ingredient = ExtResource( 9 )

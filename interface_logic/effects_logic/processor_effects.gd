@@ -25,9 +25,6 @@ func _process(delta):
 			progress_bar.value = timer_progress
 
 
-
-
-
 func _on_Tool_process_started():
 	audio_player.play()
 
@@ -52,7 +49,7 @@ func _on_Tool_process_step_changed(process_step):
 	pass # Replace with function body.
 
 
-func _on_Tool_item_added(ingredient):
+func _on_Tool_item_inserted(item):
 	pass # Replace with function body.
 
 

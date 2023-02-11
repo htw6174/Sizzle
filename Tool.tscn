@@ -68,8 +68,8 @@ polygon = PoolVector2Array( 20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15 )
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="ingredient_added" from="." to="ToolEffects" method="_on_Tool_ingredient_added"]
-[connection signal="ingredient_removed" from="." to="ToolEffects" method="_on_Tool_ingredient_removed"]
+[connection signal="item_inserted" from="." to="ToolEffects" method="_on_Tool_item_inserted"]
+[connection signal="item_removed" from="." to="ToolEffects" method="_on_Tool_item_removed"]
 [connection signal="process_finished" from="." to="ToolEffects" method="_on_Tool_process_finished"]
 [connection signal="process_started" from="." to="ToolEffects" method="_on_Tool_process_started"]
 [connection signal="process_step_changed" from="." to="ToolEffects" method="_on_Tool_process_step_changed"]

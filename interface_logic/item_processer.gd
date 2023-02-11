@@ -32,7 +32,7 @@ func _ready():
 	processor_effects.timer = timer
 
 func try_insert_item(item: Ingredient) -> bool:
-	if not can_accept_items:
+	if not can_accept_items or pickable_item != null:
 		return false
 	if process_step.does_any_child_require_ingredient(current_step_ingredients, item):
 		current_step_ingredients.append(item)
