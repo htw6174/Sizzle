@@ -10,6 +10,7 @@
 [resource]
 script = ExtResource( 1 )
 display_name = "Full Breakfast"
+description = ""
 is_ordered = false
 stack_frames = true
 texture_frames = ExtResource( 6 )

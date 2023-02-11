@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 display_name = "Carrot Cake"
+description = ""
 is_ordered = true
 stack_frames = false
 texture_frames = ExtResource( 3 )

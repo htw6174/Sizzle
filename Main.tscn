@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -52,6 +52,7 @@
 [ext_resource path="res://custom_resources/ingredients/cooked_kebab.tres" type="Resource" id=50]
 [ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=51]
 [ext_resource path="res://custom_resources/dishes/kebab_platter.tres" type="Resource" id=52]
+[ext_resource path="res://gui_logic/button_toggle.gd" type="Script" id=53]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -82,9 +83,10 @@ tracks/1/keys = {
 
 [node name="ObjectiveController" type="Node" parent="OtherLogicHere"]
 script = ExtResource( 34 )
+objective_label_path = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource( 14 )
-objective_dishes = [ ExtResource( 52 ), ExtResource( 36 ), ExtResource( 22 ), ExtResource( 16 ) ]
+objective_dishes = [ ExtResource( 16 ), ExtResource( 52 ), ExtResource( 36 ) ]
 
 [node name="World" type="Node2D" parent="."]
 
@@ -401,7 +403,8 @@ position = Vector2( 344, 181 )
 pickable_item = ExtResource( 35 )
 
 [node name="Cheat" type="Node2D" parent="World/Foreground/Ingredients"]
-position = Vector2( 191, 35 )
+visible = false
+position = Vector2( 196, 21 )
 
 [node name="Stew" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource( 8 )]
 position = Vector2( -52, -1 )
@@ -467,8 +470,6 @@ mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="World/HandDisplay/Control"]
 self_modulate = Color( 1, 1, 1, 0.682353 )
-margin_right = 14.0
-margin_bottom = 14.0
 mouse_filter = 2
 size_flags_vertical = 9
 script = ExtResource( 27 )
@@ -476,8 +477,6 @@ script = ExtResource( 27 )
 [node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 76.0
-margin_bottom = 39.0
 mouse_filter = 2
 size_flags_vertical = 9
 
@@ -502,7 +501,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="GUI"]
+[node name="BookTODO" type="Button" parent="GUI"]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -512,6 +512,37 @@ margin_top = 90.0
 margin_right = -2.0
 margin_bottom = 110.0
 text = "Book"
+
+[node name="ObjectiveInfo" type="VBoxContainer" parent="GUI"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 394.0
+margin_bottom = 107.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="GUI/ObjectiveInfo"]
+margin_right = 119.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Hide Recipe Tips"
+script = ExtResource( 53 )
+target_name = "Recipe Tips"
+target_path = NodePath("../PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
+margin_top = 24.0
+margin_right = 390.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="GUI/ObjectiveInfo/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 383.0
+margin_bottom = 55.0
+text = "This is where the objective tracker text will go
+- We can add some hints here
+- With info on how to complete each recipe"
+autowrap = true
 
 [connection signal="input_event" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_entered"]

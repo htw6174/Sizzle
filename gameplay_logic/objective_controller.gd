@@ -2,6 +2,8 @@ extends Node
 
 class_name ObjectiveController
 
+export(NodePath) var objective_label_path
+onready var objective_label: Label = get_node(objective_label_path)
 export(NodePath) var serving_dish_parent_path
 onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
 export(PackedScene) var serving_dish_scene: PackedScene
@@ -33,17 +35,21 @@ func begin_next_objective():
 	new_dish.connect("dish_complete", self, "_on_ServingDish_dish_complete")
 	# push dish into frame
 	emit_signal("begin_objective")
-	# TODO: update objective tracker text
+	# update objective tracker text
+	objective_label.text = new_dish.target_dish.description
 	current_dish = new_dish
 	pass
 
 func _on_ServingDish_dish_complete(dish: Dish):
+	objective_label.text = ""
+	objective_label.get_parent().visible = false # FIXME horrible shortcut
 	emit_signal("objective_complete")
 
 func _on_ServingEffects_ready():
 	begin_next_objective()
 
 func _on_ServingEffects_dish_begin_effects_finished():
+	objective_label.get_parent().visible = true # FIXME horrible shortcut
 	pass
 
 func _on_ServingEffects_dish_complete_effects_finished():

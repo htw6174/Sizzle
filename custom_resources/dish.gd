@@ -3,6 +3,7 @@ extends Resource
 class_name Dish, "res://sprites/kitchen.png"
 
 export(String) var display_name
+export(String, MULTILINE) var description
 export(bool) var is_ordered
 # true: should display the texture frames as individual sprites, stacked in recipe order from back to front if is_ordered == true
 # false: should display one frame at a time, incrementing upward
