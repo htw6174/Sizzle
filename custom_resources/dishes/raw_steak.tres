@@ -2,13 +2,13 @@
 
 [ext_resource path="res://custom_resources/dish.gd" type="Script" id=1]
 [ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=2]
-[ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://animations/steak_frames.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://sprites/plate empty.png" type="Texture" id=4]
 
 [resource]
 script = ExtResource( 1 )
 display_name = "Raw Steak"
-description = "Welcome to Sizzle! Let's start off simple. Pick up a steak from the table on the left and slap it on that plate."
+description = "Welcome to Sizzle! Let's start off simple. Click to pick up a steak from the table on the left, and click again on the plate to slap it down."
 is_ordered = false
 stack_frames = false
 texture_frames = ExtResource( 3 )

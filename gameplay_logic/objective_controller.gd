@@ -4,6 +4,8 @@ class_name ObjectiveController
 
 export(NodePath) var objective_label_path
 onready var objective_label: Label = get_node(objective_label_path)
+export(NodePath) var end_screen_path
+onready var end_screen: Control = get_node(end_screen_path)
 export(NodePath) var serving_dish_parent_path
 onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
 export(PackedScene) var serving_dish_scene: PackedScene
@@ -57,8 +59,17 @@ func _on_ServingEffects_dish_complete_effects_finished():
 	current_dish.queue_free()
 	# go to victory screen or next objective
 	if objective_index >= objective_dishes.size() - 1:
-		# TODO: handle game ending
-		print("Victory!")
+		# handle game ending
+		end_screen.visible = true
 	else:
 		objective_index += 1
 		begin_next_objective()
+
+func reset_progress():
+	end_screen.visible = false
+	objective_index = 0
+	begin_next_objective()
+
+
+func _on_RestartButton_pressed():
+	reset_progress()

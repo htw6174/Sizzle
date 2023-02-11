@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=51]
 [ext_resource path="res://custom_resources/dishes/kebab_platter.tres" type="Resource" id=52]
 [ext_resource path="res://gui_logic/button_toggle.gd" type="Script" id=53]
+[ext_resource path="res://sprites/empty skewer.png" type="Texture" id=54]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -84,6 +85,7 @@ tracks/1/keys = {
 [node name="ObjectiveController" type="Node" parent="OtherLogicHere"]
 script = ExtResource( 34 )
 objective_label_path = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
+end_screen_path = NodePath("../../GUI/EndScreen")
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource( 14 )
 objective_dishes = [ ExtResource( 16 ), ExtResource( 52 ), ExtResource( 36 ) ]
@@ -388,6 +390,14 @@ pickable_item = ExtResource( 32 )
 position = Vector2( 20, 177 )
 pickable_item = ExtResource( 49 )
 
+[node name="Sprite" type="Sprite" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
+position = Vector2( 3, 3 )
+texture = ExtResource( 54 )
+
+[node name="Sprite2" type="Sprite" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
+position = Vector2( 6, 6 )
+texture = ExtResource( 54 )
+
 [node name="RightTable" type="Node2D" parent="World/Foreground/Ingredients"]
 
 [node name="Noodles" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
@@ -395,7 +405,7 @@ position = Vector2( 320, 146 )
 pickable_item = ExtResource( 33 )
 
 [node name="Water" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
-position = Vector2( 388, 152 )
+position = Vector2( 378, 148 )
 pickable_item = ExtResource( 23 )
 
 [node name="Herbs" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource( 8 )]
@@ -466,6 +476,7 @@ tooltip_path = NodePath("Control/PanelContainer/VBoxContainer/Tooltip")
 audio_player_path = NodePath("AudioStreamPlayer")
 
 [node name="Control" type="Control" parent="World/HandDisplay"]
+visible = false
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="World/HandDisplay/Control"]
@@ -530,6 +541,7 @@ target_name = "Recipe Tips"
 target_path = NodePath("../PanelContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
+self_modulate = Color( 1, 1, 1, 0.690196 )
 margin_top = 24.0
 margin_right = 390.0
 margin_bottom = 86.0
@@ -544,10 +556,46 @@ text = "This is where the objective tracker text will go
 - With info on how to complete each recipe"
 autowrap = true
 
+[node name="EndScreen" type="Control" parent="GUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/EndScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/EndScreen/CenterContainer"]
+margin_left = 192.0
+margin_top = 105.0
+margin_right = 206.0
+margin_bottom = 119.0
+
+[node name="Label" type="Label" parent="GUI/EndScreen/CenterContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 387.0
+margin_bottom = 123.0
+text = "Thanks for playing!
+
+We plan to add more recipes, more interactions, and
+the opportunity to enhance dishes by perfecting your skills.
+
+Art by Max Alford
+Programming by Hardy Whitney"
+
+[node name="RestartButton" type="Button" parent="GUI/EndScreen"]
+margin_left = 164.0
+margin_top = 194.0
+margin_right = 176.0
+margin_bottom = 214.0
+text = "Replay"
+
 [connection signal="input_event" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_exited"]
 [connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="GUI/EndScreen/RestartButton" to="OtherLogicHere/ObjectiveController" method="_on_RestartButton_pressed"]
 
 [editable path="World/Background/Tools/Cauldron"]
 [editable path="World/Foreground/Tools/Grills/Left"]
