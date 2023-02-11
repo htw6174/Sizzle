@@ -12,10 +12,11 @@ func _ready():
 
 func try_insert_item(item: Ingredient) -> bool:
 	if pickable_item == null:
-		emit_signal("item_inserted", item)
 		pickable_item = item
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
+		item_sprite.modulate = Color(1, 1, 1, 1)
+		emit_signal("item_inserted", item)
 		return true
 	else:
 		if check_for_recipe(pickable_item, item):
@@ -27,7 +28,7 @@ func try_reserve_item() -> Ingredient:
 	if pickable_item != null:
 		is_item_reserved = true
 		display_name = "Empty"
-		item_sprite.texture = null
+		item_sprite.modulate = Color(1, 1, 1, 0.5)
 		emit_signal("item_reserved", pickable_item)
 		return pickable_item
 	else:
@@ -43,6 +44,16 @@ func try_take_item() -> Ingredient:
 		return temp_item
 	else:
 		return null
+
+func try_return_item() -> bool:
+	if pickable_item != null:
+		is_item_reserved = false
+		display_name = pickable_item.display_name
+		item_sprite.modulate = Color(1, 1, 1, 1)
+		emit_signal("item_returned", pickable_item)
+		return true
+	else:
+		return false
 
 func check_for_recipe(item1: Ingredient, item2: Ingredient) -> bool:
 	var recipe = preperation_process.check_child_requirements([item1, item2])

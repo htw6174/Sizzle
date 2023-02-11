@@ -17,14 +17,12 @@ var previous_step_ingredients: Array
 var current_step_ingredients: Array
 
 # Signals
-signal ingredient_added(ingredient)
 signal process_step_changed(process_step)
 signal process_started
 signal process_finished
 signal process_step_started
 signal process_step_finished
 signal result_ingredient_produced(ingredient)
-signal ingredient_removed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,23 +31,43 @@ func _ready():
 		display_name = preperation_process.get_display_name()
 	processor_effects.timer = timer
 
-func handle_interaction():
-	PlayerHand.notify_interaction(self, pickable_item, pickable_item == null)
-
-func notify_item_taken(item: Ingredient):
-	pickable_item = null
-	item_sprite.texture = null
-	display_name = preperation_process.get_display_name()
-	emit_signal("ingredient_removed")
-
 func try_insert_item(item: Ingredient) -> bool:
 	if not can_accept_items:
 		return false
 	if process_step.does_any_child_require_ingredient(current_step_ingredients, item):
 		current_step_ingredients.append(item)
-		emit_signal("ingredient_added", item)
+		emit_signal("item_inserted", item)
 		check_progress()
 		set_display_name()
+		return true
+	else:
+		return false
+
+func try_reserve_item() -> Ingredient:
+	if pickable_item != null:
+		is_item_reserved = true
+		item_sprite.modulate = Color(1, 1, 1, 0.5)
+		emit_signal("item_reserved", pickable_item)
+		return pickable_item
+	else:
+		return null
+
+func try_take_item() -> Ingredient:
+	if pickable_item != null:
+		var temp_item = pickable_item
+		pickable_item = null
+		display_name = preperation_process.get_display_name()
+		item_sprite.texture = null
+		emit_signal("item_removed", temp_item)
+		return temp_item
+	else:
+		return null
+
+func try_return_item() -> bool:
+	if pickable_item != null:
+		is_item_reserved = false
+		item_sprite.modulate = Color(1, 1, 1, 1)
+		emit_signal("item_returned", pickable_item)
 		return true
 	else:
 		return false
@@ -99,6 +117,7 @@ func finish_recipe():
 	emit_signal("process_finished")
 	
 	pickable_item = process_step.get_result()
+	item_sprite.modulate = Color(1, 1, 1, 1)
 	item_sprite.texture = pickable_item.texture
 	display_name = pickable_item.display_name
 	tooltip = ""

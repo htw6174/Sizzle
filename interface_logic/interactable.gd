@@ -8,6 +8,7 @@ signal interacted(interactable)
 signal item_inserted(item)
 signal item_reserved(item)
 signal item_removed(item)
+signal item_returned(item)
 
 export(String) var display_name
 export(Resource) var pickable_item
@@ -71,6 +72,7 @@ func try_return_item() -> bool:
 		is_item_reserved = false
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
+		emit_signal("item_returned", pickable_item)
 		return true
 	else:
 		return false

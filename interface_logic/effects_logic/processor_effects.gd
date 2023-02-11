@@ -52,11 +52,11 @@ func _on_Tool_process_step_changed(process_step):
 	pass # Replace with function body.
 
 
-func _on_Tool_ingredient_added(ingredient):
+func _on_Tool_item_added(ingredient):
 	pass # Replace with function body.
 
 
-func _on_Tool_ingredient_removed():
+func _on_Tool_item_removed():
 	pass # Replace with function body.
 
 
