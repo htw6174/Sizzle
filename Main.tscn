@@ -477,6 +477,8 @@ script = ExtResource( 27 )
 [node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
+margin_right = 76.0
+margin_bottom = 39.0
 mouse_filter = 2
 size_flags_vertical = 9
 
@@ -532,13 +534,14 @@ target_path = NodePath("../PanelContainer")
 [node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
 margin_top = 24.0
 margin_right = 390.0
-margin_bottom = 86.0
+margin_bottom = 88.0
+theme = ExtResource( 19 )
 
 [node name="Label" type="Label" parent="GUI/ObjectiveInfo/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 383.0
-margin_bottom = 55.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 382.0
+margin_bottom = 56.0
 text = "This is where the objective tracker text will go
 - We can add some hints here
 - With info on how to complete each recipe"

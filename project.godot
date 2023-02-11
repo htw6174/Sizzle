@@ -79,6 +79,10 @@ window/stretch/aspect="keep"
 
 singletons=[  ]
 
+[gui]
+
+theme/custom="res://ui_theme/pixel_theme.tres"
+
 [importer_defaults]
 
 texture={
