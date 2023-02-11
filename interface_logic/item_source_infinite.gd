@@ -4,13 +4,26 @@ extends Interactable
 #func _process(delta):
 #	pass
 
-func handle_interaction():
-	PlayerHand.notify_interaction(self, pickable_item, false)
-
-func notify_item_taken(item: Ingredient):
-	# TODO: animation for taking item here
-	pass
-
 func try_insert_item(item: Ingredient) -> bool:
 	return false
+
+func try_reserve_item() -> Ingredient:
+	if pickable_item != null:
+		is_item_reserved = true
+		emit_signal("item_reserved", pickable_item)
+		return pickable_item
+	else:
+		return null
+
+func try_take_item() -> Ingredient:
+	if pickable_item != null:
+		emit_signal("item_removed", pickable_item)
+		return pickable_item
+	else:
+		return null
+
+func try_return_item() -> bool:
+	if pickable_item != null:
+		is_item_reserved = false
+	return true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://custom_resources/dishes/raw_steak.tres" type="Resource" id=16]
 [ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=17]
 [ext_resource path="res://custom_resources/processes/chop_process_tree.tscn" type="PackedScene" id=18]
-[ext_resource path="res://ui_theme/pixel_theme.tres" type="Theme" id=19]
 [ext_resource path="res://audio/qubodupItemHandling2_mono.wav" type="AudioStream" id=20]
 [ext_resource path="res://custom_resources/dishes/carrot_cake.tres" type="Resource" id=21]
 [ext_resource path="res://custom_resources/dishes/breakfast.tres" type="Resource" id=22]
@@ -495,7 +494,6 @@ size_flags_vertical = 9
 margin_right = 69.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-theme = ExtResource( 19 )
 text = "test"
 
 [node name="Tooltip" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
@@ -532,8 +530,8 @@ margin_bottom = 107.0
 mouse_filter = 2
 
 [node name="Button" type="Button" parent="GUI/ObjectiveInfo"]
-margin_right = 119.0
-margin_bottom = 20.0
+margin_right = 124.0
+margin_bottom = 18.0
 size_flags_horizontal = 0
 text = "Hide Recipe Tips"
 script = ExtResource( 53 )
@@ -542,15 +540,15 @@ target_path = NodePath("../PanelContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
 self_modulate = Color( 1, 1, 1, 0.690196 )
-margin_top = 24.0
+margin_top = 26.0
 margin_right = 390.0
-margin_bottom = 86.0
+margin_bottom = 84.0
 
 [node name="Label" type="Label" parent="GUI/ObjectiveInfo/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 383.0
-margin_bottom = 55.0
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 376.0
+margin_bottom = 44.0
 text = "This is where the objective tracker text will go
 - We can add some hints here
 - With info on how to complete each recipe"
@@ -566,10 +564,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="PanelContainer" type="PanelContainer" parent="GUI/EndScreen/CenterContainer"]
-margin_left = 192.0
-margin_top = 105.0
-margin_right = 206.0
-margin_bottom = 119.0
+margin_left = 185.0
+margin_top = 98.0
+margin_right = 213.0
+margin_bottom = 126.0
 
 [node name="Label" type="Label" parent="GUI/EndScreen/CenterContainer/PanelContainer"]
 margin_left = 7.0
