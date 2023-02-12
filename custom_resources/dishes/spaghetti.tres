@@ -12,7 +12,7 @@ script = ExtResource( 1 )
 display_name = "Spaghetti"
 description = "Great job! Finish up with a heaping bowl of spaghetti & meatballs.
 Hints:
-- Fill the cauldron with water to make spaghetti
+- Use the big cauldron to cook noodles
 - Use the frying pan to make meatballs
 - Make sauce in the small pot with tomatoes and garlic"
 is_ordered = true
