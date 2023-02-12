@@ -513,7 +513,6 @@ text = "longer test"
 mix_target = 2
 
 [node name="GUI" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -538,8 +537,8 @@ margin_bottom = 107.0
 mouse_filter = 2
 
 [node name="Button" type="Button" parent="GUI/ObjectiveInfo"]
-margin_right = 193.0
-margin_bottom = 41.0
+margin_right = 144.0
+margin_bottom = 22.0
 size_flags_horizontal = 0
 text = "Hide Recipe Tips"
 script = ExtResource( 53 )
@@ -548,15 +547,15 @@ target_path = NodePath("../PanelContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
 self_modulate = Color( 1, 1, 1, 0.690196 )
-margin_top = 49.0
+margin_top = 26.0
 margin_right = 390.0
-margin_bottom = 202.0
+margin_bottom = 75.0
 
 [node name="Label" type="Label" parent="GUI/ObjectiveInfo/PanelContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 382.0
-margin_bottom = 145.0
+margin_bottom = 41.0
 text = "This is where the objective tracker text will go
 - We can add some hints here
 - With info on how to complete each recipe"
