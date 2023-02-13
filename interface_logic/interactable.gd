@@ -24,7 +24,6 @@ var is_tooltip_hidden: bool = false
 func _ready():
 	self.connect("mouse_entered", PlayerHand, "_on_Interactable_mouse_entered")
 	self.connect("mouse_exited", PlayerHand, "_on_Interactable_mouse_exited")
-	self.connect("interacted", PlayerHand, "_on_Interactable_interacted")
 	if pickable_item != null:
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
@@ -34,7 +33,7 @@ func _ready():
 #	pass
 
 func can_accept_item(item: Ingredient) -> bool:
-	return item != null and pickable_item == null
+	return item != null
 
 func try_insert_item(item: Ingredient) -> bool:
 	if pickable_item == null:
@@ -74,6 +73,24 @@ func try_return_item() -> bool:
 		item_sprite.texture = pickable_item.texture
 		emit_signal("item_returned", pickable_item)
 		return true
+	else:
+		return false
+
+static func try_swap_item(slot1: Interactable, slot2: Interactable) -> bool:
+	var item1 = slot1.pickable_item
+	var item2 = slot2.pickable_item
+	if slot1.can_accept_item(item2) and slot2.can_accept_item(item1):
+		slot1.pickable_item = null
+		if slot1.try_insert_item(item2):
+			slot2.pickable_item = null
+			if slot2.try_insert_item(item1):
+				return true
+			else:
+				# no option now but to keep hold of item2
+				print_debug(slot2.display_name, " couldn't accept ", item1.display_name)
+				return false
+		else:
+			return false
 	else:
 		return false
 

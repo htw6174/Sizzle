@@ -31,6 +31,9 @@ func _ready():
 		display_name = preperation_process.get_display_name()
 	processor_effects.timer = timer
 
+func can_accept_item(item: Ingredient) -> bool:
+	return can_accept_items and process_step.does_any_child_require_ingredient(current_step_ingredients, item)
+
 func try_insert_item(item: Ingredient) -> bool:
 	if not can_accept_items or pickable_item != null:
 		return false

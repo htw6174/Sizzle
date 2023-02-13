@@ -4,6 +4,9 @@ extends Interactable
 #func _process(delta):
 #	pass
 
+func can_accept_item(item: Ingredient) -> bool:
+	return false
+
 func try_insert_item(item: Ingredient) -> bool:
 	return false
 

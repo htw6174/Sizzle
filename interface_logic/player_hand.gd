@@ -28,7 +28,10 @@ func try_place():
 		source_interactable = null
 		reserved_item = null
 	else:
-		drop()
+		if Interactable.try_swap_item(source_interactable, hovered_interactable):
+			emit_signal("item_placed", reserved_item)
+			source_interactable = null
+			reserved_item = null
 
 func drop():
 	if source_interactable.try_return_item():
