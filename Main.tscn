@@ -11,7 +11,7 @@
 [ext_resource path="res://custom_resources/processes/cauldron_process_tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://custom_resources/ingredients/veg_tomato.tres" type="Resource" id=10]
 [ext_resource path="res://sprites/trash bucket front.png" type="Texture" id=11]
-[ext_resource path="res://sprites/helper chef.png" type="Texture" id=12]
+[ext_resource path="res://sprites/helper chef longer.png" type="Texture" id=12]
 [ext_resource path="res://interface_logic/item_trash.gd" type="Script" id=13]
 [ext_resource path="res://ServingPlate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://audio/194806__hannebu__frying.wav" type="AudioStream" id=15]
