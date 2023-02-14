@@ -9,7 +9,7 @@ export(bool) var is_ordered
 # false: should display one frame at a time, incrementing upward
 export(bool) var stack_frames
 export(SpriteFrames) var texture_frames
-export(Texture) var dish_texture
+export(PackedScene) var serving_dish_scene
 export(Array, Resource) var components
 
 func _init(p_display_name = "unnamed dish"):

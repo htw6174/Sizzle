@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://custom_resources/dish.gd" type="Script" id=1]
 [ext_resource path="res://animations/spaghetti_frames.tres" type="SpriteFrames" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=4]
 [ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=5]
 [ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=6]
+[ext_resource path="res://ServingBowl.tscn" type="PackedScene" id=7]
 
 [resource]
 script = ExtResource( 1 )
@@ -17,4 +18,5 @@ Add fresh herbs to the serving plate at the end."
 is_ordered = true
 stack_frames = true
 texture_frames = ExtResource( 2 )
+serving_dish_scene = ExtResource( 7 )
 components = [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ]

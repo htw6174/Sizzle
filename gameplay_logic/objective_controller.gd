@@ -39,20 +39,21 @@ func begin_next_mission():
 
 func begin_next_dish():
 	# instantiate serving dish
-	var new_dish = serving_dish_scene.instance()
+	var target_dish = missions[mission_index].dishes[dish_index]
+	var new_dish_scene = target_dish.serving_dish_scene.instance()
 	# set serving dish properties
-	assert(new_dish is Interactable)
-	new_dish.target_dish = missions[mission_index].dishes[dish_index]
+	assert(new_dish_scene is Interactable)
+	new_dish_scene.target_dish = target_dish
 	# add to scene
-	serving_dish_parent.add_child(new_dish)
-	new_dish.set_owner(serving_dish_parent)
+	serving_dish_parent.add_child(new_dish_scene)
+	new_dish_scene.set_owner(serving_dish_parent)
 	# connect to dish complete signal
-	new_dish.connect("dish_complete", self, "_on_ServingDish_dish_complete")
+	new_dish_scene.connect("dish_complete", self, "_on_ServingDish_dish_complete")
 	# push dish into frame
 	emit_signal("begin_objective")
 	# update objective tracker text
-	objective_label.text = new_dish.target_dish.description
-	current_dish = new_dish
+	objective_label.text = new_dish_scene.target_dish.description
+	current_dish = new_dish_scene
 
 func _on_ServingDish_dish_complete(dish: Dish):
 	objective_label.text = ""

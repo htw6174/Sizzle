@@ -421,6 +421,7 @@ texture = ExtResource( 5 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/CuttingBoard" index="1"]
 hide_during_processing = true
+completion_sprite_path = NodePath("")
 active_active_particles_path = NodePath("")
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]

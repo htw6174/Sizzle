@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fade_gradient.tres" type="Gradient" id=1]
 [ext_resource path="res://interface_logic/serving_dish.gd" type="Script" id=2]
-[ext_resource path="res://sprites/plate empty.png" type="Texture" id=3]
+[ext_resource path="res://sprites/bowl empty.png" type="Texture" id=3]
 [ext_resource path="res://sprites/star_particle.png" type="Texture" id=4]
 [ext_resource path="res://animations/dish_complete.tres" type="Animation" id=5]
 [ext_resource path="res://sprites/bowl shadow.png" type="Texture" id=6]
@@ -59,7 +59,6 @@ position = Vector2( 0, 8 )
 texture = ExtResource( 6 )
 
 [node name="Plate" type="Sprite" parent="."]
-position = Vector2( 0, 6 )
 texture = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Plate"]
@@ -71,7 +70,7 @@ position = Vector2( -1, -1 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 30, 2, 30, 11, 15, 17, -16, 17, -31, 11, -31, 1, -16, -16, 16, -16 )
+polygon = PoolVector2Array( 30, -10, 30, -1, 16, 15, -16, 15, -30, -1, -30, -10, -16, -16, 16, -16 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false

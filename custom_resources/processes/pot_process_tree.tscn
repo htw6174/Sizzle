@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://custom_resources/process_step.gd" type="Script" id=1]
 [ext_resource path="res://custom_resources/process_result.gd" type="Script" id=2]
-[ext_resource path="res://custom_resources/ingredients/veg_tomato.tres" type="Resource" id=3]
 [ext_resource path="res://custom_resources/ingredients/veg_garlic.tres" type="Resource" id=4]
 [ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=5]
 [ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=6]
@@ -11,17 +10,12 @@
 [node name="Pot" type="Node"]
 script = ExtResource( 1 )
 
-[node name="SimmerTomatoes" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 3 ) ]
-time_to_complete = 0.0
-
-[node name="AddGarlic" type="Node" parent="SimmerTomatoes"]
+[node name="MakeSauce" type="Node" parent="."]
 script = ExtResource( 1 )
 ingredients = [ ExtResource( 4 ) ]
-time_to_complete = 4.0
+time_to_complete = 0.0
 
-[node name="ProcessResult" type="Node" parent="SimmerTomatoes/AddGarlic"]
+[node name="ProcessResult" type="Node" parent="MakeSauce"]
 script = ExtResource( 2 )
 ingredient = ExtResource( 5 )
 

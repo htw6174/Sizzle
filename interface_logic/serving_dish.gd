@@ -18,8 +18,6 @@ func _ready():
 	change_target_dish(target_dish)
 	dish_in_progress = Dish.DishInProgress.new(target_dish)
 	set_tooltip()
-	if target_dish.dish_texture != null:
-		item_sprite.texture = target_dish.dish_texture
 
 func change_target_dish(dish: Dish):
 	target_dish = dish
