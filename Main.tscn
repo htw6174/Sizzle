@@ -183,12 +183,11 @@ texture = ExtResource( 30 )
 [node name="Tools" type="Node2D" parent="World/Background"]
 
 [node name="Cauldron" parent="World/Background/Tools" instance=ExtResource( 6 )]
-position = Vector2( 334, 130 )
+position = Vector2( 320, 123 )
 processing_verb = "Boiling..."
 preperation_process_scene = ExtResource( 9 )
 
 [node name="Sprite" parent="World/Background/Tools/Cauldron" index="0"]
-position = Vector2( -14, -7 )
 texture = ExtResource( 1 )
 
 [node name="ToolEffects" parent="World/Background/Tools/Cauldron" index="1"]
@@ -213,17 +212,13 @@ position = Vector2( -15, -32 )
 emitting = true
 
 [node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="6"]
-visible = true
 margin_left = -23.0
 margin_top = -50.0
 margin_right = 17.0
 margin_bottom = -36.0
 
-[node name="Area2D" parent="World/Background/Tools/Cauldron" index="2"]
-position = Vector2( -1, -11 )
-
 [node name="CollisionPolygon2D" parent="World/Background/Tools/Cauldron/Area2D" index="0"]
-position = Vector2( -14, -8 )
+position = Vector2( 1, -12 )
 polygon = PoolVector2Array( 42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19 )
 
 [node name="Foreground" type="Node2D" parent="World"]
@@ -619,7 +614,6 @@ text = "longer test"
 mix_target = 2
 
 [node name="GUI" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -670,7 +664,6 @@ text = "This is where the objective tracker text will go
 autowrap = true
 
 [node name="Dialogue" type="Control" parent="GUI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 23 )
@@ -697,9 +690,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = -97.0
+margin_top = -101.0
 margin_right = -246.0
-margin_bottom = -75.0
+margin_bottom = -79.0
 mouse_filter = 1
 
 [node name="NameLabel" type="Label" parent="GUI/Dialogue/Text/NameContainer"]
@@ -714,7 +707,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = -72.0
+margin_top = -76.0
 margin_right = -8.0
 margin_bottom = -18.0
 mouse_filter = 1
@@ -723,7 +716,7 @@ mouse_filter = 1
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 374.0
-margin_bottom = 46.0
+margin_bottom = 50.0
 mouse_filter = 1
 text = "Here is some sample dialog, how many lines can fit here?
 Number 2 →

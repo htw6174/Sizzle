@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource( 1 )
 display_name = "Raw Steak"
-description = "Welcome to Sizzle! Let's start off simple. Click or click & drag to pick up a steak from the table on the left, then slap it down on the plate."
+description = "Click or click & drag to pick up a steak from the table on the left, then click again or release to put it on the plate."
 is_ordered = false
 stack_frames = false
 texture_frames = ExtResource( 3 )

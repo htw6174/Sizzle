@@ -8,8 +8,9 @@
 [resource]
 script = ExtResource( 1 )
 display_name = "Kebab Platter"
-description = "Now fix up a plate of grilled kebabs. Slice meat by putting it on the cutting board. Put a skewer on the prep table, then stick on the meat.
-PS: Move ingredients to the trash if you run out of room"
+description = "Slice meat by putting it on the cutting board. Use the white prep table to combine sliced meat and a wooden skewer.
+Cook raw kebabs on the grill.
+Put 3 cooked kebabs on the plate to advance."
 is_ordered = false
 stack_frames = false
 texture_frames = ExtResource( 3 )

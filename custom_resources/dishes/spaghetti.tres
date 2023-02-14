@@ -10,11 +10,10 @@
 [resource]
 script = ExtResource( 1 )
 display_name = "Spaghetti"
-description = "Great job! Finish up with a heaping bowl of spaghetti & meatballs.
-Hints:
-- Use the big cauldron to cook noodles
-- Use the frying pan to make meatballs
-- Make sauce in the small pot with tomatoes and garlic"
+description = "Put raw noodles in the pot or cauldron to cook them.
+Use sliced meat on the frying pan to make meatballs.
+Make sauce in the small pot with tomatoes and garlic.
+Add fresh herbs to the serving plate at the end."
 is_ordered = true
 stack_frames = true
 texture_frames = ExtResource( 2 )
