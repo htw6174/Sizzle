@@ -12,9 +12,9 @@ func _ready():
 func update_text():
 	if target:
 		if target.visible:
-			self.text = "Hide {0}".format([target_name])
+			self.text = "X"
 		else:
-			self.text = "v"
+			self.text = "?"
 
 func _on_Button_pressed():
 	if target:

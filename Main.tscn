@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
 [ext_resource path="res://sprites/logs.png" type="Texture" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://interface_logic/item_trash.gd" type="Script" id=13]
 [ext_resource path="res://ServingPlate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://audio/194806__hannebu__frying.wav" type="AudioStream" id=15]
-[ext_resource path="res://custom_resources/dishes/raw_steak.tres" type="Resource" id=16]
+[ext_resource path="res://custom_resources/missions/intro_mission.tres" type="Resource" id=16]
 [ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=17]
 [ext_resource path="res://custom_resources/processes/chop_process_tree.tscn" type="PackedScene" id=18]
 [ext_resource path="res://firefly.tscn" type="PackedScene" id=19]
@@ -35,7 +35,8 @@
 [ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=33]
 [ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
 [ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=35]
-[ext_resource path="res://custom_resources/dishes/spaghetti.tres" type="Resource" id=36]
+[ext_resource path="res://custom_resources/missions/kebab_mission.tres" type="Resource" id=36]
+[ext_resource path="res://custom_resources/missions/spaghetti_mission.tres" type="Resource" id=37]
 [ext_resource path="res://interface_logic/effects_logic/serving_effects.gd" type="Script" id=38]
 [ext_resource path="res://animations/dish_exit.tres" type="Animation" id=39]
 [ext_resource path="res://animations/dish_enter.tres" type="Animation" id=40]
@@ -50,12 +51,10 @@
 [ext_resource path="res://custom_resources/ingredients/skewer.tres" type="Resource" id=49]
 [ext_resource path="res://custom_resources/ingredients/cooked_kebab.tres" type="Resource" id=50]
 [ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=51]
-[ext_resource path="res://custom_resources/dishes/kebab_platter.tres" type="Resource" id=52]
 [ext_resource path="res://gui_logic/button_toggle.gd" type="Script" id=53]
 [ext_resource path="res://sprites/empty skewer.png" type="Texture" id=54]
 [ext_resource path="res://animations/dialogue_in.tres" type="Animation" id=55]
 [ext_resource path="res://animations/dialogue_out.tres" type="Animation" id=56]
-[ext_resource path="res://custom_resources/dialogues/intro_dialogue.tres" type="Resource" id=57]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -142,8 +141,7 @@ objective_label_path = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
 end_screen_path = NodePath("../../GUI/EndScreen")
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource( 14 )
-objective_dishes = [ ExtResource( 16 ), ExtResource( 52 ), ExtResource( 36 ) ]
-intro_dialogue = ExtResource( 57 )
+missions = [ ExtResource( 16 ), ExtResource( 36 ), ExtResource( 37 ) ]
 
 [node name="World" type="Node2D" parent="."]
 

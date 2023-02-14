@@ -11,11 +11,10 @@ onready var end_screen: Control = get_node(end_screen_path)
 export(NodePath) var serving_dish_parent_path
 onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
 export(PackedScene) var serving_dish_scene: PackedScene
-export(Array, Resource) var objective_dishes # Array of Dish
+export(Array, Resource) var missions # Array of Mission
 
-export(Resource) var intro_dialogue # Dialogue
-
-var objective_index: int = 0
+var dish_index: int = 0
+var mission_index: int = 0
 var current_dish: Interactable = null
 
 signal objective_complete
@@ -30,12 +29,20 @@ func _ready():
 	self.connect("begin_objective", serving_dish_parent, "_on_ObjectiveController_begin_objective")
 	self.connect("objective_complete", serving_dish_parent, "_on_ObjectiveController_objective_complete")
 
-func begin_next_objective():
+func begin_next_mission():
+	if mission_index >= missions.size():
+		# handle game ending
+		end_screen.visible = true
+	else:
+		dish_index = 0
+		dialogue_player.start_dialogue(missions[mission_index].start_dialogue)
+
+func begin_next_dish():
 	# instantiate serving dish
 	var new_dish = serving_dish_scene.instance()
 	# set serving dish properties
 	assert(new_dish is Interactable)
-	new_dish.target_dish = objective_dishes[objective_index]
+	new_dish.target_dish = missions[mission_index].dishes[dish_index]
 	# add to scene
 	serving_dish_parent.add_child(new_dish)
 	new_dish.set_owner(serving_dish_parent)
@@ -46,7 +53,6 @@ func begin_next_objective():
 	# update objective tracker text
 	objective_label.text = new_dish.target_dish.description
 	current_dish = new_dish
-	pass
 
 func _on_ServingDish_dish_complete(dish: Dish):
 	objective_label.text = ""
@@ -54,34 +60,33 @@ func _on_ServingDish_dish_complete(dish: Dish):
 	emit_signal("objective_complete")
 
 func _on_DialoguePlayer_ready():
-	dialogue_player.start_dialogue(intro_dialogue)
+	begin_next_mission()
 
 func _on_DialoguePlayer_dialogue_finished():
-	begin_next_objective()
+	begin_next_dish()
 
 func _on_ServingEffects_ready():
-	#begin_next_objective()
+	#begin_next_mission()
 	pass
 
 func _on_ServingEffects_dish_begin_effects_finished():
-	objective_label.get_parent().visible = true # FIXME horrible shortcut
+	#objective_label.get_parent().visible = true # FIXME horrible shortcut
 	pass
 
 func _on_ServingEffects_dish_complete_effects_finished():
 	# remove instance
 	current_dish.queue_free()
-	# go to victory screen or next objective
-	if objective_index >= objective_dishes.size() - 1:
-		# handle game ending
-		end_screen.visible = true
+	dish_index += 1
+	if dish_index >= missions[mission_index].dishes.size():
+		mission_index += 1
+		begin_next_mission()
 	else:
-		objective_index += 1
-		begin_next_objective()
+		begin_next_dish()
 
 func reset_progress():
 	end_screen.visible = false
-	objective_index = 0
-	begin_next_objective()
+	mission_index = 0
+	begin_next_mission()
 
 
 func _on_RestartButton_pressed():
