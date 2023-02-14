@@ -34,6 +34,7 @@ ingredient = ExtResource( 6 )
 [node name="AddNoodles" type="Node" parent="."]
 script = ExtResource( 1 )
 ingredients = [ ExtResource( 8 ) ]
+time_to_complete = 4.0
 
 [node name="ProcessResult" type="Node" parent="AddNoodles"]
 script = ExtResource( 7 )

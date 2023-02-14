@@ -2,6 +2,8 @@ extends Node
 
 class_name ObjectiveController
 
+export(NodePath) var dialogue_player_path
+onready var dialogue_player: DialoguePlayer = get_node(dialogue_player_path)
 export(NodePath) var objective_label_path
 onready var objective_label: Label = get_node(objective_label_path)
 export(NodePath) var end_screen_path
@@ -9,7 +11,9 @@ onready var end_screen: Control = get_node(end_screen_path)
 export(NodePath) var serving_dish_parent_path
 onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
 export(PackedScene) var serving_dish_scene: PackedScene
-export(Array, Resource) var objective_dishes
+export(Array, Resource) var objective_dishes # Array of Dish
+
+export(Resource) var intro_dialogue # Dialogue
 
 var objective_index: int = 0
 var current_dish: Interactable = null
@@ -18,6 +22,8 @@ signal objective_complete
 signal begin_objective
 
 func _ready():
+	dialogue_player.connect("ready", self, "_on_DialoguePlayer_ready")
+	dialogue_player.connect("dialogue_finished", self, "_on_DialoguePlayer_dialogue_finished")
 	serving_dish_parent.connect("ready", self, "_on_ServingEffects_ready")
 	serving_dish_parent.connect("dish_begin_effects_finished", self, "_on_ServingEffects_dish_begin_effects_finished")
 	serving_dish_parent.connect("dish_complete_effects_finished", self, "_on_ServingEffects_dish_complete_effects_finished")
@@ -47,8 +53,15 @@ func _on_ServingDish_dish_complete(dish: Dish):
 	objective_label.get_parent().visible = false # FIXME horrible shortcut
 	emit_signal("objective_complete")
 
-func _on_ServingEffects_ready():
+func _on_DialoguePlayer_ready():
+	dialogue_player.start_dialogue(intro_dialogue)
+
+func _on_DialoguePlayer_dialogue_finished():
 	begin_next_objective()
+
+func _on_ServingEffects_ready():
+	#begin_next_objective()
+	pass
 
 func _on_ServingEffects_dish_begin_effects_finished():
 	objective_label.get_parent().visible = true # FIXME horrible shortcut

@@ -1,9 +1,7 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
-[ext_resource path="res://custom_resources/ingredients/veg_carrot.tres" type="Resource" id=2]
 [ext_resource path="res://interface_logic/hand_display.gd" type="Script" id=3]
-[ext_resource path="res://custom_resources/ingredients/veg_potato.tres" type="Resource" id=4]
 [ext_resource path="res://sprites/cutting board log.png" type="Texture" id=5]
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/oven.png" type="Texture" id=7]
@@ -54,6 +52,9 @@
 [ext_resource path="res://custom_resources/dishes/kebab_platter.tres" type="Resource" id=52]
 [ext_resource path="res://gui_logic/button_toggle.gd" type="Script" id=53]
 [ext_resource path="res://sprites/empty skewer.png" type="Texture" id=54]
+[ext_resource path="res://animations/dialogue_in.tres" type="Animation" id=55]
+[ext_resource path="res://animations/dialogue_out.tres" type="Animation" id=56]
+[ext_resource path="res://custom_resources/dialogues/intro_dialogue.tres" type="Resource" id=57]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -78,17 +79,70 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Text:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CharacterPortrait:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 243, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterPortrait:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Text:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 398, 224 ) ]
+}
+
 [node name="Main" type="Node"]
 
 [node name="OtherLogicHere" type="Node" parent="."]
 
 [node name="ObjectiveController" type="Node" parent="OtherLogicHere"]
 script = ExtResource( 34 )
+dialogue_player_path = NodePath("../../GUI/Dialogue")
 objective_label_path = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
 end_screen_path = NodePath("../../GUI/EndScreen")
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource( 14 )
 objective_dishes = [ ExtResource( 16 ), ExtResource( 52 ), ExtResource( 36 ) ]
+intro_dialogue = ExtResource( 57 )
 
 [node name="World" type="Node2D" parent="."]
 
@@ -133,16 +187,23 @@ preperation_process_scene = ExtResource( 9 )
 [node name="Sprite" parent="World/Background/Tools/Cauldron" index="0"]
 texture = ExtResource( 1 )
 
+[node name="ToolEffects" parent="World/Background/Tools/Cauldron" index="1"]
+passive_particles_path = NodePath("PassiveParticles")
+
 [node name="ActiveIngredientSprite" parent="World/Background/Tools/Cauldron/ToolEffects" index="0"]
 position = Vector2( -1, -22 )
 
-[node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="2"]
 position = Vector2( -1, -21 )
 
-[node name="CPUParticles2D" parent="World/Background/Tools/Cauldron/ToolEffects" index="2"]
-position = Vector2( 0, -44 )
+[node name="ActiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="3"]
+position = Vector2( -1, -29 )
 
-[node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
+[node name="PassiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
+position = Vector2( -1, -29 )
+emitting = true
+
+[node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="6"]
 margin_left = -23.0
 margin_top = -50.0
 margin_right = 17.0
@@ -179,14 +240,15 @@ position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/Left" index="1"]
 position = Vector2( 0, -35 )
+processing_animation_path = NodePath("")
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="0"]
 position = Vector2( 3, 20 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="2"]
 position = Vector2( 0, 20 )
 
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="3"]
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="5"]
 stream = ExtResource( 15 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/Left" index="2"]
@@ -206,14 +268,15 @@ position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterLeft" index="1"]
 position = Vector2( 0, -35 )
+processing_animation_path = NodePath("")
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="0"]
 position = Vector2( 0, 20 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="2"]
 position = Vector2( 0, 20 )
 
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="3"]
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="5"]
 stream = ExtResource( 15 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="2"]
@@ -232,14 +295,15 @@ position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterRight" index="1"]
 position = Vector2( 0, -35 )
+processing_animation_path = NodePath("")
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="0"]
 position = Vector2( 0, 20 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="2"]
 position = Vector2( 0, 20 )
 
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="3"]
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="5"]
 stream = ExtResource( 15 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/CenterRight" index="2"]
@@ -258,14 +322,15 @@ position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/Right" index="1"]
 position = Vector2( 0, -35 )
+processing_animation_path = NodePath("")
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="0"]
 position = Vector2( -3, 20 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="2"]
 position = Vector2( 0, 20 )
 
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="3"]
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="5"]
 stream = ExtResource( 15 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/Right" index="2"]
@@ -287,11 +352,11 @@ texture = ExtResource( 24 )
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="0"]
 position = Vector2( 0, -27 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="2"]
 position = Vector2( 0, -27 )
 
-[node name="CPUParticles2D" parent="World/Foreground/Tools/Pot/ToolEffects" index="2"]
-position = Vector2( 0, -43 )
+[node name="ActiveParticles" parent="World/Foreground/Tools/Pot/ToolEffects" index="3"]
+position = Vector2( 0, -39 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Pot" index="2"]
 position = Vector2( -1, -17 )
@@ -311,13 +376,13 @@ texture = ExtResource( 31 )
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Skillet/ToolEffects" index="0"]
 position = Vector2( 0, -19 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="2"]
 position = Vector2( 0, -19 )
 
-[node name="CPUParticles2D" parent="World/Foreground/Tools/Skillet/ToolEffects" index="2"]
-position = Vector2( 0, -38 )
+[node name="ActiveParticles" parent="World/Foreground/Tools/Skillet/ToolEffects" index="3"]
+position = Vector2( 0, -31 )
 
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Skillet/ToolEffects" index="3"]
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Skillet/ToolEffects" index="5"]
 stream = ExtResource( 15 )
 
 [node name="Area2D" parent="World/Foreground/Tools/Skillet" index="2"]
@@ -334,16 +399,16 @@ preperation_process_scene = ExtResource( 18 )
 [node name="Sprite" parent="World/Foreground/Tools/CuttingBoard" index="0"]
 texture = ExtResource( 5 )
 
+[node name="ToolEffects" parent="World/Foreground/Tools/CuttingBoard" index="1"]
+active_active_particles_path = NodePath("")
+
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
 position = Vector2( 0, -7 )
 
-[node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
 position = Vector2( 0, -7 )
 
-[node name="CPUParticles2D" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
-visible = false
-
-[node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="3"]
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="5"]
 stream = ExtResource( 20 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/CuttingBoard/Area2D" index="0"]
@@ -381,27 +446,19 @@ target_dish = ExtResource( 22 )
 [node name="LeftTable" type="Node2D" parent="World/Foreground/Ingredients"]
 
 [node name="Steak" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
-position = Vector2( 82, 150 )
+position = Vector2( 34, 143 )
 pickable_item = ExtResource( 17 )
 
-[node name="Potato" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
-position = Vector2( 51, 141 )
-pickable_item = ExtResource( 4 )
-
-[node name="Carrot" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
-position = Vector2( 18, 144 )
-pickable_item = ExtResource( 2 )
-
 [node name="Tomato" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
-position = Vector2( 61, 177 )
+position = Vector2( 72, 150 )
 pickable_item = ExtResource( 10 )
 
 [node name="Garlic" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
-position = Vector2( 41, 205 )
+position = Vector2( 55, 183 )
 pickable_item = ExtResource( 32 )
 
 [node name="Skewer" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource( 8 )]
-position = Vector2( 20, 177 )
+position = Vector2( 19, 174 )
 pickable_item = ExtResource( 49 )
 
 [node name="Sprite" type="Sprite" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
@@ -550,76 +607,6 @@ margin_right = -2.0
 margin_bottom = 110.0
 text = "Book"
 
-[node name="Dialogue" type="Control" parent="GUI"]
-margin_right = 398.0
-margin_bottom = 224.0
-mouse_filter = 2
-script = ExtResource( 23 )
-
-[node name="ClickToAdvance" type="Control" parent="GUI/Dialogue"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
-margin_left = 243.0
-margin_right = 398.0
-margin_bottom = 198.0
-texture = ExtResource( 37 )
-
-[node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -97.0
-margin_right = -246.0
-margin_bottom = -75.0
-
-[node name="NameLabel" type="Label" parent="GUI/Dialogue/NameContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 136.0
-margin_bottom = 14.0
-text = "Foody McStuffins"
-
-[node name="DialogueContainer" type="PanelContainer" parent="GUI/Dialogue"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -72.0
-margin_right = -8.0
-margin_bottom = -18.0
-
-[node name="DialogueLabel" type="RichTextLabel" parent="GUI/Dialogue/DialogueContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 374.0
-margin_bottom = 46.0
-text = "Here is some sample dialog, how many lines can fit here?
-Number 2 →
-Number 3, extends all the way out to the end"
-
-[node name="InstructionLabel" type="Label" parent="GUI/Dialogue"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = -14.0
-margin_right = 225.0
-margin_bottom = -8.0
-text = "Click anywhere to continue"
-
-[node name="SkipButton" type="Button" parent="GUI/Dialogue"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -88.0
-margin_top = -26.0
-margin_right = -16.0
-margin_bottom = -4.0
-text = "Skip →"
-
 [node name="ObjectiveInfo" type="VBoxContainer" parent="GUI"]
 margin_left = 4.0
 margin_top = 4.0
@@ -652,6 +639,97 @@ text = "This is where the objective tracker text will go
 - We can add some hints here
 - With info on how to complete each recipe"
 autowrap = true
+
+[node name="Dialogue" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 23 )
+start_animation = "dialogue_in"
+finish_animation = "dialogue_out"
+animation_player_path = NodePath("AnimationPlayer")
+dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
+
+[node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -155.0
+margin_right = 0.000610352
+margin_bottom = 198.0
+texture = ExtResource( 37 )
+
+[node name="Text" type="Control" parent="GUI/Dialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -97.0
+margin_right = -246.0
+margin_bottom = -75.0
+mouse_filter = 1
+
+[node name="NameLabel" type="Label" parent="GUI/Dialogue/Text/NameContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 136.0
+margin_bottom = 14.0
+text = "Foody McStuffins"
+
+[node name="DialogueContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -72.0
+margin_right = -8.0
+margin_bottom = -18.0
+mouse_filter = 1
+
+[node name="DialogueLabel" type="RichTextLabel" parent="GUI/Dialogue/Text/DialogueContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 374.0
+margin_bottom = 46.0
+mouse_filter = 1
+text = "Here is some sample dialog, how many lines can fit here?
+Number 2 →
+Number 3, extends all the way out to the end"
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = -17.9981
+margin_right = 265.0
+margin_bottom = 4.00189
+
+[node name="InstructionLabel" type="Label" parent="GUI/Dialogue/Text/PanelContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 14.0
+mouse_filter = 1
+text = "> Click anywhere to continue <"
+
+[node name="SkipButton" type="Button" parent="GUI/Dialogue/Text"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -26.0
+margin_right = -16.0
+margin_bottom = -4.0
+text = "Skip →"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue"]
+anims/RESET = SubResource( 2 )
+anims/dialogue_in = ExtResource( 55 )
+anims/dialogue_out = ExtResource( 56 )
 
 [node name="EndScreen" type="Control" parent="GUI"]
 visible = false
@@ -691,6 +769,8 @@ autowrap = true
 [connection signal="mouse_entered" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="World/Foreground/Tools/Bin/Area2D" to="World/Foreground/Tools/Bin" method="_on_Area2D_mouse_exited"]
 [connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="GUI/Dialogue/Text/SkipButton" to="GUI/Dialogue" method="_on_SkipButton_pressed"]
+[connection signal="animation_finished" from="GUI/Dialogue/AnimationPlayer" to="GUI/Dialogue" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="GUI/EndScreen/RestartButton" to="OtherLogicHere/ObjectiveController" method="_on_RestartButton_pressed"]
 
 [editable path="World/Background/Tools/Cauldron"]

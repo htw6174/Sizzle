@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://interface_logic/item_processer.gd" type="Script" id=1]
 [ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://audio/cooking_without_cover_01.ogg" type="AudioStream" id=3]
 [ext_resource path="res://ui_theme/pixel_theme.tres" type="Theme" id=4]
 [ext_resource path="res://interface_logic/effects_logic/processor_effects.gd" type="Script" id=5]
-[ext_resource path="res://fade_inout_gradient.tres" type="Gradient" id=6]
-[ext_resource path="res://sprites/steam.png" type="Texture" id=7]
+[ext_resource path="res://particles/steam_big_particles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://particles/steam_small_particles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/star_particle.png" type="Texture" id=8]
 
 [node name="Tool" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,32 +19,28 @@ timer_path = NodePath("Timer")
 
 [node name="ToolEffects" type="Node2D" parent="."]
 script = ExtResource( 5 )
+finished_ingredient_path = NodePath("ActiveIngredientSprite")
+completion_sprite_path = NodePath("CompletionSprite")
 processing_animation_path = NodePath("ProcessingAnimation")
 audio_player_path = NodePath("AudioStreamPlayer")
 progress_bar_path = NodePath("ProgressBar")
-particles_path = NodePath("CPUParticles2D")
+active_active_particles_path = NodePath("ActiveParticles")
 
 [node name="ActiveIngredientSprite" type="Sprite" parent="ToolEffects"]
+
+[node name="CompletionSprite" type="Sprite" parent="ToolEffects"]
+visible = false
+texture = ExtResource( 8 )
 
 [node name="ProcessingAnimation" type="AnimatedSprite" parent="ToolEffects"]
 visible = false
 frames = ExtResource( 2 )
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ToolEffects"]
+[node name="ActiveParticles" parent="ToolEffects" instance=ExtResource( 6 )]
 emitting = false
-lifetime = 1.5
-texture = ExtResource( 7 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 1 )
-direction = Vector2( 0, -1 )
-spread = 10.0
-gravity = Vector2( 0, -48 )
-initial_velocity = 50.0
-angular_velocity = 100.0
-angular_velocity_random = 0.5
-angle = 360.0
-angle_random = 1.0
-color_ramp = ExtResource( 6 )
+
+[node name="PassiveParticles" parent="ToolEffects" instance=ExtResource( 7 )]
+emitting = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolEffects"]
 stream = ExtResource( 3 )
@@ -70,6 +67,7 @@ one_shot = true
 
 [connection signal="item_inserted" from="." to="ToolEffects" method="_on_Tool_item_inserted"]
 [connection signal="item_removed" from="." to="ToolEffects" method="_on_Tool_item_removed"]
+[connection signal="item_reserved" from="." to="ToolEffects" method="_on_Tool_item_reserved"]
 [connection signal="process_finished" from="." to="ToolEffects" method="_on_Tool_process_finished"]
 [connection signal="process_started" from="." to="ToolEffects" method="_on_Tool_process_started"]
 [connection signal="process_step_changed" from="." to="ToolEffects" method="_on_Tool_process_step_changed"]

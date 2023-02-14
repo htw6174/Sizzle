@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-lines = [ "Hi, welcome to Sizzle!", "" ]
+lines = [ "Hi, welcome to Sizzle!", "2nd text box", "3rd text box", "4th and last text box" ]

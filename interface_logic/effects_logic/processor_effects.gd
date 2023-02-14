@@ -1,19 +1,36 @@
 extends Node
 
+export(NodePath) var finished_ingredient_path
+onready var finished_ingredient: Sprite = get_node(finished_ingredient_path)
+export(NodePath) var completion_sprite_path
+var completion_sprite: Sprite
 export(NodePath) var processing_animation_path
-onready var processing_animation: AnimatedSprite = get_node(processing_animation_path)
+var processing_animation: AnimatedSprite
 export(NodePath) var audio_player_path
 onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
 export(NodePath) var progress_bar_path
 onready var progress_bar: ProgressBar = get_node(progress_bar_path)
-export(NodePath) var particles_path
-onready var particles: CPUParticles2D = get_node(particles_path)
+export(NodePath) var active_active_particles_path
+var active_particles: CPUParticles2D
+export(NodePath) var passive_particles_path
+var passive_particles: CPUParticles2D
 
 var timer: Timer
 
 func _ready():
-	processing_animation.visible = false
-	progress_bar.visible = false
+	if completion_sprite_path != "":
+		completion_sprite = get_node(completion_sprite_path)
+		completion_sprite.visible = false
+	if processing_animation_path != "":
+		processing_animation = get_node(processing_animation_path)
+		processing_animation.visible = false
+		progress_bar.visible = false
+	if active_active_particles_path != "":
+		active_particles = get_node(active_active_particles_path)
+		active_particles.emitting = false
+	if passive_particles_path != "":
+		passive_particles = get_node(passive_particles_path)
+		passive_particles.emitting = true
 
 func _process(delta):
 	if timer:
@@ -34,15 +51,23 @@ func _on_Tool_process_finished():
 
 
 func _on_Tool_process_step_started():
-	processing_animation.visible = true
-	processing_animation.play()
-	particles.emitting = true;
+	if processing_animation:
+		processing_animation.visible = true
+		processing_animation.play()
+	if active_particles:
+		active_particles.emitting = true
+	if passive_particles:
+		passive_particles.emitting = false
 
 
 func _on_Tool_process_step_finished():
-	processing_animation.visible = false
-	processing_animation.stop()
-	particles.emitting = false;
+	if processing_animation:
+		processing_animation.visible = false
+		processing_animation.stop()
+	if active_particles:
+		active_particles.emitting = false
+	if passive_particles:
+		passive_particles.emitting = true
 
 
 func _on_Tool_process_step_changed(process_step):
@@ -53,9 +78,15 @@ func _on_Tool_item_inserted(item):
 	pass # Replace with function body.
 
 
+func _on_Tool_item_reserved(item):
+	if completion_sprite:
+		completion_sprite.visible = false
+
+
 func _on_Tool_item_removed():
 	pass # Replace with function body.
 
 
 func _on_Tool_result_ingredient_produced(ingredient):
-	pass # Replace with function body.
+	if completion_sprite:
+		completion_sprite.visible = true
