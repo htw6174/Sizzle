@@ -1,5 +1,7 @@
 extends Node
 
+export(bool) var hide_during_processing: bool = false
+export(bool) var hide_finished_ingredient: bool = false
 export(NodePath) var finished_ingredient_path
 onready var finished_ingredient: Sprite = get_node(finished_ingredient_path)
 export(NodePath) var completion_sprite_path
@@ -44,6 +46,8 @@ func _process(delta):
 
 func _on_Tool_process_started():
 	audio_player.play()
+	if hide_during_processing:
+		finished_ingredient.visible = false
 
 
 func _on_Tool_process_finished():
@@ -90,3 +94,5 @@ func _on_Tool_item_removed():
 func _on_Tool_result_ingredient_produced(ingredient):
 	if completion_sprite:
 		completion_sprite.visible = true
+	if hide_finished_ingredient:
+		finished_ingredient.visible = false

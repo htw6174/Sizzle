@@ -4,13 +4,26 @@ extends Interactable
 func _ready():
 	display_name = "Trash"
 
-func handle_interaction():
-	PlayerHand.notify_interaction(self, pickable_item, true)
+func try_reserve_item() -> Ingredient:
+	if pickable_item != null:
+		is_item_reserved = true
+		display_name = "Trash"
+		item_sprite.texture = null
+		emit_signal("item_reserved", pickable_item)
+		return pickable_item
+	else:
+		return null
 
-func notify_item_taken(item: Ingredient):
-	pickable_item = null
-	display_name = "Trash"
-	item_sprite.texture = null
+func try_take_item() -> Ingredient:
+	if pickable_item != null:
+		var temp_item = pickable_item
+		pickable_item = null
+		display_name = "Trash"
+		item_sprite.texture = null
+		emit_signal("item_removed", temp_item)
+		return temp_item
+	else:
+		return null
 
 func try_insert_item(item: Ingredient) -> bool:
 	if item != null:
