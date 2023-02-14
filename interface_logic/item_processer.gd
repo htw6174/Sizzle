@@ -41,6 +41,7 @@ func try_insert_item(item: Ingredient) -> bool:
 		current_step_ingredients.append(item)
 		emit_signal("item_inserted", item)
 		check_progress()
+		item_sprite.modulate = Color(1, 1, 1, 1)
 		item_sprite.texture = item.texture
 		set_display_name()
 		return true

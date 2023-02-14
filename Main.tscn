@@ -200,6 +200,9 @@ passive_particles_path = NodePath("PassiveParticles")
 [node name="ActiveIngredientSprite" parent="World/Background/Tools/Cauldron/ToolEffects" index="0"]
 position = Vector2( -1, -22 )
 
+[node name="CompletionSprite" parent="World/Background/Tools/Cauldron/ToolEffects" index="1"]
+position = Vector2( 0, -44 )
+
 [node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="2"]
 position = Vector2( -1, -21 )
 
@@ -363,6 +366,9 @@ hide_finished_ingredient = true
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="0"]
 position = Vector2( 0, -27 )
 
+[node name="CompletionSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="1"]
+position = Vector2( 0, -17 )
+
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="2"]
 position = Vector2( 0, -27 )
 
@@ -389,6 +395,9 @@ hide_during_processing = true
 hide_finished_ingredient = true
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Skillet/ToolEffects" index="0"]
+position = Vector2( 0, -19 )
+
+[node name="CompletionSprite" parent="World/Foreground/Tools/Skillet/ToolEffects" index="1"]
 position = Vector2( 0, -19 )
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="2"]
@@ -421,6 +430,9 @@ active_active_particles_path = NodePath("")
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
 position = Vector2( 0, -7 )
 
+[node name="CompletionSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
+position = Vector2( 0, -22 )
+
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
 position = Vector2( 0, -7 )
 
@@ -437,7 +449,6 @@ script = ExtResource( 13 )
 item_sprite_path = NodePath("ItemDisplay")
 
 [node name="ItemDisplay" type="Sprite" parent="World/Foreground/Tools/Bin"]
-position = Vector2( 1, 10 )
 
 [node name="BinFront" type="Sprite" parent="World/Foreground/Tools/Bin"]
 texture = ExtResource( 11 )

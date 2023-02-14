@@ -46,8 +46,7 @@ func _process(delta):
 
 func _on_Tool_process_started():
 	audio_player.play()
-	if hide_during_processing:
-		finished_ingredient.visible = false
+	finished_ingredient.visible = not hide_during_processing
 
 
 func _on_Tool_process_finished():
@@ -94,5 +93,4 @@ func _on_Tool_item_removed():
 func _on_Tool_result_ingredient_produced(ingredient):
 	if completion_sprite:
 		completion_sprite.visible = true
-	if hide_finished_ingredient:
-		finished_ingredient.visible = false
+	finished_ingredient.visible = not hide_finished_ingredient
