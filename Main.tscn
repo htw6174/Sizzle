@@ -205,10 +205,10 @@ position = Vector2( 0, -44 )
 position = Vector2( -1, -21 )
 
 [node name="ActiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="3"]
-position = Vector2( 2, -30 )
+position = Vector2( 0, -30 )
 
 [node name="PassiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
-position = Vector2( -15, -32 )
+position = Vector2( 0, -32 )
 emitting = true
 
 [node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="6"]
@@ -665,6 +665,7 @@ text = "This is where the objective tracker text will go
 autowrap = true
 
 [node name="Dialogue" type="Control" parent="GUI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 23 )
