@@ -1,15 +1,15 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
+[ext_resource path="res://sprites/helper chef.png" type="Texture" id=2]
 [ext_resource path="res://interface_logic/hand_display.gd" type="Script" id=3]
+[ext_resource path="res://sprites/trash bucket.png" type="Texture" id=4]
 [ext_resource path="res://sprites/cutting board log.png" type="Texture" id=5]
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/oven.png" type="Texture" id=7]
 [ext_resource path="res://Ingredient.tscn" type="PackedScene" id=8]
 [ext_resource path="res://custom_resources/processes/cauldron_process_tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://custom_resources/ingredients/veg_tomato.tres" type="Resource" id=10]
-[ext_resource path="res://sprites/bin_front.png" type="Texture" id=11]
-[ext_resource path="res://sprites/bin_back.png" type="Texture" id=12]
 [ext_resource path="res://interface_logic/item_trash.gd" type="Script" id=13]
 [ext_resource path="res://ServingPlate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://audio/194806__hannebu__frying.wav" type="AudioStream" id=15]
@@ -34,7 +34,6 @@
 [ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
 [ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=35]
 [ext_resource path="res://custom_resources/dishes/spaghetti.tres" type="Resource" id=36]
-[ext_resource path="res://sprites/chef tutorial.png" type="Texture" id=37]
 [ext_resource path="res://interface_logic/effects_logic/serving_effects.gd" type="Script" id=38]
 [ext_resource path="res://animations/dish_exit.tres" type="Animation" id=39]
 [ext_resource path="res://animations/dish_enter.tres" type="Animation" id=40]
@@ -415,21 +414,22 @@ stream = ExtResource( 20 )
 polygon = PoolVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14 )
 
 [node name="Bin" type="Sprite" parent="World/Foreground/Tools"]
-position = Vector2( 126, 98 )
-texture = ExtResource( 12 )
+position = Vector2( 134, 103 )
+texture = ExtResource( 4 )
 script = ExtResource( 13 )
 item_sprite_path = NodePath("ItemDisplay")
 
 [node name="ItemDisplay" type="Sprite" parent="World/Foreground/Tools/Bin"]
 position = Vector2( 1, 10 )
 
-[node name="BinBack" type="Sprite" parent="World/Foreground/Tools/Bin"]
-texture = ExtResource( 11 )
+[node name="BinFront" type="Sprite" parent="World/Foreground/Tools/Bin"]
+visible = false
+texture = ExtResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="World/Foreground/Tools/Bin"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Foreground/Tools/Bin/Area2D"]
-polygon = PoolVector2Array( 24, -4, 20, 32, -16, 32, -17, 4, -17, -2, 1, -8 )
+polygon = PoolVector2Array( 26, -12, 26, 1, 15, 14, -16, 14, -26, 0, -26, -12, -13, -18, 13, -18 )
 
 [node name="ServingCake" parent="World/Foreground/Tools" instance=ExtResource( 14 )]
 visible = false
@@ -641,6 +641,7 @@ text = "This is where the objective tracker text will go
 autowrap = true
 
 [node name="Dialogue" type="Control" parent="GUI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 23 )
@@ -655,7 +656,7 @@ anchor_right = 1.0
 margin_left = -155.0
 margin_right = 0.000610352
 margin_bottom = 198.0
-texture = ExtResource( 37 )
+texture = ExtResource( 2 )
 
 [node name="Text" type="Control" parent="GUI/Dialogue"]
 anchor_right = 1.0
