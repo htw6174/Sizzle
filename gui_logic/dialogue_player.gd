@@ -43,7 +43,7 @@ func skip_dialogue():
 	finish_dialogue()
 
 func _gui_input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		advance_dialogue()
 
 func _on_AnimationPlayer_animation_finished(anim_name: String):
