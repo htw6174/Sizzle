@@ -1,7 +1,9 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
+[ext_resource path="res://sprites/logs.png" type="Texture" id=2]
 [ext_resource path="res://interface_logic/hand_display.gd" type="Script" id=3]
+[ext_resource path="res://sprites/helper chef.png" type="Texture" id=4]
 [ext_resource path="res://sprites/cutting board log.png" type="Texture" id=5]
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/oven.png" type="Texture" id=7]
@@ -34,7 +36,6 @@
 [ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
 [ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=35]
 [ext_resource path="res://custom_resources/dishes/spaghetti.tres" type="Resource" id=36]
-[ext_resource path="res://sprites/chef tutorial.png" type="Texture" id=37]
 [ext_resource path="res://interface_logic/effects_logic/serving_effects.gd" type="Script" id=38]
 [ext_resource path="res://animations/dish_exit.tres" type="Animation" id=39]
 [ext_resource path="res://animations/dish_enter.tres" type="Animation" id=40]
@@ -151,6 +152,10 @@ intro_dialogue = ExtResource( 57 )
 [node name="Forest" type="Sprite" parent="World/Background"]
 position = Vector2( 199, 112 )
 texture = ExtResource( 29 )
+
+[node name="logpile" type="Sprite" parent="World/Background"]
+position = Vector2( 108, 99 )
+texture = ExtResource( 2 )
 
 [node name="Fireflies" type="Node2D" parent="World/Background"]
 position = Vector2( 199, 76 )
@@ -652,10 +657,11 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 [node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -155.0
-margin_right = 0.000610352
+margin_left = -147.0
+margin_top = 2.0
+margin_right = -58.0
 margin_bottom = 198.0
-texture = ExtResource( 37 )
+texture = ExtResource( 4 )
 
 [node name="Text" type="Control" parent="GUI/Dialogue"]
 anchor_right = 1.0
