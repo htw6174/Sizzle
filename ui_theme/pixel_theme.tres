@@ -1,12 +1,19 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://ui_theme/uibox.tres" type="StyleBox" id=1]
 [ext_resource path="res://ui_theme/pixel_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui_theme/uibox_pressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://ui_theme/uibox_hover.tres" type="StyleBox" id=4]
 
 [resource]
 default_font = ExtResource( 2 )
 Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0.270588, 0.270588, 0.270588, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0.270588, 0.270588, 0.270588, 1 )
+Button/styles/hover = ExtResource( 4 )
 Button/styles/normal = ExtResource( 1 )
+Button/styles/pressed = ExtResource( 3 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/colors/font_color_shadow = Color( 0.431373, 0.145098, 0.145098, 0.223529 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -16,3 +23,7 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/styles/normal = null
 PanelContainer/styles/panel = ExtResource( 1 )
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.270588, 0.270588, 0.270588, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0.431373, 0.145098, 0.145098, 0.223529 )
+RichTextLabel/constants/line_separation = 3

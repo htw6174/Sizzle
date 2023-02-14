@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "Dialogue",
+"language": "GDScript",
+"path": "res://custom_resources/dialogue.gd"
+}, {
+"base": "Resource",
 "class": "Dish",
 "language": "GDScript",
 "path": "res://custom_resources/dish.gd"
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://interface_logic/effects_logic/serving_effects.gd"
 } ]
 _global_script_class_icons={
+"Dialogue": "res://sprites/chef tutorial.png",
 "Dish": "res://sprites/kitchen.png",
 "Ingredient": "res://sprites/carrot.png",
 "Interactable": "",
