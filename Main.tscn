@@ -615,6 +615,7 @@ text = "longer test"
 mix_target = 2
 
 [node name="GUI" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -678,8 +679,8 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -155.0
-margin_right = -66.0
-margin_bottom = 196.0
+margin_right = -59.0
+margin_bottom = 224.0
 texture = ExtResource( 12 )
 
 [node name="Text" type="Control" parent="GUI/Dialogue"]

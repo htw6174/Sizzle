@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fx_scripts/motion_oscillate.gd" type="Script" id=1]
 [ext_resource path="res://fx_scripts/visibility_oscillate.gd" type="Script" id=2]
-[ext_resource path="res://sprites/firefly.png" type="Texture" id=3]
+[ext_resource path="res://sprites/firefly dithered.png" type="Texture" id=3]
 
 [node name="Firefly" type="Node2D"]
 position = Vector2( 23, -8 )
@@ -13,8 +13,9 @@ y_amplitude = 20.0
 time_scale = 0.02
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 script = ExtResource( 2 )
-max_visibility = 4.0
+max_visibility = 2.0
 min_visibliity = -4.0
 period_seconds = 8.0
