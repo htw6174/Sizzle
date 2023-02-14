@@ -678,14 +678,16 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 [node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -155.0
-margin_right = -59.0
+margin_left = 243.0
+margin_right = 339.0
 margin_bottom = 224.0
 texture = ExtResource( 12 )
 
 [node name="Text" type="Control" parent="GUI/Dialogue"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 398.0
+margin_bottom = 224.0
 mouse_filter = 1
 
 [node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
