@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://custom_resources/dialogue.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+lines = [ "Great! You're a real raw steak serving pro. I usually prefer cooked meat, though. Let's go ahead and fix up a plate of grilled kebabs.", "Slice meat by putting it on the cutting board. Once it's sliced, go ahead and put it on the table next to the plate, drag a skewer over to the sliced meat, and bam.", "Then put that sucker on the grill and char it up! I want three kebabs on that plate.", "Click  the '?' in the top right if you forget anything that I've told you." ]
