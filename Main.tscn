@@ -360,6 +360,7 @@ hide_during_processing = true
 hide_finished_ingredient = true
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="0"]
+visible = false
 position = Vector2( 0, -27 )
 
 [node name="CompletionSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="1"]
