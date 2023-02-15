@@ -10,7 +10,8 @@ script = ExtResource( 1 )
 display_name = "Kebab Platter"
 description = "Slice meat by putting it on the cutting board. Use the white prep table to combine sliced meat and a wooden skewer.
 Cook raw kebabs on the grill.
-Put 3 cooked kebabs on the plate to advance."
+Put 3 cooked kebabs on the plate to advance.
+There is a trash can in the bottom right to get rid of extra ingredients."
 is_ordered = false
 stack_frames = false
 texture_frames = ExtResource( 3 )
