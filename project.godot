@@ -1,74 +1,19 @@
-; Project was converted by built-in tool to Godot 4.0
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
-_global_script_classes=[{
-"base": "Resource",
-"class": "Dialogue",
-"language": "GDScript",
-"path": "res://custom_resources/dialogue.gd"
-}, {
-"base": "Node",
-"class": "DialoguePlayer",
-"language": "GDScript",
-"path": "res://gui_logic/dialogue_player.gd"
-}, {
-"base": "Resource",
-"class": "Dish",
-"language": "GDScript",
-"path": "res://custom_resources/dish.gd"
-}, {
-"base": "Resource",
-"class": "Ingredient",
-"language": "GDScript",
-"path": "res://custom_resources/ingredient.gd"
-}, {
-"base": "Node",
-"class": "Interactable",
-"language": "GDScript",
-"path": "res://interface_logic/interactable.gd"
-}, {
-"base": "Resource",
-"class": "Mission",
-"language": "GDScript",
-"path": "res://custom_resources/mission.gd"
-}, {
-"base": "Node",
-"class": "ObjectiveController",
-"language": "GDScript",
-"path": "res://gameplay_logic/objective_controller.gd"
-}, {
-"base": "Node",
-"class": "ProcessResult",
-"language": "GDScript",
-"path": "res://custom_resources/process_result.gd"
-}, {
-"base": "Node",
-"class": "ProcessStep",
-"language": "GDScript",
-"path": "res://custom_resources/process_step.gd"
-}, {
-"base": "Node",
-"class": "ServingEffects",
-"language": "GDScript",
-"path": "res://interface_logic/effects_logic/serving_effects.gd"
-}]
-_global_script_class_icons={
-"Dialogue": "res://sprites/chef tutorial.png",
-"DialoguePlayer": "",
-"Dish": "res://sprites/kitchen.png",
-"Ingredient": "res://sprites/carrot.png",
-"Interactable": "",
-"Mission": "",
-"ObjectiveController": "",
-"ProcessResult": "res://sprites/chopped veg.png",
-"ProcessStep": "res://sprites/cutting board.png",
-"ServingEffects": ""
-}
 
 [application]
 
 config/name="Sizzle"
 config/description="This demo showcases how 2D particle systems work in Godot."
 run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://sprites/carrot.png"
 
 [autoload]
@@ -81,9 +26,7 @@ window/size/viewport_width=398
 window/size/viewport_height=224
 window/size/window_width_override=1592
 window/size/window_height_override=896
-window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
 
 [gdnative]
 
@@ -123,5 +66,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-2d/snapping/use_gpu_pixel_snap=true
 environment/defaults/default_clear_color=Color(0.25098, 0.25098, 0.25098, 1)
+2d/snapping/use_gpu_pixel_snap=true

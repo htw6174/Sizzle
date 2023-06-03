@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/194806__hannebu__frying.wav-04aad5ef106817738da80faccae373e5.sample"
+type="AudioStreamWAV"
+uid="uid://bcokfrnqovgne"
+path="res://.godot/imported/194806__hannebu__frying.wav-04aad5ef106817738da80faccae373e5.sample"
 
 [deps]
 
 source_file="res://audio/194806__hannebu__frying.wav"
-dest_files=[ "res://.import/194806__hannebu__frying.wav-04aad5ef106817738da80faccae373e5.sample" ]
+dest_files=["res://.godot/imported/194806__hannebu__frying.wav-04aad5ef106817738da80faccae373e5.sample"]
 
 [params]
 

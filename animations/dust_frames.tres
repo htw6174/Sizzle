@@ -1,19 +1,25 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=2]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://mpv06xy4wd2w"]
 
-[ext_resource path="res://sprites/dust_anim.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://c1ipibf0yjiq2" path="res://sprites/dust_anim.png" id="1"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 27, 28 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 27, 28)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 27, 0, 27, 28 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(27, 0, 27, 28)
 
 [resource]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]

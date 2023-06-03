@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/sound_fx_-_pick_up.mp3-e124958a40621087b57d12762b9e42fd.mp3str"
+uid="uid://da787iuigp44"
+path="res://.godot/imported/sound_fx_-_pick_up.mp3-e124958a40621087b57d12762b9e42fd.mp3str"
 
 [deps]
 
 source_file="res://audio/sound_fx_-_pick_up.mp3"
-dest_files=[ "res://.import/sound_fx_-_pick_up.mp3-e124958a40621087b57d12762b9e42fd.mp3str" ]
+dest_files=["res://.godot/imported/sound_fx_-_pick_up.mp3-e124958a40621087b57d12762b9e42fd.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

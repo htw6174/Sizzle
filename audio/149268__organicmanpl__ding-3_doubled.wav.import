@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/149268__organicmanpl__ding-3_doubled.wav-83cb93f2001290c97e86216b1a7be066.sample"
+type="AudioStreamWAV"
+uid="uid://dypucbx5wo1dh"
+path="res://.godot/imported/149268__organicmanpl__ding-3_doubled.wav-83cb93f2001290c97e86216b1a7be066.sample"
 
 [deps]
 
 source_file="res://audio/149268__organicmanpl__ding-3_doubled.wav"
-dest_files=[ "res://.import/149268__organicmanpl__ding-3_doubled.wav-83cb93f2001290c97e86216b1a7be066.sample" ]
+dest_files=["res://.godot/imported/149268__organicmanpl__ding-3_doubled.wav-83cb93f2001290c97e86216b1a7be066.sample"]
 
 [params]
 

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/cooking_without_cover_01.ogg-127f1d61da69ca8765ff81a1a5a3958e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cgtngctp6celk"
+path="res://.godot/imported/cooking_without_cover_01.ogg-127f1d61da69ca8765ff81a1a5a3958e.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/cooking_without_cover_01.ogg"
-dest_files=[ "res://.import/cooking_without_cover_01.ogg-127f1d61da69ca8765ff81a1a5a3958e.oggstr" ]
+dest_files=["res://.godot/imported/cooking_without_cover_01.ogg-127f1d61da69ca8765ff81a1a5a3958e.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

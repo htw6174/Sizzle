@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/qubodupItemHandling2_mono.wav-7865f49a93b3339dd8b47dfcc0edbb66.sample"
+type="AudioStreamWAV"
+uid="uid://b0y0f3a7bm81p"
+path="res://.godot/imported/qubodupItemHandling2_mono.wav-7865f49a93b3339dd8b47dfcc0edbb66.sample"
 
 [deps]
 
 source_file="res://audio/qubodupItemHandling2_mono.wav"
-dest_files=[ "res://.import/qubodupItemHandling2_mono.wav-7865f49a93b3339dd8b47dfcc0edbb66.sample" ]
+dest_files=["res://.godot/imported/qubodupItemHandling2_mono.wav-7865f49a93b3339dd8b47dfcc0edbb66.sample"]
 
 [params]
 
