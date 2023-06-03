@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://bgi0xewmbiajd"]
 
-[ext_resource path="res://custom_resources/dialogue.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
-lines = [ "Oh boy, smells delicious! You're doing great. Now let's make something a bit more complex.", "It's time for Spaghetti!", "First, boil some noodles in that there saucepan. Then, slice and cook the meat in the skillet for some delicious meatballs.", "Make some tomato sauce by sticking tomatos and garlic in the saucepan.", "Finally, combine in that order into your bowl, and top with some nice fresh herbs." ]
+script = ExtResource("1")
+lines = Array[String](["It's a spaghet!", "yeh"])

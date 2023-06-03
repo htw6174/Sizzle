@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1")
-lines = Array[String]([])
+lines = Array[String](["Intro!"])

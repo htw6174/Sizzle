@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://dpbx65ek7binq"]
 
-[ext_resource path="res://interface_logic/item_processer.gd" type="Script" id=1]
-[ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://audio/cooking_without_cover_01.ogg" type="AudioStream" id=3]
-[ext_resource path="res://ui_theme/pixel_theme.tres" type="Theme" id=4]
-[ext_resource path="res://interface_logic/effects_logic/processor_effects.gd" type="Script" id=5]
-[ext_resource path="res://particles/steam_big_particles.tscn" type="PackedScene" id=6]
-[ext_resource path="res://particles/steam_small_particles.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sprites/exclamation point.png" type="Texture2D" id=8]
+[ext_resource type="Script" path="res://interface_logic/item_processer.gd" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="2"]
+[ext_resource type="AudioStream" uid="uid://cgtngctp6celk" path="res://audio/cooking_without_cover_01.ogg" id="3"]
+[ext_resource type="Theme" path="res://ui_theme/pixel_theme.tres" id="4"]
+[ext_resource type="Script" path="res://interface_logic/effects_logic/processor_effects.gd" id="5"]
+[ext_resource type="PackedScene" path="res://particles/steam_big_particles.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://particles/steam_small_particles.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://crsjlu6pr71xh" path="res://sprites/exclamation point.png" id="8"]
 
 [node name="Tool" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 item_sprite_path = NodePath("ToolEffects/ActiveIngredientSprite")
 processor_effects_path = NodePath("ToolEffects")
 timer_path = NodePath("Timer")
@@ -18,7 +18,7 @@ timer_path = NodePath("Timer")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ToolEffects" type="Node2D" parent="."]
-script = ExtResource( 5 )
+script = ExtResource("5")
 finished_ingredient_path = NodePath("ActiveIngredientSprite")
 completion_sprite_path = NodePath("CompletionSprite")
 processing_animation_path = NodePath("ProcessingAnimation")
@@ -30,50 +30,43 @@ active_active_particles_path = NodePath("ActiveParticles")
 
 [node name="CompletionSprite" type="Sprite2D" parent="ToolEffects"]
 visible = false
-texture = ExtResource( 8 )
+texture = ExtResource("8")
 
 [node name="ProcessingAnimation" type="AnimatedSprite2D" parent="ToolEffects"]
 visible = false
-frames = ExtResource( 2 )
+sprite_frames = ExtResource("2")
 
-[node name="ActiveParticles" parent="ToolEffects" instance=ExtResource( 6 )]
+[node name="ActiveParticles" parent="ToolEffects" instance=ExtResource("6")]
 emitting = false
+emission_sphere_radius = 1.0
 
-[node name="PassiveParticles" parent="ToolEffects" instance=ExtResource( 7 )]
+[node name="PassiveParticles" parent="ToolEffects" instance=ExtResource("7")]
 emitting = false
+emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolEffects"]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 mix_target = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="ToolEffects"]
 visible = false
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 14.0
-theme = ExtResource( 4 )
+theme = ExtResource("4")
 max_value = 1.0
-percent_visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array( 20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15 )
+polygon = PackedVector2Array(20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="item_inserted" from="." to="ToolEffects" method="_on_Tool_item_inserted"]
-[connection signal="item_removed" from="." to="ToolEffects" method="_on_Tool_item_removed"]
-[connection signal="item_reserved" from="." to="ToolEffects" method="_on_Tool_item_reserved"]
-[connection signal="process_finished" from="." to="ToolEffects" method="_on_Tool_process_finished"]
-[connection signal="process_started" from="." to="ToolEffects" method="_on_Tool_process_started"]
-[connection signal="process_step_changed" from="." to="ToolEffects" method="_on_Tool_process_step_changed"]
-[connection signal="process_step_finished" from="." to="ToolEffects" method="_on_Tool_process_step_finished"]
-[connection signal="process_step_started" from="." to="ToolEffects" method="_on_Tool_process_step_started"]
-[connection signal="result_ingredient_produced" from="." to="ToolEffects" method="_on_Tool_result_ingredient_produced"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

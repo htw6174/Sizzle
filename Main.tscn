@@ -52,8 +52,8 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="51"]
 [ext_resource type="Script" path="res://gui_logic/button_toggle.gd" id="53"]
 [ext_resource type="Texture2D" uid="uid://vywuog5jpcp0" path="res://sprites/empty skewer.png" id="54"]
-[ext_resource type="Animation" path="res://animations/dialogue_in.tres" id="55"]
-[ext_resource type="Animation" path="res://animations/dialogue_out.tres" id="56"]
+[ext_resource type="Animation" uid="uid://dxg8edbiu0aon" path="res://animations/dialogue_in.tres" id="55"]
+[ext_resource type="Animation" uid="uid://bfynr07pkbj18" path="res://animations/dialogue_out.tres" id="56"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -765,8 +765,8 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -155.0
-offset_right = -59.0
+offset_left = 243.0
+offset_right = 339.0
 offset_bottom = 224.0
 texture = ExtResource("12")
 
@@ -774,6 +774,8 @@ texture = ExtResource("12")
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 398.0
+offset_bottom = 224.0
 mouse_filter = 1
 
 [node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
