@@ -1,32 +1,105 @@
-[gd_resource type="Theme" load_steps=6 format=2]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bahxjt4a2qkvs"]
 
-[ext_resource path="res://ui_theme/uibox.tres" type="StyleBox" id=1]
-[ext_resource path="res://ui_theme/pixel_font.tres" type="FontFile" id=2]
-[ext_resource path="res://ui_theme/uibox_pressed.tres" type="StyleBox" id=3]
-[ext_resource path="res://ui_theme/uibox_hover.tres" type="StyleBox" id=4]
-[ext_resource path="res://ui_theme/progress_bar.tres" type="StyleBox" id=5]
+[ext_resource type="StyleBox" uid="uid://54axactnw8ts" path="res://ui_theme/uibox.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://kysqv5y43nqm" path="res://ui_theme/pixel_font.tres" id="2"]
+[ext_resource type="StyleBox" uid="uid://djp6lbaynohxl" path="res://ui_theme/uibox_pressed.tres" id="3"]
+[ext_resource type="StyleBox" uid="uid://c7v1nvn3fckcv" path="res://ui_theme/uibox_hover.tres" id="4"]
+[ext_resource type="StyleBox" uid="uid://dolx67yyy7nux" path="res://ui_theme/progress_bar.tres" id="5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svakg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cyfa"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_owmw0"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
 
 [resource]
-default_font = ExtResource( 2 )
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_focus = Color( 0.270588, 0.270588, 0.270588, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0.270588, 0.270588, 0.270588, 1 )
-Button/styles/hover = ExtResource( 4 )
-Button/styles/normal = ExtResource( 1 )
-Button/styles/pressed = ExtResource( 3 )
-Label/colors/font_color = Color( 0, 0, 0, 1 )
-Label/colors/font_color_shadow = Color( 0.431373, 0.145098, 0.145098, 0.223529 )
-Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+default_font = ExtResource("2")
+default_font_size = 8
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_color_focus = Color(0.270588, 0.270588, 0.270588, 1)
+Button/colors/font_color_hover = Color(0, 0, 0, 1)
+Button/colors/font_color_pressed = Color(0.270588, 0.270588, 0.270588, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/outline_size = 0
+Button/styles/disabled = SubResource("StyleBoxFlat_svakg")
+Button/styles/focus = SubResource("StyleBoxFlat_7cyfa")
+Button/styles/hover = ExtResource("4")
+Button/styles/normal = ExtResource("1")
+Button/styles/pressed = ExtResource("3")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_color_shadow = Color(0.431373, 0.145098, 0.145098, 0.223529)
+Label/colors/font_outline_modulate = Color(1, 1, 1, 1)
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/styles/normal = null
-PanelContainer/styles/panel = ExtResource( 1 )
-ProgressBar/styles/bg = ExtResource( 1 )
-ProgressBar/styles/fg = ExtResource( 5 )
-RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-RichTextLabel/colors/font_color_selected = Color( 0.270588, 0.270588, 0.270588, 1 )
-RichTextLabel/colors/font_color_shadow = Color( 0.431373, 0.145098, 0.145098, 0.223529 )
+PanelContainer/styles/panel = ExtResource("1")
+ProgressBar/styles/bg = ExtResource("1")
+ProgressBar/styles/fg = ExtResource("5")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_color_selected = Color(0.270588, 0.270588, 0.270588, 1)
+RichTextLabel/colors/font_color_shadow = Color(0.431373, 0.145098, 0.145098, 0.223529)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
 RichTextLabel/constants/line_separation = 3
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/constants/table_h_separation = 3
+RichTextLabel/constants/table_v_separation = 3
+RichTextLabel/constants/text_highlight_h_padding = 3
+RichTextLabel/constants/text_highlight_v_padding = 3
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_7cyfa")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_owmw0")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://interface_logic/item_processer.gd" id="1"]
 [ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="2"]
 [ext_resource type="AudioStream" uid="uid://cgtngctp6celk" path="res://audio/cooking_without_cover_01.ogg" id="3"]
-[ext_resource type="Theme" path="res://ui_theme/pixel_theme.tres" id="4"]
+[ext_resource type="Theme" uid="uid://bahxjt4a2qkvs" path="res://ui_theme/pixel_theme.tres" id="4"]
 [ext_resource type="Script" path="res://interface_logic/effects_logic/processor_effects.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bofkgdddoes63" path="res://particles/steam_big_particles.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bty1wv1nnje36" path="res://particles/steam_small_particles.tscn" id="7"]

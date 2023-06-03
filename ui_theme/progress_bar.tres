@@ -1,12 +1,16 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=2]
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dolx67yyy7nux"]
 
-[ext_resource path="res://ui_theme/bartrans.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://dvoyb0cd22pid" path="res://ui_theme/bartrans.png" id="1"]
 
 [resource]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 14, 16 )
-margin_left = 5.0
-margin_right = 6.0
-margin_top = 5.0
-margin_bottom = 5.0
+texture = ExtResource("1")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 6.0
+expand_margin_bottom = 5.0
 axis_stretch_horizontal = 1
+region_rect = Rect2(0, 0, 14, 16)
