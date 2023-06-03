@@ -1,20 +1,20 @@
+@icon("res://sprites/kitchen.png")
 extends Resource
-
-class_name Dish, "res://sprites/kitchen.png"
+class_name Dish
 
 @export var display_name: String
-@export var description # (String, MULTILINE)
+@export_multiline var description
 @export var is_ordered: bool
 # true: should display the texture frames as individual sprites, stacked in recipe order from back to front if is_ordered == true
 # false: should display one frame at a time, incrementing upward
 @export var stack_frames: bool
 @export var texture_frames: SpriteFrames
 @export var serving_dish_scene: PackedScene
-@export var components # (Array, Resource)
+@export var components: Array[Resource]
 
 func _init(p_display_name = "unnamed dish"):
 	display_name = p_display_name
-	components = null
+	components = []
 
 class DishInProgress:
 	var dish: Dish

@@ -1,15 +1,15 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" script_class="Dish" load_steps=8 format=3 uid="uid://bpu3o87l6wkp"]
 
-[ext_resource path="res://custom_resources/dish.gd" type="Script" id=1]
-[ext_resource path="res://animations/spaghetti_frames.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://custom_resources/ingredients/herbs.tres" type="Resource" id=3]
-[ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=4]
-[ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=5]
-[ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=6]
-[ext_resource path="res://ServingBowl.tscn" type="PackedScene" id=7]
+[ext_resource type="Script" path="res://custom_resources/dish.gd" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://bv67jjqqisu8m" path="res://animations/spaghetti_frames.tres" id="2"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="3"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="4"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="5"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="6"]
+[ext_resource type="PackedScene" path="res://ServingBowl.tscn" id="7"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Spaghetti"
 description = "Put raw noodles in the pot or cauldron to cook them.
 Use sliced meat on the frying pan to make meatballs.
@@ -17,6 +17,6 @@ Make sauce in the small pot with tomatoes and garlic.
 Add fresh herbs to the serving plate at the end."
 is_ordered = true
 stack_frames = true
-texture_frames = ExtResource( 2 )
-serving_dish_scene = ExtResource( 7 )
-components = [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ]
+texture_frames = ExtResource("2")
+serving_dish_scene = ExtResource("7")
+components = [ExtResource("6"), ExtResource("4"), ExtResource("5"), ExtResource("3")]

@@ -1,7 +1,7 @@
 extends Node
 
-@export var hide_during_processing: bool: bool = false
-@export var hide_finished_ingredient: bool: bool = false
+@export var hide_during_processing: bool = false
+@export var hide_finished_ingredient: bool = false
 @export var finished_ingredient_path: NodePath
 @onready var finished_ingredient: Sprite2D = get_node(finished_ingredient_path)
 @export var completion_sprite_path: NodePath
@@ -20,17 +20,17 @@ var passive_particles: CPUParticles2D
 var timer: Timer
 
 func _ready():
-	if completion_sprite_path != "":
+	if completion_sprite_path != ^"":
 		completion_sprite = get_node(completion_sprite_path)
 		completion_sprite.visible = false
-	if processing_animation_path != "":
+	if processing_animation_path != ^"":
 		processing_animation = get_node(processing_animation_path)
 		processing_animation.visible = false
 		progress_bar.visible = false
-	if active_active_particles_path != "":
+	if active_active_particles_path != ^"":
 		active_particles = get_node(active_active_particles_path)
 		active_particles.emitting = false
-	if passive_particles_path != "":
+	if passive_particles_path != ^"":
 		passive_particles = get_node(passive_particles_path)
 		passive_particles.emitting = true
 

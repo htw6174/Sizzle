@@ -1,13 +1,14 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" script_class="Dish" load_steps=4 format=3 uid="uid://848g763l6hcl"]
 
-[ext_resource path="res://custom_resources/dish.gd" type="Script" id=1]
-[ext_resource path="res://custom_resources/ingredients/pot_stew.tres" type="Resource" id=2]
-[ext_resource path="res://animations/dust_frames.tres" type="SpriteFrames" id=3]
+[ext_resource type="Script" path="res://custom_resources/dish.gd" id="1"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/pot_stew.tres" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="3"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Bowl of stew"
+description = null
 is_ordered = false
 stack_frames = false
-texture_frames = ExtResource( 3 )
-components = [ ExtResource( 2 ) ]
+texture_frames = ExtResource("3")
+components = Array[Resource]([ExtResource("2")])

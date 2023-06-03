@@ -12,14 +12,14 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="10"]
 [ext_resource type="Texture2D" uid="uid://d0yvvtt0pl4op" path="res://sprites/helper chef longer.png" id="12"]
 [ext_resource type="PackedScene" path="res://ServingPlate.tscn" id="14"]
-[ext_resource type="SpriteFrames" path="res://animations/dust_frames.tres" id="14_rfk6r"]
+[ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="14_rfk6r"]
 [ext_resource type="AudioStream" uid="uid://bcokfrnqovgne" path="res://audio/194806__hannebu__frying.wav" id="15"]
-[ext_resource type="Resource" path="res://custom_resources/missions/intro_mission.tres" id="16"]
+[ext_resource type="Resource" uid="uid://cbhkhfo04dfra" path="res://custom_resources/missions/intro_mission.tres" id="16"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="17"]
 [ext_resource type="PackedScene" path="res://custom_resources/processes/chop_process_tree.tscn" id="18"]
 [ext_resource type="PackedScene" path="res://firefly.tscn" id="19"]
 [ext_resource type="AudioStream" uid="uid://b0y0f3a7bm81p" path="res://audio/qubodupItemHandling2_mono.wav" id="20"]
-[ext_resource type="Resource" path="res://custom_resources/dishes/carrot_cake.tres" id="21"]
+[ext_resource type="Resource" uid="uid://dc033t7460f4t" path="res://custom_resources/dishes/carrot_cake.tres" id="21"]
 [ext_resource type="Resource" path="res://custom_resources/dishes/breakfast.tres" id="22"]
 [ext_resource type="Script" path="res://gui_logic/dialogue_player.gd" id="23"]
 [ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="24"]
@@ -34,7 +34,7 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="33"]
 [ext_resource type="Script" path="res://gameplay_logic/objective_controller.gd" id="34"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="35"]
-[ext_resource type="Resource" path="res://custom_resources/missions/kebab_mission.tres" id="36"]
+[ext_resource type="Resource" uid="uid://ddfsawky0cncu" path="res://custom_resources/missions/kebab_mission.tres" id="36"]
 [ext_resource type="Resource" path="res://custom_resources/missions/spaghetti_mission.tres" id="37"]
 [ext_resource type="Script" path="res://interface_logic/effects_logic/serving_effects.gd" id="38"]
 [ext_resource type="Animation" path="res://animations/dish_exit.tres" id="39"]
@@ -235,6 +235,7 @@ offset_left = -23.0
 offset_top = -50.0
 offset_right = 17.0
 offset_bottom = -36.0
+grow_horizontal = 2
 
 [node name="CollisionPolygon2D" parent="World/Background/Tools/Cauldron/Area2D" index="0"]
 position = Vector2(1, -12)
@@ -285,6 +286,8 @@ stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/Left" index="2"]
 position = Vector2(-1, -17)
@@ -323,6 +326,8 @@ stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="2"]
 position = Vector2(-1, -17)
@@ -360,6 +365,8 @@ stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/CenterRight" index="2"]
 position = Vector2(-1, -17)
@@ -397,6 +404,8 @@ stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="Area2D" parent="World/Foreground/Tools/Grills/Right" index="2"]
 position = Vector2(-1, -17)
@@ -438,6 +447,8 @@ emission_sphere_radius = 1.0
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Pot/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="Area2D" parent="World/Foreground/Tools/Pot" index="2"]
 position = Vector2(-1, -17)
@@ -480,6 +491,8 @@ stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Skillet/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="Area2D" parent="World/Foreground/Tools/Skillet" index="2"]
 position = Vector2(0, -19)
@@ -496,9 +509,9 @@ preperation_process_scene = ExtResource("18")
 texture = ExtResource("5")
 
 [node name="ToolEffects" parent="World/Foreground/Tools/CuttingBoard" index="1"]
+hide_during_processing = true
 completion_sprite_path = NodePath("")
 active_active_particles_path = NodePath("")
-hide_during_processing = true
 
 [node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
 position = Vector2(0, -7)
@@ -521,6 +534,8 @@ stream = ExtResource("20")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="6"]
 anchors_preset = 5
+offset_bottom = 18.0
+grow_horizontal = 2
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/CuttingBoard/Area2D" index="0"]
 polygon = PackedVector2Array(40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14)
@@ -691,6 +706,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="BookTODO" type="Button" parent="GUI"]

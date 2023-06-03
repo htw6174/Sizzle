@@ -1,7 +1,7 @@
 extends Button
 
-@export var target_name: String: String
-@export var target_path: NodePath 
+@export var target_name: String
+@export var target_path: NodePath
 @onready var target: Node = get_node(target_path)
 
 func _ready():

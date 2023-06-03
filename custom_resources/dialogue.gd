@@ -1,5 +1,5 @@
+@icon("res://sprites/chef tutorial.png")
 extends Resource
+class_name Dialogue
 
-class_name Dialogue, "res://sprites/chef tutorial.png"
-
-@export var lines # (Array, String, MULTILINE)
+@export_multiline var lines: Array[String]

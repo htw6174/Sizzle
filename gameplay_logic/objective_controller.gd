@@ -10,8 +10,8 @@ class_name ObjectiveController
 @onready var end_screen: Control = get_node(end_screen_path)
 @export var serving_dish_parent_path: NodePath
 @onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
-@export var serving_dish_scene: PackedScene: PackedScene
-@export var missions # Array of Mission # (Array, Resource)
+@export var serving_dish_scene: PackedScene
+@export var missions: Array[Mission]
 
 var dish_index: int = 0
 var mission_index: int = 0

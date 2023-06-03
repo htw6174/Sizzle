@@ -1,8 +1,8 @@
+@icon("res://sprites/cutting board.png")
 extends Node
+class_name ProcessStep
 
-class_name ProcessStep, "res://sprites/cutting board.png"
-
-@export var ingredients # (Array, Resource)
+@export var ingredients: Array[Resource]
 @export var time_to_complete: float = 1.0
 
 func get_display_name():

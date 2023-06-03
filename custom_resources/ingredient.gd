@@ -1,5 +1,6 @@
+@icon("res://sprites/carrot.png")
 extends Resource
-class_name Ingredient, "res://sprites/carrot.png"
+class_name Ingredient
 
 @export var display_name: String
 @export var texture: Texture2D: get = get_texture

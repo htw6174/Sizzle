@@ -2,8 +2,8 @@ extends Node
 
 class_name DialoguePlayer
 
-@export var start_animation: String: String
-@export var finish_animation: String: String
+@export var start_animation: String
+@export var finish_animation: String
 
 @export var animation_player_path: NodePath
 @onready var animation_player:AnimationPlayer = get_node(animation_player_path)

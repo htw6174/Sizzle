@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://di843i6ty37gu"]
 
-[ext_resource path="res://custom_resources/dialogue.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
-lines = [ "Hey champ, welcome to Sizzle!", "I'm here to help you through your first few dishes.", "Let's start off simple. Go ahead and grab that raw steak on the table over there, and slap it down on your plate." ]
+script = ExtResource("1")
+lines = Array[String]([])

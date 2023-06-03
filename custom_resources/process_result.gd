@@ -1,5 +1,5 @@
+@icon("res://sprites/chopped veg.png")
 extends Node
-
-class_name ProcessResult, "res://sprites/chopped veg.png"
+class_name ProcessResult
 
 @export var ingredient: Resource
