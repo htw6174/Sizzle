@@ -4,6 +4,7 @@ extends Interactable
 @onready var preperation_process: ProcessStep = preperation_process_scene.instantiate()
 
 func _ready():
+	super()
 	if pickable_item != null:
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture

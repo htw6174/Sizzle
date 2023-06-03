@@ -1,6 +1,6 @@
 extends Interactable
 
-@export var target_dish: Resource
+@export var target_dish: Dish
 @export var dish_animation_path: NodePath
 @onready var dish_animation: AnimatedSprite2D = get_node(dish_animation_path)
 @export var sprites_anchor_path: NodePath
@@ -15,6 +15,7 @@ var is_dish_complete: bool = false
 signal dish_complete(dish)
 
 func _ready():
+	super()
 	change_target_dish(target_dish)
 	dish_in_progress = Dish.DishInProgress.new(target_dish)
 	set_tooltip()
@@ -39,7 +40,7 @@ func try_insert_item(item: Ingredient) -> bool:
 			var item_sprite = Sprite2D.new()
 			sprites_anchor.add_child(item_sprite)
 			var frame_index = target_dish.components.find(item)
-			item_sprite.texture = target_dish.texture_frames.get_frame("default", frame_index)
+			item_sprite.texture = target_dish.texture_frames.get_frame_texture("default", frame_index)
 		else:
 			# set animation frame
 			dish_animation.visible = true

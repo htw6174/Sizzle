@@ -1,18 +1,17 @@
-[gd_scene load_steps=59 format=3 uid="uid://bmg26no42da0k"]
+[gd_scene load_steps=58 format=3 uid="uid://cdruidu7j5jqg"]
 
 [ext_resource type="Texture2D" uid="uid://bgtrggu2a3ff6" path="res://sprites/cauldron.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bsv3pxagwjklx" path="res://sprites/logs.png" id="2"]
 [ext_resource type="Script" path="res://interface_logic/hand_display.gd" id="3"]
 [ext_resource type="PackedScene" path="res://trash.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://cm3i0vhjp1fd0" path="res://sprites/cutting board log.png" id="5"]
-[ext_resource type="PackedScene" path="res://Tool.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dpbx65ek7binq" path="res://Tool.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://cvvq7rly1ehl5" path="res://sprites/oven.png" id="7"]
-[ext_resource type="PackedScene" path="res://Ingredient.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://deblooe1tgf2b" path="res://Ingredient.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://custom_resources/processes/cauldron_process_tree.tscn" id="9"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="10"]
 [ext_resource type="Texture2D" uid="uid://d0yvvtt0pl4op" path="res://sprites/helper chef longer.png" id="12"]
 [ext_resource type="PackedScene" path="res://ServingPlate.tscn" id="14"]
-[ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="14_rfk6r"]
 [ext_resource type="AudioStream" uid="uid://bcokfrnqovgne" path="res://audio/194806__hannebu__frying.wav" id="15"]
 [ext_resource type="Resource" uid="uid://cbhkhfo04dfra" path="res://custom_resources/missions/intro_mission.tres" id="16"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="17"]
@@ -156,7 +155,7 @@ objective_label_path = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
 end_screen_path = NodePath("../../GUI/EndScreen")
 serving_dish_parent_path = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
 serving_dish_scene = ExtResource("14")
-missions = [ExtResource("16"), ExtResource("36"), ExtResource("37")]
+missions = Array[Resource("res://custom_resources/mission.gd")]([ExtResource("16"), ExtResource("36"), ExtResource("37")])
 
 [node name="World" type="Node2D" parent="."]
 
@@ -218,19 +217,15 @@ position = Vector2(0, -44)
 
 [node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="2"]
 position = Vector2(-1, -21)
-sprite_frames = ExtResource("14_rfk6r")
 
 [node name="ActiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="3"]
 position = Vector2(0, -30)
-emission_sphere_radius = 1.0
 
 [node name="PassiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
 position = Vector2(0, -32)
 emitting = true
-emission_sphere_radius = 1.0
 
 [node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="6"]
-anchors_preset = 5
 offset_left = -23.0
 offset_top = -50.0
 offset_right = 17.0
@@ -273,19 +268,11 @@ position = Vector2(3, 20)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="2"]
 position = Vector2(0, 20)
-sprite_frames = ExtResource("14_rfk6r")
-
-[node name="ActiveParticles" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="3"]
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="5"]
 stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -313,19 +300,11 @@ position = Vector2(0, 20)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="2"]
 position = Vector2(0, 20)
-sprite_frames = ExtResource("14_rfk6r")
-
-[node name="ActiveParticles" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="3"]
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="5"]
 stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -352,19 +331,11 @@ position = Vector2(0, 20)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="2"]
 position = Vector2(0, 20)
-sprite_frames = ExtResource("14_rfk6r")
-
-[node name="ActiveParticles" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="3"]
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="5"]
 stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -391,19 +362,11 @@ position = Vector2(-3, 20)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="2"]
 position = Vector2(0, 20)
-sprite_frames = ExtResource("14_rfk6r")
-
-[node name="ActiveParticles" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="3"]
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="5"]
 stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -436,17 +399,11 @@ position = Vector2(0, -17)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="2"]
 position = Vector2(0, -27)
-sprite_frames = ExtResource("14_rfk6r")
 
 [node name="ActiveParticles" parent="World/Foreground/Tools/Pot/ToolEffects" index="3"]
 position = Vector2(0, -39)
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/Pot/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Pot/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -477,20 +434,14 @@ position = Vector2(0, -19)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="2"]
 position = Vector2(0, -19)
-sprite_frames = ExtResource("14_rfk6r")
 
 [node name="ActiveParticles" parent="World/Foreground/Tools/Skillet/ToolEffects" index="3"]
 position = Vector2(0, -31)
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/Skillet/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/Skillet/ToolEffects" index="5"]
 stream = ExtResource("15")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/Skillet/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -521,19 +472,11 @@ position = Vector2(0, -22)
 
 [node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
 position = Vector2(0, -7)
-sprite_frames = ExtResource("14_rfk6r")
-
-[node name="ActiveParticles" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="3"]
-emission_sphere_radius = 1.0
-
-[node name="PassiveParticles" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="4"]
-emission_sphere_radius = 1.0
 
 [node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="5"]
 stream = ExtResource("20")
 
 [node name="ProgressBar" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="6"]
-anchors_preset = 5
 offset_bottom = 18.0
 grow_horizontal = 2
 
@@ -765,8 +708,8 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 243.0
-offset_right = 339.0
+offset_left = -155.0
+offset_right = -59.0
 offset_bottom = 224.0
 texture = ExtResource("12")
 
@@ -774,8 +717,6 @@ texture = ExtResource("12")
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 398.0
-offset_bottom = 224.0
 mouse_filter = 1
 
 [node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]

@@ -26,6 +26,7 @@ signal result_ingredient_produced(ingredient)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super()
 	if preperation_process != null:
 		process_step = preperation_process
 		display_name = preperation_process.get_display_name()
