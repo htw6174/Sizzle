@@ -94,3 +94,7 @@ func _on_Tool_result_ingredient_produced(ingredient):
 	if completion_sprite:
 		completion_sprite.visible = true
 	finished_ingredient.visible = not hide_finished_ingredient
+
+
+func _on_Tool_item_returned(item):
+	pass # Replace with function body.
