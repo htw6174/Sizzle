@@ -1,7 +1,7 @@
-extends Light2D
+extends PointLight2D
 
-export(float) var radius = 80.0
-export(float) var period_seconds = 2.0
+@export var radius: float = 80.0
+@export var period_seconds: float = 2.0
 
 var start_position: Vector2
 

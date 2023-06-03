@@ -1,14 +1,6 @@
-; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
-
-config_version=4
-
-_global_script_classes=[ {
+; Project was converted by built-in tool to Godot 4.0
+config_version=5
+_global_script_classes=[{
 "base": "Resource",
 "class": "Dialogue",
 "language": "GDScript",
@@ -58,7 +50,7 @@ _global_script_classes=[ {
 "class": "ServingEffects",
 "language": "GDScript",
 "path": "res://interface_logic/effects_logic/serving_effects.gd"
-} ]
+}]
 _global_script_class_icons={
 "Dialogue": "res://sprites/chef tutorial.png",
 "DialoguePlayer": "",
@@ -85,17 +77,17 @@ PlayerHand="*res://interface_logic/player_hand.gd"
 
 [display]
 
-window/size/width=398
-window/size/height=224
-window/size/test_width=1592
-window/size/test_height=896
+window/size/viewport_width=398
+window/size/viewport_height=224
+window/size/window_width_override=1592
+window/size/window_height_override=896
 window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [gdnative]
 
-singletons=[  ]
+singletons=[]
 
 [gui]
 
@@ -132,4 +124,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
-environment/default_clear_color=Color( 0.25098, 0.25098, 0.25098, 1 )
+environment/defaults/default_clear_color=Color(0.25098, 0.25098, 0.25098, 1)

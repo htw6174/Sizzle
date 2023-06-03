@@ -2,8 +2,8 @@ extends Node
 
 class_name ServingEffects
 
-export(NodePath) var animation_player_path
-onready var animation_player: AnimationPlayer = get_node(animation_player_path)
+@export var animation_player_path: NodePath
+@onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 
 signal dish_begin_effects_finished
 signal dish_complete_effects_finished

@@ -1,12 +1,12 @@
 extends Interactable
 
-export(String) var processing_verb
-export(PackedScene) var preperation_process_scene
-onready var preperation_process: ProcessStep = preperation_process_scene.instance()
-export(NodePath) var processor_effects_path
-onready var processor_effects = get_node(processor_effects_path)
-export(NodePath) var timer_path
-onready var timer: Timer = get_node(timer_path)
+@export var processing_verb: String
+@export var preperation_process_scene: PackedScene
+@onready var preperation_process: ProcessStep = preperation_process_scene.instantiate()
+@export var processor_effects_path: NodePath
+@onready var processor_effects = get_node(processor_effects_path)
+@export var timer_path: NodePath
+@onready var timer: Timer = get_node(timer_path)
 
 var can_accept_items: bool = true
 
@@ -80,17 +80,17 @@ func try_return_item() -> bool:
 func set_display_name():
 	display_name = preperation_process.get_display_name()
 	if current_step_ingredients.size() > 0:
-		var ingredient_name_array = PoolStringArray()
+		var ingredient_name_array = PackedStringArray()
 		for ingredient in current_step_ingredients:
 			ingredient_name_array.append(ingredient.display_name)
-		var ingredients_list = ingredient_name_array.join(", ")
+		var ingredients_list = ", ".join(ingredient_name_array)
 		display_name = "{0} with {1}".format([display_name, ingredients_list])
 
 func set_tooltip():
-	var ingredient_name_array = PoolStringArray()
+	var ingredient_name_array = PackedStringArray()
 	for ingredient in previous_step_ingredients:
 		ingredient_name_array.append(ingredient.display_name)
-	var ingredients_list = ingredient_name_array.join("\n- ")
+	var ingredients_list = "\n- ".join(ingredient_name_array)
 	tooltip = "Contains: \n- {0}".format([ingredients_list])
 
 func check_progress():
@@ -121,7 +121,7 @@ func start_processing_countdown():
 func finish_recipe():
 	emit_signal("process_finished")
 	
-	pickable_item = process_step.get_result()
+	pickable_item = process_step.get_data()
 	item_sprite.modulate = Color(1, 1, 1, 1)
 	item_sprite.texture = pickable_item.texture
 	display_name = pickable_item.display_name

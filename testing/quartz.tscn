@@ -1,18 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://testing/Light.png" type="Texture" id=1]
+[ext_resource path="res://testing/Light3D.png" type="Texture2D" id=1]
 [ext_resource path="res://testing/orbit_light.gd" type="Script" id=2]
-[ext_resource path="res://testing/beazor_normal.png" type="Texture" id=3]
-[ext_resource path="res://testing/beazor_diffuse.png" type="Texture" id=4]
+[ext_resource path="res://testing/beazor_normal.png" type="Texture2D" id=3]
+[ext_resource path="res://testing/beazor_diffuse.png" type="Texture2D" id=4]
 
-[node name="Quartz" type="Sprite"]
+[node name="Quartz" type="Sprite2D"]
 modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
 light_mask = 3
 position = Vector2( 194, 103 )
 texture = ExtResource( 4 )
 normal_map = ExtResource( 3 )
 
-[node name="OrbitLight" type="Light2D" parent="."]
+[node name="OrbitLight" type="PointLight2D" parent="."]
 texture = ExtResource( 1 )
 range_height = 20.0
 range_item_cull_mask = 2

@@ -2,16 +2,16 @@ extends Node
 
 class_name ObjectiveController
 
-export(NodePath) var dialogue_player_path
-onready var dialogue_player: DialoguePlayer = get_node(dialogue_player_path)
-export(NodePath) var objective_label_path
-onready var objective_label: Label = get_node(objective_label_path)
-export(NodePath) var end_screen_path
-onready var end_screen: Control = get_node(end_screen_path)
-export(NodePath) var serving_dish_parent_path
-onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
-export(PackedScene) var serving_dish_scene: PackedScene
-export(Array, Resource) var missions # Array of Mission
+@export var dialogue_player_path: NodePath
+@onready var dialogue_player: DialoguePlayer = get_node(dialogue_player_path)
+@export var objective_label_path: NodePath
+@onready var objective_label: Label = get_node(objective_label_path)
+@export var end_screen_path: NodePath
+@onready var end_screen: Control = get_node(end_screen_path)
+@export var serving_dish_parent_path: NodePath
+@onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
+@export var serving_dish_scene: PackedScene: PackedScene
+@export var missions # Array of Mission # (Array, Resource)
 
 var dish_index: int = 0
 var mission_index: int = 0
@@ -21,13 +21,13 @@ signal objective_complete
 signal begin_objective
 
 func _ready():
-	dialogue_player.connect("ready", self, "_on_DialoguePlayer_ready")
-	dialogue_player.connect("dialogue_finished", self, "_on_DialoguePlayer_dialogue_finished")
-	serving_dish_parent.connect("ready", self, "_on_ServingEffects_ready")
-	serving_dish_parent.connect("dish_begin_effects_finished", self, "_on_ServingEffects_dish_begin_effects_finished")
-	serving_dish_parent.connect("dish_complete_effects_finished", self, "_on_ServingEffects_dish_complete_effects_finished")
-	self.connect("begin_objective", serving_dish_parent, "_on_ObjectiveController_begin_objective")
-	self.connect("objective_complete", serving_dish_parent, "_on_ObjectiveController_objective_complete")
+	dialogue_player.connect("ready", Callable(self, "_on_DialoguePlayer_ready"))
+	dialogue_player.connect("dialogue_finished", Callable(self, "_on_DialoguePlayer_dialogue_finished"))
+	serving_dish_parent.connect("ready", Callable(self, "_on_ServingEffects_ready"))
+	serving_dish_parent.connect("dish_begin_effects_finished", Callable(self, "_on_ServingEffects_dish_begin_effects_finished"))
+	serving_dish_parent.connect("dish_complete_effects_finished", Callable(self, "_on_ServingEffects_dish_complete_effects_finished"))
+	self.connect("begin_objective", Callable(serving_dish_parent, "_on_ObjectiveController_begin_objective"))
+	self.connect("objective_complete", Callable(serving_dish_parent, "_on_ObjectiveController_objective_complete"))
 
 func begin_next_mission():
 	if mission_index >= missions.size():
@@ -40,7 +40,7 @@ func begin_next_mission():
 func begin_next_dish():
 	# instantiate serving dish
 	var target_dish = missions[mission_index].dishes[dish_index]
-	var new_dish_scene = target_dish.serving_dish_scene.instance()
+	var new_dish_scene = target_dish.serving_dish_scene.instantiate()
 	# set serving dish properties
 	assert(new_dish_scene is Interactable)
 	new_dish_scene.target_dish = target_dish
@@ -48,7 +48,7 @@ func begin_next_dish():
 	serving_dish_parent.add_child(new_dish_scene)
 	new_dish_scene.set_owner(serving_dish_parent)
 	# connect to dish complete signal
-	new_dish_scene.connect("dish_complete", self, "_on_ServingDish_dish_complete")
+	new_dish_scene.connect("dish_complete", Callable(self, "_on_ServingDish_dish_complete"))
 	# push dish into frame
 	emit_signal("begin_objective")
 	# update objective tracker text

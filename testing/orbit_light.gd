@@ -1,9 +1,9 @@
-extends Light2D
+extends PointLight2D
 
-export(float) var plane_radius = 80.0
-export(float) var depth_radius = 20.0
-export(float) var vertical_factor = 0.5
-export(float) var period_seconds = 1.5
+@export var plane_radius: float = 80.0
+@export var depth_radius: float = 20.0
+@export var vertical_factor: float = 0.5
+@export var period_seconds: float = 1.5
 
 var start_position: Vector2
 

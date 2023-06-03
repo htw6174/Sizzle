@@ -1,23 +1,23 @@
-extends Sprite
+extends Sprite2D
 
-export(NodePath) var control_path
-onready var control: Control = get_node(control_path)
-export(NodePath) var label_path
-onready var label: Label = get_node(label_path)
-export(NodePath) var tooltip_path
-onready var tooltip: Label = get_node(tooltip_path)
-export(NodePath) var audio_player_path
-onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
+@export var control_path: NodePath
+@onready var control: Control = get_node(control_path)
+@export var label_path: NodePath
+@onready var label: Label = get_node(label_path)
+@export var tooltip_path: NodePath
+@onready var tooltip: Label = get_node(tooltip_path)
+@export var audio_player_path: NodePath
+@onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
 
 func _ready():
 	control.visible = false
 	label.text = ""
 	tooltip.text = ""
-	PlayerHand.connect("item_reserved", self, "_on_PlayerHand_item_reserved")
-	PlayerHand.connect("item_placed", self, "_on_PlayerHand_item_placed")
-	PlayerHand.connect("item_dropped", self, "_on_PlayerHand_item_dropped")
-	PlayerHand.connect("hover_entered", self, "_on_PlayerHand_hover_entered")
-	PlayerHand.connect("hover_exited", self, "_on_PlayerHand_hover_exited")
+	PlayerHand.connect("item_reserved", Callable(self, "_on_PlayerHand_item_reserved"))
+	PlayerHand.connect("item_placed", Callable(self, "_on_PlayerHand_item_placed"))
+	PlayerHand.connect("item_dropped", Callable(self, "_on_PlayerHand_item_dropped"))
+	PlayerHand.connect("hover_entered", Callable(self, "_on_PlayerHand_hover_entered"))
+	PlayerHand.connect("hover_exited", Callable(self, "_on_PlayerHand_hover_exited"))
 
 func _process(delta):
 	# follow mouse

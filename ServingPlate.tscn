@@ -2,10 +2,10 @@
 
 [ext_resource path="res://fade_gradient.tres" type="Gradient" id=1]
 [ext_resource path="res://interface_logic/serving_dish.gd" type="Script" id=2]
-[ext_resource path="res://sprites/plate empty.png" type="Texture" id=3]
-[ext_resource path="res://sprites/star_particle.png" type="Texture" id=4]
+[ext_resource path="res://sprites/plate empty.png" type="Texture2D" id=3]
+[ext_resource path="res://sprites/star_particle.png" type="Texture2D" id=4]
 [ext_resource path="res://animations/dish_complete.tres" type="Animation" id=5]
-[ext_resource path="res://sprites/bowl shadow.png" type="Texture" id=6]
+[ext_resource path="res://sprites/bowl shadow.png" type="Texture2D" id=6]
 [ext_resource path="res://audio/149268__organicmanpl__ding-3_doubled.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
@@ -17,8 +17,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -29,8 +29,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -41,8 +41,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -50,19 +50,19 @@ tracks/2/keys = {
 [node name="ServingPlate" type="Node2D"]
 script = ExtResource( 2 )
 item_sprite_path = NodePath("Plate")
-dish_animation_path = NodePath("Plate/AnimatedSprite")
+dish_animation_path = NodePath("Plate/AnimatedSprite2D")
 sprites_anchor_path = NodePath("Plate/SpritesAnchor")
 animation_player_path = NodePath("AnimationPlayer")
 
-[node name="Drop Shadow" type="Sprite" parent="."]
+[node name="Drop Shadow" type="Sprite2D" parent="."]
 position = Vector2( 0, 8 )
 texture = ExtResource( 6 )
 
-[node name="Plate" type="Sprite" parent="."]
+[node name="Plate" type="Sprite2D" parent="."]
 position = Vector2( 0, 6 )
 texture = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Plate"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Plate"]
 visible = false
 position = Vector2( -1, -1 )
 
@@ -71,7 +71,7 @@ position = Vector2( -1, -1 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 30, 2, 30, 11, 15, 17, -16, 17, -31, 11, -31, 1, -16, -16, 16, -16 )
+polygon = PackedVector2Array( 30, 2, 30, 11, 15, 17, -16, 17, -31, 11, -31, 1, -16, -16, 16, -16 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false

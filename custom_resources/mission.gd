@@ -2,5 +2,5 @@ extends Resource
 
 class_name Mission
 
-export(Resource) var start_dialogue # Dialogue
-export(Array, Resource) var dishes # Array of Dish
+@export var start_dialogue: Resource # Dialogue
+@export var dishes # Array of Dish # (Array, Resource)

@@ -2,8 +2,8 @@ extends Node
 
 class_name ProcessStep, "res://sprites/cutting board.png"
 
-export(Array, Resource) var ingredients
-export(float) var time_to_complete = 1.0
+@export var ingredients # (Array, Resource)
+@export var time_to_complete: float = 1.0
 
 func get_display_name():
 	# TODO: should return node name converted from PascalCase into plain english
@@ -40,7 +40,7 @@ func has_result() -> bool:
 			return true
 	return false
 
-func get_result() -> Ingredient:
+func get_data() -> Ingredient:
 	for child in self.get_children():
 		if child is ProcessResult:
 			return child.ingredient

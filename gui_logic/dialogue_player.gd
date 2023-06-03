@@ -2,13 +2,13 @@ extends Node
 
 class_name DialoguePlayer
 
-export(String) var start_animation: String
-export(String) var finish_animation: String
+@export var start_animation: String: String
+@export var finish_animation: String: String
 
-export(NodePath) var animation_player_path
-onready var animation_player:AnimationPlayer = get_node(animation_player_path)
-export(NodePath) var dialogue_label_path
-onready var dialogue_label: RichTextLabel = get_node(dialogue_label_path)
+@export var animation_player_path: NodePath
+@onready var animation_player:AnimationPlayer = get_node(animation_player_path)
+@export var dialogue_label_path: NodePath
+@onready var dialogue_label: RichTextLabel = get_node(dialogue_label_path)
 
 var current_dialogue: Dialogue
 var dialogue_index: int = 0
@@ -43,7 +43,7 @@ func skip_dialogue():
 	finish_dialogue()
 
 func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		advance_dialogue()
 
 func _on_AnimationPlayer_animation_finished(anim_name: String):

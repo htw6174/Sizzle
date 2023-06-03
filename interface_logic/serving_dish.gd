@@ -1,12 +1,12 @@
 extends Interactable
 
-export(Resource) var target_dish
-export(NodePath) var dish_animation_path
-onready var dish_animation: AnimatedSprite = get_node(dish_animation_path)
-export(NodePath) var sprites_anchor_path
-onready var sprites_anchor: Node2D = get_node(sprites_anchor_path)
-export(NodePath) var animation_player_path
-onready var animation_player: AnimationPlayer = get_node(animation_player_path)
+@export var target_dish: Resource
+@export var dish_animation_path: NodePath
+@onready var dish_animation: AnimatedSprite2D = get_node(dish_animation_path)
+@export var sprites_anchor_path: NodePath
+@onready var sprites_anchor: Node2D = get_node(sprites_anchor_path)
+@export var animation_player_path: NodePath
+@onready var animation_player: AnimationPlayer = get_node(animation_player_path)
 
 var dish_in_progress: Dish.DishInProgress
 
@@ -36,7 +36,7 @@ func try_insert_item(item: Ingredient) -> bool:
 	if dish_in_progress.can_add_ingredient(item):
 		if target_dish.stack_frames:
 			# create new sprite node
-			var item_sprite = Sprite.new()
+			var item_sprite = Sprite2D.new()
 			sprites_anchor.add_child(item_sprite)
 			var frame_index = target_dish.components.find(item)
 			item_sprite.texture = target_dish.texture_frames.get_frame("default", frame_index)
@@ -64,10 +64,10 @@ func set_tooltip():
 		if target_dish.is_ordered:
 			tooltip = "Next step: add {0}".format([dish_in_progress.remaining_ingredients[0].display_name])
 		else:
-			var ingredient_name_array = PoolStringArray()
+			var ingredient_name_array = PackedStringArray()
 			for ingredient in dish_in_progress.remaining_ingredients:
 				ingredient_name_array.append(ingredient.display_name)
-			var ingredients_list = ingredient_name_array.join("\n- add ")
+			var ingredients_list = "\n- add ".join(ingredient_name_array)
 			tooltip = "Next step: \n- add {0}".format([ingredients_list])
 
 func _on_AnimationPlayer_animation_finished(anim_name):

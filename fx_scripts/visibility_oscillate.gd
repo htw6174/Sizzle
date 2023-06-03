@@ -1,18 +1,18 @@
 extends Node2D
 
-export(float) var max_visibility = 1
-export(float) var min_visibliity = -1
-export(float) var period_seconds = 1.0
-export(float) var scale_min = 0.1
-export(float) var scale_max = 0.3
+@export var max_visibility: float = 1
+@export var min_visibliity: float = -1
+@export var period_seconds: float = 1.0
+@export var scale_min: float = 0.1
+@export var scale_max: float = 0.3
 
 var random_delay: float
 var start_visibility: float
 
 func _ready():
-	random_delay = rand_range(0, period_seconds)
+	random_delay = randf_range(0, period_seconds)
 	start_visibility = self.modulate.a
-	var rand_scale = rand_range(scale_min, scale_max)
+	var rand_scale = randf_range(scale_min, scale_max)
 	self.scale.x = rand_scale
 	self.scale.y = rand_scale
 

@@ -1,7 +1,7 @@
 extends Interactable
 
-export(PackedScene) var preperation_process_scene
-onready var preperation_process: ProcessStep = preperation_process_scene.instance()
+@export var preperation_process_scene: PackedScene
+@onready var preperation_process: ProcessStep = preperation_process_scene.instantiate()
 
 func _ready():
 	if pickable_item != null:
@@ -59,7 +59,7 @@ func check_for_recipe(item1: Ingredient, item2: Ingredient) -> bool:
 	var recipe = preperation_process.check_child_requirements([item1, item2])
 	if recipe != null:
 		if recipe.has_result():
-			pickable_item = recipe.get_result()
+			pickable_item = recipe.get_data()
 			display_name = pickable_item.display_name
 			item_sprite.texture = pickable_item.texture
 			return true

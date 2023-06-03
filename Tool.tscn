@@ -7,7 +7,7 @@
 [ext_resource path="res://interface_logic/effects_logic/processor_effects.gd" type="Script" id=5]
 [ext_resource path="res://particles/steam_big_particles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://particles/steam_small_particles.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sprites/exclamation point.png" type="Texture" id=8]
+[ext_resource path="res://sprites/exclamation point.png" type="Texture2D" id=8]
 
 [node name="Tool" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,7 +15,7 @@ item_sprite_path = NodePath("ToolEffects/ActiveIngredientSprite")
 processor_effects_path = NodePath("ToolEffects")
 timer_path = NodePath("Timer")
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ToolEffects" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -26,13 +26,13 @@ audio_player_path = NodePath("AudioStreamPlayer")
 progress_bar_path = NodePath("ProgressBar")
 active_active_particles_path = NodePath("ActiveParticles")
 
-[node name="ActiveIngredientSprite" type="Sprite" parent="ToolEffects"]
+[node name="ActiveIngredientSprite" type="Sprite2D" parent="ToolEffects"]
 
-[node name="CompletionSprite" type="Sprite" parent="ToolEffects"]
+[node name="CompletionSprite" type="Sprite2D" parent="ToolEffects"]
 visible = false
 texture = ExtResource( 8 )
 
-[node name="ProcessingAnimation" type="AnimatedSprite" parent="ToolEffects"]
+[node name="ProcessingAnimation" type="AnimatedSprite2D" parent="ToolEffects"]
 visible = false
 frames = ExtResource( 2 )
 
@@ -50,9 +50,9 @@ mix_target = 2
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -20.0
-margin_right = 20.0
-margin_bottom = 14.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 14.0
 theme = ExtResource( 4 )
 max_value = 1.0
 percent_visible = false
@@ -60,7 +60,7 @@ percent_visible = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15 )
+polygon = PackedVector2Array( 20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -10,10 +10,10 @@ signal item_reserved(item)
 signal item_removed(item)
 signal item_returned(item)
 
-export(String) var display_name
-export(Resource) var pickable_item
-export(NodePath) var item_sprite_path
-onready var item_sprite: Sprite = get_node(item_sprite_path)
+@export var display_name: String
+@export var pickable_item: Resource
+@export var item_sprite_path: NodePath
+@onready var item_sprite: Sprite2D = get_node(item_sprite_path)
 
 var is_item_reserved: bool = false
 
@@ -22,8 +22,8 @@ var is_tooltip_hidden: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("mouse_entered", PlayerHand, "_on_Interactable_mouse_entered")
-	self.connect("mouse_exited", PlayerHand, "_on_Interactable_mouse_exited")
+	self.connect("mouse_entered", Callable(PlayerHand, "_on_Interactable_mouse_entered"))
+	self.connect("mouse_exited", Callable(PlayerHand, "_on_Interactable_mouse_exited"))
 	if pickable_item != null:
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture

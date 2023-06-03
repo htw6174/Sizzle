@@ -66,12 +66,12 @@ func handle_drop():
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				handle_press()
 			else:
 				handle_release()
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			handle_drop()
 
 func _on_Interactable_mouse_entered(interactable: Interactable):

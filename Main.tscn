@@ -1,16 +1,16 @@
 [gd_scene load_steps=56 format=2]
 
-[ext_resource path="res://sprites/cauldron.png" type="Texture" id=1]
-[ext_resource path="res://sprites/logs.png" type="Texture" id=2]
+[ext_resource path="res://sprites/cauldron.png" type="Texture2D" id=1]
+[ext_resource path="res://sprites/logs.png" type="Texture2D" id=2]
 [ext_resource path="res://interface_logic/hand_display.gd" type="Script" id=3]
 [ext_resource path="res://trash.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sprites/cutting board log.png" type="Texture" id=5]
+[ext_resource path="res://sprites/cutting board log.png" type="Texture2D" id=5]
 [ext_resource path="res://Tool.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sprites/oven.png" type="Texture" id=7]
+[ext_resource path="res://sprites/oven.png" type="Texture2D" id=7]
 [ext_resource path="res://Ingredient.tscn" type="PackedScene" id=8]
 [ext_resource path="res://custom_resources/processes/cauldron_process_tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://custom_resources/ingredients/veg_tomato.tres" type="Resource" id=10]
-[ext_resource path="res://sprites/helper chef longer.png" type="Texture" id=12]
+[ext_resource path="res://sprites/helper chef longer.png" type="Texture2D" id=12]
 [ext_resource path="res://ServingPlate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://audio/194806__hannebu__frying.wav" type="AudioStream" id=15]
 [ext_resource path="res://custom_resources/missions/intro_mission.tres" type="Resource" id=16]
@@ -21,14 +21,14 @@
 [ext_resource path="res://custom_resources/dishes/carrot_cake.tres" type="Resource" id=21]
 [ext_resource path="res://custom_resources/dishes/breakfast.tres" type="Resource" id=22]
 [ext_resource path="res://gui_logic/dialogue_player.gd" type="Script" id=23]
-[ext_resource path="res://sprites/saucepan.png" type="Texture" id=24]
+[ext_resource path="res://sprites/saucepan.png" type="Texture2D" id=24]
 [ext_resource path="res://custom_resources/processes/pot_process_tree.tscn" type="PackedScene" id=25]
 [ext_resource path="res://custom_resources/processes/skillet_process_tree.tscn" type="PackedScene" id=26]
 [ext_resource path="res://interface_logic/adaptive_label.gd" type="Script" id=27]
-[ext_resource path="res://sprites/stove and tables.png" type="Texture" id=28]
-[ext_resource path="res://sprites/background.png" type="Texture" id=29]
-[ext_resource path="res://sprites/tent.png" type="Texture" id=30]
-[ext_resource path="res://sprites/skillet final.png" type="Texture" id=31]
+[ext_resource path="res://sprites/stove and tables.png" type="Texture2D" id=28]
+[ext_resource path="res://sprites/background.png" type="Texture2D" id=29]
+[ext_resource path="res://sprites/tent.png" type="Texture2D" id=30]
+[ext_resource path="res://sprites/skillet final.png" type="Texture2D" id=31]
 [ext_resource path="res://custom_resources/ingredients/veg_garlic.tres" type="Resource" id=32]
 [ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=33]
 [ext_resource path="res://gameplay_logic/objective_controller.gd" type="Script" id=34]
@@ -38,19 +38,19 @@
 [ext_resource path="res://interface_logic/effects_logic/serving_effects.gd" type="Script" id=38]
 [ext_resource path="res://animations/dish_exit.tres" type="Animation" id=39]
 [ext_resource path="res://animations/dish_enter.tres" type="Animation" id=40]
-[ext_resource path="res://sprites/mat.png" type="Texture" id=41]
+[ext_resource path="res://sprites/mat.png" type="Texture2D" id=41]
 [ext_resource path="res://item_slot.tscn" type="PackedScene" id=42]
 [ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=43]
 [ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=44]
 [ext_resource path="res://custom_resources/ingredients/pot_stew.tres" type="Resource" id=45]
 [ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=46]
-[ext_resource path="res://sprites/grill.png" type="Texture" id=47]
+[ext_resource path="res://sprites/grill.png" type="Texture2D" id=47]
 [ext_resource path="res://custom_resources/processes/grill_process_tree.tscn" type="PackedScene" id=48]
 [ext_resource path="res://custom_resources/ingredients/skewer.tres" type="Resource" id=49]
 [ext_resource path="res://custom_resources/ingredients/cooked_kebab.tres" type="Resource" id=50]
 [ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=51]
 [ext_resource path="res://gui_logic/button_toggle.gd" type="Script" id=53]
-[ext_resource path="res://sprites/empty skewer.png" type="Texture" id=54]
+[ext_resource path="res://sprites/empty skewer.png" type="Texture2D" id=54]
 [ext_resource path="res://animations/dialogue_in.tres" type="Animation" id=55]
 [ext_resource path="res://animations/dialogue_out.tres" type="Animation" id=56]
 
@@ -63,8 +63,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath(".:position:y")
@@ -73,33 +73,33 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0 )
 }
 
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Text:rect_position")
+tracks/0/path = NodePath("Text:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CharacterPortrait:rect_position")
+tracks/1/path = NodePath("CharacterPortrait:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 243, 0 ) ]
 }
@@ -110,20 +110,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Text:rect_size")
+tracks/3/path = NodePath("Text:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 398, 224 ) ]
 }
@@ -145,11 +145,11 @@ missions = [ ExtResource( 16 ), ExtResource( 36 ), ExtResource( 37 ) ]
 
 [node name="Background" type="Node2D" parent="World"]
 
-[node name="Forest" type="Sprite" parent="World/Background"]
+[node name="Forest" type="Sprite2D" parent="World/Background"]
 position = Vector2( 199, 112 )
 texture = ExtResource( 29 )
 
-[node name="logpile" type="Sprite" parent="World/Background"]
+[node name="logpile" type="Sprite2D" parent="World/Background"]
 position = Vector2( 108, 99 )
 texture = ExtResource( 2 )
 
@@ -170,11 +170,11 @@ position = Vector2( -103, -28 )
 [node name="Firefly5" parent="World/Background/Fireflies" instance=ExtResource( 19 )]
 position = Vector2( -50, 3 )
 
-[node name="oven" type="Sprite" parent="World/Background"]
+[node name="oven" type="Sprite2D" parent="World/Background"]
 position = Vector2( 199, 112 )
 texture = ExtResource( 7 )
 
-[node name="tent" type="Sprite" parent="World/Background"]
+[node name="tent" type="Sprite2D" parent="World/Background"]
 position = Vector2( 199, 112 )
 texture = ExtResource( 30 )
 
@@ -185,7 +185,7 @@ position = Vector2( 320, 123 )
 processing_verb = "Boiling..."
 preperation_process_scene = ExtResource( 9 )
 
-[node name="Sprite" parent="World/Background/Tools/Cauldron" index="0"]
+[node name="Sprite2D" parent="World/Background/Tools/Cauldron" index="0"]
 texture = ExtResource( 1 )
 
 [node name="ToolEffects" parent="World/Background/Tools/Cauldron" index="1"]
@@ -210,22 +210,22 @@ position = Vector2( 0, -32 )
 emitting = true
 
 [node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="6"]
-margin_left = -23.0
-margin_top = -50.0
-margin_right = 17.0
-margin_bottom = -36.0
+offset_left = -23.0
+offset_top = -50.0
+offset_right = 17.0
+offset_bottom = -36.0
 
 [node name="CollisionPolygon2D" parent="World/Background/Tools/Cauldron/Area2D" index="0"]
 position = Vector2( 1, -12 )
-polygon = PoolVector2Array( 42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19 )
+polygon = PackedVector2Array( 42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 
-[node name="table n stove" type="Sprite" parent="World/Foreground"]
+[node name="table n stove" type="Sprite2D" parent="World/Foreground"]
 position = Vector2( 199, 112 )
 texture = ExtResource( 28 )
 
-[node name="Grill" type="Sprite" parent="World/Foreground"]
+[node name="Grill" type="Sprite2D" parent="World/Foreground"]
 position = Vector2( 200, 122 )
 texture = ExtResource( 47 )
 
@@ -239,7 +239,7 @@ position = Vector2( -58, 17 )
 processing_verb = "Grilling..."
 preperation_process_scene = ExtResource( 48 )
 
-[node name="Sprite" parent="World/Foreground/Tools/Grills/Left" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/Left" index="0"]
 position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/Left" index="1"]
@@ -260,14 +260,14 @@ position = Vector2( -1, -17 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/Left/Area2D" index="0"]
 position = Vector2( 14, 0 )
-polygon = PoolVector2Array( 13, -4, 2, 17, -37, 17, -37, 12, -21, -4 )
+polygon = PackedVector2Array( 13, -4, 2, 17, -37, 17, -37, 12, -21, -4 )
 
 [node name="CenterLeft" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
 position = Vector2( -18, 17 )
 processing_verb = "Grilling..."
 preperation_process_scene = ExtResource( 48 )
 
-[node name="Sprite" parent="World/Foreground/Tools/Grills/CenterLeft" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="0"]
 position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterLeft" index="1"]
@@ -287,14 +287,14 @@ stream = ExtResource( 15 )
 position = Vector2( -1, -17 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/CenterLeft/Area2D" index="0"]
-polygon = PoolVector2Array( 19, -4, 19, 17, -23, 17, -12, -4 )
+polygon = PackedVector2Array( 19, -4, 19, 17, -23, 17, -12, -4 )
 
 [node name="CenterRight" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
 position = Vector2( 18, 17 )
 processing_verb = "Grilling..."
 preperation_process_scene = ExtResource( 48 )
 
-[node name="Sprite" parent="World/Foreground/Tools/Grills/CenterRight" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/CenterRight" index="0"]
 position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterRight" index="1"]
@@ -314,14 +314,14 @@ stream = ExtResource( 15 )
 position = Vector2( -1, -17 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/CenterRight/Area2D" index="0"]
-polygon = PoolVector2Array( 15, -4, 27, 17, -16, 17, -16, -4 )
+polygon = PackedVector2Array( 15, -4, 27, 17, -16, 17, -16, -4 )
 
 [node name="Right" parent="World/Foreground/Tools/Grills" instance=ExtResource( 6 )]
 position = Vector2( 59, 17 )
 processing_verb = "Grilling..."
 preperation_process_scene = ExtResource( 48 )
 
-[node name="Sprite" parent="World/Foreground/Tools/Grills/Right" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/Right" index="0"]
 position = Vector2( -10, -16 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/Grills/Right" index="1"]
@@ -342,14 +342,14 @@ position = Vector2( -1, -17 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/Right/Area2D" index="0"]
 position = Vector2( -15, 0 )
-polygon = PoolVector2Array( 24, -4, 40, 12, 40, 17, 2, 17, -10, -4 )
+polygon = PackedVector2Array( 24, -4, 40, 12, 40, 17, 2, 17, -10, -4 )
 
 [node name="Pot" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( -46, 54 )
 processing_verb = "Simmering..."
 preperation_process_scene = ExtResource( 25 )
 
-[node name="Sprite" parent="World/Foreground/Tools/Pot" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/Pot" index="0"]
 position = Vector2( -10, -16 )
 texture = ExtResource( 24 )
 
@@ -374,14 +374,14 @@ position = Vector2( 0, -39 )
 position = Vector2( -1, -17 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Pot/Area2D" index="0"]
-polygon = PoolVector2Array( 20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12, -13, -16, 15, -16 )
+polygon = PackedVector2Array( 20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12, -13, -16, 15, -16 )
 
 [node name="Skillet" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( 48, 56 )
 processing_verb = "Frying..."
 preperation_process_scene = ExtResource( 26 )
 
-[node name="Sprite" parent="World/Foreground/Tools/Skillet" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/Skillet" index="0"]
 position = Vector2( 17, -17 )
 texture = ExtResource( 31 )
 
@@ -408,14 +408,14 @@ stream = ExtResource( 15 )
 position = Vector2( 0, -19 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/Skillet/Area2D" index="0"]
-polygon = PoolVector2Array( 34, -7, 34, 8, 25, 16, 0, 20, -25, 17, -35, 6, -36, -7, -31, -15, -1, -19, 28, -15 )
+polygon = PackedVector2Array( 34, -7, 34, 8, 25, 16, 0, 20, -25, 17, -35, 6, -36, -7, -31, -15, -1, -19, 28, -15 )
 
 [node name="CuttingBoard" parent="World/Foreground/Tools" instance=ExtResource( 6 )]
 position = Vector2( 67, 92 )
 processing_verb = "Chopping..."
 preperation_process_scene = ExtResource( 18 )
 
-[node name="Sprite" parent="World/Foreground/Tools/CuttingBoard" index="0"]
+[node name="Sprite2D" parent="World/Foreground/Tools/CuttingBoard" index="0"]
 texture = ExtResource( 5 )
 
 [node name="ToolEffects" parent="World/Foreground/Tools/CuttingBoard" index="1"]
@@ -436,7 +436,7 @@ position = Vector2( 0, -7 )
 stream = ExtResource( 20 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/Tools/CuttingBoard/Area2D" index="0"]
-polygon = PoolVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14 )
+polygon = PackedVector2Array( 40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14 )
 
 [node name="Trash" parent="World/Foreground/Tools" instance=ExtResource( 4 )]
 position = Vector2( 135, 99 )
@@ -471,11 +471,11 @@ pickable_item = ExtResource( 32 )
 position = Vector2( 19, 174 )
 pickable_item = ExtResource( 49 )
 
-[node name="Sprite" type="Sprite" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
+[node name="Sprite2D" type="Sprite2D" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
 position = Vector2( 3, 3 )
 texture = ExtResource( 54 )
 
-[node name="Sprite2" type="Sprite" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
+[node name="Sprite2" type="Sprite2D" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
 position = Vector2( 6, 6 )
 texture = ExtResource( 54 )
 
@@ -519,7 +519,7 @@ pickable_item = ExtResource( 50 )
 [node name="ServingArea" type="Node2D" parent="World/Foreground"]
 position = Vector2( 148, 206 )
 
-[node name="Mat" type="Sprite" parent="World/Foreground/ServingArea"]
+[node name="Mat" type="Sprite2D" parent="World/Foreground/ServingArea"]
 texture = ExtResource( 41 )
 
 [node name="StorageSlots" type="Node2D" parent="World/Foreground/ServingArea"]
@@ -529,25 +529,25 @@ position = Vector2( -33, -3 )
 position = Vector2( -10, -15 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot/Area2D" index="0"]
-polygon = PoolVector2Array( -16, -16, 16, -16, 16, 8, 6, 15, -7, 11, -16, -1 )
+polygon = PackedVector2Array( -16, -16, 16, -16, 16, 8, 6, 15, -7, 11, -16, -1 )
 
 [node name="ItemSlot2" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
 position = Vector2( 23, -15 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot2/Area2D" index="0"]
-polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, 7, 16, -16, 7 )
+polygon = PackedVector2Array( -16, -16, 16, -16, 16, 16, 7, 16, -16, 7 )
 
 [node name="ItemSlot3" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
 position = Vector2( -20, 1 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot3/Area2D" index="0"]
-polygon = PoolVector2Array( 16, 0, 16, 16, -16, 16, -16, -16, -6, -16, 2, -5 )
+polygon = PackedVector2Array( 16, 0, 16, 16, -16, 16, -16, -16, -6, -16, 2, -5 )
 
 [node name="ItemSlot4" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource( 42 )]
 position = Vector2( 13, 1 )
 
 [node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot4/Area2D" index="0"]
-polygon = PoolVector2Array( 16, 0, 16, 16, -16, 16, -16, -1, -6, -8 )
+polygon = PackedVector2Array( 16, 0, 16, 16, -16, 16, -16, -1, -6, -8 )
 
 [node name="DishAnchor" type="Node2D" parent="World/Foreground/ServingArea"]
 position = Vector2( 35, -7 )
@@ -561,7 +561,7 @@ anims/RESET = SubResource( 1 )
 anims/dish_enter = ExtResource( 40 )
 anims/dish_exit = ExtResource( 39 )
 
-[node name="HandDisplay" type="Sprite" parent="World"]
+[node name="HandDisplay" type="Sprite2D" parent="World"]
 z_index = 10
 script = ExtResource( 3 )
 control_path = NodePath("Control")
@@ -580,21 +580,21 @@ size_flags_vertical = 9
 script = ExtResource( 27 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
+offset_left = 7.0
+offset_top = 7.0
 mouse_filter = 2
 size_flags_vertical = 9
 
 [node name="Label" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
-margin_right = 69.0
-margin_bottom = 14.0
+offset_right = 69.0
+offset_bottom = 14.0
 size_flags_horizontal = 3
 text = "test"
 
 [node name="Tooltip" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 69.0
-margin_bottom = 32.0
+offset_top = 18.0
+offset_right = 69.0
+offset_bottom = 32.0
 text = "longer test"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
@@ -611,22 +611,22 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -46.0
-margin_top = 90.0
-margin_right = -2.0
-margin_bottom = 110.0
+offset_left = -46.0
+offset_top = 90.0
+offset_right = -2.0
+offset_bottom = 110.0
 text = "Book"
 
 [node name="ObjectiveInfo" type="VBoxContainer" parent="GUI"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 394.0
-margin_bottom = 107.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 394.0
+offset_bottom = 107.0
 mouse_filter = 2
 
 [node name="Button" type="Button" parent="GUI/ObjectiveInfo"]
-margin_right = 24.0
-margin_bottom = 22.0
+offset_right = 24.0
+offset_bottom = 22.0
 size_flags_horizontal = 0
 text = "v"
 script = ExtResource( 53 )
@@ -636,15 +636,15 @@ target_path = NodePath("../PanelContainer")
 [node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.690196 )
-margin_top = 26.0
-margin_right = 390.0
-margin_bottom = 75.0
+offset_top = 26.0
+offset_right = 390.0
+offset_bottom = 75.0
 
 [node name="Label" type="Label" parent="GUI/ObjectiveInfo/PanelContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 382.0
-margin_bottom = 41.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 382.0
+offset_bottom = 41.0
 text = "This is where the objective tracker text will go
 - We can add some hints here
 - With info on how to complete each recipe"
@@ -663,9 +663,9 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 [node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -155.0
-margin_right = -59.0
-margin_bottom = 224.0
+offset_left = -155.0
+offset_right = -59.0
+offset_bottom = 224.0
 texture = ExtResource( 12 )
 
 [node name="Text" type="Control" parent="GUI/Dialogue"]
@@ -677,34 +677,34 @@ mouse_filter = 1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -101.0
-margin_right = -246.0
-margin_bottom = -79.0
+offset_left = 8.0
+offset_top = -101.0
+offset_right = -246.0
+offset_bottom = -79.0
 mouse_filter = 1
 
 [node name="NameLabel" type="Label" parent="GUI/Dialogue/Text/NameContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 136.0
-margin_bottom = 14.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 14.0
 text = "Foody McStuffins"
 
 [node name="DialogueContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -76.0
-margin_right = -8.0
-margin_bottom = -18.0
+offset_left = 8.0
+offset_top = -76.0
+offset_right = -8.0
+offset_bottom = -18.0
 mouse_filter = 1
 
 [node name="DialogueLabel" type="RichTextLabel" parent="GUI/Dialogue/Text/DialogueContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 374.0
-margin_bottom = 50.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 374.0
+offset_bottom = 50.0
 mouse_filter = 1
 text = "Here is some sample dialog, how many lines can fit here?
 Number 2 →
@@ -713,16 +713,16 @@ Number 3, extends all the way out to the end"
 [node name="PanelContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = -17.9981
-margin_right = 265.0
-margin_bottom = 4.00189
+offset_left = 9.0
+offset_top = -17.9981
+offset_right = 265.0
+offset_bottom = 4.00189
 
 [node name="InstructionLabel" type="Label" parent="GUI/Dialogue/Text/PanelContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 248.0
-margin_bottom = 14.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 248.0
+offset_bottom = 14.0
 mouse_filter = 1
 text = "> Click anywhere to continue <"
 
@@ -731,10 +731,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -88.0
-margin_top = -26.0
-margin_right = -16.0
-margin_bottom = -4.0
+offset_left = -88.0
+offset_top = -26.0
+offset_right = -16.0
+offset_bottom = -4.0
 text = "Skip →"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue"]
@@ -748,26 +748,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="RestartButton" type="Button" parent="GUI/EndScreen"]
-margin_left = 164.0
-margin_top = 194.0
-margin_right = 176.0
-margin_bottom = 214.0
+offset_left = 164.0
+offset_top = 194.0
+offset_right = 176.0
+offset_bottom = 214.0
 text = "Replay"
 
 [node name="PanelContainer" type="PanelContainer" parent="GUI/EndScreen"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 24.0
-margin_top = -42.5
-margin_right = -24.0
-margin_bottom = 42.5
+offset_left = 24.0
+offset_top = -42.5
+offset_right = -24.0
+offset_bottom = 42.5
 
 [node name="Label" type="Label" parent="GUI/EndScreen/PanelContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 342.0
-margin_bottom = 77.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 342.0
+offset_bottom = 77.0
 text = "Thanks for playing!
 
 We plan to add more recipes, more interactions, and the opportunity to enhance dishes by perfecting your skills.

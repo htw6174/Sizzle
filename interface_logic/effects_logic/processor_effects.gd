@@ -1,20 +1,20 @@
 extends Node
 
-export(bool) var hide_during_processing: bool = false
-export(bool) var hide_finished_ingredient: bool = false
-export(NodePath) var finished_ingredient_path
-onready var finished_ingredient: Sprite = get_node(finished_ingredient_path)
-export(NodePath) var completion_sprite_path
-var completion_sprite: Sprite
-export(NodePath) var processing_animation_path
-var processing_animation: AnimatedSprite
-export(NodePath) var audio_player_path
-onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
-export(NodePath) var progress_bar_path
-onready var progress_bar: ProgressBar = get_node(progress_bar_path)
-export(NodePath) var active_active_particles_path
+@export var hide_during_processing: bool: bool = false
+@export var hide_finished_ingredient: bool: bool = false
+@export var finished_ingredient_path: NodePath
+@onready var finished_ingredient: Sprite2D = get_node(finished_ingredient_path)
+@export var completion_sprite_path: NodePath
+var completion_sprite: Sprite2D
+@export var processing_animation_path: NodePath
+var processing_animation: AnimatedSprite2D
+@export var audio_player_path: NodePath
+@onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
+@export var progress_bar_path: NodePath
+@onready var progress_bar: ProgressBar = get_node(progress_bar_path)
+@export var active_active_particles_path: NodePath
 var active_particles: CPUParticles2D
-export(NodePath) var passive_particles_path
+@export var passive_particles_path: NodePath
 var passive_particles: CPUParticles2D
 
 var timer: Timer

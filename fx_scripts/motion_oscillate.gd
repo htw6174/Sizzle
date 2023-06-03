@@ -1,18 +1,18 @@
 extends Node2D
 
-export(float) var x_phase = 0
-export(float) var x_frequency = 1
-export(float) var x_amplitude = 1
-export(float) var y_phase = 0
-export(float) var y_frequency = 1
-export(float) var y_amplitude = 1
-export(float) var time_scale = 1
+@export var x_phase: float = 0
+@export var x_frequency: float = 1
+@export var x_amplitude: float = 1
+@export var y_phase: float = 0
+@export var y_frequency: float = 1
+@export var y_amplitude: float = 1
+@export var time_scale: float = 1
 
 var random_phase: float
 var start_position: Vector2
 
 func _ready():
-	random_phase = rand_range(0, 1.0 / x_frequency)
+	random_phase = randf_range(0, 1.0 / x_frequency)
 	start_position = self.position
 
 func _process(delta):

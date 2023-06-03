@@ -1,12 +1,12 @@
 extends Button
 
-export(String) var target_name: String
-export(NodePath) var target_path 
-onready var target: Node = get_node(target_path)
+@export var target_name: String: String
+@export var target_path: NodePath 
+@onready var target: Node = get_node(target_path)
 
 func _ready():
-	self.connect("pressed", self, "_on_Button_pressed")
-	target.connect("visibility_changed", self, "_on_Target_visibility_changed")
+	self.connect("pressed", Callable(self, "_on_Button_pressed"))
+	target.connect("visibility_changed", Callable(self, "_on_Target_visibility_changed"))
 	update_text()
 
 func update_text():

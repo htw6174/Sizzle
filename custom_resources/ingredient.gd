@@ -1,10 +1,10 @@
 extends Resource
 class_name Ingredient, "res://sprites/carrot.png"
 
-export(String) var display_name
-export(Texture) var texture setget , get_texture
-export(AudioStream) var interact_audio_1 setget , get_interact_audio_1
-export(AudioStream) var interact_audio_2 setget , get_interact_audio_2
+@export var display_name: String
+@export var texture: Texture2D: get = get_texture
+@export var interact_audio_1: AudioStream: get = get_interact_audio_1
+@export var interact_audio_2: AudioStream: get = get_interact_audio_2
 
 var fallback_texture = preload("res://sprites/fallback.png")
 var fallback_interact_audio_1 = preload("res://audio/sound_fx_-_pick_up.mp3")
