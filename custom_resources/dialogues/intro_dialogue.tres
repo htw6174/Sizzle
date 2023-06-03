@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1")
-lines = Array[String](["Intro!"])
+lines = Array[String](["Hey champ, welcome to Sizzle!", "I'm here to help you through your first few dishes.", "Let's start off simple. Go ahead and grab that raw steak on the table over there, and slap it down on your plate."])

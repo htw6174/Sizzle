@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1")
-lines = Array[String](["Kebub!"])
+lines = Array[String](["Great! You're a real raw steak serving pro. I usually prefer cooked meat, though. Let's go ahead and fix up a plate of grilled kebabs.", "Slice meat by putting it on the cutting board. Once it's sliced, go ahead and put it on the table next to the plate, drag a skewer over to the sliced meat, and bam.", "Then put that sucker on the grill and char it up! I want three kebabs on that plate.", "If you run out of space on the table, drop unused ingredients in the trash on the bottom right.", "Click  the '?' in the top right if you forget anything that I've told you."])
