@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://pfnscaasca0l"]
+
+[ext_resource type="Texture2D" uid="uid://bpp6o5hub2dpk" path="res://testing/tilemap/assets/Player_walk.png" id="1_q7llu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nc4j"]
+atlas = ExtResource("1_q7llu")
+region = Rect2(0, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w056"]
+atlas = ExtResource("1_q7llu")
+region = Rect2(34, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2p0o"]
+atlas = ExtResource("1_q7llu")
+region = Rect2(68, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fngcm"]
+atlas = ExtResource("1_q7llu")
+region = Rect2(102, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqwex"]
+atlas = ExtResource("1_q7llu")
+region = Rect2(136, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wipdt"]
+atlas = ExtResource("1_q7llu")
+region = Rect2(170, 1, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nc4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w056")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2p0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fngcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqwex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wipdt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

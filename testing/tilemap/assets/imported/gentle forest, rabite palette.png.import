@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drgbq743aoan7"
-path="res://.godot/imported/Normal.png-3dcc6569be91bbb93895a573325040a2.ctex"
+uid="uid://b7f55inducgo1"
+path="res://.godot/imported/gentle forest, rabite palette.png-6074cd299d1c8ab57fc097b468b4a931.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/Normal.png"
-dest_files=["res://.godot/imported/Normal.png-3dcc6569be91bbb93895a573325040a2.ctex"]
+source_file="res://testing/tilemap/assets/imported/gentle forest, rabite palette.png"
+dest_files=["res://.godot/imported/gentle forest, rabite palette.png-6074cd299d1c8ab57fc097b468b4a931.ctex"]
 
 [params]
 

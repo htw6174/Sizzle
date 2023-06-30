@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chp42jqrmy21y"
-path="res://.godot/imported/taurus_diffuse.png-b5072526183ba05969122b972b2ec9ee.ctex"
+path="res://.godot/imported/taurus_diffuse.png-c7c02ea24b70c5c9056e47a2970355d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/taurus_diffuse.png"
-dest_files=["res://.godot/imported/taurus_diffuse.png-b5072526183ba05969122b972b2ec9ee.ctex"]
+source_file="res://testing/normalmap/taurus_diffuse.png"
+dest_files=["res://.godot/imported/taurus_diffuse.png-c7c02ea24b70c5c9056e47a2970355d3.ctex"]
 
 [params]
 

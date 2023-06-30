@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyhl05fapkmae"
-path="res://.godot/imported/Diffuse.png-17b48b02f4bc565d20f91e1f09afe933.ctex"
+uid="uid://by08kygc8x5dr"
+path="res://.godot/imported/taurus_normal.png-fee33eedbecb1497b3cd8a23f725f1a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/Diffuse.png"
-dest_files=["res://.godot/imported/Diffuse.png-17b48b02f4bc565d20f91e1f09afe933.ctex"]
+source_file="res://testing/normalmap/taurus_normal.png"
+dest_files=["res://.godot/imported/taurus_normal.png-fee33eedbecb1497b3cd8a23f725f1a8.ctex"]
 
 [params]
 

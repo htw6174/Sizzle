@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2k5c1lpef512"
-path="res://.godot/imported/Light.png-487688382c58258eb05ba7451ff9ba7a.ctex"
+uid="uid://l852fbax37ps"
+path="res://.godot/imported/rock_normal.png-b2869acdf8c0c581ccd35c1774ee1509.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/Light.png"
-dest_files=["res://.godot/imported/Light.png-487688382c58258eb05ba7451ff9ba7a.ctex"]
+source_file="res://testing/normalmap/rock_normal.png"
+dest_files=["res://.godot/imported/rock_normal.png-b2869acdf8c0c581ccd35c1774ee1509.ctex"]
 
 [params]
 

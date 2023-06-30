@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yevji22dpwm5"
-path="res://.godot/imported/beazor_diffuse.png-4ece86343c86d634456e767344572ec3.ctex"
+uid="uid://b2k5c1lpef512"
+path="res://.godot/imported/Light.png-33788d4552e12a9a67a6e0cbcce8fd97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/beazor_diffuse.png"
-dest_files=["res://.godot/imported/beazor_diffuse.png-4ece86343c86d634456e767344572ec3.ctex"]
+source_file="res://testing/normalmap/Light.png"
+dest_files=["res://.godot/imported/Light.png-33788d4552e12a9a67a6e0cbcce8fd97.ctex"]
 
 [params]
 

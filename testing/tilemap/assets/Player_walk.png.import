@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://61aldvshcy0m"
-path="res://.godot/imported/beazor_normal.png-c2869474aad9f58f19aa7e791e78ea0a.ctex"
+uid="uid://bpp6o5hub2dpk"
+path="res://.godot/imported/Player_walk.png-d55ddb2df3de9943a1564b27bc7f2809.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/beazor_normal.png"
-dest_files=["res://.godot/imported/beazor_normal.png-c2869474aad9f58f19aa7e791e78ea0a.ctex"]
+source_file="res://testing/tilemap/assets/Player_walk.png"
+dest_files=["res://.godot/imported/Player_walk.png-d55ddb2df3de9943a1564b27bc7f2809.ctex"]
 
 [params]
 

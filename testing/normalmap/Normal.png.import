@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://notbokcibxfg"
-path="res://.godot/imported/rock_diffuse.png-6858ba9501681d0b0c41911d6e43f48a.ctex"
+uid="uid://drgbq743aoan7"
+path="res://.godot/imported/Normal.png-1dbe4705e3a86b1646eb703bf96d2560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testing/rock_diffuse.png"
-dest_files=["res://.godot/imported/rock_diffuse.png-6858ba9501681d0b0c41911d6e43f48a.ctex"]
+source_file="res://testing/normalmap/Normal.png"
+dest_files=["res://.godot/imported/Normal.png-1dbe4705e3a86b1646eb703bf96d2560.ctex"]
 
 [params]
 

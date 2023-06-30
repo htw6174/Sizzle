@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource path="res://sprites/kitchen.png" type="Texture2D" id=1]
-[ext_resource path="res://testing/orbit.gd" type="Script" id=2]
-[ext_resource path="res://testing/quartz.tscn" type="PackedScene" id=3]
-[ext_resource path="res://testing/rock_normal.png" type="Texture2D" id=4]
-[ext_resource path="res://testing/Light3D.png" type="Texture2D" id=5]
-[ext_resource path="res://testing/rock_diffuse.png" type="Texture2D" id=6]
-[ext_resource path="res://testing/taurus_diffuse.png" type="Texture2D" id=7]
-[ext_resource path="res://testing/taurus_normal.png" type="Texture2D" id=8]
+[ext_resource type="Texture2D" uid="uid://b0sn4aa0df10n" path="res://sprites/kitchen.png" id="1"]
+[ext_resource type="Script" path="res://testing/normalmap/orbit.gd" id="2"]
+[ext_resource type="PackedScene" path="res://testing/normalmap/quartz.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://l852fbax37ps" path="res://testing/normalmap/rock_normal.png" id="4"]
+[ext_resource type="Texture2D" path="res://testing/Light3D.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://notbokcibxfg" path="res://testing/normalmap/rock_diffuse.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://chp42jqrmy21y" path="res://testing/normalmap/taurus_diffuse.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://by08kygc8x5dr" path="res://testing/normalmap/taurus_normal.png" id="8"]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PackedVector2Array( 30, -14, 30, 17, -30, 16, -30, -14 )
