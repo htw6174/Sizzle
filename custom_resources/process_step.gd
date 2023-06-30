@@ -2,21 +2,25 @@
 extends Node
 class_name ProcessStep
 
-@export var ingredients: Array[Resource]
+@export var ingredients: Array[Ingredient]
 @export var time_to_complete: float = 1.0
 
 func get_display_name():
 	# TODO: should return node name converted from PascalCase into plain english
 	return self.name
 
-func check_requirements(in_ingredients: Array) -> bool:
-	var sorted_requirements = ingredients.duplicate()
-	sorted_requirements.sort()
-	var sorted_inputs = in_ingredients.duplicate()
-	sorted_inputs.sort()
-	return sorted_requirements == sorted_inputs
+func check_requirements(in_ingredients: Array[Ingredient]) -> bool:
+	# for every requirement, search in_ingredients and remove if found. return true if all requirements found
+	# sort then compare might also work, but comparing Resources or RIDs doesn't seem to be deterministic
+	var temp_inputs = in_ingredients.duplicate()
+	for ingredient in self.ingredients:
+		if temp_inputs.has(ingredient):
+			temp_inputs.erase(ingredient)
+		else:
+			return false
+	return true
 
-func check_child_requirements(in_ingredients: Array) -> ProcessStep:
+func check_child_requirements(in_ingredients: Array[Ingredient]) -> ProcessStep:
 	for child in self.get_children():
 		if child as ProcessStep:
 			if child.check_requirements(in_ingredients):

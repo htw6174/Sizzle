@@ -13,8 +13,8 @@ var can_accept_items: bool = true
 var process_step: ProcessStep = null
 var recipe_component_index: int = 0
 
-var previous_step_ingredients: Array
-var current_step_ingredients: Array
+var previous_step_ingredients: Array[Ingredient]
+var current_step_ingredients: Array[Ingredient]
 
 # Signals
 signal process_step_changed(process_step)

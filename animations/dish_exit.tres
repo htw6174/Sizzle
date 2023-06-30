@@ -1,14 +1,15 @@
-[gd_resource type="Animation" format=2]
+[gd_resource type="Animation" format=3 uid="uid://bbj280mplg4a3"]
 
 [resource]
 resource_name = "dish_exit"
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.4, 1 )
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }

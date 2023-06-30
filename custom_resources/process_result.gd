@@ -2,4 +2,4 @@
 extends Node
 class_name ProcessResult
 
-@export var ingredient: Resource
+@export var ingredient: Ingredient

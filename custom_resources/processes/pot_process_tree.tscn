@@ -1,30 +1,30 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://c80x128w0j80e"]
 
-[ext_resource path="res://custom_resources/process_step.gd" type="Script" id=1]
-[ext_resource path="res://custom_resources/process_result.gd" type="Script" id=2]
-[ext_resource path="res://custom_resources/ingredients/veg_tomato.tres" type="Resource" id=3]
-[ext_resource path="res://custom_resources/ingredients/veg_garlic.tres" type="Resource" id=4]
-[ext_resource path="res://custom_resources/ingredients/jar_tomato_sauce.tres" type="Resource" id=5]
-[ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=6]
-[ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=7]
+[ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1"]
+[ext_resource type="Script" path="res://custom_resources/process_result.gd" id="2"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="3"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="4"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="5"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="6"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="7"]
 
 [node name="Pot" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="MakeSauce" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 4 ), ExtResource( 3 ) ]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("4"), ExtResource("3")])
 time_to_complete = 0.0
 
 [node name="ProcessResult" type="Node" parent="MakeSauce"]
-script = ExtResource( 2 )
-ingredient = ExtResource( 5 )
+script = ExtResource("2")
+ingredient = ExtResource("5")
 
 [node name="CookNoodles" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 6 ) ]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("6")])
 time_to_complete = 4.0
 
 [node name="ProcessResult" type="Node" parent="CookNoodles"]
-script = ExtResource( 2 )
-ingredient = ExtResource( 7 )
+script = ExtResource("2")
+ingredient = ExtResource("7")

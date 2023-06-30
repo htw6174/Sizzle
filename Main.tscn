@@ -22,7 +22,7 @@
 [ext_resource type="Resource" path="res://custom_resources/dishes/breakfast.tres" id="22"]
 [ext_resource type="Script" path="res://gui_logic/dialogue_player.gd" id="23"]
 [ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="24"]
-[ext_resource type="PackedScene" path="res://custom_resources/processes/pot_process_tree.tscn" id="25"]
+[ext_resource type="PackedScene" uid="uid://c80x128w0j80e" path="res://custom_resources/processes/pot_process_tree.tscn" id="25"]
 [ext_resource type="PackedScene" path="res://custom_resources/processes/skillet_process_tree.tscn" id="26"]
 [ext_resource type="Script" path="res://interface_logic/adaptive_label.gd" id="27"]
 [ext_resource type="Texture2D" uid="uid://bdgivnsk14s36" path="res://sprites/stove and tables.png" id="28"]
@@ -36,8 +36,8 @@
 [ext_resource type="Resource" uid="uid://ddfsawky0cncu" path="res://custom_resources/missions/kebab_mission.tres" id="36"]
 [ext_resource type="Resource" path="res://custom_resources/missions/spaghetti_mission.tres" id="37"]
 [ext_resource type="Script" path="res://interface_logic/effects_logic/serving_effects.gd" id="38"]
-[ext_resource type="Animation" path="res://animations/dish_exit.tres" id="39"]
-[ext_resource type="Animation" path="res://animations/dish_enter.tres" id="40"]
+[ext_resource type="Animation" uid="uid://bbj280mplg4a3" path="res://animations/dish_exit.tres" id="39"]
+[ext_resource type="Animation" uid="uid://fycv0de6t18s" path="res://animations/dish_enter.tres" id="40"]
 [ext_resource type="Texture2D" uid="uid://dqoxildwtbv7d" path="res://sprites/mat.png" id="41"]
 [ext_resource type="PackedScene" path="res://item_slot.tscn" id="42"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="43"]
@@ -64,9 +64,9 @@ tracks/0/path = NodePath(".:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -75,9 +75,9 @@ tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wsii7"]
@@ -780,6 +780,8 @@ offset_left = -88.0
 offset_top = -26.0
 offset_right = -16.0
 offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Skip"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue"]
