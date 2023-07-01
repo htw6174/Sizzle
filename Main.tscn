@@ -711,8 +711,8 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -155.0
-offset_right = -59.0
+offset_left = 243.0
+offset_right = 339.0
 offset_bottom = 224.0
 texture = ExtResource("12")
 
@@ -720,6 +720,8 @@ texture = ExtResource("12")
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 398.0
+offset_bottom = 224.0
 mouse_filter = 1
 
 [node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
