@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://testing/tilemap/minigame_berry_picking.gd" id="1_myc5h"]
 [ext_resource type="Script" path="res://testing/tilemap/berry_spawner.gd" id="1_qkswh"]
 [ext_resource type="PackedScene" uid="uid://bfhugv33iryy" path="res://testing/tilemap/berry.tscn" id="2_e3nof"]
+[ext_resource type="Texture2D" uid="uid://cteekxuu7k3b7" path="res://testing/tilemap/assets/bramble.png" id="2_hjkkm"]
 [ext_resource type="Script" path="res://testing/tilemap/berry_collector.gd" id="5_8yr6l"]
-[ext_resource type="Texture2D" uid="uid://b0sn4aa0df10n" path="res://sprites/kitchen.png" id="6_0vpmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpo8m"]
 radius = 15.0
@@ -24,18 +24,19 @@ anchors_preset = 0
 offset_right = 180.0
 offset_bottom = 180.0
 script = ExtResource("1_myc5h")
+berry_count = 50
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-offset_right = 398.0
-offset_bottom = 224.0
-texture = ExtResource("6_0vpmn")
+offset_right = 180.0
+offset_bottom = 180.0
+texture = ExtResource("2_hjkkm")
 
 [node name="Cursor" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 1025
 script = ExtResource("1_0ybd0")
-force_mag = 100.0
+force_mag = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("CircleShape2D_kpo8m")
@@ -58,6 +59,7 @@ rotation = 0.261799
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/GutterLeft"]
 scale = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_wyhim")
+disabled = true
 
 [node name="GutterRight" type="StaticBody2D" parent="Bottom"]
 position = Vector2(80, 0)
@@ -66,9 +68,10 @@ rotation = -0.261799
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/GutterRight"]
 scale = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_fqa1x")
+disabled = true
 
 [node name="CollectionArea" type="Area2D" parent="Bottom"]
-position = Vector2(0, 100)
+position = Vector2(0, 299)
 collision_layer = 0
 collision_mask = 1024
 script = ExtResource("5_8yr6l")

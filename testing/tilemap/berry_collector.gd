@@ -20,6 +20,7 @@ func _on_berry_picker_minigame_start(count, _area):
 	collected_count = 0
 
 func _on_body_entered(body):
+	body.queue_free()
 	collected_count += 1
 	if collected_count >= berry_count:
 		all_collected.emit()
