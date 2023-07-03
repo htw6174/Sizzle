@@ -28,6 +28,11 @@ window/size/window_width_override=1592
 window/size/window_height_override=896
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="D:/Videos/Recordings/godot/berry_pick.png"
+movie_writer/fps=30
+
 [gdnative]
 
 singletons=[]
@@ -107,6 +112,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="wall"
 2d_physics/layer_9="trigger"
 2d_physics/layer_10="interact"
+2d_physics/layer_11="touchy"
 
 [rendering]
 

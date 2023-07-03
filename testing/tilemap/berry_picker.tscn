@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://da51brp0yoopn"]
+
+[ext_resource type="Script" path="res://testing/tilemap/pick_cursor.gd" id="1_0ybd0"]
+[ext_resource type="Script" path="res://testing/tilemap/minigame_berry_picking.gd" id="1_myc5h"]
+[ext_resource type="Script" path="res://testing/tilemap/berry_spawner.gd" id="1_qkswh"]
+[ext_resource type="PackedScene" uid="uid://bfhugv33iryy" path="res://testing/tilemap/berry.tscn" id="2_e3nof"]
+[ext_resource type="Script" path="res://testing/tilemap/berry_collector.gd" id="5_8yr6l"]
+[ext_resource type="Texture2D" uid="uid://b0sn4aa0df10n" path="res://sprites/kitchen.png" id="6_0vpmn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpo8m"]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyhim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqa1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f5i2"]
+
+[node name="berry_picker" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 180.0
+script = ExtResource("1_myc5h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 398.0
+offset_bottom = 224.0
+texture = ExtResource("6_0vpmn")
+
+[node name="Cursor" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1025
+script = ExtResource("1_0ybd0")
+force_mag = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+shape = SubResource("CircleShape2D_kpo8m")
+
+[node name="Polygon2D" type="Polygon2D" parent="Cursor"]
+color = Color(0.694118, 0.376471, 0.305882, 1)
+polygon = PackedVector2Array(4, -15, 13, -8, 15, 3, 9, 13, -6, 15, -14, 6, -15, -5, -8, -13)
+
+[node name="BerrySpawner" type="Node2D" parent="."]
+script = ExtResource("1_qkswh")
+berry_scene = ExtResource("2_e3nof")
+
+[node name="Bottom" type="Node2D" parent="."]
+position = Vector2(90, 180)
+
+[node name="GutterLeft" type="StaticBody2D" parent="Bottom"]
+position = Vector2(-80, 0)
+rotation = 0.261799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/GutterLeft"]
+scale = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_wyhim")
+
+[node name="GutterRight" type="StaticBody2D" parent="Bottom"]
+position = Vector2(80, 0)
+rotation = -0.261799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/GutterRight"]
+scale = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_fqa1x")
+
+[node name="CollectionArea" type="Area2D" parent="Bottom"]
+position = Vector2(0, 100)
+collision_layer = 0
+collision_mask = 1024
+script = ExtResource("5_8yr6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/CollectionArea"]
+scale = Vector2(50, 5)
+shape = SubResource("RectangleShape2D_3f5i2")
+
+[connection signal="minigame_start" from="." to="BerrySpawner" method="_on_spawn_request"]
+[connection signal="minigame_start" from="." to="Bottom/CollectionArea" method="_on_berry_picker_minigame_start"]
+[connection signal="area_entered" from="Cursor" to="Cursor" method="_on_area_entered"]
+[connection signal="body_entered" from="Cursor" to="Cursor" method="_on_body_entered"]
+[connection signal="all_collected" from="Bottom/CollectionArea" to="." method="_on_collection_area_all_collected"]
+[connection signal="body_entered" from="Bottom/CollectionArea" to="Bottom/CollectionArea" method="_on_body_entered"]

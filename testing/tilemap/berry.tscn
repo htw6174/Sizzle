@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfhugv33iryy"]
+
+[ext_resource type="Texture2D" uid="uid://cp0xxek852jot" path="res://testing/tilemap/assets/berry.png" id="1_sbkpm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1xcs"]
+radius = 8.0
+
+[node name="berry" type="RigidBody2D"]
+collision_layer = 1024
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l1xcs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sbkpm")
