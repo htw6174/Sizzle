@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var audioplayer: AudioStreamPlayer
+@export var basket: Wiggler
 
 var berry_count: int = -1
 var collected_count: int = 0
@@ -29,5 +30,6 @@ func _on_body_entered(body):
 	# from 0 to berry_count, goes from 1.0 to pitch_min
 	audioplayer.pitch_scale = lerp(1.0, pitch_min, float(collected_count) / berry_count)
 	audioplayer.play()
+	basket.wiggle()
 	if collected_count >= berry_count:
 		all_collected.emit()

@@ -8,13 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://d2tp7eduwhukt" path="res://testing/tilemap/assets/imported/fruit-pick.ogg" id="4_ckkfw"]
 [ext_resource type="Script" path="res://testing/tilemap/berry_collector.gd" id="5_8yr6l"]
 [ext_resource type="AudioStream" uid="uid://dma2dh72vnppu" path="res://testing/tilemap/assets/imported/fruit-hit.ogg" id="8_0mr20"]
+[ext_resource type="Texture2D" uid="uid://tftdy5qvcng4" path="res://testing/tilemap/assets/basket.png" id="9_21roo"]
+[ext_resource type="Script" path="res://testing/tilemap/wiggle.gd" id="10_of2gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpo8m"]
 radius = 15.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyhim"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqa1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3f5i2"]
 
@@ -62,44 +60,32 @@ berry_scene = ExtResource("2_e3nof")
 [node name="Bottom" type="Node2D" parent="."]
 position = Vector2(90, 180)
 
-[node name="GutterLeft" type="StaticBody2D" parent="Bottom"]
-position = Vector2(-80, 0)
-rotation = 0.261799
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/GutterLeft"]
-scale = Vector2(5, 1)
-shape = SubResource("RectangleShape2D_wyhim")
-disabled = true
-
-[node name="GutterRight" type="StaticBody2D" parent="Bottom"]
-position = Vector2(80, 0)
-rotation = -0.261799
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/GutterRight"]
-scale = Vector2(5, 1)
-shape = SubResource("RectangleShape2D_fqa1x")
-disabled = true
-
-[node name="CollectionArea" type="Area2D" parent="Bottom" node_paths=PackedStringArray("audioplayer")]
-position = Vector2(0, 299)
+[node name="Collector" type="Area2D" parent="Bottom" node_paths=PackedStringArray("audioplayer", "basket")]
 collision_layer = 0
 collision_mask = 1024
 script = ExtResource("5_8yr6l")
 audioplayer = NodePath("AudioStreamPlayer")
+basket = NodePath("Basket")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/CollectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/Collector"]
+position = Vector2(0, 100)
 scale = Vector2(50, 5)
 shape = SubResource("RectangleShape2D_3f5i2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bottom/CollectionArea"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bottom/Collector"]
 stream = ExtResource("8_0mr20")
 volume_db = -6.0
 max_polyphony = 20
 bus = &"Overlapping"
 
+[node name="Basket" type="Sprite2D" parent="Bottom/Collector"]
+position = Vector2(0, -90)
+texture = ExtResource("9_21roo")
+script = ExtResource("10_of2gj")
+
 [connection signal="minigame_start" from="." to="BerrySpawner" method="_on_spawn_request"]
-[connection signal="minigame_start" from="." to="Bottom/CollectionArea" method="_on_berry_picker_minigame_start"]
+[connection signal="minigame_start" from="." to="Bottom/Collector" method="_on_berry_picker_minigame_start"]
 [connection signal="area_entered" from="Cursor" to="Cursor" method="_on_area_entered"]
 [connection signal="body_entered" from="Cursor" to="Cursor" method="_on_body_entered"]
-[connection signal="all_collected" from="Bottom/CollectionArea" to="." method="_on_collection_area_all_collected"]
-[connection signal="body_entered" from="Bottom/CollectionArea" to="Bottom/CollectionArea" method="_on_body_entered"]
+[connection signal="all_collected" from="Bottom/Collector" to="." method="_on_collection_area_all_collected"]
+[connection signal="body_entered" from="Bottom/Collector" to="Bottom/Collector" method="_on_body_entered"]

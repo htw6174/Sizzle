@@ -3,7 +3,7 @@
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_r1fbg"]
 resource_name = "Compressor"
 threshold = -12.0
-ratio = 23.4
+ratio = 10.0
 
 [resource]
 bus/1/name = &"Overlapping"

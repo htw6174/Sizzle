@@ -13,7 +13,7 @@ config_version=5
 config/name="Sizzle"
 config/description="This demo showcases how 2D particle systems work in Godot."
 run/main_scene="res://testing/tilemap/walkaround.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.1")
 config/icon="res://sprites/carrot.png"
 
 [autoload]
@@ -32,6 +32,11 @@ window/stretch/mode="viewport"
 
 movie_writer/movie_file="D:/Videos/Recordings/godot/berry_pick.png"
 movie_writer/fps=30
+
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
 
 [gdnative]
 
