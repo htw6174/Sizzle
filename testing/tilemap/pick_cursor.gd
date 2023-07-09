@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var force_mag: float = 10.0
+@export var audioplayer: AudioStreamPlayer
+
 var mouse_velocity: Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -28,3 +30,5 @@ func _on_body_entered(body):
 		rb.gravity_scale = 2.0
 		var force_dir = mouse_velocity.normalized()
 		rb.apply_impulse(Vector2(force_dir.x * force_mag, -force_mag))
+		audioplayer.pitch_scale = randf_range(0.8, 1.2);
+		audioplayer.play()

@@ -1,7 +1,11 @@
 extends Area2D
 
+@export var audioplayer: AudioStreamPlayer
+
 var berry_count: int = -1
 var collected_count: int = 0
+
+var pitch_min: float = 0.75
 
 signal all_collected
 
@@ -22,5 +26,8 @@ func _on_berry_picker_minigame_start(count, _area):
 func _on_body_entered(body):
 	body.queue_free()
 	collected_count += 1
+	# from 0 to berry_count, goes from 1.0 to pitch_min
+	audioplayer.pitch_scale = lerp(1.0, pitch_min, float(collected_count) / berry_count)
+	audioplayer.play()
 	if collected_count >= berry_count:
 		all_collected.emit()

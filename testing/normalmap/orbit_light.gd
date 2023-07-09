@@ -17,5 +17,5 @@ func _process(delta):
 	var y = -sin(theta) * plane_radius * vertical_factor
 	var z = cos(theta)
 	self.position = start_position + Vector2(x, y)
-	self.range_height = z * depth_radius
+	self.height = z * depth_radius
 	self.energy = clamp(z, 0, 1)

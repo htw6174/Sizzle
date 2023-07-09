@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://da51brp0yoopn"]
+[gd_scene load_steps=13 format=3 uid="uid://da51brp0yoopn"]
 
 [ext_resource type="Script" path="res://testing/tilemap/pick_cursor.gd" id="1_0ybd0"]
 [ext_resource type="Script" path="res://testing/tilemap/minigame_berry_picking.gd" id="1_myc5h"]
 [ext_resource type="Script" path="res://testing/tilemap/berry_spawner.gd" id="1_qkswh"]
 [ext_resource type="PackedScene" uid="uid://bfhugv33iryy" path="res://testing/tilemap/berry.tscn" id="2_e3nof"]
 [ext_resource type="Texture2D" uid="uid://cteekxuu7k3b7" path="res://testing/tilemap/assets/bramble.png" id="2_hjkkm"]
+[ext_resource type="AudioStream" uid="uid://d2tp7eduwhukt" path="res://testing/tilemap/assets/imported/fruit-pick.ogg" id="4_ckkfw"]
 [ext_resource type="Script" path="res://testing/tilemap/berry_collector.gd" id="5_8yr6l"]
+[ext_resource type="AudioStream" uid="uid://dma2dh72vnppu" path="res://testing/tilemap/assets/imported/fruit-hit.ogg" id="8_0mr20"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpo8m"]
 radius = 15.0
@@ -32,11 +34,13 @@ offset_right = 180.0
 offset_bottom = 180.0
 texture = ExtResource("2_hjkkm")
 
-[node name="Cursor" type="Area2D" parent="."]
-collision_layer = 1024
+[node name="Cursor" type="Area2D" parent="." node_paths=PackedStringArray("audioplayer")]
+scale = Vector2(0.33, 0.33)
+collision_layer = 0
 collision_mask = 1025
 script = ExtResource("1_0ybd0")
 force_mag = 200.0
+audioplayer = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("CircleShape2D_kpo8m")
@@ -44,6 +48,12 @@ shape = SubResource("CircleShape2D_kpo8m")
 [node name="Polygon2D" type="Polygon2D" parent="Cursor"]
 color = Color(0.694118, 0.376471, 0.305882, 1)
 polygon = PackedVector2Array(4, -15, 13, -8, 15, 3, 9, 13, -6, 15, -14, 6, -15, -5, -8, -13)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cursor"]
+stream = ExtResource("4_ckkfw")
+volume_db = -6.0
+max_polyphony = 20
+bus = &"Overlapping"
 
 [node name="BerrySpawner" type="Node2D" parent="."]
 script = ExtResource("1_qkswh")
@@ -70,15 +80,22 @@ scale = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_fqa1x")
 disabled = true
 
-[node name="CollectionArea" type="Area2D" parent="Bottom"]
+[node name="CollectionArea" type="Area2D" parent="Bottom" node_paths=PackedStringArray("audioplayer")]
 position = Vector2(0, 299)
 collision_layer = 0
 collision_mask = 1024
 script = ExtResource("5_8yr6l")
+audioplayer = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/CollectionArea"]
 scale = Vector2(50, 5)
 shape = SubResource("RectangleShape2D_3f5i2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bottom/CollectionArea"]
+stream = ExtResource("8_0mr20")
+volume_db = -6.0
+max_polyphony = 20
+bus = &"Overlapping"
 
 [connection signal="minigame_start" from="." to="BerrySpawner" method="_on_spawn_request"]
 [connection signal="minigame_start" from="." to="Bottom/CollectionArea" method="_on_berry_picker_minigame_start"]
