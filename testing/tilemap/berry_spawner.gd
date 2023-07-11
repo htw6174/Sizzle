@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var berry_scene: PackedScene
-@export var margin: int = 16
+@export var margin: int = 24
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

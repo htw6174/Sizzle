@@ -17,6 +17,9 @@ func _process(delta):
 
 
 func _on_collection_area_all_collected():
+	minigame_complete.emit()
+	
+	# TEST
 	start_minigame()
 
 

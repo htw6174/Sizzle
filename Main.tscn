@@ -823,6 +823,7 @@ We plan to add more recipes, more interactions, and the opportunity to enhance d
 
 Art by Max Alford
 Programming by Hardy Whitney"
+autowrap_mode = 2
 
 [connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="GUI/Dialogue/Text/SkipButton" to="GUI/Dialogue" method="_on_SkipButton_pressed"]

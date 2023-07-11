@@ -114,10 +114,11 @@ pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 
-2d_physics/layer_1="wall"
+2d_physics/layer_1="wall_topdown"
 2d_physics/layer_9="trigger"
 2d_physics/layer_10="interact"
 2d_physics/layer_11="touchy"
+2d_physics/layer_17="wall_sideon"
 
 [rendering]
 
