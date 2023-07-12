@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da51brp0yoopn"]
+[gd_scene load_steps=14 format=3 uid="uid://da51brp0yoopn"]
 
 [ext_resource type="Script" path="res://testing/tilemap/pick_cursor.gd" id="1_0ybd0"]
 [ext_resource type="Script" path="res://testing/tilemap/minigame_berry_picking.gd" id="1_myc5h"]
@@ -14,6 +14,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpo8m"]
 radius = 15.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_427dp"]
+size = Vector2(20, 180)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3f5i2"]
 
 [node name="berry_picker" type="Control"]
@@ -24,7 +27,7 @@ anchors_preset = 0
 offset_right = 180.0
 offset_bottom = 180.0
 script = ExtResource("1_myc5h")
-berry_count = 50
+berry_count = 40
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
@@ -33,7 +36,7 @@ offset_bottom = 180.0
 texture = ExtResource("2_hjkkm")
 
 [node name="Cursor" type="Area2D" parent="." node_paths=PackedStringArray("audioplayer")]
-scale = Vector2(0.33, 0.33)
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 1024
 script = ExtResource("1_0ybd0")
@@ -56,6 +59,25 @@ bus = &"Overlapping"
 [node name="BerrySpawner" type="Node2D" parent="."]
 script = ExtResource("1_qkswh")
 berry_scene = ExtResource("2_e3nof")
+
+[node name="Middle" type="Node2D" parent="."]
+position = Vector2(90, 90)
+
+[node name="LeftWall" type="StaticBody2D" parent="Middle"]
+position = Vector2(-100, 0)
+collision_layer = 65536
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle/LeftWall"]
+shape = SubResource("RectangleShape2D_427dp")
+
+[node name="RightWall" type="StaticBody2D" parent="Middle"]
+position = Vector2(100, 0)
+collision_layer = 65536
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle/RightWall"]
+shape = SubResource("RectangleShape2D_427dp")
 
 [node name="Bottom" type="Node2D" parent="."]
 position = Vector2(90, 180)

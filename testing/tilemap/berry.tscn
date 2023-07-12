@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfhugv33iryy"]
+[gd_scene load_steps=4 format=3 uid="uid://bfhugv33iryy"]
 
 [ext_resource type="Texture2D" uid="uid://cp0xxek852jot" path="res://testing/tilemap/assets/berry.png" id="1_sbkpm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dyp7"]
+bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1xcs"]
 radius = 8.0
@@ -8,9 +11,8 @@ radius = 8.0
 [node name="berry" type="RigidBody2D"]
 collision_layer = 1024
 collision_mask = 65536
+physics_material_override = SubResource("PhysicsMaterial_7dyp7")
 gravity_scale = 0.0
-max_contacts_reported = 1
-contact_monitor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_l1xcs")
