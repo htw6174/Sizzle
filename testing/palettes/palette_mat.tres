@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cecn5h08twg7l"]
+
+[ext_resource type="Shader" path="res://testing/palettes/palette_shader.gdshader" id="1_nxsj6"]
+
+[resource]
+shader = ExtResource("1_nxsj6")
+shader_parameter/colors = PackedColorArray(0, 0, 0, 1, 0.156863, 0.156863, 0.156863, 1, 0.25098, 0.25098, 0.25098, 1, 0.360784, 0.360784, 0.360784, 1, 0.47451, 0.47451, 0.47451, 1, 0.643137, 0.643137, 0.643137, 1, 0.784314, 0.784314, 0.784314, 1, 1, 1, 1, 1)

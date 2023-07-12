@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Palette" load_steps=2 format=3 uid="uid://bpx5qam1gq6t7"]
+
+[ext_resource type="Script" path="res://testing/palettes/palette.gd" id="1_03lxu"]
+
+[resource]
+script = ExtResource("1_03lxu")
+colors = PackedColorArray(0, 0, 0, 1, 0.25098, 0.25098, 0.25098, 1, 0.529412, 0.529412, 0.529412, 1, 0.698039, 0.698039, 0.698039, 1, 0.823529, 0.823529, 0.823529, 1, 1, 1, 1, 1)
