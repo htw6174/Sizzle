@@ -1,0 +1,3 @@
+class_name IndexTexture
+extends CompressedTexture2D
+
