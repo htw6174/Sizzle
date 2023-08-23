@@ -2,8 +2,7 @@ extends Node
 
 class_name ServingEffects
 
-@export var animation_player_path: NodePath
-@onready var animation_player: AnimationPlayer = get_node(animation_player_path)
+@export var animation_player: AnimationPlayer
 
 signal dish_begin_effects_finished
 signal dish_complete_effects_finished
@@ -17,6 +16,6 @@ func _on_ObjectiveController_objective_complete():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "dish_enter":
-		emit_signal("dish_begin_effects_finished")
+		dish_begin_effects_finished.emit()
 	elif anim_name == "dish_exit":
-		emit_signal("dish_complete_effects_finished")
+		dish_complete_effects_finished.emit()

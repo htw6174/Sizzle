@@ -2,11 +2,11 @@ extends Interactable
 
 @export var processing_verb: String
 @export var preperation_process_scene: PackedScene
+# NOTE/TODO: could there be issues with instancing the process tree scene once per tool, with multiple of the same tool types in the scene?
+# At best it's wasteful, at worst could cause unexpected behavior. See if there is a way to use the scene without making individual instances.
 @onready var preperation_process: ProcessStep = preperation_process_scene.instantiate()
-@export var processor_effects_path: NodePath
-@onready var processor_effects = get_node(processor_effects_path)
-@export var timer_path: NodePath
-@onready var timer: Timer = get_node(timer_path)
+@export var processor_effects: ProcessorFx
+@export var timer: Timer
 
 var can_accept_items: bool = true
 
@@ -40,7 +40,7 @@ func try_insert_item(item: Ingredient) -> bool:
 		return false
 	if process_step.does_any_child_require_ingredient(current_step_ingredients, item):
 		current_step_ingredients.append(item)
-		emit_signal("item_inserted", item)
+		item_inserted.emit(item)
 		check_progress()
 		item_sprite.modulate = Color(1, 1, 1, 1)
 		item_sprite.texture = item.texture
@@ -53,7 +53,7 @@ func try_reserve_item() -> Ingredient:
 	if pickable_item != null:
 		is_item_reserved = true
 		item_sprite.modulate = Color(1, 1, 1, 0.5)
-		emit_signal("item_reserved", pickable_item)
+		item_reserved.emit(pickable_item)
 		return pickable_item
 	else:
 		return null
@@ -64,7 +64,7 @@ func try_take_item() -> Ingredient:
 		pickable_item = null
 		display_name = preperation_process.get_display_name()
 		item_sprite.texture = null
-		emit_signal("item_removed", temp_item)
+		item_removed.emit(temp_item)
 		return temp_item
 	else:
 		return null
@@ -73,7 +73,7 @@ func try_return_item() -> bool:
 	if pickable_item != null:
 		is_item_reserved = false
 		item_sprite.modulate = Color(1, 1, 1, 1)
-		emit_signal("item_returned", pickable_item)
+		item_returned.emit(pickable_item)
 		return true
 	else:
 		return false
@@ -107,27 +107,27 @@ func check_for_result():
 
 func advance_processing_step(next_step: ProcessStep):
 	if process_step == preperation_process:
-		emit_signal("process_started")
+		process_started.emit()
 	process_step = next_step
 	previous_step_ingredients.append_array(current_step_ingredients)
 	current_step_ingredients.clear()
 	set_tooltip()
-	emit_signal("process_step_changed", process_step)
+	process_step_changed.emit(process_step)
 
 func start_processing_countdown():
 	timer.start(process_step.time_to_complete)
 	can_accept_items = false
-	emit_signal("process_step_started")
+	process_step_started.emit()
 
 func finish_recipe():
-	emit_signal("process_finished")
+	process_finished.emit()
 	
 	pickable_item = process_step.get_data()
 	item_sprite.modulate = Color(1, 1, 1, 1)
 	item_sprite.texture = pickable_item.texture
 	display_name = pickable_item.display_name
 	tooltip = ""
-	emit_signal("result_ingredient_produced", pickable_item)
+	result_ingredient_produced.emit(pickable_item)
 	
 	process_step = preperation_process
 	previous_step_ingredients.clear()
@@ -136,5 +136,5 @@ func finish_recipe():
 func _on_Timer_timeout():
 	can_accept_items = true
 	set_display_name()
-	emit_signal("process_step_finished")
+	process_step_finished.emit()
 	check_for_result()

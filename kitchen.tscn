@@ -1,0 +1,857 @@
+[gd_scene load_steps=61 format=3 uid="uid://cv52v1tk2my2p"]
+
+[ext_resource type="Script" path="res://gameplay_logic/objective_controller.gd" id="1_pyym6"]
+[ext_resource type="PackedScene" uid="uid://d0gmsmc7rqvcx" path="res://ServingPlate.tscn" id="2_gli1n"]
+[ext_resource type="Resource" uid="uid://cbhkhfo04dfra" path="res://custom_resources/missions/intro_mission.tres" id="3_6nxeg"]
+[ext_resource type="Resource" uid="uid://ddfsawky0cncu" path="res://custom_resources/missions/kebab_mission.tres" id="4_vob0s"]
+[ext_resource type="Resource" path="res://custom_resources/missions/spaghetti_mission.tres" id="5_sjs2i"]
+[ext_resource type="Texture2D" uid="uid://cfoc68o08ig4e" path="res://sprites/background.png" id="6_mnc50"]
+[ext_resource type="Texture2D" uid="uid://bsv3pxagwjklx" path="res://sprites/logs.png" id="7_fm2r2"]
+[ext_resource type="PackedScene" path="res://firefly.tscn" id="8_s63qe"]
+[ext_resource type="Texture2D" uid="uid://cvvq7rly1ehl5" path="res://sprites/oven.png" id="9_hegka"]
+[ext_resource type="Texture2D" uid="uid://cap1dne5j4q75" path="res://sprites/tent.png" id="10_cpti1"]
+[ext_resource type="PackedScene" uid="uid://dpbx65ek7binq" path="res://Tool.tscn" id="11_mlu0y"]
+[ext_resource type="PackedScene" path="res://custom_resources/processes/cauldron_process_tree.tscn" id="12_fjwsl"]
+[ext_resource type="Texture2D" uid="uid://bgtrggu2a3ff6" path="res://sprites/cauldron.png" id="13_emo48"]
+[ext_resource type="Texture2D" uid="uid://bdgivnsk14s36" path="res://sprites/stove and tables.png" id="14_qx08n"]
+[ext_resource type="Texture2D" uid="uid://b0oj00educjas" path="res://sprites/grill.png" id="15_nie8j"]
+[ext_resource type="PackedScene" uid="uid://blger4cu36ut6" path="res://custom_resources/processes/grill_process_tree.tscn" id="16_ee0hl"]
+[ext_resource type="AudioStream" uid="uid://bcokfrnqovgne" path="res://audio/194806__hannebu__frying.wav" id="17_83v6b"]
+[ext_resource type="PackedScene" uid="uid://c80x128w0j80e" path="res://custom_resources/processes/pot_process_tree.tscn" id="18_bl7gd"]
+[ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="19_onru2"]
+[ext_resource type="PackedScene" uid="uid://btqio36j1aha8" path="res://custom_resources/processes/skillet_process_tree.tscn" id="20_7fr7l"]
+[ext_resource type="Texture2D" uid="uid://doxvtk8vin3d5" path="res://sprites/skillet final.png" id="21_hbud5"]
+[ext_resource type="PackedScene" path="res://custom_resources/processes/chop_process_tree.tscn" id="22_7rdu1"]
+[ext_resource type="Texture2D" uid="uid://cm3i0vhjp1fd0" path="res://sprites/cutting board log.png" id="23_q5wyt"]
+[ext_resource type="AudioStream" uid="uid://b0y0f3a7bm81p" path="res://audio/qubodupItemHandling2_mono.wav" id="24_ps3i0"]
+[ext_resource type="PackedScene" uid="uid://d2qslb34ro6go" path="res://trash.tscn" id="25_uxfkj"]
+[ext_resource type="PackedScene" uid="uid://deblooe1tgf2b" path="res://Ingredient.tscn" id="28_d6hrp"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="29_a3tfk"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="30_abhoh"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="31_x5gnb"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/skewer.tres" id="32_htdgq"]
+[ext_resource type="Texture2D" uid="uid://vywuog5jpcp0" path="res://sprites/empty skewer.png" id="33_m6enb"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="34_f0xoo"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="35_hoeh2"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/pot_stew.tres" id="36_5k8pg"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="37_hafpf"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="38_6jsor"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="39_rwphb"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="40_d5b7c"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="41_fgk0c"]
+[ext_resource type="Texture2D" uid="uid://dqoxildwtbv7d" path="res://sprites/mat.png" id="42_qe4m8"]
+[ext_resource type="PackedScene" uid="uid://534jfrk6bjtp" path="res://item_slot.tscn" id="43_up2cg"]
+[ext_resource type="Script" path="res://interface_logic/effects_logic/serving_effects.gd" id="44_61qji"]
+[ext_resource type="Texture2D" uid="uid://d1gamckqqhmto" path="res://sprites/star_particle.png" id="45_4m6ko"]
+[ext_resource type="Script" path="res://interface_logic/serving_bell.gd" id="45_76e5c"]
+[ext_resource type="Animation" uid="uid://fycv0de6t18s" path="res://animations/dish_enter.tres" id="45_r44ls"]
+[ext_resource type="Animation" uid="uid://bbj280mplg4a3" path="res://animations/dish_exit.tres" id="46_gsp2e"]
+[ext_resource type="Script" path="res://interface_logic/hand_display.gd" id="47_87jm4"]
+[ext_resource type="AudioStream" uid="uid://dypucbx5wo1dh" path="res://audio/149268__organicmanpl__ding-3_doubled.wav" id="47_eajme"]
+[ext_resource type="Script" path="res://interface_logic/adaptive_label.gd" id="48_rc1om"]
+[ext_resource type="Theme" uid="uid://bahxjt4a2qkvs" path="res://ui_theme/pixel_theme.tres" id="49_mityb"]
+[ext_resource type="Script" path="res://gui_logic/button_toggle.gd" id="50_q0s06"]
+[ext_resource type="Script" path="res://gui_logic/dialogue_player.gd" id="51_lq7d2"]
+[ext_resource type="Texture2D" uid="uid://d0yvvtt0pl4op" path="res://sprites/helper chef longer.png" id="52_hykuf"]
+[ext_resource type="Animation" uid="uid://dxg8edbiu0aon" path="res://animations/dialogue_in.tres" id="53_05e8j"]
+[ext_resource type="Animation" uid="uid://bfynr07pkbj18" path="res://animations/dialogue_out.tres" id="54_q3uov"]
+
+[sub_resource type="Animation" id="1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsii7"]
+_data = {
+"RESET": SubResource("1"),
+"dish_enter": ExtResource("45_r44ls"),
+"dish_exit": ExtResource("46_gsp2e")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y27kg"]
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterPortrait:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(243, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterPortrait:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Text:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(398, 224)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpuuk"]
+_data = {
+"RESET": SubResource("2"),
+"dialogue_in": ExtResource("53_05e8j"),
+"dialogue_out": ExtResource("54_q3uov")
+}
+
+[node name="Main" type="Node"]
+
+[node name="OtherLogicHere" type="Node" parent="."]
+
+[node name="ObjectiveController" type="Node" parent="OtherLogicHere" node_paths=PackedStringArray("dialogue_player", "objective_label", "end_screen", "serving_dish_parent")]
+script = ExtResource("1_pyym6")
+dialogue_player = NodePath("../../GUI/Dialogue")
+objective_label = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
+end_screen = NodePath("../../GUI/EndScreen")
+serving_dish_parent = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
+serving_dish_scene = ExtResource("2_gli1n")
+missions = Array[Resource("res://custom_resources/mission.gd")]([ExtResource("3_6nxeg"), ExtResource("4_vob0s"), ExtResource("5_sjs2i")])
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Background" type="Node2D" parent="World"]
+
+[node name="Forest" type="Sprite2D" parent="World/Background"]
+position = Vector2(199, 112)
+texture = ExtResource("6_mnc50")
+
+[node name="logpile" type="Sprite2D" parent="World/Background"]
+position = Vector2(108, 99)
+texture = ExtResource("7_fm2r2")
+
+[node name="Fireflies" type="Node2D" parent="World/Background"]
+position = Vector2(199, 76)
+
+[node name="Firefly" parent="World/Background/Fireflies" instance=ExtResource("8_s63qe")]
+
+[node name="Firefly2" parent="World/Background/Fireflies" instance=ExtResource("8_s63qe")]
+position = Vector2(93, -45)
+
+[node name="Firefly3" parent="World/Background/Fireflies" instance=ExtResource("8_s63qe")]
+position = Vector2(129, -2)
+
+[node name="Firefly4" parent="World/Background/Fireflies" instance=ExtResource("8_s63qe")]
+position = Vector2(-103, -28)
+
+[node name="Firefly5" parent="World/Background/Fireflies" instance=ExtResource("8_s63qe")]
+position = Vector2(-50, 3)
+
+[node name="oven" type="Sprite2D" parent="World/Background"]
+position = Vector2(199, 112)
+texture = ExtResource("9_hegka")
+
+[node name="tent" type="Sprite2D" parent="World/Background"]
+position = Vector2(199, 112)
+texture = ExtResource("10_cpti1")
+
+[node name="Tools" type="Node2D" parent="World/Background"]
+
+[node name="Cauldron" parent="World/Background/Tools" instance=ExtResource("11_mlu0y")]
+position = Vector2(320, 123)
+processing_verb = "Boiling..."
+preperation_process_scene = ExtResource("12_fjwsl")
+
+[node name="Sprite2D" parent="World/Background/Tools/Cauldron" index="0"]
+texture = ExtResource("13_emo48")
+
+[node name="ToolEffects" parent="World/Background/Tools/Cauldron" index="1" node_paths=PackedStringArray("passive_particles")]
+hide_during_processing = true
+hide_finished_ingredient = true
+passive_particles = NodePath("PassiveParticles")
+
+[node name="ActiveIngredientSprite" parent="World/Background/Tools/Cauldron/ToolEffects" index="0"]
+position = Vector2(-1, -22)
+
+[node name="CompletionSprite" parent="World/Background/Tools/Cauldron/ToolEffects" index="1"]
+position = Vector2(0, -44)
+
+[node name="ProcessingAnimation" parent="World/Background/Tools/Cauldron/ToolEffects" index="2"]
+position = Vector2(-1, -21)
+
+[node name="ActiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="3"]
+position = Vector2(0, -30)
+
+[node name="PassiveParticles" parent="World/Background/Tools/Cauldron/ToolEffects" index="4"]
+position = Vector2(0, -32)
+
+[node name="ProgressBar" parent="World/Background/Tools/Cauldron/ToolEffects" index="6"]
+offset_left = -23.0
+offset_top = -50.0
+offset_right = 17.0
+offset_bottom = -36.0
+grow_horizontal = 2
+
+[node name="CollisionPolygon2D" parent="World/Background/Tools/Cauldron/Area2D" index="0"]
+position = Vector2(1, -12)
+polygon = PackedVector2Array(42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19)
+
+[node name="Foreground" type="Node2D" parent="World"]
+
+[node name="table n stove" type="Sprite2D" parent="World/Foreground"]
+position = Vector2(199, 112)
+texture = ExtResource("14_qx08n")
+
+[node name="Grill" type="Sprite2D" parent="World/Foreground"]
+position = Vector2(200, 122)
+texture = ExtResource("15_nie8j")
+
+[node name="Tools" type="Node2D" parent="World/Foreground"]
+position = Vector2(199, 112)
+
+[node name="Grills" type="Node2D" parent="World/Foreground/Tools"]
+
+[node name="Left" parent="World/Foreground/Tools/Grills" instance=ExtResource("11_mlu0y")]
+position = Vector2(-58, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("16_ee0hl")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/Left" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/Left" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="0"]
+position = Vector2(3, 20)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="5"]
+stream = ExtResource("17_83v6b")
+
+[node name="ProgressBar" parent="World/Foreground/Tools/Grills/Left/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/Left" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/Left/Area2D" index="0"]
+position = Vector2(14, 0)
+polygon = PackedVector2Array(13, -4, 2, 17, -37, 17, -37, 12, -21, -4)
+
+[node name="CenterLeft" parent="World/Foreground/Tools/Grills" instance=ExtResource("11_mlu0y")]
+position = Vector2(-18, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("16_ee0hl")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterLeft" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="0"]
+position = Vector2(0, 20)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="5"]
+stream = ExtResource("17_83v6b")
+
+[node name="ProgressBar" parent="World/Foreground/Tools/Grills/CenterLeft/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/CenterLeft" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/CenterLeft/Area2D" index="0"]
+polygon = PackedVector2Array(19, -4, 19, 17, -23, 17, -12, -4)
+
+[node name="CenterRight" parent="World/Foreground/Tools/Grills" instance=ExtResource("11_mlu0y")]
+position = Vector2(18, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("16_ee0hl")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/CenterRight" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/CenterRight" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="0"]
+position = Vector2(0, 20)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="5"]
+stream = ExtResource("17_83v6b")
+
+[node name="ProgressBar" parent="World/Foreground/Tools/Grills/CenterRight/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/CenterRight" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/CenterRight/Area2D" index="0"]
+polygon = PackedVector2Array(15, -4, 27, 17, -16, 17, -16, -4)
+
+[node name="Right" parent="World/Foreground/Tools/Grills" instance=ExtResource("11_mlu0y")]
+position = Vector2(59, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("16_ee0hl")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/Grills/Right" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Grills/Right" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="0"]
+position = Vector2(-3, 20)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="5"]
+stream = ExtResource("17_83v6b")
+
+[node name="ProgressBar" parent="World/Foreground/Tools/Grills/Right/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="World/Foreground/Tools/Grills/Right" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Grills/Right/Area2D" index="0"]
+position = Vector2(-15, 0)
+polygon = PackedVector2Array(24, -4, 40, 12, 40, 17, 2, 17, -10, -4)
+
+[node name="Pot" parent="World/Foreground/Tools" instance=ExtResource("11_mlu0y")]
+position = Vector2(-46, 54)
+processing_verb = "Simmering..."
+preperation_process_scene = ExtResource("18_bl7gd")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/Pot" index="0"]
+position = Vector2(-10, -16)
+texture = ExtResource("19_onru2")
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Pot" index="1"]
+hide_during_processing = true
+hide_finished_ingredient = true
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="0"]
+visible = false
+position = Vector2(0, -27)
+
+[node name="CompletionSprite" parent="World/Foreground/Tools/Pot/ToolEffects" index="1"]
+position = Vector2(0, -17)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Pot/ToolEffects" index="2"]
+position = Vector2(0, -27)
+
+[node name="ActiveParticles" parent="World/Foreground/Tools/Pot/ToolEffects" index="3"]
+position = Vector2(0, -39)
+
+[node name="ProgressBar" parent="World/Foreground/Tools/Pot/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="World/Foreground/Tools/Pot" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Pot/Area2D" index="0"]
+polygon = PackedVector2Array(20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12, -13, -16, 15, -16)
+
+[node name="Skillet" parent="World/Foreground/Tools" instance=ExtResource("11_mlu0y")]
+position = Vector2(48, 56)
+processing_verb = "Frying..."
+preperation_process_scene = ExtResource("20_7fr7l")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/Skillet" index="0"]
+position = Vector2(17, -17)
+texture = ExtResource("21_hbud5")
+
+[node name="ToolEffects" parent="World/Foreground/Tools/Skillet" index="1"]
+hide_during_processing = true
+hide_finished_ingredient = true
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/Skillet/ToolEffects" index="0"]
+position = Vector2(0, -19)
+
+[node name="CompletionSprite" parent="World/Foreground/Tools/Skillet/ToolEffects" index="1"]
+position = Vector2(0, -19)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/Skillet/ToolEffects" index="2"]
+position = Vector2(0, -19)
+
+[node name="ActiveParticles" parent="World/Foreground/Tools/Skillet/ToolEffects" index="3"]
+position = Vector2(0, -31)
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/Skillet/ToolEffects" index="5"]
+stream = ExtResource("17_83v6b")
+
+[node name="ProgressBar" parent="World/Foreground/Tools/Skillet/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="World/Foreground/Tools/Skillet" index="2"]
+position = Vector2(0, -19)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/Skillet/Area2D" index="0"]
+polygon = PackedVector2Array(34, -7, 34, 8, 25, 16, 0, 20, -25, 17, -35, 6, -36, -7, -31, -15, -1, -19, 28, -15)
+
+[node name="CuttingBoard" parent="World/Foreground/Tools" instance=ExtResource("11_mlu0y")]
+position = Vector2(67, 92)
+processing_verb = "Chopping..."
+preperation_process_scene = ExtResource("22_7rdu1")
+
+[node name="Sprite2D" parent="World/Foreground/Tools/CuttingBoard" index="0"]
+texture = ExtResource("23_q5wyt")
+
+[node name="ToolEffects" parent="World/Foreground/Tools/CuttingBoard" index="1"]
+hide_during_processing = true
+active_particles = NodePath("")
+
+[node name="ActiveIngredientSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
+position = Vector2(0, -7)
+
+[node name="CompletionSprite" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
+position = Vector2(0, -22)
+
+[node name="ProcessingAnimation" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
+position = Vector2(0, -7)
+
+[node name="AudioStreamPlayer" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="5"]
+stream = ExtResource("24_ps3i0")
+
+[node name="ProgressBar" parent="World/Foreground/Tools/CuttingBoard/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="CollisionPolygon2D" parent="World/Foreground/Tools/CuttingBoard/Area2D" index="0"]
+polygon = PackedVector2Array(40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14)
+
+[node name="Trash" parent="World/Foreground/Tools" instance=ExtResource("25_uxfkj")]
+position = Vector2(135, 99)
+
+[node name="ServingCake" parent="World/Foreground/Tools" instance=ExtResource("2_gli1n")]
+visible = false
+position = Vector2(160, -79)
+
+[node name="ServingBreakfast" parent="World/Foreground/Tools" instance=ExtResource("2_gli1n")]
+visible = false
+position = Vector2(88, -81)
+
+[node name="Ingredients" type="Node2D" parent="World/Foreground"]
+
+[node name="LeftTable" type="Node2D" parent="World/Foreground/Ingredients"]
+
+[node name="Steak" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(34, 143)
+pickable_item = ExtResource("29_a3tfk")
+
+[node name="Tomato" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(72, 150)
+pickable_item = ExtResource("30_abhoh")
+
+[node name="Garlic" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(55, 183)
+pickable_item = ExtResource("31_x5gnb")
+
+[node name="Skewer" parent="World/Foreground/Ingredients/LeftTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(19, 174)
+pickable_item = ExtResource("32_htdgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
+position = Vector2(3, 3)
+texture = ExtResource("33_m6enb")
+
+[node name="Sprite2" type="Sprite2D" parent="World/Foreground/Ingredients/LeftTable/Skewer"]
+position = Vector2(6, 6)
+texture = ExtResource("33_m6enb")
+
+[node name="RightTable" type="Node2D" parent="World/Foreground/Ingredients"]
+
+[node name="Noodles" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(329, 151)
+pickable_item = ExtResource("34_f0xoo")
+
+[node name="Herbs" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(361, 180)
+pickable_item = ExtResource("35_hoeh2")
+
+[node name="Cheat" type="Node2D" parent="World/Foreground/Ingredients"]
+visible = false
+position = Vector2(196, 21)
+
+[node name="Stew" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource("28_d6hrp")]
+position = Vector2(-52, -1)
+pickable_item = ExtResource("36_5k8pg")
+
+[node name="Noodles" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource("28_d6hrp")]
+pickable_item = ExtResource("37_hafpf")
+
+[node name="Meatballs" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource("28_d6hrp")]
+position = Vector2(36, 0)
+pickable_item = ExtResource("38_6jsor")
+
+[node name="Sauce" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource("28_d6hrp")]
+position = Vector2(73, 0)
+pickable_item = ExtResource("39_rwphb")
+
+[node name="RawKebab" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource("28_d6hrp")]
+position = Vector2(109, 0)
+pickable_item = ExtResource("40_d5b7c")
+
+[node name="CookedKebab" parent="World/Foreground/Ingredients/Cheat" instance=ExtResource("28_d6hrp")]
+position = Vector2(146, 0)
+pickable_item = ExtResource("41_fgk0c")
+
+[node name="ServingArea" type="Node2D" parent="World/Foreground"]
+position = Vector2(148, 206)
+
+[node name="Mat" type="Sprite2D" parent="World/Foreground/ServingArea"]
+texture = ExtResource("42_qe4m8")
+
+[node name="StorageSlots" type="Node2D" parent="World/Foreground/ServingArea"]
+position = Vector2(-33, -3)
+
+[node name="ItemSlot" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource("43_up2cg")]
+position = Vector2(-10, -15)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot/Area2D" index="0"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 8, 6, 15, -7, 11, -16, -1)
+
+[node name="ItemSlot2" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource("43_up2cg")]
+position = Vector2(23, -15)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot2/Area2D" index="0"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, 7, 16, -16, 7)
+
+[node name="ItemSlot3" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource("43_up2cg")]
+position = Vector2(-20, 1)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot3/Area2D" index="0"]
+polygon = PackedVector2Array(16, 0, 16, 16, -16, 16, -16, -16, -6, -16, 2, -5)
+
+[node name="ItemSlot4" parent="World/Foreground/ServingArea/StorageSlots" instance=ExtResource("43_up2cg")]
+position = Vector2(13, 1)
+
+[node name="CollisionPolygon2D" parent="World/Foreground/ServingArea/StorageSlots/ItemSlot4/Area2D" index="0"]
+polygon = PackedVector2Array(16, 0, 16, 16, -16, 16, -16, -1, -6, -8)
+
+[node name="DishAnchor" type="Node2D" parent="World/Foreground/ServingArea"]
+position = Vector2(35, -7)
+
+[node name="DishParent" type="Node2D" parent="World/Foreground/ServingArea/DishAnchor" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("44_61qji")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Foreground/ServingArea/DishAnchor/DishParent"]
+libraries = {
+"": SubResource("AnimationLibrary_wsii7")
+}
+
+[node name="Bell" type="Area2D" parent="World/Foreground/ServingArea" node_paths=PackedStringArray("audio_player")]
+position = Vector2(6, 7)
+script = ExtResource("45_76e5c")
+audio_player = NodePath("AudioStreamPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Foreground/ServingArea/Bell"]
+shape = SubResource("CircleShape2D_y27kg")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Foreground/ServingArea/Bell"]
+scale = Vector2(3, 3)
+texture = ExtResource("45_4m6ko")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/Foreground/ServingArea/Bell"]
+stream = ExtResource("47_eajme")
+volume_db = -6.0
+
+[node name="HandDisplay" type="Sprite2D" parent="World"]
+z_index = 10
+script = ExtResource("47_87jm4")
+control_path = NodePath("Control")
+label_path = NodePath("Control/PanelContainer/VBoxContainer/Label")
+tooltip_path = NodePath("Control/PanelContainer/VBoxContainer/Tooltip")
+audio_player_path = NodePath("AudioStreamPlayer")
+
+[node name="Control" type="Control" parent="World/HandDisplay"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="World/HandDisplay/Control"]
+self_modulate = Color(1, 1, 1, 0.682353)
+layout_mode = 0
+size_flags_vertical = 9
+mouse_filter = 2
+script = ExtResource("48_rc1om")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "test"
+
+[node name="Tooltip" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "longer test"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
+mix_target = 2
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("49_mityb")
+
+[node name="BookTODO" type="Button" parent="GUI"]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 90.0
+offset_right = -2.0
+offset_bottom = 110.0
+text = "Book"
+
+[node name="ObjectiveInfo" type="VBoxContainer" parent="GUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 394.0
+offset_bottom = 107.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="GUI/ObjectiveInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "v"
+script = ExtResource("50_q0s06")
+target_name = "Recipe Tips"
+target_path = NodePath("../PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/ObjectiveInfo"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.690196)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/ObjectiveInfo/PanelContainer"]
+layout_mode = 2
+text = "This is where the objective tracker text will go
+- We can add some hints here
+- With info on how to complete each recipe"
+autowrap_mode = 2
+
+[node name="Dialogue" type="Control" parent="GUI"]
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("51_lq7d2")
+start_animation = "dialogue_in"
+finish_animation = "dialogue_out"
+animation_player_path = NodePath("AnimationPlayer")
+dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
+
+[node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 243.0
+offset_right = 339.0
+offset_bottom = 224.0
+texture = ExtResource("52_hykuf")
+
+[node name="Text" type="Control" parent="GUI/Dialogue"]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 398.0
+offset_bottom = 224.0
+mouse_filter = 1
+
+[node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -101.0
+offset_right = -246.0
+offset_bottom = -79.0
+mouse_filter = 1
+
+[node name="NameLabel" type="Label" parent="GUI/Dialogue/Text/NameContainer"]
+layout_mode = 2
+text = "Foody McStuffins"
+
+[node name="DialogueContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -76.0
+offset_right = -8.0
+offset_bottom = -18.0
+mouse_filter = 1
+
+[node name="DialogueLabel" type="RichTextLabel" parent="GUI/Dialogue/Text/DialogueContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Here is some sample dialog, how many lines can fit here?
+Number 2 →
+Number 3, extends all the way out to the end"
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -17.9981
+offset_right = 265.0
+offset_bottom = 4.00189
+
+[node name="InstructionLabel" type="Label" parent="GUI/Dialogue/Text/PanelContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "> Click anywhere to continue <"
+
+[node name="SkipButton" type="Button" parent="GUI/Dialogue/Text"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -26.0
+offset_right = -16.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue"]
+libraries = {
+"": SubResource("AnimationLibrary_hpuuk")
+}
+
+[node name="EndScreen" type="Control" parent="GUI"]
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RestartButton" type="Button" parent="GUI/EndScreen"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 194.0
+offset_right = 176.0
+offset_bottom = 214.0
+text = "Replay"
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/EndScreen"]
+layout_mode = 0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -42.5
+offset_right = -24.0
+offset_bottom = 42.5
+
+[node name="Label" type="Label" parent="GUI/EndScreen/PanelContainer"]
+layout_mode = 2
+text = "Thanks for playing!
+
+We plan to add more recipes, more interactions, and the opportunity to enhance dishes by perfecting your skills.
+
+Art by Max Alford
+Programming by Hardy Whitney"
+autowrap_mode = 2
+
+[connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="bell_rung" from="World/Foreground/ServingArea/Bell" to="OtherLogicHere/ObjectiveController" method="_on_bell_rung"]
+[connection signal="input_event" from="World/Foreground/ServingArea/Bell" to="World/Foreground/ServingArea/Bell" method="_on_input_event"]
+[connection signal="pressed" from="GUI/Dialogue/Text/SkipButton" to="GUI/Dialogue" method="_on_SkipButton_pressed"]
+[connection signal="animation_finished" from="GUI/Dialogue/AnimationPlayer" to="GUI/Dialogue" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="GUI/EndScreen/RestartButton" to="OtherLogicHere/ObjectiveController" method="_on_RestartButton_pressed"]
+
+[editable path="World/Background/Tools/Cauldron"]
+[editable path="World/Foreground/Tools/Grills/Left"]
+[editable path="World/Foreground/Tools/Grills/CenterLeft"]
+[editable path="World/Foreground/Tools/Grills/CenterRight"]
+[editable path="World/Foreground/Tools/Grills/Right"]
+[editable path="World/Foreground/Tools/Pot"]
+[editable path="World/Foreground/Tools/Skillet"]
+[editable path="World/Foreground/Tools/CuttingBoard"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot2"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot3"]
+[editable path="World/Foreground/ServingArea/StorageSlots/ItemSlot4"]

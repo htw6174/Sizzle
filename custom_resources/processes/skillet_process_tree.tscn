@@ -1,18 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://btqio36j1aha8"]
 
-[ext_resource path="res://custom_resources/process_step.gd" type="Script" id=1]
-[ext_resource path="res://custom_resources/ingredients/chopped_meat.tres" type="Resource" id=2]
-[ext_resource path="res://custom_resources/process_result.gd" type="Script" id=3]
-[ext_resource path="res://custom_resources/ingredients/cooked_meatballs.tres" type="Resource" id=4]
+[ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_meat.tres" id="2"]
+[ext_resource type="Script" path="res://custom_resources/process_result.gd" id="3"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="4"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="5_hecgx"]
+[ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="6_2gt5u"]
 
 [node name="Skillet" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="AddChoppedMeat" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 2 ) ]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2")])
 time_to_complete = 3.0
 
 [node name="ProcessResult" type="Node" parent="AddChoppedMeat"]
-script = ExtResource( 3 )
-ingredient = ExtResource( 4 )
+script = ExtResource("3")
+ingredient = ExtResource("4")
+
+[node name="AddSteak" type="Node" parent="."]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5_hecgx")])
+time_to_complete = 3.0
+
+[node name="ProcessResult" type="Node" parent="AddSteak"]
+script = ExtResource("3")
+ingredient = ExtResource("6_2gt5u")

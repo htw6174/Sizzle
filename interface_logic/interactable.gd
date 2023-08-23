@@ -12,8 +12,7 @@ signal item_returned(item)
 
 @export var display_name: String
 @export var pickable_item: Resource
-@export var item_sprite_path: NodePath
-@onready var item_sprite: Sprite2D = get_node(item_sprite_path)
+@export var item_sprite: Sprite2D
 
 var is_item_reserved: bool = false
 
@@ -22,8 +21,8 @@ var is_tooltip_hidden: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("mouse_entered", Callable(PlayerHand, "_on_Interactable_mouse_entered"))
-	self.connect("mouse_exited", Callable(PlayerHand, "_on_Interactable_mouse_exited"))
+	mouse_entered.connect(PlayerHand._on_Interactable_mouse_entered)
+	mouse_exited.connect(PlayerHand._on_Interactable_mouse_exited)
 	if pickable_item != null:
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
@@ -37,7 +36,7 @@ func can_accept_item(item: Ingredient) -> bool:
 
 func try_insert_item(item: Ingredient) -> bool:
 	if pickable_item == null:
-		emit_signal("item_inserted", item)
+		item_inserted.emit()
 		pickable_item = item
 		display_name = item.display_name
 		item_sprite.texture = item.texture
@@ -50,7 +49,7 @@ func try_reserve_item() -> Ingredient:
 		is_item_reserved = true
 		display_name = ""
 		item_sprite.texture = null
-		emit_signal("item_reserved", pickable_item)
+		item_reserved.emit(pickable_item)
 		return pickable_item
 	else:
 		return null
@@ -61,7 +60,7 @@ func try_take_item() -> Ingredient:
 		pickable_item = null
 		display_name = ""
 		item_sprite.texture = null
-		emit_signal("item_removed", temp_item)
+		item_removed.emit(temp_item)
 		return temp_item
 	else:
 		return null
@@ -71,7 +70,7 @@ func try_return_item() -> bool:
 		is_item_reserved = false
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
-		emit_signal("item_returned", pickable_item)
+		item_returned.emit(pickable_item)
 		return true
 	else:
 		return false
@@ -105,12 +104,12 @@ func set_pickable_item(new_item):
 		item_sprite.texture = new_item.texture # TODO: need a way to more reliably make a sprite's texture match the 'active' item texture
 
 func _on_Area2D_mouse_entered():
-	emit_signal("mouse_entered", self)
+	mouse_entered.emit(self)
 
 func _on_Area2D_mouse_exited():
-	emit_signal("mouse_exited", self)
+	mouse_exited.emit(self)
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed:
-			emit_signal("interacted", self)
+			interacted.emit(self)

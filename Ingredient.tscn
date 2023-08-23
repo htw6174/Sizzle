@@ -5,9 +5,9 @@
 
 [sub_resource type="CircleShape2D" id="1"]
 
-[node name="Ingredient" type="Node2D"]
+[node name="Ingredient" type="Node2D" node_paths=PackedStringArray("item_sprite")]
 script = ExtResource("2")
-item_sprite_path = NodePath("Item")
+item_sprite = NodePath("Item")
 
 [node name="Drop shadow" type="Sprite2D" parent="."]
 texture = ExtResource("1")

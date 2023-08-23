@@ -10,7 +10,7 @@ func try_reserve_item() -> Ingredient:
 		is_item_reserved = true
 		display_name = "Trash"
 		item_sprite.texture = null
-		emit_signal("item_reserved", pickable_item)
+		item_reserved.emit(pickable_item)
 		return pickable_item
 	else:
 		return null
@@ -21,7 +21,7 @@ func try_take_item() -> Ingredient:
 		pickable_item = null
 		display_name = "Trash"
 		item_sprite.texture = null
-		emit_signal("item_removed", temp_item)
+		item_removed.emit(temp_item)
 		return temp_item
 	else:
 		return null

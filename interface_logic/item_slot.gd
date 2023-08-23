@@ -17,7 +17,7 @@ func try_insert_item(item: Ingredient) -> bool:
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
 		item_sprite.modulate = Color(1, 1, 1, 1)
-		emit_signal("item_inserted", item)
+		item_inserted.emit(item)
 		return true
 	else:
 		if check_for_recipe(pickable_item, item):
@@ -30,7 +30,7 @@ func try_reserve_item() -> Ingredient:
 		is_item_reserved = true
 		display_name = "Empty"
 		item_sprite.modulate = Color(1, 1, 1, 0.5)
-		emit_signal("item_reserved", pickable_item)
+		item_reserved.emit(pickable_item)
 		return pickable_item
 	else:
 		return null
@@ -41,7 +41,7 @@ func try_take_item() -> Ingredient:
 		pickable_item = null
 		display_name = "Empty"
 		item_sprite.texture = null
-		emit_signal("item_removed", temp_item)
+		item_removed.emit(temp_item)
 		return temp_item
 	else:
 		return null
@@ -51,7 +51,7 @@ func try_return_item() -> bool:
 		is_item_reserved = false
 		display_name = pickable_item.display_name
 		item_sprite.modulate = Color(1, 1, 1, 1)
-		emit_signal("item_returned", pickable_item)
+		item_returned.emit(pickable_item)
 		return true
 	else:
 		return false

@@ -13,14 +13,14 @@ func try_insert_item(item: Ingredient) -> bool:
 func try_reserve_item() -> Ingredient:
 	if pickable_item != null:
 		is_item_reserved = true
-		emit_signal("item_reserved", pickable_item)
+		item_reserved.emit(pickable_item)
 		return pickable_item
 	else:
 		return null
 
 func try_take_item() -> Ingredient:
 	if pickable_item != null:
-		emit_signal("item_removed", pickable_item)
+		item_removed.emit(pickable_item)
 		return pickable_item
 	else:
 		return null

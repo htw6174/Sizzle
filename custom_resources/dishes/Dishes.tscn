@@ -1,0 +1,86 @@
+[gd_scene load_steps=17 format=3 uid="uid://cdjp61ph76t6h"]
+
+[ext_resource type="Script" path="res://custom_resources/dish_step.gd" id="1_08qek"]
+[ext_resource type="Script" path="res://custom_resources/dish_component.gd" id="4_16unn"]
+[ext_resource type="Script" path="res://custom_resources/dish_component_option.gd" id="4_s67f8"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="4_sfvnh"]
+[ext_resource type="Texture2D" uid="uid://luga01cmlujo" path="res://sprites/spaghetti options.png" id="5_80hsc"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="6_l8qlu"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="7_nc2u6"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="8_ddarv"]
+
+[sub_resource type="Resource" id="Resource_7s0m0"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("4_sfvnh")
+sprite_coord = Vector2i(0, 0)
+background_coord = Vector2i(-1, -1)
+
+[sub_resource type="Resource" id="Resource_h6u7h"]
+script = ExtResource("4_16unn")
+name = "Noodles"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_7s0m0")])
+
+[sub_resource type="Resource" id="Resource_ec4ae"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("7_nc2u6")
+sprite_coord = Vector2i(3, 0)
+background_coord = Vector2i(1, 0)
+
+[sub_resource type="Resource" id="Resource_1wkvr"]
+script = ExtResource("4_16unn")
+name = "Sauce"
+required = false
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_ec4ae")])
+
+[sub_resource type="Resource" id="Resource_vns0j"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("6_l8qlu")
+sprite_coord = Vector2i(2, 0)
+background_coord = Vector2i(-1, -1)
+
+[sub_resource type="Resource" id="Resource_wk5lf"]
+script = ExtResource("4_16unn")
+name = "Protein"
+required = false
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_vns0j")])
+
+[sub_resource type="Resource" id="Resource_5iahs"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("8_ddarv")
+sprite_coord = Vector2i(4, 0)
+background_coord = Vector2i(-1, -1)
+
+[sub_resource type="Resource" id="Resource_ivvm8"]
+script = ExtResource("4_16unn")
+name = "Herbs"
+required = false
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_5iahs")])
+
+[node name="Dishes" type="Node"]
+script = ExtResource("1_08qek")
+
+[node name="Steak" type="Node" parent="."]
+script = ExtResource("1_08qek")
+
+[node name="Kebabs x1" type="Node" parent="."]
+script = ExtResource("1_08qek")
+
+[node name="Kebabs x2" type="Node" parent="Kebabs x1"]
+script = ExtResource("1_08qek")
+
+[node name="Kebabs x3" type="Node" parent="Kebabs x1/Kebabs x2"]
+script = ExtResource("1_08qek")
+
+[node name="Add Noodles" type="Node" parent="."]
+script = ExtResource("1_08qek")
+sprite_sheet = ExtResource("5_80hsc")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_h6u7h")])
+
+[node name="Top" type="Node" parent="Add Noodles"]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_1wkvr"), SubResource("Resource_wk5lf")])
+
+[node name="Finishing Touches" type="Node" parent="Add Noodles/Top"]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_ivvm8")])

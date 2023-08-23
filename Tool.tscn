@@ -9,22 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://bty1wv1nnje36" path="res://particles/steam_small_particles.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://crsjlu6pr71xh" path="res://sprites/exclamation point.png" id="8"]
 
-[node name="Tool" type="Node2D"]
+[node name="Tool" type="Node2D" node_paths=PackedStringArray("processor_effects", "timer", "item_sprite")]
 script = ExtResource("1")
-processor_effects_path = NodePath("ToolEffects")
-timer_path = NodePath("Timer")
-item_sprite_path = NodePath("ToolEffects/ActiveIngredientSprite")
+processor_effects = NodePath("ToolEffects")
+timer = NodePath("Timer")
+item_sprite = NodePath("ToolEffects/ActiveIngredientSprite")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="ToolEffects" type="Node2D" parent="."]
+[node name="ToolEffects" type="Node2D" parent="." node_paths=PackedStringArray("finished_ingredient", "completion_sprite", "processing_animation", "audio_player", "progress_bar", "active_particles")]
 script = ExtResource("5")
-finished_ingredient_path = NodePath("ActiveIngredientSprite")
-completion_sprite_path = NodePath("CompletionSprite")
-processing_animation_path = NodePath("ProcessingAnimation")
-audio_player_path = NodePath("AudioStreamPlayer")
-progress_bar_path = NodePath("ProgressBar")
-active_active_particles_path = NodePath("ActiveParticles")
+finished_ingredient = NodePath("ActiveIngredientSprite")
+completion_sprite = NodePath("CompletionSprite")
+processing_animation = NodePath("ProcessingAnimation")
+audio_player = NodePath("AudioStreamPlayer")
+progress_bar = NodePath("ProgressBar")
+active_particles = NodePath("ActiveParticles")
 
 [node name="ActiveIngredientSprite" type="Sprite2D" parent="ToolEffects"]
 

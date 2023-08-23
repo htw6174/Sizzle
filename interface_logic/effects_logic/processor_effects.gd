@@ -1,37 +1,28 @@
+class_name ProcessorFx
 extends Node
 
 @export var hide_during_processing: bool = false
 @export var hide_finished_ingredient: bool = false
-@export var finished_ingredient_path: NodePath
-@onready var finished_ingredient: Sprite2D = get_node(finished_ingredient_path)
-@export var completion_sprite_path: NodePath
-var completion_sprite: Sprite2D
-@export var processing_animation_path: NodePath
-var processing_animation: AnimatedSprite2D
-@export var audio_player_path: NodePath
-@onready var audio_player: AudioStreamPlayer = get_node(audio_player_path)
-@export var progress_bar_path: NodePath
-@onready var progress_bar: ProgressBar = get_node(progress_bar_path)
-@export var active_active_particles_path: NodePath
-var active_particles: CPUParticles2D
-@export var passive_particles_path: NodePath
-var passive_particles: CPUParticles2D
+@export var finished_ingredient: Sprite2D
+@export var completion_sprite: Sprite2D
+@export var processing_animation: AnimatedSprite2D
+@export var audio_player: AudioStreamPlayer
+@export var progress_bar: ProgressBar
+@export var active_particles: CPUParticles2D
+@export var passive_particles: CPUParticles2D
 
 var timer: Timer
 
 func _ready():
-	if completion_sprite_path != ^"":
-		completion_sprite = get_node(completion_sprite_path)
+	if completion_sprite:
 		completion_sprite.visible = false
-	if processing_animation_path != ^"":
-		processing_animation = get_node(processing_animation_path)
+	if processing_animation:
 		processing_animation.visible = false
+	if progress_bar:
 		progress_bar.visible = false
-	if active_active_particles_path != ^"":
-		active_particles = get_node(active_active_particles_path)
-		active_particles.emitting = false
-	if passive_particles_path != ^"":
-		passive_particles = get_node(passive_particles_path)
+#	if active_particles:
+#		active_particles.emitting = false
+	if passive_particles:
 		passive_particles.emitting = true
 
 func _process(delta):
@@ -86,7 +77,7 @@ func _on_Tool_item_reserved(item):
 		completion_sprite.visible = false
 
 
-func _on_Tool_item_removed():
+func _on_Tool_item_removed(item):
 	pass # Replace with function body.
 
 

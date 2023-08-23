@@ -2,14 +2,10 @@ extends Node
 
 class_name ObjectiveController
 
-@export var dialogue_player_path: NodePath
-@onready var dialogue_player: DialoguePlayer = get_node(dialogue_player_path)
-@export var objective_label_path: NodePath
-@onready var objective_label: Label = get_node(objective_label_path)
-@export var end_screen_path: NodePath
-@onready var end_screen: Control = get_node(end_screen_path)
-@export var serving_dish_parent_path: NodePath
-@onready var serving_dish_parent: ServingEffects = get_node(serving_dish_parent_path)
+@export var dialogue_player: DialoguePlayer
+@export var objective_label: Label
+@export var end_screen: Control 
+@export var serving_dish_parent: ServingEffects
 @export var serving_dish_scene: PackedScene
 @export var missions: Array[Mission]
 
@@ -43,7 +39,8 @@ func begin_next_dish():
 	var new_dish_scene = target_dish.serving_dish_scene.instantiate()
 	# set serving dish properties
 	assert(new_dish_scene is Interactable)
-	new_dish_scene.target_dish = target_dish
+	# TODO: might need to do something like this for tutorial dish step scenes
+	#new_dish_scene.target_dish = target_dish
 	# add to scene
 	serving_dish_parent.add_child(new_dish_scene)
 	new_dish_scene.set_owner(serving_dish_parent)
@@ -52,10 +49,10 @@ func begin_next_dish():
 	# push dish into frame
 	emit_signal("begin_objective")
 	# update objective tracker text
-	objective_label.text = new_dish_scene.target_dish.description
+	objective_label.text = target_dish.description
 	current_dish = new_dish_scene
 
-func _on_ServingDish_dish_complete(dish: Dish):
+func _on_ServingDish_dish_complete(dish_step: DishStep):
 	objective_label.text = ""
 	objective_label.get_parent().visible = false # FIXME horrible shortcut
 	emit_signal("objective_complete")
@@ -92,3 +89,7 @@ func reset_progress():
 
 func _on_RestartButton_pressed():
 	reset_progress()
+
+
+func _on_bell_rung():
+	current_dish.serve()

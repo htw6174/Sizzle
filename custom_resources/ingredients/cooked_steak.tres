@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dv1dh53g7bdvv"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_egs1l"]
+[ext_resource type="Texture2D" uid="uid://dln60nqn81bl3" path="res://sprites/steak.png" id="2_80rk1"]
+
+[resource]
+script = ExtResource("1_egs1l")
+display_name = "Steak"
+texture = ExtResource("2_80rk1")
