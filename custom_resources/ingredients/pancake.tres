@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c0a1nvjr7w54r"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_73mdu"]
+[ext_resource type="Texture2D" uid="uid://c23fbsh01t3lm" path="res://sprites/pancakestack.png" id="2_afm7f"]
+
+[resource]
+script = ExtResource("1_73mdu")
+display_name = "Pancake"
+texture = ExtResource("2_afm7f")

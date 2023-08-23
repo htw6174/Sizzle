@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c8bhbot05n83n"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_ejkyb"]
+[ext_resource type="Texture2D" uid="uid://coqyb0ns2dvrk" path="res://sprites/batter.png" id="2_yvvo3"]
+
+[resource]
+script = ExtResource("1_ejkyb")
+display_name = "Batter"
+texture = ExtResource("2_yvvo3")

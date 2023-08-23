@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cv52v1tk2my2p"]
+[gd_scene load_steps=63 format=3 uid="uid://cv52v1tk2my2p"]
 
 [ext_resource type="Script" path="res://gameplay_logic/objective_controller.gd" id="1_pyym6"]
 [ext_resource type="PackedScene" uid="uid://d0gmsmc7rqvcx" path="res://ServingPlate.tscn" id="2_gli1n"]
@@ -32,6 +32,8 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/skewer.tres" id="32_htdgq"]
 [ext_resource type="Texture2D" uid="uid://vywuog5jpcp0" path="res://sprites/empty skewer.png" id="33_m6enb"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="34_f0xoo"]
+[ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="34_ra4ix"]
+[ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="35_0cybf"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="35_hoeh2"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/pot_stew.tres" id="36_5k8pg"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="37_hafpf"]
@@ -527,8 +529,16 @@ position = Vector2(329, 151)
 pickable_item = ExtResource("34_f0xoo")
 
 [node name="Herbs" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource("28_d6hrp")]
-position = Vector2(361, 180)
+position = Vector2(344, 180)
 pickable_item = ExtResource("35_hoeh2")
+
+[node name="Milk" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(380, 136)
+pickable_item = ExtResource("34_ra4ix")
+
+[node name="Flour" parent="World/Foreground/Ingredients/RightTable" instance=ExtResource("28_d6hrp")]
+position = Vector2(380, 170)
+pickable_item = ExtResource("35_0cybf")
 
 [node name="Cheat" type="Node2D" parent="World/Foreground/Ingredients"]
 visible = false
@@ -722,8 +732,8 @@ dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 243.0
-offset_right = 339.0
+offset_left = -155.0
+offset_right = -59.0
 offset_bottom = 224.0
 texture = ExtResource("52_hykuf")
 
@@ -731,8 +741,6 @@ texture = ExtResource("52_hykuf")
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 398.0
-offset_bottom = 224.0
 mouse_filter = 1
 
 [node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]

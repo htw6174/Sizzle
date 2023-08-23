@@ -1,18 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://dvjflnpqblic5"]
 
-[ext_resource path="res://custom_resources/process_step.gd" type="Script" id=1]
-[ext_resource path="res://custom_resources/ingredients/chopped_meat.tres" type="Resource" id=2]
-[ext_resource path="res://custom_resources/process_result.gd" type="Script" id=3]
-[ext_resource path="res://custom_resources/ingredients/raw_kebab.tres" type="Resource" id=4]
-[ext_resource path="res://custom_resources/ingredients/skewer.tres" type="Resource" id=5]
+[ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_meat.tres" id="2"]
+[ext_resource type="Script" path="res://custom_resources/process_result.gd" id="3"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="4"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/skewer.tres" id="5"]
+[ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="6_223bd"]
+[ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="7_c65go"]
+[ext_resource type="Resource" uid="uid://c8bhbot05n83n" path="res://custom_resources/ingredients/batter.tres" id="8_n785o"]
 
 [node name="Combine" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="MeatMeetSkewer" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 5 ), ExtResource( 2 ) ]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5"), ExtResource("2")])
 
 [node name="ProcessResult" type="Node" parent="MeatMeetSkewer"]
-script = ExtResource( 3 )
-ingredient = ExtResource( 4 )
+script = ExtResource("3")
+ingredient = ExtResource("4")
+
+[node name="MixBatter" type="Node" parent="."]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("6_223bd"), ExtResource("7_c65go")])
+
+[node name="ProcessResult" type="Node" parent="MixBatter"]
+script = ExtResource("3")
+ingredient = ExtResource("8_n785o")
