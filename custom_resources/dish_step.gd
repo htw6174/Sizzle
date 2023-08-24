@@ -2,7 +2,6 @@
 extends Node
 class_name DishStep
 
-@export var sprite_sheet: Texture2D
 @export var components: Array[DishComponent]
 
 func get_display_name():

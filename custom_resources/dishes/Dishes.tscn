@@ -1,19 +1,69 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdjp61ph76t6h"]
+[gd_scene load_steps=33 format=3 uid="uid://cdjp61ph76t6h"]
 
 [ext_resource type="Script" path="res://custom_resources/dish_step.gd" id="1_08qek"]
+[ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="2_u5083"]
+[ext_resource type="Texture2D" uid="uid://dln60nqn81bl3" path="res://sprites/steak.png" id="4_0cy2v"]
 [ext_resource type="Script" path="res://custom_resources/dish_component.gd" id="4_16unn"]
 [ext_resource type="Script" path="res://custom_resources/dish_component_option.gd" id="4_s67f8"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="4_sfvnh"]
-[ext_resource type="Texture2D" uid="uid://luga01cmlujo" path="res://sprites/spaghetti options.png" id="5_80hsc"]
+[ext_resource type="Texture2D" uid="uid://c8jkg5xsrdf2v" path="res://sprites/dish_noodles/spaghetti.tres" id="5_tow7w"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="6_l8qlu"]
+[ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="6_vksmp"]
+[ext_resource type="Texture2D" uid="uid://c23fbsh01t3lm" path="res://sprites/pancakestack.png" id="7_7a0l3"]
+[ext_resource type="Texture2D" uid="uid://dxmu7746ps5uu" path="res://sprites/dish_noodles/tomato_sauce_bg.tres" id="7_lrglb"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="7_nc2u6"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="8_ddarv"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="8_nxu3i"]
+[ext_resource type="Texture2D" uid="uid://cy4gmjhuueojj" path="res://sprites/dish_kebabs/plated_kebab.tres" id="9_bh2r1"]
+[ext_resource type="Texture2D" uid="uid://26ypmbu0k5ys" path="res://sprites/dish_noodles/tomato_sauce.tres" id="9_ylu5a"]
+[ext_resource type="Texture2D" uid="uid://udqxhy1c6rp3" path="res://sprites/dish_noodles/beef_meatballs.tres" id="11_0tuyb"]
+[ext_resource type="Texture2D" uid="uid://by1ub8obt72kk" path="res://sprites/dish_noodles/herbs.tres" id="13_m5d4a"]
+
+[sub_resource type="Resource" id="Resource_bmac3"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("2_u5083")
+texture = ExtResource("4_0cy2v")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_88wet"]
+script = ExtResource("4_16unn")
+name = "Protein"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_bmac3")])
+
+[sub_resource type="Resource" id="Resource_xihxg"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("6_vksmp")
+texture = ExtResource("7_7a0l3")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_it7rn"]
+script = ExtResource("4_16unn")
+name = "Pancakes"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_xihxg")])
+
+[sub_resource type="Resource" id="Resource_0nfq8"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("8_nxu3i")
+texture = ExtResource("9_bh2r1")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_ljnma"]
+script = ExtResource("4_16unn")
+name = ""
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_0nfq8")])
 
 [sub_resource type="Resource" id="Resource_7s0m0"]
 script = ExtResource("4_s67f8")
 ingredient = ExtResource("4_sfvnh")
-sprite_coord = Vector2i(0, 0)
-background_coord = Vector2i(-1, -1)
+texture = ExtResource("5_tow7w")
+depth = 0
+background_depth = 0
 
 [sub_resource type="Resource" id="Resource_h6u7h"]
 script = ExtResource("4_16unn")
@@ -24,8 +74,10 @@ options = Array[ExtResource("4_s67f8")]([SubResource("Resource_7s0m0")])
 [sub_resource type="Resource" id="Resource_ec4ae"]
 script = ExtResource("4_s67f8")
 ingredient = ExtResource("7_nc2u6")
-sprite_coord = Vector2i(3, 0)
-background_coord = Vector2i(1, 0)
+texture = ExtResource("9_ylu5a")
+depth = 2
+background_texture = ExtResource("7_lrglb")
+background_depth = 0
 
 [sub_resource type="Resource" id="Resource_1wkvr"]
 script = ExtResource("4_16unn")
@@ -36,8 +88,9 @@ options = Array[ExtResource("4_s67f8")]([SubResource("Resource_ec4ae")])
 [sub_resource type="Resource" id="Resource_vns0j"]
 script = ExtResource("4_s67f8")
 ingredient = ExtResource("6_l8qlu")
-sprite_coord = Vector2i(2, 0)
-background_coord = Vector2i(-1, -1)
+texture = ExtResource("11_0tuyb")
+depth = 1
+background_depth = 0
 
 [sub_resource type="Resource" id="Resource_wk5lf"]
 script = ExtResource("4_16unn")
@@ -48,8 +101,9 @@ options = Array[ExtResource("4_s67f8")]([SubResource("Resource_vns0j")])
 [sub_resource type="Resource" id="Resource_5iahs"]
 script = ExtResource("4_s67f8")
 ingredient = ExtResource("8_ddarv")
-sprite_coord = Vector2i(4, 0)
-background_coord = Vector2i(-1, -1)
+texture = ExtResource("13_m5d4a")
+depth = 3
+background_depth = 0
 
 [sub_resource type="Resource" id="Resource_ivvm8"]
 script = ExtResource("4_16unn")
@@ -62,9 +116,15 @@ script = ExtResource("1_08qek")
 
 [node name="Steak" type="Node" parent="."]
 script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_88wet")])
+
+[node name="Pancakes" type="Node" parent="."]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_it7rn")])
 
 [node name="Kebabs x1" type="Node" parent="."]
 script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_ljnma")])
 
 [node name="Kebabs x2" type="Node" parent="Kebabs x1"]
 script = ExtResource("1_08qek")
@@ -74,7 +134,6 @@ script = ExtResource("1_08qek")
 
 [node name="Add Noodles" type="Node" parent="."]
 script = ExtResource("1_08qek")
-sprite_sheet = ExtResource("5_80hsc")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_h6u7h")])
 
 [node name="Top" type="Node" parent="Add Noodles"]

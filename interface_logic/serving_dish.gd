@@ -6,7 +6,6 @@ extends Interactable
 @export var animation_player: AnimationPlayer
 
 var dish_step: DishStep
-var active_spritesheet: Texture2D = null
 
 var step_components: Array[DishComponent]
 var added_ingredients: Array[Ingredient]
@@ -26,19 +25,15 @@ func notify_item_taken(item: Ingredient):
 	pickable_item = null
 	item_sprite.texture = null
 
-func add_sprite_layer(parent: Node2D, sprite_sheet: Texture2D, sprite_coord: Vector2i, sprite_size: Vector2i = Vector2i(59, 37)):
+func add_sprite_layer(parent: Node2D, texture: Texture2D, depth: int):
 	var item_sprite = Sprite2D.new()
 	parent.add_child(item_sprite)
 	#item_sprite.texture = next_step.sprite_frames.get_frame_texture("default", next_step.frame_index)
-	item_sprite.texture = sprite_sheet
-	item_sprite.region_enabled = true
-	item_sprite.region_rect = Rect2(sprite_coord.x * sprite_size.x, sprite_coord.y * sprite_size.y, sprite_size.x, sprite_size.y)
-	item_sprite.z_index = sprite_coord.x
+	item_sprite.texture = texture
+	item_sprite.z_index = depth
 
 func change_step(new_step: DishStep, initial_ingredient: Ingredient) -> DishComponent:
 	dish_step = new_step
-	if new_step.sprite_sheet != null:
-		active_spritesheet = new_step.sprite_sheet
 	
 	step_components = new_step.components.duplicate()
 	
@@ -76,9 +71,9 @@ func try_insert_item(item: Ingredient) -> bool:
 		# FIXME: need to get component option for sprite, not just component
 		# temp dumb hack: just determine it again
 		var component_option = added_component.matching_option(item)
-		add_sprite_layer(sprites_anchor, active_spritesheet, component_option.sprite_coord)
-		if component_option.background_coord.x > -1 && component_option.background_coord.y > -1:
-			add_sprite_layer(sprites_anchor, active_spritesheet, component_option.background_coord)
+		add_sprite_layer(sprites_anchor, component_option.texture, component_option.depth)
+		if component_option.background_texture != null:
+			add_sprite_layer(sprites_anchor, component_option.background_texture, component_option.background_depth)
 		# update dish tracking
 		added_ingredients.append(item)
 		step_components.erase(added_component)

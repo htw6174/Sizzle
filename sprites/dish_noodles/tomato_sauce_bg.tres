@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dxmu7746ps5uu"]
+
+[ext_resource type="Texture2D" uid="uid://luga01cmlujo" path="res://sprites/spaghetti options.png" id="1_rgsty"]
+
+[resource]
+atlas = ExtResource("1_rgsty")
+region = Rect2(61, 0, 59, 37)

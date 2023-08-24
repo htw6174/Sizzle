@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvjflnpqblic5"]
+[gd_scene load_steps=11 format=3 uid="uid://dvjflnpqblic5"]
 
 [ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_meat.tres" id="2"]
@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="6_223bd"]
 [ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="7_c65go"]
 [ext_resource type="Resource" uid="uid://c8bhbot05n83n" path="res://custom_resources/ingredients/batter.tres" id="8_n785o"]
+[ext_resource type="Resource" uid="uid://cw8qqoce4nn2m" path="res://custom_resources/ingredients/eggs.tres" id="8_whwhr"]
+[ext_resource type="Resource" uid="uid://chyw15hrc01sd" path="res://custom_resources/ingredients/wet_batter.tres" id="8_xxc2m"]
 
 [node name="Combine" type="Node"]
 script = ExtResource("1")
@@ -20,10 +22,18 @@ ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResour
 script = ExtResource("3")
 ingredient = ExtResource("4")
 
-[node name="MixBatter" type="Node" parent="."]
+[node name="MixBatterWet" type="Node" parent="."]
 script = ExtResource("1")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("6_223bd"), ExtResource("7_c65go")])
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("6_223bd"), ExtResource("8_whwhr")])
 
-[node name="ProcessResult" type="Node" parent="MixBatter"]
+[node name="ProcessResult" type="Node" parent="MixBatterWet"]
+script = ExtResource("3")
+ingredient = ExtResource("8_xxc2m")
+
+[node name="MixBatterFinal" type="Node" parent="."]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("8_xxc2m"), ExtResource("7_c65go")])
+
+[node name="ProcessResult" type="Node" parent="MixBatterFinal"]
 script = ExtResource("3")
 ingredient = ExtResource("8_n785o")

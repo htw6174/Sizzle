@@ -2,5 +2,7 @@ extends Resource
 class_name DishComponentOption
 
 @export var ingredient: Ingredient
-@export var sprite_coord: Vector2i
-@export var background_coord: Vector2i = Vector2i(-1, -1)
+@export var texture: Texture2D
+@export var depth: int
+@export var background_texture: Texture2D
+@export var background_depth: int
