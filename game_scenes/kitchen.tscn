@@ -1,0 +1,495 @@
+[gd_scene load_steps=41 format=3 uid="uid://cw7t4n0gg15vh"]
+
+[ext_resource type="Texture2D" uid="uid://cfoc68o08ig4e" path="res://sprites/background.png" id="1_7rp32"]
+[ext_resource type="Texture2D" uid="uid://bsv3pxagwjklx" path="res://sprites/logs.png" id="2_4jwh5"]
+[ext_resource type="PackedScene" path="res://firefly.tscn" id="3_gvyga"]
+[ext_resource type="Texture2D" uid="uid://cvvq7rly1ehl5" path="res://sprites/oven.png" id="4_epe1k"]
+[ext_resource type="Texture2D" uid="uid://cap1dne5j4q75" path="res://sprites/tent.png" id="5_20247"]
+[ext_resource type="PackedScene" uid="uid://dpbx65ek7binq" path="res://interface_logic/scenes/Tool.tscn" id="6_e2wri"]
+[ext_resource type="PackedScene" path="res://custom_resources/processes/cauldron_process_tree.tscn" id="7_bw5re"]
+[ext_resource type="Texture2D" uid="uid://bgtrggu2a3ff6" path="res://sprites/cauldron.png" id="8_7x0yd"]
+[ext_resource type="Texture2D" uid="uid://bdgivnsk14s36" path="res://sprites/stove and tables.png" id="9_k5r8m"]
+[ext_resource type="Texture2D" uid="uid://b0oj00educjas" path="res://sprites/grill.png" id="10_qmnpl"]
+[ext_resource type="PackedScene" uid="uid://blger4cu36ut6" path="res://custom_resources/processes/grill_process_tree.tscn" id="11_i1usl"]
+[ext_resource type="AudioStream" uid="uid://bcokfrnqovgne" path="res://audio/194806__hannebu__frying.wav" id="12_d1ynp"]
+[ext_resource type="PackedScene" uid="uid://c80x128w0j80e" path="res://custom_resources/processes/pot_process_tree.tscn" id="13_7sr3c"]
+[ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="14_3uiht"]
+[ext_resource type="PackedScene" uid="uid://btqio36j1aha8" path="res://custom_resources/processes/skillet_process_tree.tscn" id="15_g0n71"]
+[ext_resource type="Texture2D" uid="uid://doxvtk8vin3d5" path="res://sprites/skillet final.png" id="16_hhw1f"]
+[ext_resource type="PackedScene" path="res://custom_resources/processes/chop_process_tree.tscn" id="17_srbx7"]
+[ext_resource type="Texture2D" uid="uid://cm3i0vhjp1fd0" path="res://sprites/cutting board log.png" id="18_t46gs"]
+[ext_resource type="AudioStream" uid="uid://b0y0f3a7bm81p" path="res://audio/qubodupItemHandling2_mono.wav" id="19_w2jxh"]
+[ext_resource type="PackedScene" uid="uid://d2qslb34ro6go" path="res://interface_logic/scenes/trash.tscn" id="20_cmipo"]
+[ext_resource type="PackedScene" uid="uid://d0gmsmc7rqvcx" path="res://interface_logic/scenes/ServingPlate.tscn" id="21_h6tl2"]
+[ext_resource type="PackedScene" uid="uid://deblooe1tgf2b" path="res://interface_logic/scenes/Ingredient.tscn" id="22_7v2o0"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="23_h3wwk"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="24_gewi6"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="25_odegk"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/skewer.tres" id="26_cirqo"]
+[ext_resource type="Texture2D" uid="uid://vywuog5jpcp0" path="res://sprites/empty skewer.png" id="27_7vnas"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="28_ljwnh"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="29_ox2te"]
+[ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="30_fiv7t"]
+[ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="31_de7dh"]
+[ext_resource type="Resource" uid="uid://cw8qqoce4nn2m" path="res://custom_resources/ingredients/eggs.tres" id="32_s83xm"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/pot_stew.tres" id="33_mhb1v"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="34_pbr5u"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="35_afyfo"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="36_ehi5m"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="37_usqln"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="38_tqofr"]
+[ext_resource type="Texture2D" uid="uid://dqoxildwtbv7d" path="res://sprites/mat.png" id="39_s8pho"]
+[ext_resource type="PackedScene" uid="uid://534jfrk6bjtp" path="res://interface_logic/scenes/item_slot.tscn" id="40_mu50n"]
+
+[node name="Kitchen" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Forest" type="Sprite2D" parent="Background"]
+position = Vector2(199, 112)
+texture = ExtResource("1_7rp32")
+
+[node name="logpile" type="Sprite2D" parent="Background"]
+position = Vector2(108, 99)
+texture = ExtResource("2_4jwh5")
+
+[node name="Fireflies" type="Node2D" parent="Background"]
+position = Vector2(199, 76)
+
+[node name="Firefly" parent="Background/Fireflies" instance=ExtResource("3_gvyga")]
+
+[node name="Firefly2" parent="Background/Fireflies" instance=ExtResource("3_gvyga")]
+position = Vector2(93, -45)
+
+[node name="Firefly3" parent="Background/Fireflies" instance=ExtResource("3_gvyga")]
+position = Vector2(129, -2)
+
+[node name="Firefly4" parent="Background/Fireflies" instance=ExtResource("3_gvyga")]
+position = Vector2(-103, -28)
+
+[node name="Firefly5" parent="Background/Fireflies" instance=ExtResource("3_gvyga")]
+position = Vector2(-50, 3)
+
+[node name="oven" type="Sprite2D" parent="Background"]
+position = Vector2(199, 112)
+texture = ExtResource("4_epe1k")
+
+[node name="tent" type="Sprite2D" parent="Background"]
+position = Vector2(199, 112)
+texture = ExtResource("5_20247")
+
+[node name="Tools" type="Node2D" parent="Background"]
+
+[node name="Cauldron" parent="Background/Tools" instance=ExtResource("6_e2wri")]
+position = Vector2(320, 123)
+processing_verb = "Boiling..."
+preperation_process_scene = ExtResource("7_bw5re")
+
+[node name="Sprite2D" parent="Background/Tools/Cauldron" index="0"]
+texture = ExtResource("8_7x0yd")
+
+[node name="ToolEffects" parent="Background/Tools/Cauldron" index="1"]
+hide_during_processing = true
+hide_finished_ingredient = true
+
+[node name="ActiveIngredientSprite" parent="Background/Tools/Cauldron/ToolEffects" index="0"]
+position = Vector2(-1, -22)
+
+[node name="CompletionSprite" parent="Background/Tools/Cauldron/ToolEffects" index="1"]
+position = Vector2(0, -44)
+
+[node name="ProcessingAnimation" parent="Background/Tools/Cauldron/ToolEffects" index="2"]
+position = Vector2(-1, -21)
+
+[node name="ActiveParticles" parent="Background/Tools/Cauldron/ToolEffects" index="3"]
+position = Vector2(0, -30)
+
+[node name="PassiveParticles" parent="Background/Tools/Cauldron/ToolEffects" index="4"]
+position = Vector2(0, -32)
+
+[node name="ProgressBar" parent="Background/Tools/Cauldron/ToolEffects" index="6"]
+offset_left = -23.0
+offset_top = -50.0
+offset_right = 17.0
+offset_bottom = -36.0
+grow_horizontal = 2
+
+[node name="CollisionPolygon2D" parent="Background/Tools/Cauldron/Area2D" index="0"]
+position = Vector2(1, -12)
+polygon = PackedVector2Array(42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19)
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="table n stove" type="Sprite2D" parent="Foreground"]
+position = Vector2(199, 112)
+texture = ExtResource("9_k5r8m")
+
+[node name="Grill" type="Sprite2D" parent="Foreground"]
+position = Vector2(200, 122)
+texture = ExtResource("10_qmnpl")
+
+[node name="Tools" type="Node2D" parent="Foreground"]
+position = Vector2(199, 112)
+
+[node name="Grills" type="Node2D" parent="Foreground/Tools"]
+
+[node name="Left" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
+position = Vector2(-58, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("11_i1usl")
+
+[node name="Sprite2D" parent="Foreground/Tools/Grills/Left" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="Foreground/Tools/Grills/Left" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Grills/Left/ToolEffects" index="0"]
+position = Vector2(3, 20)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Grills/Left/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="Foreground/Tools/Grills/Left/ToolEffects" index="5"]
+stream = ExtResource("12_d1ynp")
+
+[node name="ProgressBar" parent="Foreground/Tools/Grills/Left/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="Foreground/Tools/Grills/Left" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Grills/Left/Area2D" index="0"]
+position = Vector2(14, 0)
+polygon = PackedVector2Array(13, -4, 2, 17, -37, 17, -37, 12, -21, -4)
+
+[node name="CenterLeft" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
+position = Vector2(-18, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("11_i1usl")
+
+[node name="Sprite2D" parent="Foreground/Tools/Grills/CenterLeft" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="Foreground/Tools/Grills/CenterLeft" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Grills/CenterLeft/ToolEffects" index="0"]
+position = Vector2(0, 20)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Grills/CenterLeft/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="Foreground/Tools/Grills/CenterLeft/ToolEffects" index="5"]
+stream = ExtResource("12_d1ynp")
+
+[node name="ProgressBar" parent="Foreground/Tools/Grills/CenterLeft/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="Foreground/Tools/Grills/CenterLeft" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Grills/CenterLeft/Area2D" index="0"]
+polygon = PackedVector2Array(19, -4, 19, 17, -23, 17, -12, -4)
+
+[node name="CenterRight" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
+position = Vector2(18, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("11_i1usl")
+
+[node name="Sprite2D" parent="Foreground/Tools/Grills/CenterRight" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="Foreground/Tools/Grills/CenterRight" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Grills/CenterRight/ToolEffects" index="0"]
+position = Vector2(0, 20)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Grills/CenterRight/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="Foreground/Tools/Grills/CenterRight/ToolEffects" index="5"]
+stream = ExtResource("12_d1ynp")
+
+[node name="ProgressBar" parent="Foreground/Tools/Grills/CenterRight/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="Foreground/Tools/Grills/CenterRight" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Grills/CenterRight/Area2D" index="0"]
+polygon = PackedVector2Array(15, -4, 27, 17, -16, 17, -16, -4)
+
+[node name="Right" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
+position = Vector2(59, 17)
+processing_verb = "Grilling..."
+preperation_process_scene = ExtResource("11_i1usl")
+
+[node name="Sprite2D" parent="Foreground/Tools/Grills/Right" index="0"]
+position = Vector2(-10, -16)
+
+[node name="ToolEffects" parent="Foreground/Tools/Grills/Right" index="1"]
+position = Vector2(0, -35)
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Grills/Right/ToolEffects" index="0"]
+position = Vector2(-3, 20)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Grills/Right/ToolEffects" index="2"]
+position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer" parent="Foreground/Tools/Grills/Right/ToolEffects" index="5"]
+stream = ExtResource("12_d1ynp")
+
+[node name="ProgressBar" parent="Foreground/Tools/Grills/Right/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="Foreground/Tools/Grills/Right" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Grills/Right/Area2D" index="0"]
+position = Vector2(-15, 0)
+polygon = PackedVector2Array(24, -4, 40, 12, 40, 17, 2, 17, -10, -4)
+
+[node name="Pot" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
+position = Vector2(-46, 54)
+processing_verb = "Simmering..."
+preperation_process_scene = ExtResource("13_7sr3c")
+
+[node name="Sprite2D" parent="Foreground/Tools/Pot" index="0"]
+position = Vector2(-10, -16)
+texture = ExtResource("14_3uiht")
+
+[node name="ToolEffects" parent="Foreground/Tools/Pot" index="1"]
+hide_during_processing = true
+hide_finished_ingredient = true
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Pot/ToolEffects" index="0"]
+visible = false
+position = Vector2(0, -27)
+
+[node name="CompletionSprite" parent="Foreground/Tools/Pot/ToolEffects" index="1"]
+position = Vector2(0, -17)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Pot/ToolEffects" index="2"]
+position = Vector2(0, -27)
+
+[node name="ActiveParticles" parent="Foreground/Tools/Pot/ToolEffects" index="3"]
+position = Vector2(0, -39)
+
+[node name="ProgressBar" parent="Foreground/Tools/Pot/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="Foreground/Tools/Pot" index="2"]
+position = Vector2(-1, -17)
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Pot/Area2D" index="0"]
+polygon = PackedVector2Array(20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12, -13, -16, 15, -16)
+
+[node name="Skillet" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
+position = Vector2(48, 56)
+processing_verb = "Frying..."
+preperation_process_scene = ExtResource("15_g0n71")
+
+[node name="Sprite2D" parent="Foreground/Tools/Skillet" index="0"]
+position = Vector2(17, -17)
+texture = ExtResource("16_hhw1f")
+
+[node name="ToolEffects" parent="Foreground/Tools/Skillet" index="1"]
+hide_during_processing = true
+hide_finished_ingredient = true
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Skillet/ToolEffects" index="0"]
+position = Vector2(0, -19)
+
+[node name="CompletionSprite" parent="Foreground/Tools/Skillet/ToolEffects" index="1"]
+position = Vector2(0, -19)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Skillet/ToolEffects" index="2"]
+position = Vector2(0, -19)
+
+[node name="ActiveParticles" parent="Foreground/Tools/Skillet/ToolEffects" index="3"]
+position = Vector2(0, -31)
+
+[node name="AudioStreamPlayer" parent="Foreground/Tools/Skillet/ToolEffects" index="5"]
+stream = ExtResource("12_d1ynp")
+
+[node name="ProgressBar" parent="Foreground/Tools/Skillet/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Area2D" parent="Foreground/Tools/Skillet" index="2"]
+position = Vector2(0, -19)
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Skillet/Area2D" index="0"]
+polygon = PackedVector2Array(34, -7, 34, 8, 25, 16, 0, 20, -25, 17, -35, 6, -36, -7, -31, -15, -1, -19, 28, -15)
+
+[node name="CuttingBoard" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
+position = Vector2(67, 92)
+processing_verb = "Chopping..."
+preperation_process_scene = ExtResource("17_srbx7")
+
+[node name="Sprite2D" parent="Foreground/Tools/CuttingBoard" index="0"]
+texture = ExtResource("18_t46gs")
+
+[node name="ToolEffects" parent="Foreground/Tools/CuttingBoard" index="1"]
+hide_during_processing = true
+active_particles = NodePath("")
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/CuttingBoard/ToolEffects" index="0"]
+position = Vector2(0, -7)
+
+[node name="CompletionSprite" parent="Foreground/Tools/CuttingBoard/ToolEffects" index="1"]
+position = Vector2(0, -22)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/CuttingBoard/ToolEffects" index="2"]
+position = Vector2(0, -7)
+
+[node name="AudioStreamPlayer" parent="Foreground/Tools/CuttingBoard/ToolEffects" index="5"]
+stream = ExtResource("19_w2jxh")
+
+[node name="ProgressBar" parent="Foreground/Tools/CuttingBoard/ToolEffects" index="6"]
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/CuttingBoard/Area2D" index="0"]
+polygon = PackedVector2Array(40, -5, 40, 13, -41, 13, -41, -6, -32, -16, -10, -20, 10, -20, 34, -14)
+
+[node name="Trash" parent="Foreground/Tools" instance=ExtResource("20_cmipo")]
+position = Vector2(135, 99)
+
+[node name="ServingCake" parent="Foreground/Tools" instance=ExtResource("21_h6tl2")]
+visible = false
+position = Vector2(160, -79)
+
+[node name="ServingBreakfast" parent="Foreground/Tools" instance=ExtResource("21_h6tl2")]
+visible = false
+position = Vector2(88, -81)
+
+[node name="Ingredients" type="Node2D" parent="Foreground"]
+
+[node name="LeftTable" type="Node2D" parent="Foreground/Ingredients"]
+
+[node name="Steak" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(34, 143)
+pickable_item = ExtResource("23_h3wwk")
+
+[node name="Tomato" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(72, 150)
+pickable_item = ExtResource("24_gewi6")
+
+[node name="Garlic" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(55, 183)
+pickable_item = ExtResource("25_odegk")
+
+[node name="Skewer" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(19, 174)
+pickable_item = ExtResource("26_cirqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/Ingredients/LeftTable/Skewer"]
+position = Vector2(3, 3)
+texture = ExtResource("27_7vnas")
+
+[node name="Sprite2" type="Sprite2D" parent="Foreground/Ingredients/LeftTable/Skewer"]
+position = Vector2(6, 6)
+texture = ExtResource("27_7vnas")
+
+[node name="RightTable" type="Node2D" parent="Foreground/Ingredients"]
+
+[node name="Noodles" parent="Foreground/Ingredients/RightTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(329, 151)
+pickable_item = ExtResource("28_ljwnh")
+
+[node name="Herbs" parent="Foreground/Ingredients/RightTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(344, 180)
+pickable_item = ExtResource("29_ox2te")
+
+[node name="Milk" parent="Foreground/Ingredients/RightTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(380, 136)
+pickable_item = ExtResource("30_fiv7t")
+
+[node name="Flour" parent="Foreground/Ingredients/RightTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(380, 170)
+pickable_item = ExtResource("31_de7dh")
+
+[node name="Eggs" parent="Foreground/Ingredients/RightTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(380, 203)
+pickable_item = ExtResource("32_s83xm")
+
+[node name="Cheat" type="Node2D" parent="Foreground/Ingredients"]
+visible = false
+position = Vector2(196, 21)
+
+[node name="Stew" parent="Foreground/Ingredients/Cheat" instance=ExtResource("22_7v2o0")]
+position = Vector2(-52, -1)
+pickable_item = ExtResource("33_mhb1v")
+
+[node name="Noodles" parent="Foreground/Ingredients/Cheat" instance=ExtResource("22_7v2o0")]
+pickable_item = ExtResource("34_pbr5u")
+
+[node name="Meatballs" parent="Foreground/Ingredients/Cheat" instance=ExtResource("22_7v2o0")]
+position = Vector2(36, 0)
+pickable_item = ExtResource("35_afyfo")
+
+[node name="Sauce" parent="Foreground/Ingredients/Cheat" instance=ExtResource("22_7v2o0")]
+position = Vector2(73, 0)
+pickable_item = ExtResource("36_ehi5m")
+
+[node name="RawKebab" parent="Foreground/Ingredients/Cheat" instance=ExtResource("22_7v2o0")]
+position = Vector2(109, 0)
+pickable_item = ExtResource("37_usqln")
+
+[node name="CookedKebab" parent="Foreground/Ingredients/Cheat" instance=ExtResource("22_7v2o0")]
+position = Vector2(146, 0)
+pickable_item = ExtResource("38_tqofr")
+
+[node name="ServingArea" type="Node2D" parent="Foreground"]
+position = Vector2(148, 206)
+
+[node name="Mat" type="Sprite2D" parent="Foreground/ServingArea"]
+texture = ExtResource("39_s8pho")
+
+[node name="StorageSlots" type="Node2D" parent="Foreground/ServingArea"]
+position = Vector2(-33, -3)
+
+[node name="ItemSlot" parent="Foreground/ServingArea/StorageSlots" instance=ExtResource("40_mu50n")]
+position = Vector2(-10, -15)
+
+[node name="CollisionPolygon2D" parent="Foreground/ServingArea/StorageSlots/ItemSlot/Area2D" index="0"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 8, 6, 15, -7, 11, -16, -1)
+
+[node name="ItemSlot2" parent="Foreground/ServingArea/StorageSlots" instance=ExtResource("40_mu50n")]
+position = Vector2(23, -15)
+
+[node name="CollisionPolygon2D" parent="Foreground/ServingArea/StorageSlots/ItemSlot2/Area2D" index="0"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, 7, 16, -16, 7)
+
+[node name="ItemSlot3" parent="Foreground/ServingArea/StorageSlots" instance=ExtResource("40_mu50n")]
+position = Vector2(-20, 1)
+
+[node name="CollisionPolygon2D" parent="Foreground/ServingArea/StorageSlots/ItemSlot3/Area2D" index="0"]
+polygon = PackedVector2Array(16, 0, 16, 16, -16, 16, -16, -16, -6, -16, 2, -5)
+
+[node name="ItemSlot4" parent="Foreground/ServingArea/StorageSlots" instance=ExtResource("40_mu50n")]
+position = Vector2(13, 1)
+
+[node name="CollisionPolygon2D" parent="Foreground/ServingArea/StorageSlots/ItemSlot4/Area2D" index="0"]
+polygon = PackedVector2Array(16, 0, 16, 16, -16, 16, -16, -1, -6, -8)
+
+[editable path="Background/Tools/Cauldron"]
+[editable path="Foreground/Tools/Grills/Left"]
+[editable path="Foreground/Tools/Grills/CenterLeft"]
+[editable path="Foreground/Tools/Grills/CenterRight"]
+[editable path="Foreground/Tools/Grills/Right"]
+[editable path="Foreground/Tools/Pot"]
+[editable path="Foreground/Tools/Skillet"]
+[editable path="Foreground/Tools/CuttingBoard"]
+[editable path="Foreground/ServingArea/StorageSlots/ItemSlot"]
+[editable path="Foreground/ServingArea/StorageSlots/ItemSlot2"]
+[editable path="Foreground/ServingArea/StorageSlots/ItemSlot3"]
+[editable path="Foreground/ServingArea/StorageSlots/ItemSlot4"]

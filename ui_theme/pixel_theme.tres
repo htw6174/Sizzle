@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bahxjt4a2qkvs"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bahxjt4a2qkvs"]
 
 [ext_resource type="StyleBox" uid="uid://54axactnw8ts" path="res://ui_theme/uibox.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://kysqv5y43nqm" path="res://ui_theme/pixel_font.tres" id="2"]
 [ext_resource type="StyleBox" uid="uid://djp6lbaynohxl" path="res://ui_theme/uibox_pressed.tres" id="3"]
 [ext_resource type="StyleBox" uid="uid://c7v1nvn3fckcv" path="res://ui_theme/uibox_hover.tres" id="4"]
+[ext_resource type="StyleBox" uid="uid://2mvby2xel401" path="res://ui_theme/style_box_flat.tres" id="4_wleqn"]
 [ext_resource type="StyleBox" uid="uid://dolx67yyy7nux" path="res://ui_theme/progress_bar.tres" id="5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svakg"]
@@ -79,6 +80,7 @@ Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/styles/normal = null
+Panel/styles/panel = ExtResource("4_wleqn")
 PanelContainer/styles/panel = ExtResource("1")
 ProgressBar/styles/bg = ExtResource("1")
 ProgressBar/styles/fg = ExtResource("5")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=64 format=3 uid="uid://cv52v1tk2my2p"]
+[gd_scene load_steps=63 format=3 uid="uid://cv52v1tk2my2p"]
 
 [ext_resource type="Script" path="res://gameplay_logic/objective_controller.gd" id="1_pyym6"]
-[ext_resource type="PackedScene" uid="uid://d0gmsmc7rqvcx" path="res://ServingPlate.tscn" id="2_gli1n"]
+[ext_resource type="PackedScene" uid="uid://d0gmsmc7rqvcx" path="res://interface_logic/scenes/ServingPlate.tscn" id="2_gli1n"]
 [ext_resource type="Resource" uid="uid://cbhkhfo04dfra" path="res://custom_resources/missions/intro_mission.tres" id="3_6nxeg"]
 [ext_resource type="Resource" uid="uid://ddfsawky0cncu" path="res://custom_resources/missions/kebab_mission.tres" id="4_vob0s"]
 [ext_resource type="Resource" path="res://custom_resources/missions/spaghetti_mission.tres" id="5_sjs2i"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://firefly.tscn" id="8_s63qe"]
 [ext_resource type="Texture2D" uid="uid://cvvq7rly1ehl5" path="res://sprites/oven.png" id="9_hegka"]
 [ext_resource type="Texture2D" uid="uid://cap1dne5j4q75" path="res://sprites/tent.png" id="10_cpti1"]
-[ext_resource type="PackedScene" uid="uid://dpbx65ek7binq" path="res://Tool.tscn" id="11_mlu0y"]
+[ext_resource type="PackedScene" uid="uid://dpbx65ek7binq" path="res://interface_logic/scenes/Tool.tscn" id="11_mlu0y"]
 [ext_resource type="PackedScene" path="res://custom_resources/processes/cauldron_process_tree.tscn" id="12_fjwsl"]
 [ext_resource type="Texture2D" uid="uid://bgtrggu2a3ff6" path="res://sprites/cauldron.png" id="13_emo48"]
 [ext_resource type="Texture2D" uid="uid://bdgivnsk14s36" path="res://sprites/stove and tables.png" id="14_qx08n"]
@@ -24,8 +24,8 @@
 [ext_resource type="PackedScene" path="res://custom_resources/processes/chop_process_tree.tscn" id="22_7rdu1"]
 [ext_resource type="Texture2D" uid="uid://cm3i0vhjp1fd0" path="res://sprites/cutting board log.png" id="23_q5wyt"]
 [ext_resource type="AudioStream" uid="uid://b0y0f3a7bm81p" path="res://audio/qubodupItemHandling2_mono.wav" id="24_ps3i0"]
-[ext_resource type="PackedScene" uid="uid://d2qslb34ro6go" path="res://trash.tscn" id="25_uxfkj"]
-[ext_resource type="PackedScene" uid="uid://deblooe1tgf2b" path="res://Ingredient.tscn" id="28_d6hrp"]
+[ext_resource type="PackedScene" uid="uid://d2qslb34ro6go" path="res://interface_logic/scenes/trash.tscn" id="25_uxfkj"]
+[ext_resource type="PackedScene" uid="uid://deblooe1tgf2b" path="res://interface_logic/scenes/Ingredient.tscn" id="28_d6hrp"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="29_a3tfk"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="30_abhoh"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="31_x5gnb"]
@@ -43,17 +43,16 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="40_d5b7c"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="41_fgk0c"]
 [ext_resource type="Texture2D" uid="uid://dqoxildwtbv7d" path="res://sprites/mat.png" id="42_qe4m8"]
-[ext_resource type="PackedScene" uid="uid://534jfrk6bjtp" path="res://item_slot.tscn" id="43_up2cg"]
+[ext_resource type="PackedScene" uid="uid://534jfrk6bjtp" path="res://interface_logic/scenes/item_slot.tscn" id="43_up2cg"]
 [ext_resource type="Script" path="res://interface_logic/effects_logic/serving_effects.gd" id="44_61qji"]
 [ext_resource type="Texture2D" uid="uid://d1gamckqqhmto" path="res://sprites/star_particle.png" id="45_4m6ko"]
 [ext_resource type="Script" path="res://interface_logic/serving_bell.gd" id="45_76e5c"]
 [ext_resource type="Animation" uid="uid://fycv0de6t18s" path="res://animations/dish_enter.tres" id="45_r44ls"]
 [ext_resource type="Animation" uid="uid://bbj280mplg4a3" path="res://animations/dish_exit.tres" id="46_gsp2e"]
-[ext_resource type="Script" path="res://interface_logic/hand_display.gd" id="47_87jm4"]
 [ext_resource type="AudioStream" uid="uid://dypucbx5wo1dh" path="res://audio/149268__organicmanpl__ding-3_doubled.wav" id="47_eajme"]
-[ext_resource type="Script" path="res://interface_logic/adaptive_label.gd" id="48_rc1om"]
 [ext_resource type="Theme" uid="uid://bahxjt4a2qkvs" path="res://ui_theme/pixel_theme.tres" id="49_mityb"]
 [ext_resource type="Script" path="res://gui_logic/button_toggle.gd" id="50_q0s06"]
+[ext_resource type="PackedScene" uid="uid://cm6w0ydv6wejg" path="res://interface_logic/scenes/hand_display.tscn" id="51_kluhp"]
 [ext_resource type="Script" path="res://gui_logic/dialogue_player.gd" id="51_lq7d2"]
 [ext_resource type="Texture2D" uid="uid://d0yvvtt0pl4op" path="res://sprites/helper chef longer.png" id="52_hykuf"]
 [ext_resource type="Animation" uid="uid://dxg8edbiu0aon" path="res://animations/dialogue_in.tres" id="53_05e8j"]
@@ -633,43 +632,7 @@ texture = ExtResource("45_4m6ko")
 stream = ExtResource("47_eajme")
 volume_db = -6.0
 
-[node name="HandDisplay" type="Sprite2D" parent="World"]
-z_index = 10
-script = ExtResource("47_87jm4")
-control_path = NodePath("Control")
-label_path = NodePath("Control/PanelContainer/VBoxContainer/Label")
-tooltip_path = NodePath("Control/PanelContainer/VBoxContainer/Tooltip")
-audio_player_path = NodePath("AudioStreamPlayer")
-
-[node name="Control" type="Control" parent="World/HandDisplay"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="World/HandDisplay/Control"]
-self_modulate = Color(1, 1, 1, 0.682353)
-layout_mode = 0
-size_flags_vertical = 9
-mouse_filter = 2
-script = ExtResource("48_rc1om")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="World/HandDisplay/Control/PanelContainer"]
-layout_mode = 2
-size_flags_vertical = 9
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "test"
-
-[node name="Tooltip" type="Label" parent="World/HandDisplay/Control/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "longer test"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/HandDisplay"]
-mix_target = 2
+[node name="HandDisplay" parent="World" instance=ExtResource("51_kluhp")]
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3

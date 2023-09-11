@@ -6,7 +6,7 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="4"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="5"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="6"]
-[ext_resource type="PackedScene" path="res://ServingBowl.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://cjgf7sgy1i7l4" path="res://interface_logic/scenes/ServingBowl.tscn" id="7"]
 
 [resource]
 script = ExtResource("1")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://co4nv0iy663ng"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Items" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

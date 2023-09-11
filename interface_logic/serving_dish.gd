@@ -1,16 +1,16 @@
 extends Interactable
 
 @export var dish_tree_root: DishStep
-@export var dish_animation: AnimatedSprite2D
 @export var sprites_anchor: Node2D
 @export var animation_player: AnimationPlayer
+@export var serving_effects: ServingEffects
 
 var dish_step: DishStep
 
 var step_components: Array[DishComponent]
 var added_ingredients: Array[Ingredient]
 
-signal dish_complete(dish_step)
+signal dish_complete(dish_step, added_ingredients)
 
 func _ready():
 	super()
@@ -82,26 +82,9 @@ func try_insert_item(item: Ingredient) -> bool:
 		return true
 	else:
 		return false
-#	var next_step: DishStep = dish_step.check_child_requirements(item)
-#	if next_step:
-#		# determine which component variant to use
-#		var next_component = next_step.check_components(item)
-#		# create new sprite node
-#		add_sprite_layer(sprites_anchor, next_step.sprite_sheet, next_component.sprite_coord)
-#		if next_component.background_coord.x > -1 && next_component.background_coord.y > -1:
-#			add_sprite_layer(sprites_anchor, next_step.sprite_sheet, next_component.background_coord)
-#		added_ingredients.append(item)
-#		dish_step = next_step
-#		set_tooltip()
-#		return true
-#	else:
-#		return false
 
 func serve():
 	animation_player.play("dish_complete")
-	
-	dish_step = dish_tree_root
-	step_components = dish_step.components.duplicate()
 
 func set_tooltip():
 	if dish_step == dish_tree_root:
@@ -116,3 +99,11 @@ func set_tooltip():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "dish_complete":
 		dish_complete.emit(dish_step)
+		
+		# reset
+		dish_step = dish_tree_root
+		step_components = dish_step.components.duplicate()
+
+
+func _on_bell_rung():
+	pass # Replace with function body.

@@ -1,0 +1,172 @@
+[gd_scene load_steps=18 format=3 uid="uid://b4m5qpvlsqjeq"]
+
+[ext_resource type="Script" path="res://interface_logic/serving_dish.gd" id="1_t30tj"]
+[ext_resource type="Texture2D" uid="uid://6k1drdyoty0r" path="res://sprites/bowl shadow.png" id="2_8dm08"]
+[ext_resource type="Script" path="res://interface_logic/effects_logic/serving_effects.gd" id="3_ap1qx"]
+[ext_resource type="Texture2D" uid="uid://cxf87ti6d3oav" path="res://sprites/plate empty.png" id="3_t77at"]
+[ext_resource type="Texture2D" uid="uid://d1gamckqqhmto" path="res://sprites/star_particle.png" id="4_7qqqa"]
+[ext_resource type="Animation" uid="uid://fycv0de6t18s" path="res://animations/dish_enter.tres" id="4_ypkkr"]
+[ext_resource type="Gradient" path="res://fade_gradient.tres" id="5_mxx36"]
+[ext_resource type="Animation" uid="uid://bbj280mplg4a3" path="res://animations/dish_exit.tres" id="5_naa52"]
+[ext_resource type="Animation" uid="uid://b325t31xi88of" path="res://animations/dish_complete.tres" id="6_e11s2"]
+[ext_resource type="PackedScene" uid="uid://cdjp61ph76t6h" path="res://custom_resources/dishes/Dishes.tscn" id="7_wllwa"]
+[ext_resource type="Script" path="res://interface_logic/serving_bell.gd" id="8_4bbi2"]
+[ext_resource type="AudioStream" uid="uid://dypucbx5wo1dh" path="res://audio/149268__organicmanpl__ding-3_doubled.wav" id="9_005w7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugf7j"]
+
+[sub_resource type="Animation" id="1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsii7"]
+_data = {
+"RESET": SubResource("1"),
+"dish_enter": ExtResource("4_ypkkr"),
+"dish_exit": ExtResource("5_naa52")
+}
+
+[sub_resource type="Animation" id="Animation_ex3i6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dish/CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dish/Plate:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rnxtm"]
+_data = {
+"RESET": SubResource("Animation_ex3i6"),
+"dish_complete": ExtResource("6_e11s2")
+}
+
+[node name="ServingArea" type="Node2D" node_paths=PackedStringArray("dish_tree_root", "sprites_anchor", "animation_player", "serving_effects")]
+script = ExtResource("1_t30tj")
+dish_tree_root = NodePath("Dishes")
+sprites_anchor = NodePath("DishAnchor/Dish/Plate/SpritesAnchor")
+animation_player = NodePath("DishAnchor/Dish/AnimationPlayer")
+serving_effects = NodePath("DishAnchor")
+
+[node name="Dishes" parent="." instance=ExtResource("7_wllwa")]
+
+[node name="Bell" type="Area2D" parent="."]
+position = Vector2(-31, 23)
+script = ExtResource("8_4bbi2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bell"]
+shape = SubResource("CircleShape2D_ugf7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bell"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_7qqqa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bell"]
+stream = ExtResource("9_005w7")
+volume_db = -6.0
+
+[node name="Reset" type="Area2D" parent="."]
+position = Vector2(31, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
+shape = SubResource("CircleShape2D_ugf7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reset"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t77at")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Reset"]
+stream = ExtResource("9_005w7")
+volume_db = -6.0
+
+[node name="DishAnchor" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
+script = ExtResource("3_ap1qx")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DishAnchor"]
+libraries = {
+"": SubResource("AnimationLibrary_wsii7")
+}
+
+[node name="Dish" type="Node2D" parent="DishAnchor"]
+
+[node name="Drop Shadow" type="Sprite2D" parent="DishAnchor/Dish"]
+position = Vector2(0, 8)
+texture = ExtResource("2_8dm08")
+
+[node name="Plate" type="Sprite2D" parent="DishAnchor/Dish"]
+position = Vector2(0, 6)
+texture = ExtResource("3_t77at")
+region_rect = Rect2(0, 0, 39, 20)
+
+[node name="SpritesAnchor" type="Node2D" parent="DishAnchor/Dish/Plate"]
+
+[node name="Area2D" type="Area2D" parent="DishAnchor/Dish"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DishAnchor/Dish/Area2D"]
+polygon = PackedVector2Array(30, 2, 30, 11, 15, 17, -16, 17, -31, 11, -31, 1, -16, -16, 16, -16)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="DishAnchor/Dish"]
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+lifetime_randomness = 0.4
+texture = ExtResource("4_7qqqa")
+direction = Vector2(0, -1)
+spread = 120.0
+color_ramp = ExtResource("5_mxx36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DishAnchor/Dish"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_rnxtm")
+}
+
+[connection signal="bell_rung" from="Bell" to="." method="_on_bell_rung"]
+[connection signal="input_event" from="Bell" to="Bell" method="_on_input_event"]
+[connection signal="input_event" from="Reset" to="Reset" method="_on_input_event"]
+[connection signal="input_event" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="animation_finished" from="DishAnchor/Dish/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm6w0ydv6wejg"]
+
+[ext_resource type="Script" path="res://interface_logic/hand_display.gd" id="1_m4h4y"]
+[ext_resource type="Script" path="res://interface_logic/adaptive_label.gd" id="2_o02n6"]
+
+[node name="HandDisplay" type="Sprite2D"]
+z_index = 10
+script = ExtResource("1_m4h4y")
+control_path = NodePath("Control")
+label_path = NodePath("Control/PanelContainer/VBoxContainer/Label")
+tooltip_path = NodePath("Control/PanelContainer/VBoxContainer/Tooltip")
+audio_player_path = NodePath("AudioStreamPlayer")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0.682353)
+layout_mode = 0
+size_flags_vertical = 9
+mouse_filter = 2
+script = ExtResource("2_o02n6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "test"
+
+[node name="Tooltip" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "longer test"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+mix_target = 2
