@@ -44,6 +44,7 @@
 [node name="Kitchen" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
+z_index = -10
 
 [node name="Forest" type="Sprite2D" parent="Background"]
 position = Vector2(199, 112)
@@ -78,46 +79,6 @@ texture = ExtResource("4_epe1k")
 position = Vector2(199, 112)
 texture = ExtResource("5_20247")
 
-[node name="Tools" type="Node2D" parent="Background"]
-
-[node name="Cauldron" parent="Background/Tools" instance=ExtResource("6_e2wri")]
-position = Vector2(320, 123)
-processing_verb = "Boiling..."
-preperation_process_scene = ExtResource("7_bw5re")
-
-[node name="Sprite2D" parent="Background/Tools/Cauldron" index="0"]
-texture = ExtResource("8_7x0yd")
-
-[node name="ToolEffects" parent="Background/Tools/Cauldron" index="1"]
-hide_during_processing = true
-hide_finished_ingredient = true
-
-[node name="ActiveIngredientSprite" parent="Background/Tools/Cauldron/ToolEffects" index="0"]
-position = Vector2(-1, -22)
-
-[node name="CompletionSprite" parent="Background/Tools/Cauldron/ToolEffects" index="1"]
-position = Vector2(0, -44)
-
-[node name="ProcessingAnimation" parent="Background/Tools/Cauldron/ToolEffects" index="2"]
-position = Vector2(-1, -21)
-
-[node name="ActiveParticles" parent="Background/Tools/Cauldron/ToolEffects" index="3"]
-position = Vector2(0, -30)
-
-[node name="PassiveParticles" parent="Background/Tools/Cauldron/ToolEffects" index="4"]
-position = Vector2(0, -32)
-
-[node name="ProgressBar" parent="Background/Tools/Cauldron/ToolEffects" index="6"]
-offset_left = -23.0
-offset_top = -50.0
-offset_right = 17.0
-offset_bottom = -36.0
-grow_horizontal = 2
-
-[node name="CollisionPolygon2D" parent="Background/Tools/Cauldron/Area2D" index="0"]
-position = Vector2(1, -12)
-polygon = PackedVector2Array(42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19)
-
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="table n stove" type="Sprite2D" parent="Foreground"]
@@ -130,6 +91,45 @@ texture = ExtResource("10_qmnpl")
 
 [node name="Tools" type="Node2D" parent="Foreground"]
 position = Vector2(199, 112)
+
+[node name="Cauldron" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
+z_index = -1
+position = Vector2(121, 11)
+processing_verb = "Boiling..."
+preperation_process_scene = ExtResource("7_bw5re")
+
+[node name="Sprite2D" parent="Foreground/Tools/Cauldron" index="0"]
+texture = ExtResource("8_7x0yd")
+
+[node name="ToolEffects" parent="Foreground/Tools/Cauldron" index="1"]
+hide_during_processing = true
+hide_finished_ingredient = true
+
+[node name="ActiveIngredientSprite" parent="Foreground/Tools/Cauldron/ToolEffects" index="0"]
+position = Vector2(-1, -22)
+
+[node name="CompletionSprite" parent="Foreground/Tools/Cauldron/ToolEffects" index="1"]
+position = Vector2(0, -44)
+
+[node name="ProcessingAnimation" parent="Foreground/Tools/Cauldron/ToolEffects" index="2"]
+position = Vector2(-1, -21)
+
+[node name="ActiveParticles" parent="Foreground/Tools/Cauldron/ToolEffects" index="3"]
+position = Vector2(0, -30)
+
+[node name="PassiveParticles" parent="Foreground/Tools/Cauldron/ToolEffects" index="4"]
+position = Vector2(0, -32)
+
+[node name="ProgressBar" parent="Foreground/Tools/Cauldron/ToolEffects" index="6"]
+offset_left = -23.0
+offset_top = -50.0
+offset_right = 17.0
+offset_bottom = -36.0
+grow_horizontal = 2
+
+[node name="CollisionPolygon2D" parent="Foreground/Tools/Cauldron/Area2D" index="0"]
+position = Vector2(1, -12)
+polygon = PackedVector2Array(42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1, -40, -16, -30, -20, 11, -19)
 
 [node name="Grills" type="Node2D" parent="Foreground/Tools"]
 
@@ -481,7 +481,7 @@ position = Vector2(13, 1)
 [node name="CollisionPolygon2D" parent="Foreground/ServingArea/StorageSlots/ItemSlot4/Area2D" index="0"]
 polygon = PackedVector2Array(16, 0, 16, 16, -16, 16, -16, -1, -6, -8)
 
-[editable path="Background/Tools/Cauldron"]
+[editable path="Foreground/Tools/Cauldron"]
 [editable path="Foreground/Tools/Grills/Left"]
 [editable path="Foreground/Tools/Grills/CenterLeft"]
 [editable path="Foreground/Tools/Grills/CenterRight"]

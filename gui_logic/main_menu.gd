@@ -13,10 +13,12 @@ func _process(delta):
 
 func _on_tutorial_pressed():
 	self.visible = false
+	Game.begin_tutorial()
 
 
 func _on_play_pressed():
 	self.visible = false
+	Game.begin_freeplay()
 
 
 func _on_options_pressed():

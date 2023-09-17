@@ -3,16 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cw7t4n0gg15vh" path="res://game_scenes/kitchen.tscn" id="1_5immm"]
 [ext_resource type="PackedScene" uid="uid://bb624pjfah75o" path="res://game_scenes/main_menu.tscn" id="2_74e3o"]
 [ext_resource type="PackedScene" uid="uid://cm6w0ydv6wejg" path="res://interface_logic/scenes/hand_display.tscn" id="2_b0pns"]
-[ext_resource type="PackedScene" uid="uid://b4m5qpvlsqjeq" path="res://interface_logic/scenes/serving_dish.tscn" id="2_x5fmj"]
+[ext_resource type="PackedScene" uid="uid://d4khvrgvjvd3f" path="res://game_scenes/wallet.tscn" id="3_gg2si"]
 
 [node name="Main" type="Node"]
 
 [node name="World" type="Node2D" parent="."]
 
 [node name="Kitchen" parent="World" instance=ExtResource("1_5immm")]
-
-[node name="ServingDish" parent="World" instance=ExtResource("2_x5fmj")]
-position = Vector2(188, 194)
 
 [node name="HandDisplay" parent="World" instance=ExtResource("2_b0pns")]
 
@@ -24,6 +21,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Wallet" parent="GUI" instance=ExtResource("3_gg2si")]
+layout_mode = 1
 
 [node name="Main Menu" parent="GUI" instance=ExtResource("2_74e3o")]
 layout_mode = 1

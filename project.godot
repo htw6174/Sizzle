@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Sizzle"
 config/description="This demo showcases how 2D particle systems work in Godot."
-run/main_scene="res://main.tscn"
+run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://sprites/carrot.png"
 
@@ -20,6 +20,7 @@ config/icon="res://sprites/carrot.png"
 
 PlayerHand="*res://interface_logic/player_hand.gd"
 Player="*res://gameplay_logic/player.gd"
+Game="*res://gameplay_logic/game.gd"
 
 [display]
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2cyc0bai6i2i"]
+
+[ext_resource type="Script" path="res://gameplay_logic/freeplay_controller.gd" id="1_2d7kg"]
+[ext_resource type="PackedScene" uid="uid://dw4s7rjoypis6" path="res://interface_logic/scenes/customer.tscn" id="2_j1bmb"]
+[ext_resource type="PackedScene" uid="uid://b4m5qpvlsqjeq" path="res://interface_logic/scenes/serving_dish.tscn" id="3_hidyq"]
+
+[node name="Freeplay" type="Node"]
+script = ExtResource("1_2d7kg")
+customer_scene = ExtResource("2_j1bmb")
+dish_scene = ExtResource("3_hidyq")
