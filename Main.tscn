@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdruidu7j5jqg"]
+[gd_scene load_steps=6 format=3 uid="uid://cdruidu7j5jqg"]
 
 [ext_resource type="PackedScene" uid="uid://cw7t4n0gg15vh" path="res://game_scenes/kitchen.tscn" id="1_5immm"]
 [ext_resource type="PackedScene" uid="uid://bb624pjfah75o" path="res://game_scenes/main_menu.tscn" id="2_74e3o"]
 [ext_resource type="PackedScene" uid="uid://cm6w0ydv6wejg" path="res://interface_logic/scenes/hand_display.tscn" id="2_b0pns"]
+[ext_resource type="PackedScene" uid="uid://dw4s7rjoypis6" path="res://interface_logic/scenes/customer.tscn" id="3_240vk"]
 [ext_resource type="PackedScene" uid="uid://d4khvrgvjvd3f" path="res://game_scenes/wallet.tscn" id="3_gg2si"]
 
 [node name="Main" type="Node"]
@@ -12,6 +13,10 @@
 [node name="Kitchen" parent="World" instance=ExtResource("1_5immm")]
 
 [node name="HandDisplay" parent="World" instance=ExtResource("2_b0pns")]
+
+[node name="Customer" parent="World" instance=ExtResource("3_240vk")]
+visible = false
+position = Vector2(200, 90)
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3

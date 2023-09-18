@@ -1,5 +1,6 @@
 extends Node
 
+var active: bool
 var hovered_interactable: Interactable
 var source_interactable: Interactable
 var reserved_item: Ingredient

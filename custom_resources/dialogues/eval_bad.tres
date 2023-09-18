@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://d2i3p6nhsp6m6"]
+
+[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_1g024"]
+
+[resource]
+script = ExtResource("1_1g024")
+speaker_name = ""
+lines = Array[String](["...", "Are you sure this is my order?"])

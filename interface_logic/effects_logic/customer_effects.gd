@@ -1,6 +1,7 @@
 extends Node2D
 class_name CustomerEffects
 
+@export var sprite: Sprite2D
 @export var animation_player: AnimationPlayer
 
 signal entered()

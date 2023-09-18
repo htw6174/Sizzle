@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_tokcg")
-speaker_name = "Sweat stained dwarf"
+speaker_name = "Burly Dwarf"
 lines = Array[String](["Whew, I'm starving!", "Make me the most filling meal you can!"])

@@ -1,8 +1,18 @@
-[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://ycln5ibcf8hb"]
+[gd_resource type="Resource" script_class="Customer" load_steps=10 format=3 uid="uid://ycln5ibcf8hb"]
 
 [ext_resource type="Resource" uid="uid://dpj0v030gyrcm" path="res://custom_resources/dialogues/customer_picky.tres" id="1_1uvr3"]
-[ext_resource type="Script" path="res://gameplay_logic/customer.gd" id="1_uhvqo"]
+[ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="2_focs8"]
+[ext_resource type="Texture2D" uid="uid://dvlrlnyccr3rs" path="res://sprites/rough customers/swashbuckler.png" id="3_35o5l"]
+[ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="3_kjjs8"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="4_fx850"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="4_v32q0"]
+[ext_resource type="Script" path="res://custom_resources/customer.gd" id="5_elmgf"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="5_txqcl"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="7_vnm0h"]
 
 [resource]
-script = ExtResource("1_uhvqo")
+script = ExtResource("5_elmgf")
+texture = ExtResource("3_35o5l")
 dialogue = ExtResource("1_1uvr3")
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("4_fx850"), ExtResource("7_vnm0h")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_focs8"), ExtResource("3_kjjs8"), ExtResource("4_v32q0"), ExtResource("5_txqcl")])

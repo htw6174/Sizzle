@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://c0kcmr4m04kci"]
+
+[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_o5f1d"]
+
+[resource]
+script = ExtResource("1_o5f1d")
+speaker_name = "Feeble Man"
+lines = Array[String](["Hello sonny!", "Er, darlin? M' eyesight ain't so good these days.", "Just some plain noodles if ya please.", "No salt."])

@@ -3,12 +3,15 @@
 [ext_resource type="Script" path="res://gameplay_logic/freeplay_controller.gd" id="1_2d7kg"]
 [ext_resource type="PackedScene" uid="uid://dw4s7rjoypis6" path="res://interface_logic/scenes/customer.tscn" id="2_j1bmb"]
 [ext_resource type="PackedScene" uid="uid://b4m5qpvlsqjeq" path="res://interface_logic/scenes/serving_dish.tscn" id="3_hidyq"]
-[ext_resource type="Resource" uid="uid://d2bj7eloj0gxg" path="res://custom_resources/customers/indecisive.tres" id="4_kd55e"]
-[ext_resource type="Resource" uid="uid://ycln5ibcf8hb" path="res://custom_resources/customers/picky.tres" id="5_dh6kx"]
-[ext_resource type="Resource" uid="uid://crqm7rpxbxn8d" path="res://custom_resources/customers/starving.tres" id="6_s1sii"]
+[ext_resource type="Resource" uid="uid://br134q1kjalw" path="res://custom_resources/dialogues/eval_good.tres" id="4_37i5l"]
+[ext_resource type="Resource" uid="uid://ocjhqo2dan05" path="res://custom_resources/dialogues/eval_neutral.tres" id="5_o6kib"]
+[ext_resource type="Resource" uid="uid://d2i3p6nhsp6m6" path="res://custom_resources/dialogues/eval_bad.tres" id="6_f3hwc"]
 
 [node name="Freeplay" type="Node"]
 script = ExtResource("1_2d7kg")
 customer_scene = ExtResource("2_j1bmb")
 dish_scene = ExtResource("3_hidyq")
-customers = Array[Resource("res://gameplay_logic/customer.gd")]([ExtResource("4_kd55e"), ExtResource("5_dh6kx"), ExtResource("6_s1sii")])
+customers_dir = "res://custom_resources/customers/"
+dialogue_good = ExtResource("4_37i5l")
+dialogue_neutral = ExtResource("5_o6kib")
+dialogue_bad = ExtResource("6_f3hwc")

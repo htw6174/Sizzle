@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://bafjq82fsvnoe"]
+
+[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_h1bn8"]
+
+[resource]
+script = ExtResource("1_h1bn8")
+speaker_name = "Plucky Child"
+lines = Array[String](["Ooh, something smells good!", "Can you make pancakes?"])
