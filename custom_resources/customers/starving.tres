@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://crqm7rpxbxn8d"]
+
+[ext_resource type="Resource" uid="uid://dyu287r7j08t2" path="res://custom_resources/dialogues/customer_starving.tres" id="1_j0gwd"]
+[ext_resource type="Script" path="res://gameplay_logic/customer.gd" id="2_m0mop"]
+
+[resource]
+script = ExtResource("2_m0mop")
+dialogue = ExtResource("1_j0gwd")

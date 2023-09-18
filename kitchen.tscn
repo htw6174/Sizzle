@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cv52v1tk2my2p"]
+[gd_scene load_steps=58 format=3 uid="uid://cv52v1tk2my2p"]
 
 [ext_resource type="Script" path="res://gameplay_logic/objective_controller.gd" id="1_pyym6"]
 [ext_resource type="PackedScene" uid="uid://d0gmsmc7rqvcx" path="res://interface_logic/scenes/ServingPlate.tscn" id="2_gli1n"]
@@ -53,10 +53,7 @@
 [ext_resource type="Theme" uid="uid://bahxjt4a2qkvs" path="res://ui_theme/pixel_theme.tres" id="49_mityb"]
 [ext_resource type="Script" path="res://gui_logic/button_toggle.gd" id="50_q0s06"]
 [ext_resource type="PackedScene" uid="uid://cm6w0ydv6wejg" path="res://interface_logic/scenes/hand_display.tscn" id="51_kluhp"]
-[ext_resource type="Script" path="res://gui_logic/dialogue_player.gd" id="51_lq7d2"]
-[ext_resource type="Texture2D" uid="uid://d0yvvtt0pl4op" path="res://sprites/helper chef longer.png" id="52_hykuf"]
-[ext_resource type="Animation" uid="uid://dxg8edbiu0aon" path="res://animations/dialogue_in.tres" id="53_05e8j"]
-[ext_resource type="Animation" uid="uid://bfynr07pkbj18" path="res://animations/dialogue_out.tres" id="54_q3uov"]
+[ext_resource type="PackedScene" uid="uid://c4h708u07b5pn" path="res://game_scenes/dialogue.tscn" id="54_htk4w"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -92,71 +89,13 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y27kg"]
 
-[sub_resource type="Animation" id="2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Text:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterPortrait:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(243, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CharacterPortrait:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Text:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(398, 224)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpuuk"]
-_data = {
-"RESET": SubResource("2"),
-"dialogue_in": ExtResource("53_05e8j"),
-"dialogue_out": ExtResource("54_q3uov")
-}
-
 [node name="Main" type="Node"]
 
 [node name="OtherLogicHere" type="Node" parent="."]
 
 [node name="ObjectiveController" type="Node" parent="OtherLogicHere" node_paths=PackedStringArray("dialogue_player", "objective_label", "end_screen", "serving_dish_parent")]
 script = ExtResource("1_pyym6")
-dialogue_player = NodePath("../../GUI/Dialogue")
+dialogue_player = NodePath("")
 objective_label = NodePath("../../GUI/ObjectiveInfo/PanelContainer/Label")
 end_screen = NodePath("../../GUI/EndScreen")
 serving_dish_parent = NodePath("../../World/Foreground/ServingArea/DishAnchor/DishParent")
@@ -685,100 +624,9 @@ text = "This is where the objective tracker text will go
 - With info on how to complete each recipe"
 autowrap_mode = 2
 
-[node name="Dialogue" type="Control" parent="GUI"]
-visible = false
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource("51_lq7d2")
-start_animation = "dialogue_in"
-finish_animation = "dialogue_out"
-animation_player_path = NodePath("AnimationPlayer")
-dialogue_label_path = NodePath("Text/DialogueContainer/DialogueLabel")
-
-[node name="CharacterPortrait" type="TextureRect" parent="GUI/Dialogue"]
-layout_mode = 0
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 243.0
-offset_right = 339.0
-offset_bottom = 224.0
-texture = ExtResource("52_hykuf")
-
-[node name="Text" type="Control" parent="GUI/Dialogue"]
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 398.0
-offset_bottom = 224.0
-mouse_filter = 1
-
-[node name="NameContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
-layout_mode = 0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -101.0
-offset_right = -246.0
-offset_bottom = -79.0
-mouse_filter = 1
-
-[node name="NameLabel" type="Label" parent="GUI/Dialogue/Text/NameContainer"]
-layout_mode = 2
-text = "Foody McStuffins"
-
-[node name="DialogueContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
-layout_mode = 0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -76.0
-offset_right = -8.0
-offset_bottom = -18.0
-mouse_filter = 1
-
-[node name="DialogueLabel" type="RichTextLabel" parent="GUI/Dialogue/Text/DialogueContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "Here is some sample dialog, how many lines can fit here?
-Number 2 →
-Number 3, extends all the way out to the end"
-
-[node name="PanelContainer" type="PanelContainer" parent="GUI/Dialogue/Text"]
-layout_mode = 0
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -17.9981
-offset_right = 265.0
-offset_bottom = 4.00189
-
-[node name="InstructionLabel" type="Label" parent="GUI/Dialogue/Text/PanelContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "> Click anywhere to continue <"
-
-[node name="SkipButton" type="Button" parent="GUI/Dialogue/Text"]
+[node name="Dialogue" parent="GUI" instance=ExtResource("54_htk4w")]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -88.0
-offset_top = -26.0
-offset_right = -16.0
-offset_bottom = -4.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Skip"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Dialogue"]
-libraries = {
-"": SubResource("AnimationLibrary_hpuuk")
-}
+anchors_preset = 15
 
 [node name="EndScreen" type="Control" parent="GUI"]
 visible = false
@@ -817,8 +665,6 @@ autowrap_mode = 2
 [connection signal="animation_finished" from="World/Foreground/ServingArea/DishAnchor/DishParent/AnimationPlayer" to="World/Foreground/ServingArea/DishAnchor/DishParent" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="bell_rung" from="World/Foreground/ServingArea/Bell" to="OtherLogicHere/ObjectiveController" method="_on_bell_rung"]
 [connection signal="input_event" from="World/Foreground/ServingArea/Bell" to="World/Foreground/ServingArea/Bell" method="_on_input_event"]
-[connection signal="pressed" from="GUI/Dialogue/Text/SkipButton" to="GUI/Dialogue" method="_on_SkipButton_pressed"]
-[connection signal="animation_finished" from="GUI/Dialogue/AnimationPlayer" to="GUI/Dialogue" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="GUI/EndScreen/RestartButton" to="OtherLogicHere/ObjectiveController" method="_on_RestartButton_pressed"]
 
 [editable path="World/Background/Tools/Cauldron"]

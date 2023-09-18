@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://ycln5ibcf8hb"]
+
+[ext_resource type="Resource" uid="uid://dpj0v030gyrcm" path="res://custom_resources/dialogues/customer_picky.tres" id="1_1uvr3"]
+[ext_resource type="Script" path="res://gameplay_logic/customer.gd" id="1_uhvqo"]
+
+[resource]
+script = ExtResource("1_uhvqo")
+dialogue = ExtResource("1_1uvr3")

@@ -1,14 +1,14 @@
-extends Node
+extends Control
 
 class_name DialoguePlayer
 
 @export var start_animation: String
 @export var finish_animation: String
 
-@export var animation_player_path: NodePath
-@onready var animation_player:AnimationPlayer = get_node(animation_player_path)
-@export var dialogue_label_path: NodePath
-@onready var dialogue_label: RichTextLabel = get_node(dialogue_label_path)
+@export var portrait: TextureRect
+@export var animation_player: AnimationPlayer
+@export var name_label: Label
+@export var dialogue_label: RichTextLabel
 
 var current_dialogue: Dialogue
 var dialogue_index: int = 0
@@ -16,10 +16,17 @@ var dialogue_index: int = 0
 signal dialogue_finished
 
 func _ready():
-	#animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 	pass
 
 func start_dialogue(new_dialogue: Dialogue):
+	# portrait
+	portrait.texture = new_dialogue.portrait
+	
+	# name
+	name_label.text = new_dialogue.speaker_name
+	# TODO: make invisible if there is no speaker?
+	
+	# text
 	current_dialogue = new_dialogue
 	dialogue_index = 0
 	dialogue_label.text = current_dialogue.lines[dialogue_index]

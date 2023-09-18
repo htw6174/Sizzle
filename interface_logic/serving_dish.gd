@@ -22,7 +22,8 @@ func reset():
 	dish_step = dish_tree_root
 	step_components = dish_step.components.duplicate()
 	added_ingredients = []
-	# TODO: destroy sprites
+	set_tooltip()
+	# destroy component sprites
 	var sprites = sprites_anchor.get_children()
 	for sprite in sprites:
 		sprite.queue_free()

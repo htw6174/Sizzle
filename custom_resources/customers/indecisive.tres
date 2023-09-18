@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://d2bj7eloj0gxg"]
+
+[ext_resource type="Resource" uid="uid://br34eh1lycy20" path="res://custom_resources/dialogues/customer_indecisive.tres" id="1_2jdef"]
+[ext_resource type="Script" path="res://gameplay_logic/customer.gd" id="1_na8dj"]
+
+[resource]
+script = ExtResource("1_na8dj")
+dialogue = ExtResource("1_2jdef")

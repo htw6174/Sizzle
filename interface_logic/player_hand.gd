@@ -64,7 +64,7 @@ func handle_drop():
 	if reserved_item != null:
 		drop()
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:

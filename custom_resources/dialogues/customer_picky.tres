@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://dpj0v030gyrcm"]
+
+[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_8cf18"]
+
+[resource]
+script = ExtResource("1_8cf18")
+speaker_name = "Haughty Elf"
+lines = Array[String](["I don't suppose you specalize in Arcanii Elvish cuisine do you?", "No?", "*sigh* I suppose it can't be helped. In that case...", "...can you make something with Arcanii Basil?"])
