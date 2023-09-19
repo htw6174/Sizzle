@@ -30,7 +30,8 @@ func play_dialogue(dialogue: Dialogue):
 		self.add_child(dialogue_player)
 	
 	dialogue_player.start_dialogue(dialogue)
+	PlayerHand.active = false
 	
 
 func _on_dialogue_finished():
-	pass
+	PlayerHand.active = true

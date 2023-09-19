@@ -1,6 +1,15 @@
 extends Node
 
-var active: bool
+var active: bool:
+	set(value):
+		if value:
+			# TODO: might not register as hovering if mouse alreay over something when becoming active
+			pass
+		else:
+			hovered_interactable = null
+		active = value
+	get:
+		return active
 var hovered_interactable: Interactable
 var source_interactable: Interactable
 var reserved_item: Ingredient
@@ -34,9 +43,9 @@ func try_place():
 			source_interactable = null
 			reserved_item = null
 
-func drop():
+func _drop():
 	if source_interactable.try_return_item():
-		emit_signal("item_dropped", reserved_item)
+		emit_signal("item__dropped", reserved_item)
 		source_interactable = null
 		reserved_item = null
 
@@ -45,7 +54,7 @@ func handle_press():
 		if hovered_interactable != null:
 			try_place()
 		else:
-			drop()
+			_drop()
 	else:
 		if hovered_interactable != null:
 			try_pick()
@@ -59,11 +68,11 @@ func handle_release():
 			if hovered_interactable != null:
 				try_place()
 			else:
-				drop()
+				_drop()
 
 func handle_drop():
 	if reserved_item != null:
-		drop()
+		_drop()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -76,10 +85,12 @@ func _unhandled_input(event):
 			handle_drop()
 
 func _on_Interactable_mouse_entered(interactable: Interactable):
-	hovered_interactable = interactable
-	emit_signal("hover_entered", interactable)
+	if active:
+		hovered_interactable = interactable
+		emit_signal("hover_entered", interactable)
 
 func _on_Interactable_mouse_exited(interactable: Interactable):
-	if hovered_interactable == interactable:
-		hovered_interactable = null
-	emit_signal("hover_exited", interactable)
+	if active:
+		if hovered_interactable == interactable:
+			hovered_interactable = null
+		emit_signal("hover_exited", interactable)

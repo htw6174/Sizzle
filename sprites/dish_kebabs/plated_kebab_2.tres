@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bgr36ak37omo0"]
+
+[ext_resource type="Texture2D" uid="uid://bkbalhaf1q2dm" path="res://sprites/meat kebab final.png" id="1_35g5g"]
+
+[resource]
+atlas = ExtResource("1_35g5g")
+region = Rect2(63, 0, 60, 23)

@@ -28,6 +28,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Wallet" parent="GUI" instance=ExtResource("3_gg2si")]
+visible = false
 layout_mode = 1
 
 [node name="Main Menu" parent="GUI" instance=ExtResource("2_74e3o")]

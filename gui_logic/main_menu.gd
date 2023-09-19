@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	PlayerHand.active = false
 	pass # Replace with function body.
 
 
@@ -13,11 +14,13 @@ func _process(delta):
 
 func _on_tutorial_pressed():
 	self.visible = false
+	PlayerHand.active = true
 	Game.begin_tutorial()
 
 
 func _on_play_pressed():
 	self.visible = false
+	PlayerHand.active = true
 	Game.begin_freeplay()
 
 

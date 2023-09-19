@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://vh7rncollaja"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/potato.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cyd8qbt7cpf5n" path="res://sprites/potatoes.png" id="2_bk1pe"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Potato"
-texture = ExtResource( 2 )
+texture = ExtResource("2_bk1pe")
