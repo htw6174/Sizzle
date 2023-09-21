@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cw7t4n0gg15vh"]
+[gd_scene load_steps=42 format=3 uid="uid://cw7t4n0gg15vh"]
 
 [ext_resource type="Texture2D" uid="uid://cfoc68o08ig4e" path="res://sprites/background.png" id="1_7rp32"]
 [ext_resource type="Texture2D" uid="uid://bsv3pxagwjklx" path="res://sprites/logs.png" id="2_4jwh5"]
@@ -26,6 +26,7 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="24_gewi6"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="25_odegk"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/skewer.tres" id="26_cirqo"]
+[ext_resource type="Resource" uid="uid://vh7rncollaja" path="res://custom_resources/ingredients/veg_potato.tres" id="26_d8d04"]
 [ext_resource type="Texture2D" uid="uid://vywuog5jpcp0" path="res://sprites/empty skewer.png" id="27_7vnas"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="28_ljwnh"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="29_ox2te"]
@@ -386,6 +387,10 @@ pickable_item = ExtResource("24_gewi6")
 [node name="Garlic" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
 position = Vector2(55, 183)
 pickable_item = ExtResource("25_odegk")
+
+[node name="Potato" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
+position = Vector2(29, 208)
+pickable_item = ExtResource("26_d8d04")
 
 [node name="Skewer" parent="Foreground/Ingredients/LeftTable" instance=ExtResource("22_7v2o0")]
 position = Vector2(19, 174)

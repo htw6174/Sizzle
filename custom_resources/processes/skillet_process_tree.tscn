@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btqio36j1aha8"]
+[gd_scene load_steps=13 format=3 uid="uid://btqio36j1aha8"]
 
 [ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_meat.tres" id="2"]
@@ -8,6 +8,10 @@
 [ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="6_2gt5u"]
 [ext_resource type="Resource" uid="uid://c8bhbot05n83n" path="res://custom_resources/ingredients/batter.tres" id="7_8yyqo"]
 [ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="8_qvdvq"]
+[ext_resource type="Resource" uid="uid://cw8qqoce4nn2m" path="res://custom_resources/ingredients/eggs.tres" id="9_a6hu7"]
+[ext_resource type="Resource" uid="uid://cfqfm53q2t8qv" path="res://custom_resources/ingredients/fried_eggs.tres" id="10_bv882"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_potato.tres" id="11_yk0ad"]
+[ext_resource type="Resource" uid="uid://ds1lc2v8mtccv" path="res://custom_resources/ingredients/hash_browns.tres" id="12_eduut"]
 
 [node name="Skillet" type="Node"]
 script = ExtResource("1")
@@ -38,3 +42,19 @@ time_to_complete = 3.0
 [node name="ProcessResult" type="Node" parent="AddBatter"]
 script = ExtResource("3")
 ingredient = ExtResource("8_qvdvq")
+
+[node name="AddEggs" type="Node" parent="."]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("9_a6hu7")])
+
+[node name="ProcessResult" type="Node" parent="AddEggs"]
+script = ExtResource("3")
+ingredient = ExtResource("10_bv882")
+
+[node name="AddChoppedPotato" type="Node" parent="."]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("11_yk0ad")])
+
+[node name="ProcessResult" type="Node" parent="AddChoppedPotato"]
+script = ExtResource("3")
+ingredient = ExtResource("12_eduut")

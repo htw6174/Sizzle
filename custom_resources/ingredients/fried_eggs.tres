@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cfqfm53q2t8qv"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_mi7m2"]
+[ext_resource type="Texture2D" uid="uid://c8sewvp6ngnjv" path="res://sprites/dish_breakfast/eggs.tres" id="2_8d2sn"]
+
+[resource]
+script = ExtResource("1_mi7m2")
+display_name = "Fried Eggs"
+texture = ExtResource("2_8d2sn")

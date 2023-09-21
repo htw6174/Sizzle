@@ -45,7 +45,7 @@ func try_place():
 
 func _drop():
 	if source_interactable.try_return_item():
-		emit_signal("item__dropped", reserved_item)
+		emit_signal("item_dropped", reserved_item)
 		source_interactable = null
 		reserved_item = null
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cdjp61ph76t6h"]
+[gd_scene load_steps=57 format=3 uid="uid://cdjp61ph76t6h"]
 
 [ext_resource type="Script" path="res://custom_resources/dish_step.gd" id="1_08qek"]
 [ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="2_u5083"]
@@ -20,6 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://udqxhy1c6rp3" path="res://sprites/dish_noodles/beef_meatballs.tres" id="11_0tuyb"]
 [ext_resource type="Texture2D" uid="uid://e2incle8mhgy" path="res://sprites/dish_kebabs/plated_kebab_3.tres" id="11_sfwy2"]
 [ext_resource type="Texture2D" uid="uid://by1ub8obt72kk" path="res://sprites/dish_noodles/herbs.tres" id="13_m5d4a"]
+[ext_resource type="Resource" uid="uid://cfqfm53q2t8qv" path="res://custom_resources/ingredients/fried_eggs.tres" id="21_y2nh3"]
+[ext_resource type="Texture2D" uid="uid://c8sewvp6ngnjv" path="res://sprites/dish_breakfast/eggs.tres" id="22_8phdn"]
+[ext_resource type="Resource" uid="uid://ds1lc2v8mtccv" path="res://custom_resources/ingredients/hash_browns.tres" id="23_1il0b"]
+[ext_resource type="Texture2D" uid="uid://ctrr1j1rm1mx0" path="res://sprites/dish_breakfast/potatoes.tres" id="23_v33k8"]
+[ext_resource type="Texture2D" uid="uid://c3mjv3eh8mwra" path="res://sprites/dish_breakfast/sausage.tres" id="24_yxaxj"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="25_fu77c"]
+[ext_resource type="Texture2D" uid="uid://bopchratcpo0w" path="res://sprites/dish_breakfast/tomatoes.tres" id="26_ld1lx"]
+[ext_resource type="Texture2D" uid="uid://b8ofah7wpunoa" path="res://sprites/dish_breakfast/herbs.tres" id="27_04lnv"]
 
 [sub_resource type="Resource" id="Resource_bmac3"]
 script = ExtResource("4_s67f8")
@@ -139,6 +147,71 @@ name = "Herbs"
 required = false
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_5iahs")])
 
+[sub_resource type="Resource" id="Resource_io84h"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("21_y2nh3")
+texture = ExtResource("22_8phdn")
+depth = 1
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_f4tgu"]
+script = ExtResource("4_16unn")
+name = "Eggs"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_io84h")])
+
+[sub_resource type="Resource" id="Resource_5ab4p"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("23_1il0b")
+texture = ExtResource("23_v33k8")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_g052h"]
+script = ExtResource("4_16unn")
+name = "Hash Browns"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_5ab4p")])
+
+[sub_resource type="Resource" id="Resource_mud8w"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("6_l8qlu")
+texture = ExtResource("24_yxaxj")
+depth = 2
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_2fj57"]
+script = ExtResource("4_16unn")
+name = "Sausage"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_mud8w")])
+
+[sub_resource type="Resource" id="Resource_iukin"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("25_fu77c")
+texture = ExtResource("26_ld1lx")
+depth = 1
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_8kve7"]
+script = ExtResource("4_16unn")
+name = "Tomatoes"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_iukin")])
+
+[sub_resource type="Resource" id="Resource_hjpoo"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("8_ddarv")
+texture = ExtResource("27_04lnv")
+depth = 3
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_fpgii"]
+script = ExtResource("4_16unn")
+name = "Herbs"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_hjpoo")])
+
 [node name="Dishes" type="Node"]
 script = ExtResource("1_08qek")
 
@@ -173,3 +246,7 @@ components = Array[ExtResource("4_16unn")]([SubResource("Resource_1wkvr"), SubRe
 [node name="Topped Noodles" type="Node" parent="Noodles/Topped Noodles"]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_ivvm8")])
+
+[node name="Breakfast" type="Node" parent="."]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_f4tgu"), SubResource("Resource_g052h"), SubResource("Resource_2fj57"), SubResource("Resource_8kve7"), SubResource("Resource_fpgii")])

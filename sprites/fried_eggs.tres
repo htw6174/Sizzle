@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://vuleanjxpoqy"]
+
+[ext_resource type="Texture2D" uid="uid://c0gkhsbvqnwem" path="res://sprites/breakfast plate final.png" id="1_qi1am"]
+
+[resource]
+atlas = ExtResource("1_qi1am")
+region = Rect2(25, -4, 32, 32)

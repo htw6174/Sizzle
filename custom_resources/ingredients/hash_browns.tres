@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://ds1lc2v8mtccv"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_e21q8"]
+[ext_resource type="Texture2D" uid="uid://b5wd4spg4q3d" path="res://sprites/hash_browns.tres" id="2_7elbn"]
+
+[resource]
+script = ExtResource("1_e21q8")
+display_name = "Hash Browns"
+texture = ExtResource("2_7elbn")
