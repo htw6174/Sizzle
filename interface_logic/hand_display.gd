@@ -21,7 +21,7 @@ func _ready():
 
 func _process(delta):
 	# follow mouse
-	self.position = get_viewport().get_mouse_position()
+	self.position = get_viewport().get_mouse_position().floor()
 	
 	update_tooltips()
 

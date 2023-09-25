@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bggm80vxtx0i0"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/carrot.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cmfjned4uon77" path="res://sprites/carrot new.png" id="2_168hg"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Carrot"
-texture = ExtResource( 2 )
+texture = ExtResource("2_168hg")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4m5qpvlsqjeq"]
+[gd_scene load_steps=19 format=3 uid="uid://b4m5qpvlsqjeq"]
 
 [ext_resource type="Script" path="res://interface_logic/serving_dish.gd" id="1_t30tj"]
 [ext_resource type="Texture2D" uid="uid://6k1drdyoty0r" path="res://sprites/bowl shadow.png" id="2_8dm08"]
 [ext_resource type="Script" path="res://interface_logic/effects_logic/serving_effects.gd" id="3_ap1qx"]
 [ext_resource type="Texture2D" uid="uid://cxf87ti6d3oav" path="res://sprites/plate empty.png" id="3_t77at"]
 [ext_resource type="Texture2D" uid="uid://d1gamckqqhmto" path="res://sprites/star_particle.png" id="4_7qqqa"]
+[ext_resource type="Texture2D" uid="uid://cdmrybq66ylhu" path="res://sprites/serving bell.png" id="4_dtpch"]
 [ext_resource type="Animation" uid="uid://fycv0de6t18s" path="res://animations/dish_enter.tres" id="4_ypkkr"]
 [ext_resource type="Gradient" path="res://fade_gradient.tres" id="5_mxx36"]
 [ext_resource type="Animation" uid="uid://bbj280mplg4a3" path="res://animations/dish_exit.tres" id="5_naa52"]
@@ -90,7 +91,7 @@ serving_effects = NodePath("DishAnchor")
 [node name="Dishes" parent="." instance=ExtResource("7_wllwa")]
 
 [node name="Bell" type="Area2D" parent="." node_paths=PackedStringArray("audio_player")]
-position = Vector2(-31, 23)
+position = Vector2(-30, 20)
 script = ExtResource("8_4bbi2")
 audio_player = NodePath("AudioStreamPlayer")
 display_name = "Serve!"
@@ -99,15 +100,14 @@ display_name = "Serve!"
 shape = SubResource("CircleShape2D_ugf7j")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bell"]
-scale = Vector2(3, 3)
-texture = ExtResource("4_7qqqa")
+texture = ExtResource("4_dtpch")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bell"]
 stream = ExtResource("9_005w7")
 volume_db = -6.0
 
 [node name="Reset" type="Area2D" parent="."]
-position = Vector2(31, 24)
+position = Vector2(32, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
 shape = SubResource("CircleShape2D_ugf7j")

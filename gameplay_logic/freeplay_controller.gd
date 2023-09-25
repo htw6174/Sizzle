@@ -10,7 +10,12 @@ class_name FreeplayController
 @export var dialogue_neutral: Dialogue
 @export var dialogue_bad: Dialogue
 
-var customers: Array[Customer]
+@export var customers_per_day: int = 4
+
+var day: int = 0
+
+var customer_pool: Array[Customer]
+var customers_in_line: Array[Customer]
 var current_customer: Customer
 
 var prop_customer: CustomerEffects = null
@@ -28,7 +33,7 @@ func _ready():
 			var res = load(customers_dir + file_name)
 			if res != null:
 				if res is Customer:
-					customers.append(res)
+					customer_pool.append(res)
 		file_name = dir.get_next()
 	
 	# setup serving area
@@ -39,14 +44,32 @@ func _ready():
 	# TODO: need a better way to place this in the right position
 	serving_dish.position = Vector2(188, 194)
 	
-	next_customer()
+	start_day()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func start_day():
+	day += 1
+	var pick_pool = customer_pool.duplicate()
+	customers_in_line = []
+	for i in range(customers_per_day):
+		var pick = pick_pool.pick_random()
+		customers_in_line.append(pick)
+		pick_pool.erase(pick)
+	
+	next_customer()
+
+func end_day():
+	# TODO: GUI and/or animation
+	start_day()
+
 func next_customer():
+	if customers_in_line.size() == 0:
+		end_day()
+		return
 	if prop_customer == null:
 		var customer_instance = customer_scene.instantiate()
 		prop_customer = customer_instance as CustomerEffects
@@ -55,7 +78,7 @@ func next_customer():
 		prop_customer.position = Vector2(200, 80)
 		self.add_child(prop_customer)
 	
-	current_customer = customers.pick_random()
+	current_customer = customers_in_line.back()
 	prop_customer.sprite.texture = current_customer.texture
 	prop_customer.enter()
 	Game.play_dialogue(current_customer.dialogue)
@@ -63,6 +86,7 @@ func next_customer():
 func end_customer():
 	if prop_customer:
 		prop_customer.exit()
+	customers_in_line.erase(current_customer)
 	current_customer = null
 
 func _on_dish_served(dish_step, added_ingredients: Array):
