@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdruidu7j5jqg"]
+[gd_scene load_steps=9 format=3 uid="uid://cdruidu7j5jqg"]
 
 [ext_resource type="PackedScene" uid="uid://cw7t4n0gg15vh" path="res://game_scenes/kitchen.tscn" id="1_5immm"]
 [ext_resource type="PackedScene" uid="uid://bb624pjfah75o" path="res://gui_logic/scenes/main_menu.tscn" id="2_74e3o"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d4khvrgvjvd3f" path="res://gui_logic/scenes/wallet.tscn" id="3_gg2si"]
 [ext_resource type="Texture2D" uid="uid://cs7doc4d6umgw" path="res://sprites/the book.png" id="5_vgckr"]
 [ext_resource type="Script" path="res://gui_logic/book_button.gd" id="6_yuk2h"]
+[ext_resource type="AudioStream" uid="uid://cj601t641d7vo" path="res://audio/sizzle_bgm.mp3" id="8_62uy1"]
 
 [node name="Main" type="Node"]
 
@@ -44,3 +45,8 @@ script = ExtResource("6_yuk2h")
 
 [node name="Main Menu" parent="GUI" instance=ExtResource("2_74e3o")]
 layout_mode = 1
+
+[node name="Jukebox" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_62uy1")
+autoplay = true
+bus = &"Music"

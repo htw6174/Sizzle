@@ -22,6 +22,7 @@ func _ready():
 func _process(delta):
 	pass
 
+# TODO: need to find a solution other than reparenting constantly, very error-prone
 func open_ingredient_index():
 	hidden_page.remove_child(ingredient_list)
 	left_page.add_child(ingredient_list)
