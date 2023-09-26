@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3a5cmnnna6qb"]
+
+[ext_resource type="Script" path="res://gui_logic/ingredient_list.gd" id="1_dr7oo"]
+[ext_resource type="PackedScene" uid="uid://n152vr00kv6l" path="res://gui_logic/scenes/ingredient_icon.tscn" id="2_brys1"]
+
+[node name="Ingredient List" type="MarginContainer" node_paths=PackedStringArray("grid")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dr7oo")
+icon_scene = ExtResource("2_brys1")
+grid = NodePath("GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 5

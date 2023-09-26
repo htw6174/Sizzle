@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwwdtfacl6n0t"]
+
+[ext_resource type="Texture2D" uid="uid://cbxh75587unbg" path="res://sprites/cooked steak.png" id="1_3afto"]
+[ext_resource type="Script" path="res://gui_logic/ingredient_description.gd" id="1_3wqnx"]
+
+[node name="Ingredient Description" type="MarginContainer" node_paths=PackedStringArray("icon", "title", "description", "attributes", "stats")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1120.0
+grow_horizontal = 2
+script = ExtResource("1_3wqnx")
+icon = NodePath("VBoxContainer/HBoxContainer/TextureRect")
+title = NodePath("VBoxContainer/HBoxContainer/Title")
+description = NodePath("VBoxContainer/Description")
+attributes = NodePath("VBoxContainer/Attributes")
+stats = NodePath("VBoxContainer/Stats")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(176, 0)
+layout_mode = 2
+metadata/Note = "Minimum size set according to page display with scrollbar. Doesn't feel like the best way to handle this."
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_3afto")
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Sample Name"
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "Here's some short flavor text about this ingredient to get you interested"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Attributes" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "List of categories this ingredient belongs to and/or other attributes it has
+This might be pretty long, so make sure that scroll bars work correctly for any Control this is embedded inside of, OK?"
+fit_content = true
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "Maybe some stats tracking how often you've used this ingredient etc."
+fit_content = true

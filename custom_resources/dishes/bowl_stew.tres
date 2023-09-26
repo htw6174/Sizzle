@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Dish" load_steps=4 format=3 uid="uid://848g763l6hcl"]
 
 [ext_resource type="Script" path="res://custom_resources/dish.gd" id="1"]
-[ext_resource type="Resource" path="res://custom_resources/ingredients/pot_stew.tres" id="2"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/bowl_stew.tres" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="3"]
 
 [resource]

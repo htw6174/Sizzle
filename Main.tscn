@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdruidu7j5jqg"]
+[gd_scene load_steps=8 format=3 uid="uid://cdruidu7j5jqg"]
 
 [ext_resource type="PackedScene" uid="uid://cw7t4n0gg15vh" path="res://game_scenes/kitchen.tscn" id="1_5immm"]
-[ext_resource type="PackedScene" uid="uid://bb624pjfah75o" path="res://game_scenes/main_menu.tscn" id="2_74e3o"]
+[ext_resource type="PackedScene" uid="uid://bb624pjfah75o" path="res://gui_logic/scenes/main_menu.tscn" id="2_74e3o"]
 [ext_resource type="PackedScene" uid="uid://cm6w0ydv6wejg" path="res://interface_logic/scenes/hand_display.tscn" id="2_b0pns"]
 [ext_resource type="PackedScene" uid="uid://dw4s7rjoypis6" path="res://interface_logic/scenes/customer.tscn" id="3_240vk"]
-[ext_resource type="PackedScene" uid="uid://d4khvrgvjvd3f" path="res://game_scenes/wallet.tscn" id="3_gg2si"]
+[ext_resource type="PackedScene" uid="uid://d4khvrgvjvd3f" path="res://gui_logic/scenes/wallet.tscn" id="3_gg2si"]
+[ext_resource type="Texture2D" uid="uid://cs7doc4d6umgw" path="res://sprites/the book.png" id="5_vgckr"]
+[ext_resource type="Script" path="res://gui_logic/book_button.gd" id="6_yuk2h"]
 
 [node name="Main" type="Node"]
 
@@ -30,6 +32,15 @@ mouse_filter = 2
 [node name="Wallet" parent="GUI" instance=ExtResource("3_gg2si")]
 visible = false
 layout_mode = 1
+
+[node name="Book Button" type="TextureButton" parent="GUI"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture_normal = ExtResource("5_vgckr")
+script = ExtResource("6_yuk2h")
 
 [node name="Main Menu" parent="GUI" instance=ExtResource("2_74e3o")]
 layout_mode = 1

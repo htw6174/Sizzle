@@ -120,6 +120,7 @@ _data = {
 }
 
 [node name="Customer" type="Node2D" node_paths=PackedStringArray("sprite", "animation_player")]
+z_index = -4
 script = ExtResource("1_malvu")
 sprite = NodePath("Sprite2D")
 animation_player = NodePath("AnimationPlayer")

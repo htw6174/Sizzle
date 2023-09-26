@@ -1,41 +1,35 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://dp1ahqe5bxqxg"]
 
-[ext_resource path="res://custom_resources/process_step.gd" type="Script" id=1]
-[ext_resource path="res://custom_resources/ingredients/chopped_carrot.tres" type="Resource" id=2]
-[ext_resource path="res://custom_resources/ingredients/chopped_potato.tres" type="Resource" id=3]
-[ext_resource path="res://custom_resources/ingredients/meat_steak.tres" type="Resource" id=4]
-[ext_resource path="res://custom_resources/ingredients/water.tres" type="Resource" id=5]
-[ext_resource path="res://custom_resources/ingredients/pot_stew.tres" type="Resource" id=6]
-[ext_resource path="res://custom_resources/process_result.gd" type="Script" id=7]
-[ext_resource path="res://custom_resources/ingredients/grain_noodles.tres" type="Resource" id=8]
-[ext_resource path="res://custom_resources/ingredients/cooked_noodles.tres" type="Resource" id=9]
+[ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1"]
+[ext_resource type="Resource" uid="uid://7c55o10ic1ep" path="res://custom_resources/ingredients/chopped_carrot.tres" id="2"]
+[ext_resource type="Resource" uid="uid://jucqlbsyx8t6" path="res://custom_resources/ingredients/chopped_potato.tres" id="3"]
+[ext_resource type="Script" path="res://custom_resources/process_result.gd" id="7"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_meat.tres" id="7_bg6h6"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="8"]
+[ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/bowl_stew.tres" id="8_vpjxs"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="9"]
 
 [node name="Cauldron" type="Node"]
-script = ExtResource( 1 )
-
-[node name="BoilWater" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 5 ) ]
-time_to_complete = 2.0
-
-[node name="AddStewVegetables" type="Node" parent="BoilWater"]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 2 ), ExtResource( 3 ) ]
-time_to_complete = 3.0
-
-[node name="AddMeat" type="Node" parent="BoilWater/AddStewVegetables"]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 4 ) ]
-
-[node name="ProcessResult" type="Node" parent="BoilWater/AddStewVegetables/AddMeat"]
-script = ExtResource( 7 )
-ingredient = ExtResource( 6 )
+script = ExtResource("1")
 
 [node name="AddNoodles" type="Node" parent="."]
-script = ExtResource( 1 )
-ingredients = [ ExtResource( 8 ) ]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("8")])
 time_to_complete = 4.0
 
 [node name="ProcessResult" type="Node" parent="AddNoodles"]
-script = ExtResource( 7 )
-ingredient = ExtResource( 9 )
+script = ExtResource("7")
+ingredient = ExtResource("9")
+
+[node name="AddStewVegetables" type="Node" parent="."]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2"), ExtResource("3")])
+time_to_complete = 3.0
+
+[node name="AddMeat" type="Node" parent="AddStewVegetables"]
+script = ExtResource("1")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("7_bg6h6")])
+
+[node name="ProcessResult" type="Node" parent="AddStewVegetables/AddMeat"]
+script = ExtResource("7")
+ingredient = ExtResource("8_vpjxs")

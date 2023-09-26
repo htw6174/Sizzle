@@ -33,7 +33,7 @@
 [ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="30_fiv7t"]
 [ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="31_de7dh"]
 [ext_resource type="Resource" uid="uid://cw8qqoce4nn2m" path="res://custom_resources/ingredients/eggs.tres" id="32_s83xm"]
-[ext_resource type="Resource" path="res://custom_resources/ingredients/pot_stew.tres" id="33_mhb1v"]
+[ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/bowl_stew.tres" id="33_mhb1v"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="34_pbr5u"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="35_afyfo"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="36_ehi5m"]
@@ -83,10 +83,12 @@ texture = ExtResource("5_20247")
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="table n stove" type="Sprite2D" parent="Foreground"]
+z_index = -1
 position = Vector2(199, 112)
 texture = ExtResource("9_k5r8m")
 
 [node name="Grill" type="Sprite2D" parent="Foreground"]
+z_index = -1
 position = Vector2(200, 122)
 texture = ExtResource("10_qmnpl")
 
@@ -94,7 +96,7 @@ texture = ExtResource("10_qmnpl")
 position = Vector2(199, 112)
 
 [node name="Cauldron" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
-z_index = -1
+z_index = -2
 position = Vector2(121, 11)
 processing_verb = "Boiling..."
 preperation_process_scene = ExtResource("7_bw5re")

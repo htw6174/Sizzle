@@ -21,6 +21,7 @@ config/icon="res://sprites/breakfast plate.png"
 PlayerHand="*res://interface_logic/player_hand.gd"
 Player="*res://gameplay_logic/player.gd"
 Game="*res://gameplay_logic/game.gd"
+Cookbook="*res://gameplay_logic/cookbook.gd"
 
 [display]
 

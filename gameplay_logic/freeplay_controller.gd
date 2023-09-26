@@ -38,7 +38,7 @@ func _ready():
 	
 	# setup serving area
 	var serving_dish_instance = dish_scene.instantiate()
-	self.add_child(serving_dish_instance)
+	Game.world_root.add_child(serving_dish_instance)
 	serving_dish = serving_dish_instance as ServingDish
 	serving_dish.dish_served.connect(_on_dish_served)
 	# TODO: need a better way to place this in the right position
@@ -76,7 +76,7 @@ func next_customer():
 		prop_customer.entered.connect(_on_customer_entered)
 		prop_customer.exited.connect(_on_customer_exited)
 		prop_customer.position = Vector2(200, 80)
-		self.add_child(prop_customer)
+		Game.world_root.add_child(prop_customer)
 	
 	current_customer = customers_in_line.back()
 	prop_customer.sprite.texture = current_customer.texture

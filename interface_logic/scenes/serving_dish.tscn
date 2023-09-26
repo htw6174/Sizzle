@@ -82,7 +82,6 @@ _data = {
 }
 
 [node name="ServingArea" type="Node2D" node_paths=PackedStringArray("dish_tree_root", "sprites_anchor", "serving_effects")]
-z_index = 1
 script = ExtResource("1_t30tj")
 dish_tree_root = NodePath("Dishes")
 sprites_anchor = NodePath("DishAnchor/Dish/Plate/SpritesAnchor")
