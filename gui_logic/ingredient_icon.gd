@@ -1,17 +1,33 @@
+@tool
 extends TextureButton
+class_name IngredientIcon
 
-var ingredient: Ingredient:
+@export var ingredient: Ingredient:
 	get:
 		return ingredient
 	set(value):
 		ingredient = value
-		self.texture_normal = ingredient.texture
+		update_display()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	update_display()
+	if Engine.is_editor_hint():
+		pass
+	else:
+		self.pressed.connect(self._on_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func update_display():
+	if ingredient:
+		self.texture_normal = ingredient.texture
+	else:
+		self.texture_normal = null
+
+func _on_pressed():
+	Game.inspect_ingredient(ingredient)
+
+#TODO: on-hover label

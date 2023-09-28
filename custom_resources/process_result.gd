@@ -1,4 +1,4 @@
-@icon("res://sprites/chopped veg.png")
+@icon("res://sprites/chopped potato.png")
 extends Node
 class_name ProcessResult
 

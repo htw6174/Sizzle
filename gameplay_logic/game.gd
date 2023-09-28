@@ -55,11 +55,9 @@ func play_dialogue(dialogue: Dialogue):
 
 func open_recipe_book():
 	recipe_book.visible = true
-	recipe_book.close_ingredient_details()
 	recipe_book.open_ingredient_index()
 
 func inspect_ingredient(ingredient: Ingredient):
-	# TODO: open recipe book, display info page for ingredient
 	recipe_book.open_ingredient_details(ingredient)
 
 func _on_dialogue_finished():

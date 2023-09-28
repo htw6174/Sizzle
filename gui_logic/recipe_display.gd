@@ -1,0 +1,58 @@
+extends Control
+class_name RecipeDisplay
+
+@export var recipe_step: ProcessStep:
+	get:
+		return recipe_step
+	set(value):
+		recipe_step = value
+		update_display()
+
+@export var tool_icon: TextureRect
+@export var components_parent: Control
+@export var time_label: Label
+@export var result: IngredientIcon
+
+@export var icon_scene: PackedScene
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func update_display():
+	if recipe_step:
+		# Set tool icon
+		# TODO: ensure this works for nested process steps
+		var tool = recipe_step.get_parent()
+		if tool is ProcessingTool:
+			tool_icon.texture = tool.icon
+		
+		# Clear old components
+		var to_clear = components_parent.get_children()
+		for node in to_clear:
+			node.queue_free()
+		
+		# Create component icons
+		for ingredient in recipe_step.ingredients:
+			var new_icon = icon_scene.instantiate() as IngredientIcon
+			new_icon.ingredient = ingredient
+			components_parent.add_child(new_icon)
+		
+		# Set duration text
+		time_label.text = "%.fs ->" % recipe_step.time_to_complete
+		
+		# Set result icon
+		var next_step = recipe_step.get_child(0)
+		if next_step is ProcessResult:
+			result.ingredient = next_step.ingredient
+		else:
+			# TODO: handling for multi-step recipes and/or a warning for steps without results
+			pass
+	else:
+		# TODO: put some default icons in, or hide the whole element
+		pass

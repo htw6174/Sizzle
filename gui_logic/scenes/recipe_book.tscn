@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://s0cdd72som0n"]
+[gd_scene load_steps=8 format=3 uid="uid://s0cdd72som0n"]
 
 [ext_resource type="Script" path="res://gui_logic/recipe_book.gd" id="1_caedj"]
+[ext_resource type="PackedScene" uid="uid://be4jc3sbh6wws" path="res://gui_logic/scenes/ingredient_uses.tscn" id="2_3ena0"]
 [ext_resource type="PackedScene" uid="uid://c3a5cmnnna6qb" path="res://gui_logic/scenes/ingredient_list.tscn" id="2_ralbm"]
 [ext_resource type="PackedScene" uid="uid://cwwdtfacl6n0t" path="res://gui_logic/scenes/ingredient_description.tscn" id="2_vwmgp"]
 [ext_resource type="Texture2D" uid="uid://crsjlu6pr71xh" path="res://sprites/exclamation point.png" id="3_jsqnd"]
 
-[node name="Recipe Book" type="Control" node_paths=PackedStringArray("ingredient_list", "ingredient_detail", "left_page", "right_page", "hidden_page")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msg4w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pte5e"]
+
+[node name="Recipe Book" type="Control" node_paths=PackedStringArray("ingredient_list", "ingredient_detail", "ingredient_uses", "left_page", "right_page")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,11 +18,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_caedj")
-ingredient_list = NodePath("Hidden/Ingredient List")
-ingredient_detail = NodePath("Hidden/Ingredient Description")
-left_page = NodePath("Left Page/ScrollContainer")
-right_page = NodePath("Right Page/ScrollContainer")
-hidden_page = NodePath("Hidden")
+ingredient_list = NodePath("Left Page/ScrollContainer/TabContainer/Ingredient List")
+ingredient_detail = NodePath("Left Page/ScrollContainer/TabContainer/Ingredient Description")
+ingredient_uses = NodePath("Right Page/ScrollContainer/TabContainer/Ingredient Uses")
+left_page = NodePath("Left Page/ScrollContainer/TabContainer")
+right_page = NodePath("Right Page/ScrollContainer/TabContainer")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -42,6 +47,18 @@ grow_horizontal = 0
 layout_mode = 2
 horizontal_scroll_mode = 3
 
+[node name="TabContainer" type="TabContainer" parent="Left Page/ScrollContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_msg4w")
+tabs_visible = false
+
+[node name="Ingredient List" parent="Left Page/ScrollContainer/TabContainer" instance=ExtResource("2_ralbm")]
+layout_mode = 2
+
+[node name="Ingredient Description" parent="Left Page/ScrollContainer/TabContainer" instance=ExtResource("2_vwmgp")]
+visible = false
+layout_mode = 2
+
 [node name="Right Page" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -55,6 +72,18 @@ offset_bottom = -10.0
 [node name="ScrollContainer" type="ScrollContainer" parent="Right Page"]
 layout_mode = 2
 horizontal_scroll_mode = 3
+
+[node name="TabContainer" type="TabContainer" parent="Right Page/ScrollContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pte5e")
+tabs_visible = false
+
+[node name="Control" type="Control" parent="Right Page/ScrollContainer/TabContainer"]
+layout_mode = 2
+
+[node name="Ingredient Uses" parent="Right Page/ScrollContainer/TabContainer" instance=ExtResource("2_3ena0")]
+visible = false
+layout_mode = 2
 
 [node name="TabBar" type="TabBar" parent="."]
 layout_mode = 2
@@ -84,23 +113,6 @@ stretch_mode = 3
 visible = false
 anchors_preset = 0
 
-[node name="Ingredient List" parent="Hidden" instance=ExtResource("2_ralbm")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 10.0
-offset_top = 30.0
-offset_right = 10.0
-offset_bottom = 30.0
-
-[node name="Ingredient Description" parent="Hidden" instance=ExtResource("2_vwmgp")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-offset_left = 203.0
-offset_top = 30.0
-offset_right = 379.0
-offset_bottom = 300.0
-
+[connection signal="tab_changed" from="TabBar" to="." method="_on_tab_changed"]
+[connection signal="tab_selected" from="TabBar" to="." method="_on_tab_selected"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://degj62qyv4q0e"]
+
+[ext_resource type="PackedScene" uid="uid://n152vr00kv6l" path="res://gui_logic/scenes/ingredient_icon.tscn" id="1_ay1o2"]
+[ext_resource type="Script" path="res://gui_logic/recipe_display.gd" id="1_dh2vs"]
+[ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="1_kb2fo"]
+[ext_resource type="Texture2D" uid="uid://dn70matcfr5s2" path="res://sprites/tomato.png" id="2_t2ypw"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="2_v1iwg"]
+[ext_resource type="Texture2D" uid="uid://beh66vvcs6yph" path="res://sprites/cooked sauce.png" id="4_5amkk"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="7_cyufg"]
+
+[node name="Recipe Display" type="Control" node_paths=PackedStringArray("tool_icon", "components_parent", "time_label", "result")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dh2vs")
+tool_icon = NodePath("Tool")
+components_parent = NodePath("HBoxContainer/Components")
+time_label = NodePath("HBoxContainer/Time")
+result = NodePath("HBoxContainer/Result")
+icon_scene = ExtResource("1_ay1o2")
+
+[node name="Tool" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_kb2fo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 36.0
+offset_right = 216.0
+offset_bottom = 32.0
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Components" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Component 1" parent="HBoxContainer/Components" instance=ExtResource("1_ay1o2")]
+layout_mode = 2
+texture_normal = ExtResource("2_t2ypw")
+ingredient = ExtResource("2_v1iwg")
+
+[node name="Time" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "2s ->"
+
+[node name="Result" parent="HBoxContainer" instance=ExtResource("1_ay1o2")]
+layout_mode = 2
+texture_normal = ExtResource("4_5amkk")
+ingredient = ExtResource("7_cyufg")

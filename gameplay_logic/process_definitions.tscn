@@ -1,0 +1,218 @@
+[gd_scene load_steps=35 format=3 uid="uid://l0eiy6cbe3py"]
+
+[ext_resource type="Script" path="res://custom_resources/processing_tool.gd" id="1_c0ki3"]
+[ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1_ll2jl"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_meat.tres" id="2_05i2j"]
+[ext_resource type="Texture2D" uid="uid://doxvtk8vin3d5" path="res://sprites/skillet final.png" id="2_cyan8"]
+[ext_resource type="Script" path="res://custom_resources/process_result.gd" id="3_6f3ft"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="4_r5ywn"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/meat_steak.tres" id="5_eba2a"]
+[ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="6_d0d2q"]
+[ext_resource type="Resource" uid="uid://c8bhbot05n83n" path="res://custom_resources/ingredients/batter.tres" id="7_0g54g"]
+[ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="8_8v50r"]
+[ext_resource type="Resource" uid="uid://cw8qqoce4nn2m" path="res://custom_resources/ingredients/eggs.tres" id="9_i3kyc"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/fried_eggs.tres" id="10_vaxkb"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_potato.tres" id="11_ee1da"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/hash_browns.tres" id="12_lawq4"]
+[ext_resource type="Texture2D" uid="uid://b0oj00educjas" path="res://sprites/grill.png" id="15_4i6sf"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="16_v5gvi"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="17_o3cnr"]
+[ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="18_v8p0w"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="19_phtf2"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="20_in82s"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="21_8uip5"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/grain_noodles.tres" id="22_0b0qc"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="23_mkj43"]
+[ext_resource type="Texture2D" uid="uid://cm3i0vhjp1fd0" path="res://sprites/cutting board log.png" id="24_7vnqi"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_carrot.tres" id="25_fpag7"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/chopped_carrot.tres" id="26_0w0fe"]
+[ext_resource type="Resource" uid="uid://vh7rncollaja" path="res://custom_resources/ingredients/veg_potato.tres" id="27_gpflp"]
+[ext_resource type="Texture2D" uid="uid://dqoxildwtbv7d" path="res://sprites/mat.png" id="28_31k6e"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/skewer.tres" id="29_otrlv"]
+[ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="30_so0sx"]
+[ext_resource type="Resource" uid="uid://chyw15hrc01sd" path="res://custom_resources/ingredients/wet_batter.tres" id="31_ueoba"]
+[ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="32_lmxk7"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/bowl_stew.tres" id="34_eo5qy"]
+[ext_resource type="Texture2D" uid="uid://bgtrggu2a3ff6" path="res://sprites/cauldron.png" id="34_l7g67"]
+
+[node name="Process Definitions" type="Node"]
+
+[node name="Skillet" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+display_name = "Skillet"
+icon = ExtResource("2_cyan8")
+
+[node name="AddChoppedMeat" type="Node" parent="Skillet"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_05i2j")])
+time_to_complete = 3.0
+
+[node name="ProcessResult" type="Node" parent="Skillet/AddChoppedMeat"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("4_r5ywn")
+
+[node name="AddSteak" type="Node" parent="Skillet"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5_eba2a")])
+time_to_complete = 3.0
+
+[node name="ProcessResult" type="Node" parent="Skillet/AddSteak"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("6_d0d2q")
+
+[node name="AddBatter" type="Node" parent="Skillet"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("7_0g54g")])
+time_to_complete = 3.0
+
+[node name="ProcessResult" type="Node" parent="Skillet/AddBatter"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("8_8v50r")
+
+[node name="AddEggs" type="Node" parent="Skillet"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("9_i3kyc")])
+
+[node name="ProcessResult" type="Node" parent="Skillet/AddEggs"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("10_vaxkb")
+
+[node name="AddChoppedPotato" type="Node" parent="Skillet"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("11_ee1da")])
+
+[node name="ProcessResult" type="Node" parent="Skillet/AddChoppedPotato"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("12_lawq4")
+
+[node name="Grill" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+display_name = "Grill"
+icon = ExtResource("15_4i6sf")
+
+[node name="Grill kebab" type="Node" parent="Grill"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("16_v5gvi")])
+time_to_complete = 3.0
+
+[node name="ProcessResult" type="Node" parent="Grill/Grill kebab"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("17_o3cnr")
+
+[node name="GrillSteak" type="Node" parent="Grill"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5_eba2a")])
+time_to_complete = 3.0
+
+[node name="ProcessResult" type="Node" parent="Grill/GrillSteak"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("6_d0d2q")
+
+[node name="Pot" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+display_name = "Pot"
+icon = ExtResource("18_v8p0w")
+
+[node name="MakeSauce" type="Node" parent="Pot"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("19_phtf2"), ExtResource("20_in82s")])
+time_to_complete = 0.0
+
+[node name="ProcessResult" type="Node" parent="Pot/MakeSauce"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("21_8uip5")
+
+[node name="CookNoodles" type="Node" parent="Pot"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("22_0b0qc")])
+time_to_complete = 4.0
+
+[node name="ProcessResult" type="Node" parent="Pot/CookNoodles"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("23_mkj43")
+
+[node name="Cutting Board" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+display_name = "Cutting Board"
+icon = ExtResource("24_7vnqi")
+
+[node name="ChopCarrot" type="Node" parent="Cutting Board"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("25_fpag7")])
+
+[node name="ChoppedCarrot" type="Node" parent="Cutting Board/ChopCarrot"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("26_0w0fe")
+
+[node name="ChopPotato" type="Node" parent="Cutting Board"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("27_gpflp")])
+time_to_complete = 1.5
+
+[node name="ChoppedPotato" type="Node" parent="Cutting Board/ChopPotato"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("11_ee1da")
+
+[node name="ChopMeat" type="Node" parent="Cutting Board"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5_eba2a")])
+
+[node name="ProcessResult" type="Node" parent="Cutting Board/ChopMeat"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("2_05i2j")
+
+[node name="Combine" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+display_name = "Combine on table"
+icon = ExtResource("28_31k6e")
+
+[node name="MeatMeetSkewer" type="Node" parent="Combine"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("29_otrlv"), ExtResource("2_05i2j")])
+
+[node name="ProcessResult" type="Node" parent="Combine/MeatMeetSkewer"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("16_v5gvi")
+
+[node name="MixBatterWet" type="Node" parent="Combine"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("30_so0sx"), ExtResource("9_i3kyc")])
+
+[node name="ProcessResult" type="Node" parent="Combine/MixBatterWet"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("31_ueoba")
+
+[node name="MixBatterFinal" type="Node" parent="Combine"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("31_ueoba"), ExtResource("32_lmxk7")])
+
+[node name="ProcessResult" type="Node" parent="Combine/MixBatterFinal"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("7_0g54g")
+
+[node name="Cauldron" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+display_name = "Cauldron"
+icon = ExtResource("34_l7g67")
+
+[node name="AddNoodles" type="Node" parent="Cauldron"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("22_0b0qc")])
+time_to_complete = 4.0
+
+[node name="ProcessResult" type="Node" parent="Cauldron/AddNoodles"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("23_mkj43")
+
+[node name="AddStewVegetables" type="Node" parent="Cauldron"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("26_0w0fe"), ExtResource("11_ee1da")])
+time_to_complete = 3.0
+
+[node name="AddMeat" type="Node" parent="Cauldron/AddStewVegetables"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_05i2j")])
+
+[node name="ProcessResult" type="Node" parent="Cauldron/AddStewVegetables/AddMeat"]
+script = ExtResource("3_6f3ft")
+ingredient = ExtResource("34_eo5qy")

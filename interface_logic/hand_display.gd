@@ -13,11 +13,11 @@ func _ready():
 	control.visible = false
 	label.text = ""
 	tooltip.text = ""
-	PlayerHand.connect("item_reserved", Callable(self, "_on_PlayerHand_item_reserved"))
-	PlayerHand.connect("item_placed", Callable(self, "_on_PlayerHand_item_placed"))
-	PlayerHand.connect("item_dropped", Callable(self, "_on_PlayerHand_item_dropped"))
-	PlayerHand.connect("hover_entered", Callable(self, "_on_PlayerHand_hover_entered"))
-	PlayerHand.connect("hover_exited", Callable(self, "_on_PlayerHand_hover_exited"))
+	PlayerHand.item_reserved.connect(_on_PlayerHand_item_reserved)
+	PlayerHand.item_placed.connect(_on_PlayerHand_item_placed)
+	PlayerHand.item_dropped.connect(_on_PlayerHand_item_dropped)
+	PlayerHand.hover_entered.connect(_on_PlayerHand_hover_entered)
+	PlayerHand.hover_exited.connect(_on_PlayerHand_hover_exited)
 
 func _process(delta):
 	# follow mouse

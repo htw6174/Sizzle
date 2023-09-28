@@ -3,12 +3,11 @@ class_name RecipeBook
 
 @export var ingredient_list: Control
 @export var ingredient_detail: IngredientDescription
+@export var ingredient_uses: IngredientUses
 
-# Note: to avoid layout issues (and because I'm using ScrollContainers for these nodes), should enforce only 1 child node for these
-@export var left_page: Control
-@export var right_page: Control
-
-@export var hidden_page: Control
+@export var index_tab_bar: TabBar
+@export var left_page: TabContainer
+@export var right_page: TabContainer
 
 signal opened()
 signal closed()
@@ -22,22 +21,39 @@ func _ready():
 func _process(delta):
 	pass
 
-# TODO: need to find a solution other than reparenting constantly, very error-prone
 func open_ingredient_index():
-	hidden_page.remove_child(ingredient_list)
-	left_page.add_child(ingredient_list)
+	left_page.current_tab = 0
+	right_page.current_tab = 0
+	opened.emit()
+
+func open_dish_index():
+	opened.emit()
+
+func open_tool_index():
 	opened.emit()
 
 func open_ingredient_details(ingredient: Ingredient):
-	hidden_page.remove_child(ingredient_detail)
-	right_page.add_child(ingredient_detail)
-	ingredient_detail.ingredient = ingredient
-	opened.emit()
-
-func close_ingredient_details():
-	right_page.remove_child(ingredient_detail)
-	hidden_page.add_child(ingredient_detail)
+	if ingredient:
+		left_page.current_tab = 1
+		right_page.current_tab = 1
+		ingredient_detail.ingredient = ingredient
+		ingredient_uses.ingredient = ingredient
+		opened.emit()
+	else:
+		# TODO: not found page?
+		pass
 
 func _on_close_pressed():
 	self.visible = false
 	closed.emit()
+
+func _on_tab_selected(tab: int):
+	match (tab):
+		0:
+			open_ingredient_index()
+		1:
+			open_dish_index()
+		2:
+			open_tool_index()
+		_:
+			assert(false, "No page configured for tab %d" % tab)

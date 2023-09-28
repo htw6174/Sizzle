@@ -1,4 +1,4 @@
-@icon("res://sprites/cutting board.png")
+@icon("res://sprites/batter.png")
 extends Node
 class_name ProcessStep
 
