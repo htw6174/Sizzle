@@ -10,12 +10,14 @@ signal item_reserved(item)
 signal item_removed(item)
 signal item_returned(item)
 
+## Always shown on mouseover, should limit to a single line of text < 40 characters
 @export var display_name: String
 @export var pickable_item: Resource
 @export var item_sprite: Sprite2D
 
 var is_item_reserved: bool = false
 
+## Often shown on mouseover, but not always. May be a multiline block of text
 var tooltip: String = ""
 var is_tooltip_hidden: bool = false
 

@@ -2,7 +2,9 @@
 extends Node
 class_name ProcessingTool
 
-@export var display_name: String
+@export var tool_type: Cookbook.ToolTypes
+@export_multiline var description: String
+@export var verb: String = "making"
 @export var icon: Texture2D
 
 # Called when the node enters the scene tree for the first time.
@@ -13,3 +15,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+

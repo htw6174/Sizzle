@@ -1,10 +1,12 @@
 extends Interactable
 
-@export var preperation_process_scene: PackedScene
-@onready var preperation_process: ProcessStep = preperation_process_scene.instantiate()
+@export var tool_type: Cookbook.ToolTypes = Cookbook.ToolTypes.Combine
+
+var processing_tool: ProcessingTool
 
 func _ready():
 	super()
+	processing_tool = Cookbook.get_tool_by_type(tool_type)
 	if pickable_item != null:
 		display_name = pickable_item.display_name
 		item_sprite.texture = pickable_item.texture
@@ -57,10 +59,14 @@ func try_return_item() -> bool:
 		return false
 
 func check_for_recipe(item1: Ingredient, item2: Ingredient) -> bool:
-	var recipe = preperation_process.check_child_requirements([item1, item2])
-	if recipe != null:
+	var recipes = Cookbook.get_combos(processing_tool, item1, item2)
+	if recipes.size() > 1:
+		# TODO: present options
+		pass
+	elif recipes.size() == 1:
+		var recipe = recipes[0]
 		if recipe.has_result():
-			pickable_item = recipe.get_data()
+			pickable_item = recipe.result
 			display_name = pickable_item.display_name
 			item_sprite.texture = pickable_item.texture
 			return true

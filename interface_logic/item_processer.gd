@@ -1,16 +1,27 @@
 extends Interactable
 
-@export var processing_verb: String
-@export var preperation_process_scene: PackedScene
-# NOTE/TODO: could there be issues with instancing the process tree scene once per tool, with multiple of the same tool types in the scene?
-# At best it's wasteful, at worst could cause unexpected behavior. See if there is a way to use the scene without making individual instances.
-@onready var preperation_process: ProcessStep = preperation_process_scene.instantiate()
+enum ToolStates {
+	EMPTY,
+	WAITING,
+	PROCESSING,
+	FINISHED_NO_OPTIONS,
+	FINISHED_WITH_OPTIONS
+}
+
+@export var tool_type: Cookbook.ToolTypes
+
 @export var processor_effects: ProcessorFx
 @export var timer: Timer
 
-var can_accept_items: bool = true
+var current_state: ToolStates = ToolStates.EMPTY
 
-var process_step: ProcessStep = null
+var processing_tool: ProcessingTool
+
+var can_accept_items: bool:
+	get:
+		return current_state == ToolStates.EMPTY || current_state == ToolStates.FINISHED_WITH_OPTIONS
+
+var active_process_step: ProcessStep = null
 var recipe_component_index: int = 0
 
 var previous_step_ingredients: Array[Ingredient]
@@ -27,27 +38,45 @@ signal result_ingredient_produced(ingredient)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super()
-	if preperation_process != null:
-		process_step = preperation_process
-		display_name = preperation_process.get_display_name()
+	processing_tool = Cookbook.get_tool_by_type(tool_type)
 	processor_effects.timer = timer
+	self.reset()
 
 func can_accept_item(item: Ingredient) -> bool:
-	return can_accept_items and process_step.does_any_child_require_ingredient(current_step_ingredients, item)
-
-func try_insert_item(item: Ingredient) -> bool:
-	if not can_accept_items or pickable_item != null:
-		return false
-	if process_step.does_any_child_require_ingredient(current_step_ingredients, item):
-		current_step_ingredients.append(item)
-		item_inserted.emit(item)
-		check_progress()
-		item_sprite.modulate = Color(1, 1, 1, 1)
-		item_sprite.texture = item.texture
-		set_display_name()
-		return true
+	if can_accept_items:
+		if active_process_step:
+			return Cookbook.is_ingredient_valid_optional(active_process_step, item)
+		else:
+			return Cookbook.does_ingredient_have_recipe(processing_tool, item)
 	else:
 		return false
+
+func try_insert_item(item: Ingredient) -> bool:
+	if not can_accept_items:
+		return false
+	if active_process_step:
+		# moving from one step to another
+		if Cookbook.is_ingredient_valid_optional(active_process_step, item):
+			advance_processing_step(Cookbook.get_optional_step_by_ingredient(active_process_step, item))
+			_item_inserted(item)
+			return true
+		else:
+			return false
+	else:
+		# entering recipe tree
+		if Cookbook.does_ingredient_have_recipe(processing_tool, item):
+			item_sprite.texture = item.texture
+			_item_inserted(item)
+			check_options(item)
+			return true
+		else:
+			return false
+
+func _item_inserted(item: Ingredient):
+	current_step_ingredients.append(item)
+	item_sprite.modulate = Color(1, 1, 1, 1)
+	set_display_name()
+	item_inserted.emit(item)
 
 func try_reserve_item() -> Ingredient:
 	if pickable_item != null:
@@ -60,11 +89,13 @@ func try_reserve_item() -> Ingredient:
 
 func try_take_item() -> Ingredient:
 	if pickable_item != null:
+		is_item_reserved = false
 		var temp_item = pickable_item
-		pickable_item = null
-		display_name = preperation_process.get_display_name()
-		item_sprite.texture = null
+		self.reset()
 		item_removed.emit(temp_item)
+		# TODO: a bit hacky to do this here; just need to ensure that processing fx stop when intermediate result is removed
+		if current_state == ToolStates.FINISHED_WITH_OPTIONS:
+			process_finished.emit()
 		return temp_item
 	else:
 		return null
@@ -79,7 +110,7 @@ func try_return_item() -> bool:
 		return false
 
 func set_display_name():
-	display_name = preperation_process.get_display_name()
+	display_name = processing_tool.name
 	if current_step_ingredients.size() > 0:
 		var ingredient_name_array = PackedStringArray()
 		for ingredient in current_step_ingredients:
@@ -94,47 +125,61 @@ func set_tooltip():
 	var ingredients_list = "\n- ".join(ingredient_name_array)
 	tooltip = "Contains: \n- {0}".format([ingredients_list])
 
-func check_progress():
-	var next_step = process_step.check_child_requirements(current_step_ingredients)
-	if next_step != null:
-		advance_processing_step(next_step)
-		start_processing_countdown()
-		display_name = processing_verb
+func reset():
+	current_step_ingredients.clear()
+	previous_step_ingredients.clear()
+	item_sprite.texture = null
+	current_state = ToolStates.EMPTY
+	active_process_step = null
+	pickable_item = null
+	set_display_name()
+
+func check_options(item: Ingredient):
+	var next_step_options = Cookbook.get_recipes(processing_tool, item)
+	if next_step_options.size() == 0:
+		pass
+	elif next_step_options.size() == 1:
+		advance_processing_step(next_step_options[0])
+	else:
+		# TODO: present options
+		current_state = ToolStates.WAITING
 
 func check_for_result():
-	if process_step.has_result():
-		finish_recipe()
+	if active_process_step.has_result():
+		pickable_item = active_process_step.result
+		result_ingredient_produced.emit(pickable_item)
+		if Cookbook.does_step_have_optionals(active_process_step):
+			# intermediate result
+			current_state = ToolStates.FINISHED_WITH_OPTIONS
+		else:
+			current_state = ToolStates.FINISHED_NO_OPTIONS
+			finish_recipe()
 
 func advance_processing_step(next_step: ProcessStep):
-	if process_step == preperation_process:
+	if active_process_step == null:
 		process_started.emit()
-	process_step = next_step
+	active_process_step = next_step
 	previous_step_ingredients.append_array(current_step_ingredients)
 	current_step_ingredients.clear()
 	set_tooltip()
-	process_step_changed.emit(process_step)
+	process_step_changed.emit(active_process_step)
+	start_processing_countdown()
 
 func start_processing_countdown():
-	timer.start(process_step.time_to_complete)
-	can_accept_items = false
+	timer.start(active_process_step.time_to_complete)
+	current_state = ToolStates.PROCESSING
+	display_name = processing_tool.verb
 	process_step_started.emit()
 
 func finish_recipe():
 	process_finished.emit()
 	
-	pickable_item = process_step.get_data()
 	item_sprite.modulate = Color(1, 1, 1, 1)
 	item_sprite.texture = pickable_item.texture
 	display_name = pickable_item.display_name
 	tooltip = ""
-	result_ingredient_produced.emit(pickable_item)
-	
-	process_step = preperation_process
-	previous_step_ingredients.clear()
-	current_step_ingredients.clear()
 
 func _on_Timer_timeout():
-	can_accept_items = true
 	set_display_name()
 	process_step_finished.emit()
 	check_for_result()

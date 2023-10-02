@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cw7t4n0gg15vh"]
+[gd_scene load_steps=37 format=3 uid="uid://cw7t4n0gg15vh"]
 
 [ext_resource type="Texture2D" uid="uid://cfoc68o08ig4e" path="res://sprites/background.png" id="1_7rp32"]
 [ext_resource type="Texture2D" uid="uid://bsv3pxagwjklx" path="res://sprites/logs.png" id="2_4jwh5"]
@@ -6,17 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cvvq7rly1ehl5" path="res://sprites/oven.png" id="4_epe1k"]
 [ext_resource type="Texture2D" uid="uid://cap1dne5j4q75" path="res://sprites/tent.png" id="5_20247"]
 [ext_resource type="PackedScene" uid="uid://dpbx65ek7binq" path="res://interface_logic/scenes/Tool.tscn" id="6_e2wri"]
-[ext_resource type="PackedScene" path="res://custom_resources/processes/cauldron_process_tree.tscn" id="7_bw5re"]
 [ext_resource type="Texture2D" uid="uid://bgtrggu2a3ff6" path="res://sprites/cauldron.png" id="8_7x0yd"]
 [ext_resource type="Texture2D" uid="uid://bdgivnsk14s36" path="res://sprites/stove and tables.png" id="9_k5r8m"]
 [ext_resource type="Texture2D" uid="uid://b0oj00educjas" path="res://sprites/grill.png" id="10_qmnpl"]
-[ext_resource type="PackedScene" uid="uid://blger4cu36ut6" path="res://custom_resources/processes/grill_process_tree.tscn" id="11_i1usl"]
 [ext_resource type="AudioStream" uid="uid://bcokfrnqovgne" path="res://audio/194806__hannebu__frying.wav" id="12_d1ynp"]
-[ext_resource type="PackedScene" uid="uid://c80x128w0j80e" path="res://custom_resources/processes/pot_process_tree.tscn" id="13_7sr3c"]
 [ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="14_3uiht"]
-[ext_resource type="PackedScene" uid="uid://btqio36j1aha8" path="res://custom_resources/processes/skillet_process_tree.tscn" id="15_g0n71"]
 [ext_resource type="Texture2D" uid="uid://doxvtk8vin3d5" path="res://sprites/skillet final.png" id="16_hhw1f"]
-[ext_resource type="PackedScene" path="res://custom_resources/processes/chop_process_tree.tscn" id="17_srbx7"]
 [ext_resource type="Texture2D" uid="uid://cm3i0vhjp1fd0" path="res://sprites/cutting board log.png" id="18_t46gs"]
 [ext_resource type="AudioStream" uid="uid://b0y0f3a7bm81p" path="res://audio/qubodupItemHandling2_mono.wav" id="19_w2jxh"]
 [ext_resource type="PackedScene" uid="uid://d2qslb34ro6go" path="res://interface_logic/scenes/trash.tscn" id="20_cmipo"]
@@ -33,7 +28,7 @@
 [ext_resource type="Resource" uid="uid://d3xgh5kje0r1x" path="res://custom_resources/ingredients/milk.tres" id="30_fiv7t"]
 [ext_resource type="Resource" uid="uid://cqorju4irlcqa" path="res://custom_resources/ingredients/flour.tres" id="31_de7dh"]
 [ext_resource type="Resource" uid="uid://cw8qqoce4nn2m" path="res://custom_resources/ingredients/eggs.tres" id="32_s83xm"]
-[ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/bowl_stew.tres" id="33_mhb1v"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/bowl_stew.tres" id="33_mhb1v"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="34_pbr5u"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="35_afyfo"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="36_ehi5m"]
@@ -98,8 +93,7 @@ position = Vector2(199, 112)
 [node name="Cauldron" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
 z_index = -2
 position = Vector2(121, 11)
-processing_verb = "Boiling..."
-preperation_process_scene = ExtResource("7_bw5re")
+tool_type = 5
 
 [node name="Sprite2D" parent="Foreground/Tools/Cauldron" index="0"]
 texture = ExtResource("8_7x0yd")
@@ -138,8 +132,7 @@ polygon = PackedVector2Array(42, -14, 49, 11, 49, 25, -32, 24, -35, 13, -49, -1,
 
 [node name="Left" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
 position = Vector2(-58, 17)
-processing_verb = "Grilling..."
-preperation_process_scene = ExtResource("11_i1usl")
+tool_type = 1
 
 [node name="Sprite2D" parent="Foreground/Tools/Grills/Left" index="0"]
 position = Vector2(-10, -16)
@@ -169,8 +162,7 @@ polygon = PackedVector2Array(13, -4, 2, 17, -37, 17, -37, 12, -21, -4)
 
 [node name="CenterLeft" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
 position = Vector2(-18, 17)
-processing_verb = "Grilling..."
-preperation_process_scene = ExtResource("11_i1usl")
+tool_type = 1
 
 [node name="Sprite2D" parent="Foreground/Tools/Grills/CenterLeft" index="0"]
 position = Vector2(-10, -16)
@@ -199,8 +191,7 @@ polygon = PackedVector2Array(19, -4, 19, 17, -23, 17, -12, -4)
 
 [node name="CenterRight" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
 position = Vector2(18, 17)
-processing_verb = "Grilling..."
-preperation_process_scene = ExtResource("11_i1usl")
+tool_type = 1
 
 [node name="Sprite2D" parent="Foreground/Tools/Grills/CenterRight" index="0"]
 position = Vector2(-10, -16)
@@ -229,8 +220,7 @@ polygon = PackedVector2Array(15, -4, 27, 17, -16, 17, -16, -4)
 
 [node name="Right" parent="Foreground/Tools/Grills" instance=ExtResource("6_e2wri")]
 position = Vector2(59, 17)
-processing_verb = "Grilling..."
-preperation_process_scene = ExtResource("11_i1usl")
+tool_type = 1
 
 [node name="Sprite2D" parent="Foreground/Tools/Grills/Right" index="0"]
 position = Vector2(-10, -16)
@@ -260,8 +250,7 @@ polygon = PackedVector2Array(24, -4, 40, 12, 40, 17, 2, 17, -10, -4)
 
 [node name="Pot" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
 position = Vector2(-46, 54)
-processing_verb = "Simmering..."
-preperation_process_scene = ExtResource("13_7sr3c")
+tool_type = 2
 
 [node name="Sprite2D" parent="Foreground/Tools/Pot" index="0"]
 position = Vector2(-10, -16)
@@ -296,8 +285,6 @@ polygon = PackedVector2Array(20, -12, 20, 12, 12, 17, -10, 17, -18, 12, -18, -12
 
 [node name="Skillet" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
 position = Vector2(48, 56)
-processing_verb = "Frying..."
-preperation_process_scene = ExtResource("15_g0n71")
 
 [node name="Sprite2D" parent="Foreground/Tools/Skillet" index="0"]
 position = Vector2(17, -17)
@@ -334,8 +321,7 @@ polygon = PackedVector2Array(34, -7, 34, 8, 25, 16, 0, 20, -25, 17, -35, 6, -36,
 
 [node name="CuttingBoard" parent="Foreground/Tools" instance=ExtResource("6_e2wri")]
 position = Vector2(67, 92)
-processing_verb = "Chopping..."
-preperation_process_scene = ExtResource("17_srbx7")
+tool_type = 3
 
 [node name="Sprite2D" parent="Foreground/Tools/CuttingBoard" index="0"]
 texture = ExtResource("18_t46gs")

@@ -1,22 +1,28 @@
 extends Node
 
+enum ToolTypes {
+	Skillet,
+	Grill,
+	Pot,
+	CuttingBoard,
+	Combine,
+	Cauldron
+}
+
 var ingredients_directory: String = "res://custom_resources/ingredients/"
 var process_scene: PackedScene = preload("res://gameplay_logic/process_definitions.tscn")
-var processes: Node
+var _processes: Node
 
 var ingredients: Array[Ingredient]
 
-var recipes: Dictionary # Key: result, Value: array of components?
+# TODO: once recipe def is more solid, consider creating structure for fast lookup
+# Probably only needed when total number of recipes is in the thousands
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	processes = process_scene.instantiate()
+	_processes = process_scene.instantiate()
+	self.add_child(_processes)
 	load_resources(ingredients_directory, Ingredient, ingredients)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func load_resources(directory: String, type: Variant, dest: Array):
 	var dir = DirAccess.open(directory)
@@ -30,9 +36,68 @@ func load_resources(directory: String, type: Variant, dest: Array):
 					dest.append(res)
 		file_name = dir.get_next()
 
+func get_tool_by_type(type: ToolTypes) -> ProcessingTool:
+	var tools = _processes.get_children()
+	for tool in tools:
+		if tool is ProcessingTool:
+			if tool.tool_type == type:
+				return tool
+	assert(false, "No processing tool with type '%s'" % type)
+	return null
+
+func get_recipes(tool: ProcessingTool, ingredient: Ingredient) -> Array[ProcessStep]:
+	var recipes: Array[ProcessStep]
+	var steps = tool.get_children()
+	for step in steps:
+		if step is ProcessStep:
+			if step.ingredients.has(ingredient):
+				recipes.append(step)
+	return recipes
+
+func does_ingredient_have_recipe(tool: ProcessingTool, ingredient: Ingredient) -> bool:
+	var recipes = tool.get_children()
+	for recipe in recipes:
+		if recipe is ProcessStep:
+			if recipe.ingredients.has(ingredient):
+				return true
+	return false
+
+func does_step_have_optionals(step: ProcessStep) -> bool:
+	var children = step.get_children()
+	for child in children:
+		# TODO: should make a new node type for optionals, allow setting categories of ingredient
+		if child is ProcessStep: 
+			return true
+	return false
+
+func is_ingredient_valid_optional(step: ProcessStep, ingredient: Ingredient) -> bool:
+	var children = step.get_children()
+	for child in children:
+		if child is ProcessStep:
+			if child.ingredients.has(ingredient):
+				return true
+	return false
+
+func get_optional_step_by_ingredient(current_step: ProcessStep, ingredient: Ingredient) -> ProcessStep:
+	var children = current_step.get_children()
+	for child in children:
+		if child is ProcessStep:
+			if child.ingredients.has(ingredient):
+				return child as ProcessStep
+	return null
+
+func get_combos(tool: ProcessingTool, item1: Ingredient, item2: Ingredient) -> Array[ProcessStep]:
+	var recipes: Array[ProcessStep] = []
+	var combos = tool.get_children()
+	for combo in combos:
+		if combo is ProcessStep:
+			if combo.ingredients.has(item1) && combo.ingredients.has(item2):
+				recipes.append(combo)
+	return recipes
+
 func get_recipes_by_component(component_ingredient: Ingredient) -> Array[ProcessStep]:
 	var recipes: Array[ProcessStep] = []
-	var tools = processes.get_children()
+	var tools = _processes.get_children()
 	for tool in tools:
 		var steps = tool.get_children()
 		for step in steps:
@@ -43,7 +108,7 @@ func get_recipes_by_component(component_ingredient: Ingredient) -> Array[Process
 
 func get_recipes_by_result(result_ingredient: Ingredient) -> Array[ProcessStep]:
 	var recipes: Array[ProcessStep] = []
-	var tools = processes.get_children()
+	var tools = _processes.get_children()
 	for tool in tools:
 		var steps = tool.get_children()
 		for step in steps:
@@ -55,6 +120,10 @@ func get_recipes_by_result(result_ingredient: Ingredient) -> Array[ProcessStep]:
 							recipes.append(step)
 	return recipes
 
-func get_recipes_by_tool() -> Array[ProcessStep]:
-	# TODO: don't have a type for tools yet, need one to set this up
+func get_recipes_by_tool(tool: ProcessingTool) -> Array[ProcessStep]:
+	var recipes: Array[ProcessStep] = []
+	var steps = tool.get_children()
+	for step in steps:
+		if step is ProcessStep:
+			recipes.append(step)
 	return []
