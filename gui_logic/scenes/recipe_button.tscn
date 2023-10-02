@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://4qjnbulpc6r6"]
+
+[ext_resource type="Texture2D" uid="uid://b4g1i7b78hfn7" path="res://sprites/sliced meat.png" id="1_ev65t"]
+[ext_resource type="Script" path="res://gui_logic/recipe_button.gd" id="2_mx1oe"]
+
+[node name="Recipe Button" type="Button" node_paths=PackedStringArray("_name_label", "_description_label")]
+custom_minimum_size = Vector2(96, 160)
+icon = ExtResource("1_ev65t")
+text_overrun_behavior = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_mx1oe")
+_name_label = NodePath("VBoxContainer/Name")
+_description_label = NodePath("VBoxContainer/Description")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 96.0
+offset_right = -5.0
+grow_horizontal = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Result Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.25098, 0.25098, 1)
+text = "Here's some more info!"
+horizontal_alignment = 1
+autowrap_mode = 2

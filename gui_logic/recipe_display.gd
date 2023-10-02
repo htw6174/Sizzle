@@ -47,12 +47,12 @@ func update_display():
 		time_label.text = "%.fs ->" % recipe_step.time_to_complete
 		
 		# Set result icon
-		var next_step = recipe_step.get_child(0)
-		if next_step is ProcessResult:
-			result.ingredient = next_step.ingredient
+		
+		if recipe_step.result:
+			result.ingredient = recipe_step.result
 		else:
 			# TODO: handling for multi-step recipes and/or a warning for steps without results
-			pass
+			result.ingredient = null
 	else:
 		# TODO: put some default icons in, or hide the whole element
 		pass

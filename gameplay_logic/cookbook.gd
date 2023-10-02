@@ -113,11 +113,8 @@ func get_recipes_by_result(result_ingredient: Ingredient) -> Array[ProcessStep]:
 		var steps = tool.get_children()
 		for step in steps:
 			if step is ProcessStep:
-				var results = step.get_children()
-				for result in results:
-					if result is ProcessResult:
-						if result.ingredient == result_ingredient:
-							recipes.append(step)
+				if step.result == result_ingredient:
+					recipes.append(step)
 	return recipes
 
 func get_recipes_by_tool(tool: ProcessingTool) -> Array[ProcessStep]:

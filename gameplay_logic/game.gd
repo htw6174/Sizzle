@@ -3,6 +3,7 @@ extends Node
 var freeplay_controller = preload("res://gameplay_logic/freeplay.tscn")
 var dialogue_scene = preload("res://game_scenes/dialogue.tscn")
 var recipe_book_scene = preload("res://gui_logic/scenes/recipe_book.tscn")
+var recipe_selector_scene = preload("res://gui_logic/scenes/recipe_selector.tscn")
 
 # Default nodes to use for instancing scenes
 var world_root: Node
@@ -10,6 +11,7 @@ var gui_root: Node
 
 var dialogue_player: DialoguePlayer
 var recipe_book: RecipeBook
+var recipe_selector: RecipeSelector
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,14 +23,19 @@ func _ready():
 	if gui_root == null:
 		gui_root = self
 	
+	# TODO: think about this as a design practice more. On one hand, makes it easier to setup scenes with access to "global" functionality
+	# on the other hand, may cause weird errors when trying to test these scenes in isolation
 	var dp = dialogue_scene.instantiate()
 	dialogue_player = dp as DialoguePlayer
 	dialogue_player.dialogue_finished.connect(_on_dialogue_finished)
 	dialogue_player.visible = false
 	gui_root.add_child(dialogue_player)
 	
-	# TODO: think about this as a design practice more. On one hand, makes it easier to setup scenes with access to "global" functionality
-	# on the other hand, may cause weird errors when trying to test these scenes in isolation
+	var rs = recipe_selector_scene.instantiate()
+	recipe_selector = rs as RecipeSelector
+	recipe_selector.visible = false
+	gui_root.add_child(recipe_selector)
+	
 	var rb = recipe_book_scene.instantiate()
 	recipe_book = rb as RecipeBook
 	recipe_book.opened.connect(_on_book_opened)
@@ -59,6 +66,12 @@ func open_recipe_book():
 
 func inspect_ingredient(ingredient: Ingredient):
 	recipe_book.open_ingredient_details(ingredient)
+
+## callable must have a single ProcessStep param TOOD figure out how to specify / require this
+func prompt_recipe_selection(options: Array[ProcessStep], callable: Callable):
+	recipe_selector.visible = true
+	recipe_selector.recipe_selected.connect(callable, CONNECT_ONE_SHOT)
+	recipe_selector.present_options(options)
 
 func _on_dialogue_finished():
 	PlayerHand.active = true

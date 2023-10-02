@@ -142,6 +142,7 @@ func check_options(item: Ingredient):
 		advance_processing_step(next_step_options[0])
 	else:
 		# TODO: present options
+		Game.prompt_recipe_selection(next_step_options, _on_recipe_selected)
 		current_state = ToolStates.WAITING
 
 func check_for_result():
@@ -183,3 +184,6 @@ func _on_Timer_timeout():
 	set_display_name()
 	process_step_finished.emit()
 	check_for_result()
+
+func _on_recipe_selected(recipe: ProcessStep):
+	advance_processing_step(recipe)
