@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://ds1dcdd14dpk3"]
-
-[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_0yiai"]
-[ext_resource type="Texture2D" uid="uid://cwhywp8fpt5yy" path="res://sprites/bowl_stew.tres" id="2_re36w"]
-
-[resource]
-script = ExtResource("1_0yiai")
-display_name = "Bowl of Stew"
-texture = ExtResource("2_re36w")

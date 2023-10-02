@@ -1,8 +1,22 @@
+@tool
 extends Interactable
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+@export var pickable_item: Ingredient:
+	get:
+		return pickable_item
+	set(value):
+		pickable_item = value
+		if pickable_item:
+			display_name = pickable_item.display_name
+			item_sprite.texture = pickable_item.texture
+		else:
+			item_sprite.texture = null
+
+func _ready():
+	if Engine.is_editor_hint():
+		pass
+	else:
+		super()
 
 func can_accept_item(item: Ingredient) -> bool:
 	return false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dj3jrw36f0mnt"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_dcoko"]
+[ext_resource type="Texture2D" uid="uid://bkhfi6ul04446" path="res://sprites/chopped carrot.png" id="2_kv4oh"]
+
+[resource]
+script = ExtResource("1_dcoko")
+display_name = "Tomato Slices"
+texture = ExtResource("2_kv4oh")

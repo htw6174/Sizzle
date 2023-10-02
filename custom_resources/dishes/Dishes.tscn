@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cdjp61ph76t6h"]
+[gd_scene load_steps=85 format=3 uid="uid://cdjp61ph76t6h"]
 
 [ext_resource type="Script" path="res://custom_resources/dish_step.gd" id="1_08qek"]
 [ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="2_u5083"]
@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="6_vksmp"]
 [ext_resource type="Texture2D" uid="uid://c23fbsh01t3lm" path="res://sprites/pancakestack.png" id="7_7a0l3"]
 [ext_resource type="Texture2D" uid="uid://dxmu7746ps5uu" path="res://sprites/dish_noodles/tomato_sauce_bg.tres" id="7_lrglb"]
-[ext_resource type="Resource" path="res://custom_resources/ingredients/jar_tomato_sauce.tres" id="7_nc2u6"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/herbs.tres" id="8_ddarv"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="8_nxu3i"]
 [ext_resource type="Texture2D" uid="uid://cy4gmjhuueojj" path="res://sprites/dish_kebabs/plated_kebab_1.tres" id="9_se5bm"]
@@ -20,14 +19,28 @@
 [ext_resource type="Texture2D" uid="uid://udqxhy1c6rp3" path="res://sprites/dish_noodles/beef_meatballs.tres" id="11_0tuyb"]
 [ext_resource type="Texture2D" uid="uid://e2incle8mhgy" path="res://sprites/dish_kebabs/plated_kebab_3.tres" id="11_sfwy2"]
 [ext_resource type="Texture2D" uid="uid://by1ub8obt72kk" path="res://sprites/dish_noodles/herbs.tres" id="13_m5d4a"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/tomato_sauce_plain.tres" id="15_0amug"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/tomato_sauce_garlic.tres" id="17_mnluj"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/tomato_sauce_herbs.tres" id="18_sus1w"]
 [ext_resource type="Resource" uid="uid://cfqfm53q2t8qv" path="res://custom_resources/ingredients/fried_eggs.tres" id="21_y2nh3"]
 [ext_resource type="Texture2D" uid="uid://c8sewvp6ngnjv" path="res://sprites/dish_breakfast/eggs.tres" id="22_8phdn"]
 [ext_resource type="Resource" uid="uid://ds1lc2v8mtccv" path="res://custom_resources/ingredients/hash_browns.tres" id="23_1il0b"]
 [ext_resource type="Texture2D" uid="uid://ctrr1j1rm1mx0" path="res://sprites/dish_breakfast/potatoes.tres" id="23_v33k8"]
 [ext_resource type="Texture2D" uid="uid://c3mjv3eh8mwra" path="res://sprites/dish_breakfast/sausage.tres" id="24_yxaxj"]
-[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="25_fu77c"]
 [ext_resource type="Texture2D" uid="uid://bopchratcpo0w" path="res://sprites/dish_breakfast/tomatoes.tres" id="26_ld1lx"]
+[ext_resource type="Resource" uid="uid://ce7232d2m005u" path="res://custom_resources/ingredients/cooked_sausage.tres" id="27_0r0eg"]
 [ext_resource type="Texture2D" uid="uid://b8ofah7wpunoa" path="res://sprites/dish_breakfast/herbs.tres" id="27_04lnv"]
+[ext_resource type="Resource" uid="uid://dn46qaof0dls5" path="res://custom_resources/ingredients/greens.tres" id="29_snvmd"]
+[ext_resource type="Texture2D" uid="uid://50cnrhhrll4q" path="res://sprites/dish_salad/greens.tres" id="30_pm3qt"]
+[ext_resource type="Resource" uid="uid://dksevll6hva85" path="res://custom_resources/ingredients/spices.tres" id="31_v0c3i"]
+[ext_resource type="Texture2D" uid="uid://b4q2fswhxmepk" path="res://sprites/dish_salad/bits.tres" id="32_xbk1o"]
+[ext_resource type="Texture2D" uid="uid://b0vgc76rkrmhi" path="res://sprites/dish_salad/tomato.tres" id="34_v4icm"]
+[ext_resource type="Resource" uid="uid://dj3jrw36f0mnt" path="res://custom_resources/ingredients/sliced_tomato.tres" id="35_bspg3"]
+[ext_resource type="Resource" uid="uid://c32ddnlycf2ai" path="res://custom_resources/ingredients/olive_oil.tres" id="35_vosge"]
+[ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/vegetable_stew.tres" id="36_tehf2"]
+[ext_resource type="Texture2D" uid="uid://cwhywp8fpt5yy" path="res://sprites/bowl_stew.tres" id="37_8vl3a"]
+[ext_resource type="Resource" uid="uid://cj62d0gb7mo5t" path="res://custom_resources/ingredients/hearty_stew.tres" id="38_1s0ng"]
+[ext_resource type="Texture2D" uid="uid://dxod12aicepq7" path="res://sprites/dish_stew/herbs.tres" id="39_31668"]
 
 [sub_resource type="Resource" id="Resource_bmac3"]
 script = ExtResource("4_s67f8")
@@ -109,7 +122,23 @@ options = Array[ExtResource("4_s67f8")]([SubResource("Resource_7s0m0")])
 
 [sub_resource type="Resource" id="Resource_ec4ae"]
 script = ExtResource("4_s67f8")
-ingredient = ExtResource("7_nc2u6")
+ingredient = ExtResource("15_0amug")
+texture = ExtResource("9_ylu5a")
+depth = 2
+background_texture = ExtResource("7_lrglb")
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_tc531"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("17_mnluj")
+texture = ExtResource("9_ylu5a")
+depth = 2
+background_texture = ExtResource("7_lrglb")
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_r3pa2"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("18_sus1w")
 texture = ExtResource("9_ylu5a")
 depth = 2
 background_texture = ExtResource("7_lrglb")
@@ -119,7 +148,7 @@ background_depth = 0
 script = ExtResource("4_16unn")
 name = "Sauce"
 required = false
-options = Array[ExtResource("4_s67f8")]([SubResource("Resource_ec4ae")])
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_ec4ae"), SubResource("Resource_tc531"), SubResource("Resource_r3pa2")])
 
 [sub_resource type="Resource" id="Resource_vns0j"]
 script = ExtResource("4_s67f8")
@@ -175,7 +204,7 @@ options = Array[ExtResource("4_s67f8")]([SubResource("Resource_5ab4p")])
 
 [sub_resource type="Resource" id="Resource_mud8w"]
 script = ExtResource("4_s67f8")
-ingredient = ExtResource("6_l8qlu")
+ingredient = ExtResource("27_0r0eg")
 texture = ExtResource("24_yxaxj")
 depth = 2
 background_depth = 0
@@ -188,7 +217,7 @@ options = Array[ExtResource("4_s67f8")]([SubResource("Resource_mud8w")])
 
 [sub_resource type="Resource" id="Resource_iukin"]
 script = ExtResource("4_s67f8")
-ingredient = ExtResource("25_fu77c")
+ingredient = ExtResource("35_bspg3")
 texture = ExtResource("26_ld1lx")
 depth = 1
 background_depth = 0
@@ -211,6 +240,90 @@ script = ExtResource("4_16unn")
 name = "Herbs"
 required = true
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_hjpoo")])
+
+[sub_resource type="Resource" id="Resource_sr5p7"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("29_snvmd")
+texture = ExtResource("30_pm3qt")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_fi8yh"]
+script = ExtResource("4_16unn")
+name = "Greens"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_sr5p7")])
+
+[sub_resource type="Resource" id="Resource_thvdq"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("31_v0c3i")
+texture = ExtResource("32_xbk1o")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_olhgg"]
+script = ExtResource("4_16unn")
+name = "Spices"
+required = false
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_thvdq")])
+
+[sub_resource type="Resource" id="Resource_ebo30"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("35_bspg3")
+texture = ExtResource("34_v4icm")
+depth = 1
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_si2b2"]
+script = ExtResource("4_16unn")
+name = "Tomatoes"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_ebo30")])
+
+[sub_resource type="Resource" id="Resource_3grcf"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("35_vosge")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_2p46n"]
+script = ExtResource("4_16unn")
+name = "Oil"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_3grcf")])
+
+[sub_resource type="Resource" id="Resource_d25ud"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("36_tehf2")
+texture = ExtResource("37_8vl3a")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_xjtsr"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("38_1s0ng")
+texture = ExtResource("37_8vl3a")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_1ko04"]
+script = ExtResource("4_16unn")
+name = "Stew"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_d25ud"), SubResource("Resource_xjtsr")])
+
+[sub_resource type="Resource" id="Resource_rs4bv"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("8_ddarv")
+texture = ExtResource("39_31668")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_agow2"]
+script = ExtResource("4_16unn")
+name = "Toppings"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_rs4bv")])
 
 [node name="Dishes" type="Node"]
 script = ExtResource("1_08qek")
@@ -250,3 +363,19 @@ components = Array[ExtResource("4_16unn")]([SubResource("Resource_ivvm8")])
 [node name="Breakfast" type="Node" parent="."]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_f4tgu"), SubResource("Resource_g052h"), SubResource("Resource_2fj57"), SubResource("Resource_8kve7"), SubResource("Resource_fpgii")])
+
+[node name="Salad" type="Node" parent="."]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_fi8yh")])
+
+[node name="Salad" type="Node" parent="Salad"]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_olhgg"), SubResource("Resource_si2b2"), SubResource("Resource_2p46n")])
+
+[node name="Stew" type="Node" parent="."]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_1ko04")])
+
+[node name="Stew" type="Node" parent="Stew"]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_agow2")])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c2f5krpaebonm"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_fucly"]
+[ext_resource type="Texture2D" uid="uid://uoei6m0ehsfc" path="res://sprites/chopped potato.png" id="2_4up7d"]
+
+[resource]
+script = ExtResource("1_fucly")
+display_name = "Grated Potatoes"
+texture = ExtResource("2_4up7d")

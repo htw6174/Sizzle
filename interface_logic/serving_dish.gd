@@ -31,10 +31,6 @@ func reset():
 func handle_interaction():
 	pass
 
-func notify_item_taken(item: Ingredient):
-	pickable_item = null
-	item_sprite.texture = null
-
 func add_sprite_layer(parent: Node2D, texture: Texture2D, depth: int):
 	var item_sprite = Sprite2D.new()
 	parent.add_child(item_sprite)

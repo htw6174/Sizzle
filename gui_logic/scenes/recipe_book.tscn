@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://be4jc3sbh6wws" path="res://gui_logic/scenes/ingredient_uses.tscn" id="2_3ena0"]
 [ext_resource type="PackedScene" uid="uid://c3a5cmnnna6qb" path="res://gui_logic/scenes/ingredient_list.tscn" id="2_ralbm"]
 [ext_resource type="PackedScene" uid="uid://cwwdtfacl6n0t" path="res://gui_logic/scenes/ingredient_description.tscn" id="2_vwmgp"]
-[ext_resource type="Texture2D" uid="uid://crsjlu6pr71xh" path="res://sprites/exclamation point.png" id="3_jsqnd"]
+[ext_resource type="Texture2D" uid="uid://rd3u64qrdf7k" path="res://sprites/close.png" id="5_minnk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msg4w"]
 
@@ -103,10 +103,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -22.0
-offset_bottom = 22.0
+offset_left = -26.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 26.0
 grow_horizontal = 0
-texture_normal = ExtResource("3_jsqnd")
+texture_normal = ExtResource("5_minnk")
 stretch_mode = 3
 
 [node name="Hidden" type="Control" parent="."]

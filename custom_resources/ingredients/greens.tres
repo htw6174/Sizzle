@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dn46qaof0dls5"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_jcm43"]
+[ext_resource type="Texture2D" uid="uid://c1etql11y640x" path="res://sprites/greens.png" id="2_6gdpe"]
+
+[resource]
+script = ExtResource("1_jcm43")
+display_name = "Salad Greens"
+texture = ExtResource("2_6gdpe")

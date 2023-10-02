@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cj62d0gb7mo5t"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_s3mit"]
+[ext_resource type="Texture2D" uid="uid://cwhywp8fpt5yy" path="res://sprites/bowl_stew.tres" id="2_flo0n"]
+
+[resource]
+script = ExtResource("1_s3mit")
+display_name = "Hearty Stew"
+texture = ExtResource("2_flo0n")

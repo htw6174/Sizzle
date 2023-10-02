@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://gfttvi6osoav"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_ohk2e"]
+
+[resource]
+script = ExtResource("1_ohk2e")
+display_name = "Raw Sausages"

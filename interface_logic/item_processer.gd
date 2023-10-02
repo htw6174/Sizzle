@@ -14,6 +14,7 @@ enum ToolStates {
 @export var timer: Timer
 
 var current_state: ToolStates = ToolStates.EMPTY
+var result_item: Ingredient
 
 var processing_tool: ProcessingTool
 
@@ -79,18 +80,18 @@ func _item_inserted(item: Ingredient):
 	item_inserted.emit(item)
 
 func try_reserve_item() -> Ingredient:
-	if pickable_item != null:
+	if result_item != null:
 		is_item_reserved = true
 		item_sprite.modulate = Color(1, 1, 1, 0.5)
-		item_reserved.emit(pickable_item)
-		return pickable_item
+		item_reserved.emit(result_item)
+		return result_item
 	else:
 		return null
 
 func try_take_item() -> Ingredient:
-	if pickable_item != null:
+	if result_item != null:
 		is_item_reserved = false
-		var temp_item = pickable_item
+		var temp_item = result_item
 		self.reset()
 		item_removed.emit(temp_item)
 		# TODO: a bit hacky to do this here; just need to ensure that processing fx stop when intermediate result is removed
@@ -101,10 +102,10 @@ func try_take_item() -> Ingredient:
 		return null
 
 func try_return_item() -> bool:
-	if pickable_item != null:
+	if result_item != null:
 		is_item_reserved = false
 		item_sprite.modulate = Color(1, 1, 1, 1)
-		item_returned.emit(pickable_item)
+		item_returned.emit(result_item)
 		return true
 	else:
 		return false
@@ -131,7 +132,7 @@ func reset():
 	item_sprite.texture = null
 	current_state = ToolStates.EMPTY
 	active_process_step = null
-	pickable_item = null
+	result_item = null
 	set_display_name()
 
 func check_options(item: Ingredient):
@@ -147,8 +148,8 @@ func check_options(item: Ingredient):
 
 func check_for_result():
 	if active_process_step.has_result():
-		pickable_item = active_process_step.result
-		result_ingredient_produced.emit(pickable_item)
+		result_item = active_process_step.result
+		result_ingredient_produced.emit(result_item)
 		if Cookbook.does_step_have_optionals(active_process_step):
 			# intermediate result
 			current_state = ToolStates.FINISHED_WITH_OPTIONS
@@ -176,8 +177,8 @@ func finish_recipe():
 	process_finished.emit()
 	
 	item_sprite.modulate = Color(1, 1, 1, 1)
-	item_sprite.texture = pickable_item.texture
-	display_name = pickable_item.display_name
+	item_sprite.texture = result_item.texture
+	display_name = result_item.display_name
 	tooltip = ""
 
 func _on_Timer_timeout():

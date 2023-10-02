@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://ce7232d2m005u"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_cmyil"]
+[ext_resource type="Texture2D" uid="uid://b1x417sb1tfi5" path="res://sprites/cooked_sausage.tres" id="2_k4f2s"]
+
+[resource]
+script = ExtResource("1_cmyil")
+display_name = "Cooked Sausage"
+texture = ExtResource("2_k4f2s")

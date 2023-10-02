@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c32ddnlycf2ai"]
+
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_dg3b4"]
+[ext_resource type="Texture2D" uid="uid://de3rnd56ux4fx" path="res://sprites/placeholder srpites/oil.png" id="2_lu6vy"]
+
+[resource]
+script = ExtResource("1_dg3b4")
+display_name = "Olive Oil"
+texture = ExtResource("2_lu6vy")
