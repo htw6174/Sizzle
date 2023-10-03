@@ -45,6 +45,7 @@ emitting = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolEffects"]
 stream = ExtResource("3")
 mix_target = 2
+bus = &"Effects"
 
 [node name="ProgressBar" type="ProgressBar" parent="ToolEffects"]
 visible = false

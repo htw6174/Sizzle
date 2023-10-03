@@ -42,3 +42,4 @@ text = "longer test"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 mix_target = 2
+bus = &"Effects"

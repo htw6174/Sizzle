@@ -25,4 +25,4 @@ func _on_play_pressed():
 
 
 func _on_options_pressed():
-	pass # Replace with function body.
+	Game.open_options()

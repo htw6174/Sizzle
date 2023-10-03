@@ -1,5 +1,6 @@
 extends Node
 
+var options_scene = preload("res://gui_logic/scenes/options_menu.tscn")
 var freeplay_controller = preload("res://gameplay_logic/freeplay.tscn")
 var dialogue_scene = preload("res://game_scenes/dialogue.tscn")
 var recipe_book_scene = preload("res://gui_logic/scenes/recipe_book.tscn")
@@ -9,6 +10,7 @@ var recipe_selector_scene = preload("res://gui_logic/scenes/recipe_selector.tscn
 var world_root: Node
 var gui_root: Node
 
+var options_menu
 var dialogue_player: DialoguePlayer
 var recipe_book: RecipeBook
 var recipe_selector: RecipeSelector
@@ -25,32 +27,39 @@ func _ready():
 	
 	# TODO: think about this as a design practice more. On one hand, makes it easier to setup scenes with access to "global" functionality
 	# on the other hand, may cause weird errors when trying to test these scenes in isolation
-	var dp = dialogue_scene.instantiate()
-	dialogue_player = dp as DialoguePlayer
+	# At the very least, make a base "menu" class for some of the common behavior here
+	dialogue_player = dialogue_scene.instantiate() as DialoguePlayer
 	dialogue_player.dialogue_started.connect(_on_menu_opened)
 	dialogue_player.dialogue_finished.connect(_on_menu_closed)
 	dialogue_player.visible = false
 	gui_root.add_child(dialogue_player)
 	
-	var rs = recipe_selector_scene.instantiate()
-	recipe_selector = rs as RecipeSelector
+	recipe_selector = recipe_selector_scene.instantiate() as RecipeSelector
 	recipe_selector.opened.connect(_on_menu_opened)
 	recipe_selector.closed.connect(_on_menu_closed)
 	recipe_selector.visible = false
 	gui_root.add_child(recipe_selector)
 	
-	var rb = recipe_book_scene.instantiate()
-	recipe_book = rb as RecipeBook
+	recipe_book = recipe_book_scene.instantiate() as RecipeBook
 	recipe_book.opened.connect(_on_menu_opened)
 	recipe_book.closed.connect(_on_menu_closed)
 	recipe_book.visible = false
 	gui_root.add_child(recipe_book)
-
+	
+	options_menu = options_scene.instantiate() as OptionsMenu
+	options_menu.opened.connect(_on_menu_opened)
+	options_menu.closed.connect(_on_menu_closed)
+	options_menu.visible = false
+	gui_root.add_child(options_menu)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+
+func open_options():
+	options_menu.open()
 
 func begin_tutorial():
 	pass

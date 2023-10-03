@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxkliliwaj4ps"]
+
+[ext_resource type="Script" path="res://gui_logic/options_menu.gd" id="1_dms2w"]
+[ext_resource type="StyleBox" uid="uid://54axactnw8ts" path="res://ui_theme/uibox.tres" id="2_nd2a7"]
+[ext_resource type="Texture2D" uid="uid://rd3u64qrdf7k" path="res://sprites/close.png" id="2_u8ye4"]
+[ext_resource type="Script" path="res://gui_logic/audio_slider.gd" id="3_3cijd"]
+
+[node name="Options Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dms2w")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrettyBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = 16.0
+offset_right = -84.0
+offset_bottom = -16.0
+theme_override_styles/panel = ExtResource("2_nd2a7")
+
+[node name="Label" type="Label" parent="PrettyBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 9.0
+offset_right = 56.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PrettyBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -40.0
+offset_right = 56.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PrettyBox/VBoxContainer"]
+layout_mode = 2
+text = "Effects Volume"
+
+[node name="Effects Volume" type="HSlider" parent="PrettyBox/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.02
+script = ExtResource("3_3cijd")
+bus_name = "Effects"
+
+[node name="Control" type="Control" parent="PrettyBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PrettyBox/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="Music Volume" type="HSlider" parent="PrettyBox/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.02
+script = ExtResource("3_3cijd")
+bus_name = "Music"
+
+[node name="Close" type="TextureButton" parent="PrettyBox"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 30.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_u8ye4")
+stretch_mode = 3
+
+[connection signal="closed" from="." to="." method="_on_closed"]
+[connection signal="opened" from="." to="." method="_on_opened"]
+[connection signal="value_changed" from="PrettyBox/VBoxContainer/Effects Volume" to="PrettyBox/VBoxContainer/Effects Volume" method="_on_value_changed"]
+[connection signal="value_changed" from="PrettyBox/VBoxContainer/Music Volume" to="PrettyBox/VBoxContainer/Music Volume" method="_on_value_changed"]
+[connection signal="pressed" from="PrettyBox/Close" to="." method="_on_close_pressed"]

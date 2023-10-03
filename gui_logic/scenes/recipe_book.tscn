@@ -121,6 +121,7 @@ visible = false
 anchors_preset = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Effects"
 
 [connection signal="closed" from="." to="." method="_on_closed"]
 [connection signal="opened" from="." to="." method="_on_opened"]
