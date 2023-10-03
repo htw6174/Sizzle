@@ -9,12 +9,16 @@ class_name RecipeBook
 @export var left_page: TabContainer
 @export var right_page: TabContainer
 
+@export var audio_player: AudioStreamPlayer
+@export var audio_open: AudioStream
+@export var audio_close: AudioStream
+
 signal opened()
 signal closed()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.opened.connect(_opened)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +48,6 @@ func open_ingredient_details(ingredient: Ingredient):
 		pass
 
 func _on_close_pressed():
-	self.visible = false
 	closed.emit()
 
 func _on_tab_selected(tab: int):
@@ -58,5 +61,12 @@ func _on_tab_selected(tab: int):
 		_:
 			assert(false, "No page configured for tab %d" % tab)
 
-func _opened():
+func _on_opened():
+	audio_player.stream = audio_open
+	audio_player.play()
 	self.visible = true
+
+func _on_closed():
+	audio_player.stream = audio_close
+	audio_player.play()
+	self.visible = false

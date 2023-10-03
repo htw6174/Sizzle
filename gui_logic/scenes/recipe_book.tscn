@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://s0cdd72som0n"]
+[gd_scene load_steps=10 format=3 uid="uid://s0cdd72som0n"]
 
 [ext_resource type="Script" path="res://gui_logic/recipe_book.gd" id="1_caedj"]
 [ext_resource type="PackedScene" uid="uid://be4jc3sbh6wws" path="res://gui_logic/scenes/ingredient_uses.tscn" id="2_3ena0"]
 [ext_resource type="PackedScene" uid="uid://c3a5cmnnna6qb" path="res://gui_logic/scenes/ingredient_list.tscn" id="2_ralbm"]
+[ext_resource type="AudioStream" uid="uid://dcuyl6gwvj0y0" path="res://audio/ui/page_flip.wav" id="2_uyill"]
 [ext_resource type="PackedScene" uid="uid://cwwdtfacl6n0t" path="res://gui_logic/scenes/ingredient_description.tscn" id="2_vwmgp"]
+[ext_resource type="AudioStream" uid="uid://cbg0y5dlufy6e" path="res://audio/ui/book_close.wav" id="3_o7otc"]
 [ext_resource type="Texture2D" uid="uid://rd3u64qrdf7k" path="res://sprites/close.png" id="5_minnk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msg4w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pte5e"]
 
-[node name="Recipe Book" type="Control" node_paths=PackedStringArray("ingredient_list", "ingredient_detail", "ingredient_uses", "left_page", "right_page")]
+[node name="Recipe Book" type="Control" node_paths=PackedStringArray("ingredient_list", "ingredient_detail", "ingredient_uses", "left_page", "right_page", "audio_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +25,9 @@ ingredient_detail = NodePath("Left Page/ScrollContainer/TabContainer/Ingredient 
 ingredient_uses = NodePath("Right Page/ScrollContainer/TabContainer/Ingredient Uses")
 left_page = NodePath("Left Page/ScrollContainer/TabContainer")
 right_page = NodePath("Right Page/ScrollContainer/TabContainer")
+audio_player = NodePath("AudioStreamPlayer")
+audio_open = ExtResource("2_uyill")
+audio_close = ExtResource("3_o7otc")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -115,6 +120,9 @@ stretch_mode = 3
 visible = false
 anchors_preset = 0
 
-[connection signal="tab_changed" from="TabBar" to="." method="_on_tab_changed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="closed" from="." to="." method="_on_closed"]
+[connection signal="opened" from="." to="." method="_on_opened"]
 [connection signal="tab_selected" from="TabBar" to="." method="_on_tab_selected"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
