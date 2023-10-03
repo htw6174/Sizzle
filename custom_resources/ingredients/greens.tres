@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dn46qaof0dls5"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://dn46qaof0dls5"]
 
+[ext_resource type="AudioStream" uid="uid://d3jwkc5it510m" path="res://audio/handling/crack_pickup.wav" id="1_41r1d"]
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_jcm43"]
+[ext_resource type="AudioStream" uid="uid://b25tny5exwye" path="res://audio/handling/crack_drop.wav" id="2_0se5p"]
 [ext_resource type="Texture2D" uid="uid://c1etql11y640x" path="res://sprites/greens.png" id="2_6gdpe"]
 
 [resource]
 script = ExtResource("1_jcm43")
 display_name = "Salad Greens"
 texture = ExtResource("2_6gdpe")
+audio_pickup = ExtResource("2_0se5p")
+audio_drop = ExtResource("1_41r1d")

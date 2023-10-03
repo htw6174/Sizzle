@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c32ddnlycf2ai"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://c32ddnlycf2ai"]
 
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_dg3b4"]
+[ext_resource type="AudioStream" uid="uid://dxtn5a0spmtay" path="res://audio/handling/ceramic_drop.wav" id="1_q7krc"]
+[ext_resource type="AudioStream" uid="uid://b1r3cfxa0k2sv" path="res://audio/handling/ceramic_pickup.wav" id="2_cdg70"]
 [ext_resource type="Texture2D" uid="uid://de3rnd56ux4fx" path="res://sprites/placeholder srpites/oil.png" id="2_lu6vy"]
 
 [resource]
 script = ExtResource("1_dg3b4")
 display_name = "Olive Oil"
 texture = ExtResource("2_lu6vy")
+audio_pickup = ExtResource("2_cdg70")
+audio_drop = ExtResource("1_q7krc")

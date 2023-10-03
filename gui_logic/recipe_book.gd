@@ -14,7 +14,7 @@ signal closed()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	open_ingredient_index()
+	self.opened.connect(_opened)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,3 +57,6 @@ func _on_tab_selected(tab: int):
 			open_tool_index()
 		_:
 			assert(false, "No page configured for tab %d" % tab)
+
+func _opened():
+	self.visible = true

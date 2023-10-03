@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://chyw15hrc01sd"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://chyw15hrc01sd"]
 
+[ext_resource type="AudioStream" uid="uid://dxtn5a0spmtay" path="res://audio/handling/ceramic_drop.wav" id="1_25ycx"]
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_84rl3"]
+[ext_resource type="AudioStream" uid="uid://b1r3cfxa0k2sv" path="res://audio/handling/ceramic_pickup.wav" id="2_5v0a5"]
 [ext_resource type="Texture2D" uid="uid://coqyb0ns2dvrk" path="res://sprites/batter.png" id="2_t3ej2"]
 
 [resource]
 script = ExtResource("1_84rl3")
 display_name = "Batter - Milk & Eggs"
 texture = ExtResource("2_t3ej2")
+audio_pickup = ExtResource("2_5v0a5")
+audio_drop = ExtResource("1_25ycx")

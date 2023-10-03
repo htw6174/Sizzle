@@ -1,9 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://cxem20rpp4vn8"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/meatball.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dxtn5a0spmtay" path="res://audio/handling/ceramic_drop.wav" id="1_2t2i0"]
+[ext_resource type="Texture2D" uid="uid://tbgcr77firpq" path="res://sprites/meatball.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://b1r3cfxa0k2sv" path="res://audio/handling/ceramic_pickup.wav" id="2_fea4u"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Meatballs"
-texture = ExtResource( 2 )
+texture = ExtResource("2")
+audio_pickup = ExtResource("2_fea4u")
+audio_drop = ExtResource("1_2t2i0")

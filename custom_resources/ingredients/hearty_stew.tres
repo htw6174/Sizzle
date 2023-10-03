@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cj62d0gb7mo5t"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://cj62d0gb7mo5t"]
 
+[ext_resource type="AudioStream" uid="uid://bwp435pdrvkab" path="res://audio/handling/wood_drop.wav" id="1_n466k"]
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_s3mit"]
 [ext_resource type="Texture2D" uid="uid://cwhywp8fpt5yy" path="res://sprites/bowl_stew.tres" id="2_flo0n"]
+[ext_resource type="AudioStream" uid="uid://26qpbws15qaq" path="res://audio/handling/wood_pickup.wav" id="2_j1l15"]
 
 [resource]
 script = ExtResource("1_s3mit")
 display_name = "Hearty Stew"
 texture = ExtResource("2_flo0n")
+audio_pickup = ExtResource("2_j1l15")
+audio_drop = ExtResource("1_n466k")

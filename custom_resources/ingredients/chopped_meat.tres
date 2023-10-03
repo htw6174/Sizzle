@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cfr81jc3cu78f"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/sliced meat.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b4g1i7b78hfn7" path="res://sprites/sliced meat.png" id="2"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Chopped Meat"
-texture = ExtResource( 2 )
+texture = ExtResource("2")

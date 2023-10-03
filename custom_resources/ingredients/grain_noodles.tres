@@ -1,9 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://rrxmpltai3nf"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/dry pasta.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://cw58brjj5koc5" path="res://audio/handling/rustle_drop.wav" id="1_grvhk"]
+[ext_resource type="Texture2D" uid="uid://cvbqbtjelg22w" path="res://sprites/dry pasta.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://cpt1wy4mp1o87" path="res://audio/handling/rustle_pickup.wav" id="2_2smdq"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Dry Noodles"
-texture = ExtResource( 2 )
+texture = ExtResource("2")
+audio_pickup = ExtResource("2_2smdq")
+audio_drop = ExtResource("1_grvhk")

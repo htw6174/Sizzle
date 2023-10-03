@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://jucqlbsyx8t6"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://jucqlbsyx8t6"]
 
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dxtn5a0spmtay" path="res://audio/handling/ceramic_drop.wav" id="1_sia2v"]
 [ext_resource type="Texture2D" uid="uid://uoei6m0ehsfc" path="res://sprites/chopped potato.png" id="2_66enl"]
+[ext_resource type="AudioStream" uid="uid://b1r3cfxa0k2sv" path="res://audio/handling/ceramic_pickup.wav" id="2_qko88"]
 
 [resource]
 script = ExtResource("1")
 display_name = "Chopped potato"
 texture = ExtResource("2_66enl")
+audio_pickup = ExtResource("2_qko88")
+audio_drop = ExtResource("1_sia2v")

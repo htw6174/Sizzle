@@ -1,9 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://bq4nke4t8rmgr"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/cooked sauce.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dxtn5a0spmtay" path="res://audio/handling/ceramic_drop.wav" id="1_pcmty"]
+[ext_resource type="Texture2D" uid="uid://beh66vvcs6yph" path="res://sprites/cooked sauce.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://b1r3cfxa0k2sv" path="res://audio/handling/ceramic_pickup.wav" id="2_6pnem"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Tomato Sauce"
-texture = ExtResource( 2 )
+texture = ExtResource("2")
+audio_pickup = ExtResource("2_6pnem")
+audio_drop = ExtResource("1_pcmty")

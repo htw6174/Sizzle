@@ -1,9 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://bdsdw4v04h4lo"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/empty skewer.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://b25tny5exwye" path="res://audio/handling/crack_drop.wav" id="1_6cle8"]
+[ext_resource type="Texture2D" uid="uid://vywuog5jpcp0" path="res://sprites/empty skewer.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://d3jwkc5it510m" path="res://audio/handling/crack_pickup.wav" id="2_2jxg5"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Wood skewer"
-texture = ExtResource( 2 )
+texture = ExtResource("2")
+audio_pickup = ExtResource("2_2jxg5")
+audio_drop = ExtResource("1_6cle8")

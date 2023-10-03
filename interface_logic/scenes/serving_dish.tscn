@@ -105,19 +105,15 @@ texture = ExtResource("4_dtpch")
 stream = ExtResource("9_005w7")
 volume_db = -6.0
 
-[node name="Reset" type="Area2D" parent="."]
-position = Vector2(32, 20)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
-shape = SubResource("CircleShape2D_ugf7j")
-
-[node name="Sprite2D" type="Sprite2D" parent="Reset"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_t77at")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Reset"]
-stream = ExtResource("9_005w7")
-volume_db = -6.0
+[node name="Reset" type="TextureButton" parent="."]
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 47.0
+offset_bottom = 26.0
+tooltip_text = "Clear serving dish"
+texture_normal = ExtResource("3_t77at")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="DishAnchor" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
 script = ExtResource("3_ap1qx")
@@ -165,7 +161,7 @@ libraries = {
 
 [connection signal="bell_rung" from="Bell" to="." method="_on_bell_rung"]
 [connection signal="input_event" from="Bell" to="Bell" method="_on_input_event"]
-[connection signal="input_event" from="Reset" to="Reset" method="_on_input_event"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
 [connection signal="dish_complete_effects_finished" from="DishAnchor" to="." method="_on_dish_effects_exit_finished"]
 [connection signal="animation_finished" from="DishAnchor/AnimationPlayer" to="DishAnchor" method="_on_animation_player_animation_finished"]
 [connection signal="input_event" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_input_event"]

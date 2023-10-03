@@ -13,6 +13,7 @@ class_name DialoguePlayer
 var current_dialogue: Dialogue
 var dialogue_index: int = 0
 
+signal dialogue_started
 signal dialogue_finished
 
 func _ready():
@@ -32,6 +33,7 @@ func start_dialogue(new_dialogue: Dialogue):
 	dialogue_label.text = current_dialogue.lines[dialogue_index]
 	self.visible = true
 	animation_player.play(start_animation)
+	dialogue_started.emit()
 
 func advance_dialogue():
 	if current_dialogue != null:
@@ -56,7 +58,7 @@ func _gui_input(event):
 func _on_AnimationPlayer_animation_finished(anim_name: String):
 	if anim_name == finish_animation:
 		self.visible = false
-		emit_signal("dialogue_finished")
+		dialogue_finished.emit()
 
 
 func _on_SkipButton_pressed():

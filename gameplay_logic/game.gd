@@ -27,19 +27,22 @@ func _ready():
 	# on the other hand, may cause weird errors when trying to test these scenes in isolation
 	var dp = dialogue_scene.instantiate()
 	dialogue_player = dp as DialoguePlayer
-	dialogue_player.dialogue_finished.connect(_on_dialogue_finished)
+	dialogue_player.dialogue_started.connect(_on_menu_opened)
+	dialogue_player.dialogue_finished.connect(_on_menu_closed)
 	dialogue_player.visible = false
 	gui_root.add_child(dialogue_player)
 	
 	var rs = recipe_selector_scene.instantiate()
 	recipe_selector = rs as RecipeSelector
+	recipe_selector.opened.connect(_on_menu_opened)
+	recipe_selector.closed.connect(_on_menu_closed)
 	recipe_selector.visible = false
 	gui_root.add_child(recipe_selector)
 	
 	var rb = recipe_book_scene.instantiate()
 	recipe_book = rb as RecipeBook
-	recipe_book.opened.connect(_on_book_opened)
-	recipe_book.closed.connect(_on_book_closed)
+	recipe_book.opened.connect(_on_menu_opened)
+	recipe_book.closed.connect(_on_menu_closed)
 	recipe_book.visible = false
 	gui_root.add_child(recipe_book)
 
@@ -58,10 +61,8 @@ func begin_freeplay():
 
 func play_dialogue(dialogue: Dialogue):
 	dialogue_player.start_dialogue(dialogue)
-	PlayerHand.active = false
 
 func open_recipe_book():
-	recipe_book.visible = true
 	recipe_book.open_ingredient_index()
 
 func inspect_ingredient(ingredient: Ingredient):
@@ -69,15 +70,11 @@ func inspect_ingredient(ingredient: Ingredient):
 
 ## callable must have a single ProcessStep param TOOD figure out how to specify / require this
 func prompt_recipe_selection(options: Array[ProcessStep], callable: Callable):
-	recipe_selector.visible = true
 	recipe_selector.recipe_selected.connect(callable, CONNECT_ONE_SHOT)
 	recipe_selector.present_options(options)
 
-func _on_dialogue_finished():
-	PlayerHand.active = true
-
-func _on_book_opened():
+func _on_menu_opened():
 	PlayerHand.active = false
-
-func _on_book_closed():
+	
+func _on_menu_closed():
 	PlayerHand.active = true

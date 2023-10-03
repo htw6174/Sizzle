@@ -102,6 +102,9 @@ func set_tooltip():
 func _on_bell_rung():
 	serving_effects.serve()
 
+func _on_reset_pressed():
+	reset()
+
 func _on_dish_effects_exit_finished():
 	dish_served.emit(dish_step, added_ingredients)
 	reset()

@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dksevll6hva85"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://dksevll6hva85"]
 
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_3byrm"]
+[ext_resource type="AudioStream" uid="uid://bwp435pdrvkab" path="res://audio/handling/wood_drop.wav" id="1_wvq8u"]
+[ext_resource type="AudioStream" uid="uid://26qpbws15qaq" path="res://audio/handling/wood_pickup.wav" id="2_f7ijp"]
 [ext_resource type="Texture2D" uid="uid://buyenow1j3k1j" path="res://sprites/placeholder srpites/spice piles.png" id="2_q1t50"]
 
 [resource]
 script = ExtResource("1_3byrm")
 display_name = "Hot Spices"
 texture = ExtResource("2_q1t50")
+audio_pickup = ExtResource("2_f7ijp")
+audio_drop = ExtResource("1_wvq8u")

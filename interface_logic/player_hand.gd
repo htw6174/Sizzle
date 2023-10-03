@@ -17,6 +17,7 @@ var reserved_item: Ingredient
 signal item_reserved(item)
 signal item_placed(item)
 signal item_dropped(item)
+signal item_rejected(item)
 signal hover_entered(interactable)
 signal hover_exited(interactable)
 
@@ -28,25 +29,27 @@ func try_pick():
 	reserved_item = hovered_interactable.try_reserve_item()
 	if reserved_item != null:
 		source_interactable = hovered_interactable
-		emit_signal("item_reserved", reserved_item)
+		item_reserved.emit(reserved_item)
 
 func try_place():
 	if hovered_interactable.try_insert_item(reserved_item):
 		var taken_item = source_interactable.try_take_item()
 		assert(taken_item == reserved_item)
-		emit_signal("item_placed", reserved_item)
+		item_placed.emit(reserved_item)
 		source_interactable = null
 		reserved_item = null
 	else:
 		if hovered_interactable is ItemSlot && source_interactable is ItemSlot:
 			if ItemSlot.try_swap_item(source_interactable, hovered_interactable):
-				emit_signal("item_placed", reserved_item)
+				item_placed.emit(reserved_item)
 				source_interactable = null
 				reserved_item = null
+		else:
+			item_rejected.emit(reserved_item)
 
 func _drop():
 	if source_interactable.try_return_item():
-		emit_signal("item_dropped", reserved_item)
+		item_dropped.emit(reserved_item)
 		source_interactable = null
 		reserved_item = null
 
@@ -88,10 +91,10 @@ func _unhandled_input(event):
 func _on_Interactable_mouse_entered(interactable: Interactable):
 	if active:
 		hovered_interactable = interactable
-		emit_signal("hover_entered", interactable)
+		hover_entered.emit(interactable)
 
 func _on_Interactable_mouse_exited(interactable: Interactable):
 	if active:
 		if hovered_interactable == interactable:
 			hovered_interactable = null
-		emit_signal("hover_exited", interactable)
+		hover_exited.emit(interactable)

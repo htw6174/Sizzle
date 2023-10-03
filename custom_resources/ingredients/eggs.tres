@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cw8qqoce4nn2m"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://cw8qqoce4nn2m"]
 
+[ext_resource type="AudioStream" uid="uid://b25tny5exwye" path="res://audio/handling/crack_drop.wav" id="1_bewyd"]
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_c37sv"]
 [ext_resource type="Texture2D" uid="uid://bu7c6m38ulvwq" path="res://sprites/eggs.png" id="2_wthuj"]
+[ext_resource type="AudioStream" uid="uid://d3jwkc5it510m" path="res://audio/handling/crack_pickup.wav" id="2_xglgc"]
 
 [resource]
 script = ExtResource("1_c37sv")
 display_name = "Eggs"
 texture = ExtResource("2_wthuj")
+audio_pickup = ExtResource("2_xglgc")
+audio_drop = ExtResource("1_bewyd")

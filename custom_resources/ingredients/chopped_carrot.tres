@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://7c55o10ic1ep"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://7c55o10ic1ep"]
 
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dxtn5a0spmtay" path="res://audio/handling/ceramic_drop.wav" id="1_46p2v"]
+[ext_resource type="AudioStream" uid="uid://b1r3cfxa0k2sv" path="res://audio/handling/ceramic_pickup.wav" id="2_1qg4b"]
 [ext_resource type="Texture2D" uid="uid://bkhfi6ul04446" path="res://sprites/chopped carrot.png" id="2_ampks"]
 
 [resource]
 script = ExtResource("1")
 display_name = "Chopped Carrot"
 texture = ExtResource("2_ampks")
+audio_pickup = ExtResource("2_1qg4b")
+audio_drop = ExtResource("1_46p2v")
