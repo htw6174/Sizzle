@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmd52l6niqc5c"]
+
+[ext_resource type="Texture2D" uid="uid://cpt6upxqtcv0v" path="res://sprites/firefly dithered.png" id="1_fekl5"]
+
+[sub_resource type="Gradient" id="Gradient_iejl6"]
+offsets = PackedFloat32Array(0, 0.461059, 0.82866, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.385493, 0.385492, 0.385492, 0.501961, 0, 0, 0, 0.25098, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_4s0ij"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Sparks" type="CPUParticles2D"]
+amount = 24
+lifetime = 2.0
+explosiveness = 1.0
+texture = ExtResource("1_fekl5")
+gravity = Vector2(0, 0)
+initial_velocity_min = 116.3
+initial_velocity_max = 504.35
+orbit_velocity_max = 0.15
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_min = 4.0
+damping_max = 8.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_iejl6")
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_4s0ij")

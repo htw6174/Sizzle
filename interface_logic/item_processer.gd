@@ -34,7 +34,8 @@ signal process_started
 signal process_finished
 signal process_step_started
 signal process_step_finished
-signal result_ingredient_produced(ingredient)
+signal intermediate_ingredient_produced(ingredient)
+signal final_ingredient_produced(ingredient)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -92,11 +93,11 @@ func try_take_item() -> Ingredient:
 	if result_item != null:
 		is_item_reserved = false
 		var temp_item = result_item
-		self.reset()
 		item_removed.emit(temp_item)
 		# TODO: a bit hacky to do this here; just need to ensure that processing fx stop when intermediate result is removed
 		if current_state == ToolStates.FINISHED_WITH_OPTIONS:
 			process_finished.emit()
+		self.reset()
 		return temp_item
 	else:
 		return null
@@ -149,12 +150,13 @@ func check_options(item: Ingredient):
 func check_for_result():
 	if active_process_step.has_result():
 		result_item = active_process_step.result
-		result_ingredient_produced.emit(result_item)
 		if Cookbook.does_step_have_optionals(active_process_step):
 			# intermediate result
 			current_state = ToolStates.FINISHED_WITH_OPTIONS
+			intermediate_ingredient_produced.emit(result_item)
 		else:
 			current_state = ToolStates.FINISHED_NO_OPTIONS
+			final_ingredient_produced.emit(result_item)
 			finish_recipe()
 
 func advance_processing_step(next_step: ProcessStep):

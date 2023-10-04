@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ubg4g2onho6"]
+
+[ext_resource type="Script" path="res://gameplay_logic/tutorial_controller.gd" id="1_j5hm1"]
+
+[node name="Tutorial" type="Node"]
+script = ExtResource("1_j5hm1")

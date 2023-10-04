@@ -1,8 +1,12 @@
+extends Node2D
 class_name ProcessorFx
-extends Node
 
 @export var hide_during_processing: bool = false
 @export var hide_finished_ingredient: bool = false
+
+@export var intermediate_texture: Texture2D
+@export var final_texture: Texture2D
+
 @export var finished_ingredient: Sprite2D
 @export var completion_sprite: Sprite2D
 @export var processing_animation: AnimatedSprite2D
@@ -81,8 +85,16 @@ func _on_Tool_item_removed(item):
 	pass # Replace with function body.
 
 
-func _on_Tool_result_ingredient_produced(ingredient):
+func _on_tool_intermediate_ingredient_produced(ingredient):
 	if completion_sprite:
+		completion_sprite.texture = intermediate_texture
+		completion_sprite.visible = true
+	finished_ingredient.visible = not hide_finished_ingredient
+
+
+func _on_tool_final_ingredient_produced(ingredient):
+	if completion_sprite:
+		completion_sprite.texture = final_texture
 		completion_sprite.visible = true
 	finished_ingredient.visible = not hide_finished_ingredient
 

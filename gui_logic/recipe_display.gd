@@ -44,7 +44,7 @@ func update_display():
 			components_parent.add_child(new_icon)
 		
 		# Set duration text
-		time_label.text = "%.fs ->" % recipe_step.time_to_complete
+		time_label.text = "%.fs" % recipe_step.time_to_complete
 		
 		# Set result icon
 		

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpbx65ek7binq"]
+[gd_scene load_steps=10 format=3 uid="uid://dpbx65ek7binq"]
 
 [ext_resource type="Script" path="res://interface_logic/item_processer.gd" id="1"]
 [ext_resource type="SpriteFrames" uid="uid://mpv06xy4wd2w" path="res://animations/dust_frames.tres" id="2"]
 [ext_resource type="AudioStream" uid="uid://cgtngctp6celk" path="res://audio/cooking_without_cover_01.ogg" id="3"]
+[ext_resource type="Texture2D" uid="uid://cmrfxmhifu33i" path="res://sprites/ellipsis.png" id="3_k4d1c"]
 [ext_resource type="Theme" uid="uid://bahxjt4a2qkvs" path="res://ui_theme/pixel_theme.tres" id="4"]
 [ext_resource type="Script" path="res://interface_logic/effects_logic/processor_effects.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bofkgdddoes63" path="res://particles/steam_big_particles.tscn" id="6"]
@@ -13,26 +14,28 @@
 script = ExtResource("1")
 processor_effects = NodePath("ToolEffects")
 timer = NodePath("Timer")
-item_sprite = NodePath("ToolEffects/ActiveIngredientSprite")
+item_sprite = NodePath("ToolEffects/Ingredient Sprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Tool Sprite" type="Sprite2D" parent="."]
 
 [node name="ToolEffects" type="Node2D" parent="." node_paths=PackedStringArray("finished_ingredient", "completion_sprite", "processing_animation", "audio_player", "progress_bar", "active_particles")]
 script = ExtResource("5")
-finished_ingredient = NodePath("ActiveIngredientSprite")
-completion_sprite = NodePath("CompletionSprite")
-processing_animation = NodePath("ProcessingAnimation")
+intermediate_texture = ExtResource("3_k4d1c")
+final_texture = ExtResource("8")
+finished_ingredient = NodePath("Ingredient Sprite")
+completion_sprite = NodePath("Status Sprite")
+processing_animation = NodePath("Processing Animation")
 audio_player = NodePath("AudioStreamPlayer")
 progress_bar = NodePath("ProgressBar")
 active_particles = NodePath("ActiveParticles")
 
-[node name="ActiveIngredientSprite" type="Sprite2D" parent="ToolEffects"]
+[node name="Ingredient Sprite" type="Sprite2D" parent="ToolEffects"]
 
-[node name="CompletionSprite" type="Sprite2D" parent="ToolEffects"]
+[node name="Status Sprite" type="Sprite2D" parent="ToolEffects"]
 visible = false
 texture = ExtResource("8")
 
-[node name="ProcessingAnimation" type="AnimatedSprite2D" parent="ToolEffects"]
+[node name="Processing Animation" type="AnimatedSprite2D" parent="ToolEffects"]
 visible = false
 sprite_frames = ExtResource("2")
 
@@ -66,6 +69,8 @@ polygon = PackedVector2Array(20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15)
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="final_ingredient_produced" from="." to="ToolEffects" method="_on_tool_final_ingredient_produced"]
+[connection signal="intermediate_ingredient_produced" from="." to="ToolEffects" method="_on_tool_intermediate_ingredient_produced"]
 [connection signal="item_inserted" from="." to="ToolEffects" method="_on_Tool_item_inserted"]
 [connection signal="item_removed" from="." to="ToolEffects" method="_on_Tool_item_removed"]
 [connection signal="item_reserved" from="." to="ToolEffects" method="_on_Tool_item_reserved"]
@@ -75,7 +80,6 @@ one_shot = true
 [connection signal="process_step_changed" from="." to="ToolEffects" method="_on_Tool_process_step_changed"]
 [connection signal="process_step_finished" from="." to="ToolEffects" method="_on_Tool_process_step_finished"]
 [connection signal="process_step_started" from="." to="ToolEffects" method="_on_Tool_process_step_started"]
-[connection signal="result_ingredient_produced" from="." to="ToolEffects" method="_on_Tool_result_ingredient_produced"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

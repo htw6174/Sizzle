@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://l0eiy6cbe3py"]
+[gd_scene load_steps=44 format=3 uid="uid://l0eiy6cbe3py"]
 
 [ext_resource type="Script" path="res://custom_resources/processing_tool.gd" id="1_c0ki3"]
 [ext_resource type="Script" path="res://custom_resources/process_step.gd" id="1_ll2jl"]
@@ -42,8 +42,34 @@
 [ext_resource type="Resource" uid="uid://gfttvi6osoav" path="res://custom_resources/ingredients/raw_sausage.tres" id="35_vtbw7"]
 [ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/vegetable_stew.tres" id="36_q5pex"]
 [ext_resource type="Resource" uid="uid://cj62d0gb7mo5t" path="res://custom_resources/ingredients/hearty_stew.tres" id="37_0qbfc"]
+[ext_resource type="Resource" uid="uid://dksevll6hva85" path="res://custom_resources/ingredients/spices.tres" id="40_fg3fm"]
 
 [node name="Process Definitions" type="Node"]
+
+[node name="Grill" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+tool_type = 1
+description = "Used to grill, smoke, and char."
+verb = "grilling"
+icon = ExtResource("15_4i6sf")
+
+[node name="Grilled Sausages" type="Node" parent="Grill"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("35_vtbw7")])
+result = ExtResource("7_367yu")
+time_to_complete = 3.0
+
+[node name="Grilled Kebab" type="Node" parent="Grill"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("16_v5gvi")])
+result = ExtResource("17_o3cnr")
+time_to_complete = 3.0
+
+[node name="Grilled Steak" type="Node" parent="Grill"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5_eba2a")])
+result = ExtResource("6_d0d2q")
+time_to_complete = 3.0
 
 [node name="Skillet" type="Node" parent="."]
 script = ExtResource("1_c0ki3")
@@ -86,31 +112,6 @@ script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("12_ykueq")])
 result = ExtResource("12_lawq4")
 
-[node name="Grill" type="Node" parent="."]
-script = ExtResource("1_c0ki3")
-tool_type = 1
-description = "Used to grill, smoke, and char."
-verb = "grilling"
-icon = ExtResource("15_4i6sf")
-
-[node name="Grilled Sausages" type="Node" parent="Grill"]
-script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("35_vtbw7")])
-result = ExtResource("7_367yu")
-time_to_complete = 3.0
-
-[node name="Grilled Kebab" type="Node" parent="Grill"]
-script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("16_v5gvi")])
-result = ExtResource("17_o3cnr")
-time_to_complete = 3.0
-
-[node name="Grilled Steak" type="Node" parent="Grill"]
-script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("5_eba2a")])
-result = ExtResource("6_d0d2q")
-time_to_complete = 3.0
-
 [node name="Pot" type="Node" parent="."]
 script = ExtResource("1_c0ki3")
 tool_type = 2
@@ -141,6 +142,31 @@ script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("22_0b0qc")])
 result = ExtResource("23_mkj43")
 time_to_complete = 4.0
+
+[node name="Cauldron" type="Node" parent="."]
+script = ExtResource("1_c0ki3")
+tool_type = 5
+description = "Used for making soup, stew, and broth. Also handy for quickly boiling noodles or blanching vegetables"
+verb = "boiling"
+icon = ExtResource("34_l7g67")
+
+[node name="Boil Noodles" type="Node" parent="Cauldron"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("22_0b0qc")])
+result = ExtResource("23_mkj43")
+time_to_complete = 4.0
+
+[node name="Vegetable Stew" type="Node" parent="Cauldron"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("26_0w0fe"), ExtResource("11_ee1da")])
+result = ExtResource("36_q5pex")
+time_to_complete = 3.0
+
+[node name="Hearty Stew" type="Node" parent="Cauldron/Vegetable Stew"]
+script = ExtResource("1_ll2jl")
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_05i2j")])
+result = ExtResource("37_0qbfc")
+time_to_complete = 2.0
 
 [node name="Cutting Board" type="Node" parent="."]
 script = ExtResource("1_c0ki3")
@@ -195,7 +221,7 @@ result = ExtResource("16_v5gvi")
 
 [node name="Make Sausage" type="Node" parent="Combine"]
 script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("29_f1kgn"), ExtResource("22_k2vm4")])
+ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("29_f1kgn"), ExtResource("40_fg3fm")])
 result = ExtResource("35_vtbw7")
 
 [node name="Batter - Mix Wet" type="Node" parent="Combine"]
@@ -207,28 +233,3 @@ result = ExtResource("31_ueoba")
 script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("31_ueoba"), ExtResource("32_lmxk7")])
 result = ExtResource("7_0g54g")
-
-[node name="Cauldron" type="Node" parent="."]
-script = ExtResource("1_c0ki3")
-tool_type = 5
-description = "Used for making soup, stew, and broth. Also handy for quickly boiling noodles or blanching vegetables"
-verb = "boiling"
-icon = ExtResource("34_l7g67")
-
-[node name="Boil Noodles" type="Node" parent="Cauldron"]
-script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("22_0b0qc")])
-result = ExtResource("23_mkj43")
-time_to_complete = 4.0
-
-[node name="Vegetable Stew" type="Node" parent="Cauldron"]
-script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("26_0w0fe"), ExtResource("11_ee1da")])
-result = ExtResource("36_q5pex")
-time_to_complete = 3.0
-
-[node name="Hearty Stew" type="Node" parent="Cauldron/Vegetable Stew"]
-script = ExtResource("1_ll2jl")
-ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_05i2j")])
-result = ExtResource("37_0qbfc")
-time_to_complete = 2.0

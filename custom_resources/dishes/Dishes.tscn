@@ -336,15 +336,15 @@ components = Array[ExtResource("4_16unn")]([SubResource("Resource_88wet")])
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_it7rn")])
 
-[node name="Kebabs x1" type="Node" parent="."]
+[node name="Kebab Platter" type="Node" parent="."]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_ljnma")])
 
-[node name="Kebabs x2" type="Node" parent="Kebabs x1"]
+[node name="Kebabs x2" type="Node" parent="Kebab Platter"]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_2fd87")])
 
-[node name="Kebabs x3" type="Node" parent="Kebabs x1/Kebabs x2"]
+[node name="Kebabs x3" type="Node" parent="Kebab Platter/Kebabs x2"]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_6uh5y")])
 
@@ -360,7 +360,7 @@ components = Array[ExtResource("4_16unn")]([SubResource("Resource_1wkvr"), SubRe
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_ivvm8")])
 
-[node name="Breakfast" type="Node" parent="."]
+[node name="Breakfast Platter" type="Node" parent="."]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_f4tgu"), SubResource("Resource_g052h"), SubResource("Resource_2fj57"), SubResource("Resource_8kve7"), SubResource("Resource_fpgii")])
 

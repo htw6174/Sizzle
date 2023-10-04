@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1")
-display_name = "Tomato Sauce"
+display_name = "Tomato & Garlic Sauce"
 texture = ExtResource("2")
 audio_pickup = ExtResource("2_1b6q6")
 audio_drop = ExtResource("1_ypsyy")

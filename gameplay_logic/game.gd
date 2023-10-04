@@ -1,7 +1,9 @@
 extends Node
 
+var tutorial_scene = preload("res://gameplay_logic/tutorial.tscn")
+var freeplay_scene = preload("res://gameplay_logic/freeplay.tscn")
+
 var options_scene = preload("res://gui_logic/scenes/options_menu.tscn")
-var freeplay_controller = preload("res://gameplay_logic/freeplay.tscn")
 var dialogue_scene = preload("res://game_scenes/dialogue.tscn")
 var recipe_book_scene = preload("res://gui_logic/scenes/recipe_book.tscn")
 var recipe_selector_scene = preload("res://gui_logic/scenes/recipe_selector.tscn")
@@ -10,7 +12,10 @@ var recipe_selector_scene = preload("res://gui_logic/scenes/recipe_selector.tscn
 var world_root: Node
 var gui_root: Node
 
-var options_menu
+var tutorial: TutorialController
+var freeplay: FreeplayController
+
+var options_menu: OptionsMenu
 var dialogue_player: DialoguePlayer
 var recipe_book: RecipeBook
 var recipe_selector: RecipeSelector
@@ -62,11 +67,12 @@ func open_options():
 	options_menu.open()
 
 func begin_tutorial():
-	pass
+	tutorial = tutorial_scene.instantiate() as TutorialController
+	self.add_child(tutorial)
 
 func begin_freeplay():
-	var fp = freeplay_controller.instantiate()
-	self.add_child(fp)
+	freeplay = freeplay_scene.instantiate() as FreeplayController
+	self.add_child(freeplay)
 
 func play_dialogue(dialogue: Dialogue):
 	dialogue_player.start_dialogue(dialogue)
