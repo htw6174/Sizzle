@@ -127,9 +127,7 @@ mouse_filter = 1
 [node name="DialogueLabel" type="RichTextLabel" parent="Text/DialogueContainer"]
 layout_mode = 2
 mouse_filter = 1
-text = "Here is some sample dialog, how many lines can fit here?
-Number 2 →
-Number 3, extends all the way out to the end"
+text = "I can fit 222 characters! PWISSSSSHHHHHHHHHH AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
 [node name="PanelContainer" type="PanelContainer" parent="Text"]
 layout_mode = 0

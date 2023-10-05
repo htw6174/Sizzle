@@ -107,7 +107,7 @@ func get_combos(tool: ProcessingTool, item1: Ingredient, item2: Ingredient) -> A
 	var combos = tool.get_children()
 	for combo in combos:
 		if combo is ProcessStep:
-			if combo.ingredients.has(item1) && combo.ingredients.has(item2):
+			if (combo.ingredients[0] == item1 && combo.ingredients[1] == item2) || (combo.ingredients[0] == item2 && combo.ingredients[1] == item1):
 				recipes.append(combo)
 	return recipes
 

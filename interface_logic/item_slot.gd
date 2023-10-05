@@ -17,16 +17,19 @@ func _ready():
 func try_insert_item(item: Ingredient) -> bool:
 	if held_item == null:
 		held_item = item
+		is_item_reserved = false
 		display_name = held_item.display_name
 		item_sprite.texture = held_item.texture
 		item_sprite.modulate = Color(1, 1, 1, 1)
 		item_inserted.emit(item)
 		return true
-	else:
+	elif is_item_reserved == false:
 		if check_for_recipe(held_item, item):
 			return true
 		else:
 			return false
+	else:
+		return false
 
 func try_reserve_item() -> Ingredient:
 	if held_item != null:
@@ -40,6 +43,7 @@ func try_reserve_item() -> Ingredient:
 
 func try_take_item() -> Ingredient:
 	if held_item != null:
+		is_item_reserved = false
 		var temp_item = held_item
 		held_item = null
 		display_name = "Empty"

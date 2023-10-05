@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://dpj0v030gyrcm"]
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://dpj0v030gyrcm"]
 
 [ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_8cf18"]
+[ext_resource type="Texture2D" uid="uid://dvlrlnyccr3rs" path="res://sprites/rough customers/swashbuckler.png" id="1_x0482"]
 
 [resource]
 script = ExtResource("1_8cf18")
 speaker_name = "Haughty Elf"
+portrait = ExtResource("1_x0482")
 lines = Array[String](["I don't suppose you specalize in Arcanii Elvish cuisine do you?", "No?", "*sigh* I suppose it can't be helped. In that case...", "...can you make something with Arcanii Basil?"])
