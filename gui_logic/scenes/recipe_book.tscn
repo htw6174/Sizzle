@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://s0cdd72som0n"]
+[gd_scene load_steps=11 format=3 uid="uid://s0cdd72som0n"]
 
 [ext_resource type="Script" path="res://gui_logic/recipe_book.gd" id="1_caedj"]
 [ext_resource type="PackedScene" uid="uid://be4jc3sbh6wws" path="res://gui_logic/scenes/ingredient_uses.tscn" id="2_3ena0"]
@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cwwdtfacl6n0t" path="res://gui_logic/scenes/ingredient_description.tscn" id="2_vwmgp"]
 [ext_resource type="AudioStream" uid="uid://cbg0y5dlufy6e" path="res://audio/ui/book_close.wav" id="3_o7otc"]
 [ext_resource type="Texture2D" uid="uid://rd3u64qrdf7k" path="res://sprites/close.png" id="5_minnk"]
+[ext_resource type="PackedScene" uid="uid://che5yu127srit" path="res://gui_logic/scenes/tool_list.tscn" id="6_u0q8u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msg4w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pte5e"]
 
-[node name="Recipe Book" type="Control" node_paths=PackedStringArray("ingredient_list", "ingredient_detail", "ingredient_uses", "left_page", "right_page", "audio_player")]
+[node name="Recipe Book" type="Control" node_paths=PackedStringArray("ingredient_detail", "ingredient_uses", "index_tab_bar", "left_page", "right_page", "audio_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,9 +21,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_caedj")
-ingredient_list = NodePath("Left Page/ScrollContainer/TabContainer/Ingredient List")
 ingredient_detail = NodePath("Left Page/ScrollContainer/TabContainer/Ingredient Description")
 ingredient_uses = NodePath("Right Page/ScrollContainer/TabContainer/Ingredient Uses")
+index_tab_bar = NodePath("TabBar")
 left_page = NodePath("Left Page/ScrollContainer/TabContainer")
 right_page = NodePath("Right Page/ScrollContainer/TabContainer")
 audio_player = NodePath("AudioStreamPlayer")
@@ -83,7 +84,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pte5e")
 tabs_visible = false
 
-[node name="Control" type="Control" parent="Right Page/ScrollContainer/TabContainer"]
+[node name="Tool List" parent="Right Page/ScrollContainer/TabContainer" instance=ExtResource("6_u0q8u")]
 layout_mode = 2
 
 [node name="Ingredient Uses" parent="Right Page/ScrollContainer/TabContainer" instance=ExtResource("2_3ena0")]
@@ -98,10 +99,8 @@ offset_right = 312.0
 offset_bottom = 26.0
 clip_tabs = false
 scrolling_enabled = false
-tab_count = 3
-tab_0/title = "Ingredients"
-tab_1/title = "Dishes"
-tab_2/title = "Tools"
+tab_count = 1
+tab_0/title = "Index"
 
 [node name="Close" type="TextureButton" parent="."]
 layout_mode = 1

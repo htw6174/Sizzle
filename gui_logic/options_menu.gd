@@ -15,6 +15,10 @@ func open():
 func _on_close_pressed():
 	closed.emit()
 
+func _on_main_menu_pressed():
+	closed.emit()
+	Game.open_menu("Main")
+
 func _on_opened():
 	self.visible = true
 

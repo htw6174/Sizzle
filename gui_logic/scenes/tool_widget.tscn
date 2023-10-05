@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqbx3yrdvmgp"]
+
+[ext_resource type="Script" path="res://gui_logic/tool_widget.gd" id="1_ic2al"]
+[ext_resource type="Texture2D" uid="uid://dqoxildwtbv7d" path="res://sprites/mat.png" id="1_yk6lx"]
+
+[node name="Tool Widget" type="MarginContainer" node_paths=PackedStringArray("texture", "name_label", "description_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ic2al")
+texture = NodePath("VBoxContainer/CenterContainer2/TextureRect")
+name_label = NodePath("VBoxContainer/Name")
+description_label = NodePath("VBoxContainer/Description")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Worktable
+"
+horizontal_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer2"]
+layout_mode = 2
+texture = ExtResource("1_yk6lx")
+stretch_mode = 2
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Place an item on the prep table, then drag another item onto the first to combine them."
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2

@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 @export var icon_scene: PackedScene
 @export var grid: GridContainer

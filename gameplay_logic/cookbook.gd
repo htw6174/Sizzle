@@ -14,6 +14,7 @@ var process_scene: PackedScene = preload("res://gameplay_logic/process_definitio
 var _processes: Node
 
 var ingredients: Array[Ingredient]
+var tools: Array[ProcessingTool]
 
 # TODO: once recipe def is more solid, consider creating structure for fast lookup
 # Probably only needed when total number of recipes is in the thousands
@@ -21,20 +22,35 @@ var ingredients: Array[Ingredient]
 func _ready():
 	_processes = process_scene.instantiate()
 	self.add_child(_processes)
-	load_resources(ingredients_directory, Ingredient, ingredients)
+	#load_resources(ingredients_directory, Ingredient, ingredients)
+	scrape_ingredients(_processes)
 
+# Only works when running from editor, need better general solution
+#func load_resources(directory: String, type: Variant, dest: Array):
+#	var dir = DirAccess.open(directory)
+#	dir.list_dir_begin()
+#	var file_name = dir.get_next()
+#	while file_name != "":
+#		if !dir.current_is_dir():
+#			var res = load(directory + file_name)
+#			if res != null:
+#				if is_instance_of(res, type):
+#					dest.append(res)
+#		file_name = dir.get_next()
 
-func load_resources(directory: String, type: Variant, dest: Array):
-	var dir = DirAccess.open(directory)
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if !dir.current_is_dir():
-			var res = load(directory + file_name)
-			if res != null:
-				if is_instance_of(res, type):
-					dest.append(res)
-		file_name = dir.get_next()
+func scrape_ingredients(node: Node):
+	var children = node.get_children()
+	for child in children:
+		if child is ProcessStep:
+			for component in child.ingredients:
+				if !ingredients.has(component):
+					ingredients.append(component)
+			if !ingredients.has(child.result):
+				ingredients.append(child.result)
+		if child is ProcessingTool:
+			if !tools.has(child):
+				tools.append(child)
+		scrape_ingredients(child)
 
 func get_tool_by_type(type: ToolTypes) -> ProcessingTool:
 	var tools = _processes.get_children()

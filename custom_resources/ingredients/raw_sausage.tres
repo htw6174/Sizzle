@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://gfttvi6osoav"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://gfttvi6osoav"]
 
 [ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1_ohk2e"]
+[ext_resource type="Texture2D" uid="uid://brh4q5rsnrk2o" path="res://sprites/raw sausage.png" id="2_id6fh"]
 
 [resource]
 script = ExtResource("1_ohk2e")
 display_name = "Raw Sausages"
+texture = ExtResource("2_id6fh")

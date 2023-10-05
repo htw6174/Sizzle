@@ -14,7 +14,7 @@ class_name FreeplayController
 
 var day: int = 0
 
-var customer_pool: Array[Customer]
+@export var customer_pool: Array[Customer]
 var customers_in_line: Array[Customer]
 var current_customer: Customer
 
@@ -38,11 +38,11 @@ func _ready():
 	
 	# setup serving area
 	var serving_dish_instance = dish_scene.instantiate()
-	Game.world_root.add_child(serving_dish_instance)
 	serving_dish = serving_dish_instance as ServingDish
 	serving_dish.dish_served.connect(_on_dish_served)
 	# TODO: need a better way to place this in the right position
 	serving_dish.position = Vector2(188, 194)
+	Game.world_root.add_child(serving_dish_instance)
 	
 	start_day()
 
@@ -89,9 +89,16 @@ func end_customer():
 	customers_in_line.erase(current_customer)
 	current_customer = null
 
+func stop():
+	serving_dish.queue_free()
+	prop_customer.queue_free()
+	self.queue_free()
+
 func _on_dish_served(dish_step, added_ingredients: Array):
+	if current_customer == null:
+		return
 	var rating = current_customer.rate_dish(added_ingredients)
-	if rating >= 2:
+	if rating >= 1:
 		Game.play_dialogue(dialogue_good)
 	elif rating < 0:
 		Game.play_dialogue(dialogue_bad)
@@ -103,10 +110,9 @@ func _on_dish_served(dish_step, added_ingredients: Array):
 	Player.add_money(10 * (rating + 1))
 	
 	# TODO: only do this after above dialog is finished
-	Game.dialogue_player.dialogue_finished.connect(_on_eval_ended)
+	Game.dialogue_player.dialogue_finished.connect(_on_eval_ended, CONNECT_ONE_SHOT)
 
 func _on_eval_ended():
-	Game.dialogue_player.dialogue_finished.disconnect(_on_eval_ended)
 	end_customer()
 
 func _on_customer_entered():

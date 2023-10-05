@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cdjp61ph76t6h"]
+[gd_scene load_steps=88 format=3 uid="uid://cdjp61ph76t6h"]
 
 [ext_resource type="Script" path="res://custom_resources/dish_step.gd" id="1_08qek"]
 [ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="2_u5083"]
@@ -40,6 +40,7 @@
 [ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/vegetable_stew.tres" id="36_tehf2"]
 [ext_resource type="Texture2D" uid="uid://cwhywp8fpt5yy" path="res://sprites/bowl_stew.tres" id="37_8vl3a"]
 [ext_resource type="Resource" uid="uid://cj62d0gb7mo5t" path="res://custom_resources/ingredients/hearty_stew.tres" id="38_1s0ng"]
+[ext_resource type="Resource" uid="uid://7c55o10ic1ep" path="res://custom_resources/ingredients/chopped_carrot.tres" id="38_urigj"]
 [ext_resource type="Texture2D" uid="uid://dxod12aicepq7" path="res://sprites/dish_stew/herbs.tres" id="39_31668"]
 
 [sub_resource type="Resource" id="Resource_bmac3"]
@@ -292,6 +293,19 @@ name = "Oil"
 required = true
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_3grcf")])
 
+[sub_resource type="Resource" id="Resource_6rx5t"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("38_urigj")
+texture = ExtResource("32_xbk1o")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_c5ju4"]
+script = ExtResource("4_16unn")
+name = "Carrots"
+required = true
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_6rx5t")])
+
 [sub_resource type="Resource" id="Resource_d25ud"]
 script = ExtResource("4_s67f8")
 ingredient = ExtResource("36_tehf2")
@@ -370,7 +384,7 @@ components = Array[ExtResource("4_16unn")]([SubResource("Resource_fi8yh")])
 
 [node name="Salad" type="Node" parent="Salad"]
 script = ExtResource("1_08qek")
-components = Array[ExtResource("4_16unn")]([SubResource("Resource_olhgg"), SubResource("Resource_si2b2"), SubResource("Resource_2p46n")])
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_olhgg"), SubResource("Resource_si2b2"), SubResource("Resource_2p46n"), SubResource("Resource_c5ju4")])
 
 [node name="Stew" type="Node" parent="."]
 script = ExtResource("1_08qek")

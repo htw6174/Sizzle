@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://che5yu127srit"]
+
+[ext_resource type="Script" path="res://gui_logic/tool_list.gd" id="1_du08u"]
+[ext_resource type="PackedScene" uid="uid://caqbx3yrdvmgp" path="res://gui_logic/scenes/tool_widget.tscn" id="2_shpf2"]
+
+[node name="Tool List" type="MarginContainer" node_paths=PackedStringArray("widget_parent")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_du08u")
+widget_parent = NodePath("VBoxContainer")
+tool_widget_scene = ExtResource("2_shpf2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Tools"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2

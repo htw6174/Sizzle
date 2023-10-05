@@ -1,7 +1,6 @@
 extends Control
 class_name RecipeBook
 
-@export var ingredient_list: Control
 @export var ingredient_detail: IngredientDescription
 @export var ingredient_uses: IngredientUses
 

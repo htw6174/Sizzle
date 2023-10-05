@@ -11,8 +11,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dr7oo")
 icon_scene = ExtResource("2_brys1")
-grid = NodePath("GridContainer")
+grid = NodePath("VBoxContainer/GridContainer")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Ingredients"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 columns = 5

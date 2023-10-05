@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1ubg4g2onho6"]
+[gd_scene load_steps=7 format=3 uid="uid://c1ubg4g2onho6"]
 
 [ext_resource type="Script" path="res://gameplay_logic/tutorial_controller.gd" id="1_j5hm1"]
+[ext_resource type="PackedScene" uid="uid://b4m5qpvlsqjeq" path="res://interface_logic/scenes/serving_dish.tscn" id="2_dwym8"]
+[ext_resource type="Resource" uid="uid://di843i6ty37gu" path="res://custom_resources/dialogues/intro_dialogue.tres" id="3_pqx4b"]
+[ext_resource type="Resource" uid="uid://bl3cyavo7kwms" path="res://custom_resources/dialogues/kebab_dialogue.tres" id="4_faoe1"]
+[ext_resource type="Resource" uid="uid://bgi0xewmbiajd" path="res://custom_resources/dialogues/spaghetti_dialogue.tres" id="5_nb3up"]
+[ext_resource type="Resource" uid="uid://c1kiy7l3jyixf" path="res://custom_resources/dialogues/tutorial_finished.tres" id="6_2i3ne"]
 
 [node name="Tutorial" type="Node"]
 script = ExtResource("1_j5hm1")
+dish_scene = ExtResource("2_dwym8")
+dialogues = Array[Resource("res://custom_resources/dialogue.gd")]([ExtResource("3_pqx4b"), ExtResource("4_faoe1"), ExtResource("5_nb3up"), ExtResource("6_2i3ne")])

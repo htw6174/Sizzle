@@ -208,28 +208,28 @@ ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResour
 result = ExtResource("29_f1kgn")
 time_to_complete = 2.0
 
-[node name="Combine" type="Node" parent="."]
+[node name="Worktable" type="Node" parent="."]
 script = ExtResource("1_c0ki3")
 tool_type = 4
 description = "Place an item on the prep table, then drag another item onto the first to combine them."
 icon = ExtResource("28_31k6e")
 
-[node name="Put Meat on Skewer" type="Node" parent="Combine"]
+[node name="Put Meat on Skewer" type="Node" parent="Worktable"]
 script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("29_otrlv"), ExtResource("2_05i2j")])
 result = ExtResource("16_v5gvi")
 
-[node name="Make Sausage" type="Node" parent="Combine"]
+[node name="Make Sausage" type="Node" parent="Worktable"]
 script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("29_f1kgn"), ExtResource("40_fg3fm")])
 result = ExtResource("35_vtbw7")
 
-[node name="Batter - Mix Wet" type="Node" parent="Combine"]
+[node name="Batter - Mix Wet" type="Node" parent="Worktable"]
 script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("30_so0sx"), ExtResource("9_i3kyc")])
 result = ExtResource("31_ueoba")
 
-[node name="Batter - Add Dry" type="Node" parent="Combine"]
+[node name="Batter - Add Dry" type="Node" parent="Worktable"]
 script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("31_ueoba"), ExtResource("32_lmxk7")])
 result = ExtResource("7_0g54g")

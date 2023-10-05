@@ -10,6 +10,7 @@ class_name RecipeDisplay
 
 @export var tool_icon: TextureRect
 @export var components_parent: Control
+@export var result_label: Label
 @export var time_label: Label
 @export var result: IngredientIcon
 
@@ -43,11 +44,13 @@ func update_display():
 			new_icon.ingredient = ingredient
 			components_parent.add_child(new_icon)
 		
+		# Set name of result ingredient
+		result_label.text = recipe_step.result.display_name
+		
 		# Set duration text
 		time_label.text = "%.fs" % recipe_step.time_to_complete
 		
 		# Set result icon
-		
 		if recipe_step.result:
 			result.ingredient = recipe_step.result
 		else:

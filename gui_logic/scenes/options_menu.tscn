@@ -101,8 +101,24 @@ grow_horizontal = 0
 texture_normal = ExtResource("2_u8ye4")
 stretch_mode = 3
 
+[node name="Main Menu" type="Button" parent="PrettyBox"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
 [connection signal="closed" from="." to="." method="_on_closed"]
 [connection signal="opened" from="." to="." method="_on_opened"]
 [connection signal="value_changed" from="PrettyBox/VBoxContainer/Effects Volume" to="PrettyBox/VBoxContainer/Effects Volume" method="_on_value_changed"]
 [connection signal="value_changed" from="PrettyBox/VBoxContainer/Music Volume" to="PrettyBox/VBoxContainer/Music Volume" method="_on_value_changed"]
 [connection signal="pressed" from="PrettyBox/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="PrettyBox/Main Menu" to="." method="_on_main_menu_pressed"]

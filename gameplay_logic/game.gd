@@ -20,6 +20,8 @@ var dialogue_player: DialoguePlayer
 var recipe_book: RecipeBook
 var recipe_selector: RecipeSelector
 
+var _menus: Dictionary # StringName : Control
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	world_root = get_node("/root/Main/World")
@@ -56,12 +58,22 @@ func _ready():
 	options_menu.closed.connect(_on_menu_closed)
 	options_menu.visible = false
 	gui_root.add_child(options_menu)
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
+func register_menu(name: StringName, node: Control):
+	_menus[name] = node
+
+func open_menu(name: StringName):
+	if _menus.has(name):
+		var menu = _menus[name] as Control
+		menu.visible = true
+		# TODO: hack solution for now. Should only do this when returning to main
+		if tutorial != null:
+			tutorial.stop()
+		if freeplay != null:
+			freeplay.stop()
+	else:
+		push_error("Menu not found %s" % name)
 
 func open_options():
 	options_menu.open()
