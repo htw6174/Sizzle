@@ -16,8 +16,6 @@
 
 [node name="Kitchen" parent="World" instance=ExtResource("1_5immm")]
 
-[node name="HandDisplay" parent="World" instance=ExtResource("2_b0pns")]
-
 [node name="Customer" parent="World" instance=ExtResource("3_240vk")]
 visible = false
 position = Vector2(200, 90)
@@ -54,6 +52,9 @@ offset_bottom = 67.0
 icon = ExtResource("5_vgckr")
 flat = true
 script = ExtResource("6_yuk2h")
+
+[node name="HandDisplay" parent="GUI" instance=ExtResource("2_b0pns")]
+layout_mode = 1
 
 [node name="Main Menu" parent="GUI" instance=ExtResource("2_74e3o")]
 layout_mode = 1

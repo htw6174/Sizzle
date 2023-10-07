@@ -4,6 +4,7 @@ class_name Interactable
 
 signal mouse_entered(interactable)
 signal mouse_exited(interactable)
+signal touched(interactable, pressed: bool)
 signal interacted(interactable)
 signal item_inserted(item)
 signal item_reserved(item)
@@ -22,8 +23,9 @@ var is_tooltip_hidden: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mouse_entered.connect(PlayerHand._on_Interactable_mouse_entered)
-	mouse_exited.connect(PlayerHand._on_Interactable_mouse_exited)
+	#mouse_entered.connect(PlayerHand._on_Interactable_mouse_entered)
+	#mouse_exited.connect(PlayerHand._on_Interactable_mouse_exited)
+	touched.connect(PlayerHand._on_Interactable_touched)
 
 # *** Virtual: should override
 func can_accept_item(item: Ingredient) -> bool:
@@ -48,7 +50,8 @@ func _on_Area2D_mouse_entered():
 func _on_Area2D_mouse_exited():
 	mouse_exited.emit(self)
 
+# Might want to change how all this is handled later; for now only care about touch events, mouse enter/exit is enough for mouse controls
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			interacted.emit(self)
+	if event is InputEventScreenTouch:
+		if event.index == 0:
+			touched.emit(self, event.pressed)

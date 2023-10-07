@@ -9,5 +9,6 @@
 script = ExtResource("1_5l2qe")
 texture = ExtResource("4_ak57e")
 dialogue = ExtResource("1_1cdn1")
+request = Array[Resource("res://custom_resources/ingredient.gd")]([])
 loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_6vmxq")])
 hates = Array[Resource("res://custom_resources/ingredient.gd")]([])

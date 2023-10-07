@@ -1,44 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm6w0ydv6wejg"]
+[gd_scene load_steps=5 format=3 uid="uid://cm6w0ydv6wejg"]
 
 [ext_resource type="Script" path="res://interface_logic/hand_display.gd" id="1_m4h4y"]
 [ext_resource type="AudioStream" uid="uid://b15l2epu7ib58" path="res://audio/sound_fx_-_drop.mp3" id="2_m81d8"]
 [ext_resource type="Script" path="res://interface_logic/adaptive_label.gd" id="2_o02n6"]
+[ext_resource type="Texture2D" uid="uid://cbxh75587unbg" path="res://sprites/cooked steak.png" id="3_5aa2x"]
 
-[node name="HandDisplay" type="Sprite2D" node_paths=PackedStringArray("control", "label", "tooltip", "audio_player")]
-z_index = 10
+[node name="HandDisplay" type="Control" node_paths=PackedStringArray("cursor_widget", "cursor_icon", "cursor_panel", "cursor_label", "cursor_tooltip", "touch_widget", "touch_icon", "touch_label", "touch_tooltip", "audio_player")]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_m4h4y")
-control = NodePath("Control")
-label = NodePath("Control/PanelContainer/VBoxContainer/Label")
-tooltip = NodePath("Control/PanelContainer/VBoxContainer/Tooltip")
+cursor_widget = NodePath("Cursor Widget")
+cursor_icon = NodePath("Cursor Widget/Cursor Icon")
+cursor_panel = NodePath("Cursor Widget/PanelContainer")
+cursor_label = NodePath("Cursor Widget/PanelContainer/VBoxContainer/Label")
+cursor_tooltip = NodePath("Cursor Widget/PanelContainer/VBoxContainer/Tooltip")
+touch_widget = NodePath("Touch Widget")
+touch_icon = NodePath("Touch Widget/PanelContainer/HBoxContainer/TextureRect")
+touch_label = NodePath("Touch Widget/PanelContainer/HBoxContainer/VBoxContainer/Label")
+touch_tooltip = NodePath("Touch Widget/PanelContainer/HBoxContainer/VBoxContainer/Tooltip")
 audio_player = NodePath("AudioStreamPlayer")
 audio_rejected = ExtResource("2_m81d8")
 
-[node name="Control" type="Control" parent="."]
-visible = false
+[node name="Cursor Widget" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="Cursor Icon" type="TextureRect" parent="Cursor Widget"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="Cursor Widget"]
 self_modulate = Color(1, 1, 1, 0.682353)
 layout_mode = 0
 size_flags_vertical = 9
 mouse_filter = 2
 script = ExtResource("2_o02n6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Cursor Widget/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 9
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Cursor Widget/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "test"
 
-[node name="Tooltip" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+[node name="Tooltip" type="Label" parent="Cursor Widget/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "longer test"
+text = "tooltip test"
+
+[node name="Touch Widget" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Touch Widget"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Touch Widget/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Touch Widget/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_5aa2x")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Touch Widget/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Touch Widget/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "test"
+
+[node name="Tooltip" type="Label" parent="Touch Widget/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "tooltip test"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 mix_target = 2
