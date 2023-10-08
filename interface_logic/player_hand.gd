@@ -23,6 +23,12 @@ var reserved_item: Ingredient
 var state: HandState = HandState.EMPTY
 var is_touch_input: bool = false
 
+# store input state so it can be checked in _physics_process
+# has mouse1/touch state changed since last physics tick?
+var just_pressed: bool = false
+var just_released: bool = false
+var cursor_pos: Vector2
+
 signal item_reserved(item)
 signal item_placed(item)
 signal item_dropped(item)
@@ -38,10 +44,9 @@ func _init():
 func _physics_process(delta):
 	if active:
 		# raycast to find hovered_interactable
-		var mouse_pos = get_viewport().get_mouse_position()
 		var space_state = get_world_2d().direct_space_state
 		var query = PhysicsPointQueryParameters2D.new()
-		query.position = mouse_pos
+		query.position = cursor_pos
 		query.collide_with_areas = true
 		# TODO: set collision mask
 		# only need the first result for now
@@ -53,18 +58,44 @@ func _physics_process(delta):
 			elif hit.get_parent() is Interactable:
 				hovered_interactable = hit.get_parent()
 			else:
-				print_debug(hit.name)
+				print_debug("Hit %s, but should have hit interactable instead" % hit.name)
 				hovered_interactable = null
 		else:
 			hovered_interactable = null
+	
+	# handle recent inputs
+	if just_pressed:
+		match state:
+			HandState.EMPTY:
+				if try_pick():
+					state = HandState.DRAGGING
+			HandState.DRAGGING:
+				pass
+			HandState.HOLDING:
+				try_place()
+		just_pressed = false
+	elif just_released:
+		match state:
+			HandState.EMPTY:
+				pass
+			HandState.DRAGGING:
+				# cursor hasn't moved off of original interactable between press and release
+				if source_interactable == hovered_interactable:
+					state = HandState.HOLDING
+				else:
+					try_place()
+			HandState.HOLDING:
+				pass
+		just_released = false
 
-func try_pick():
+func try_pick() -> bool:
 	if hovered_interactable != null:
 		reserved_item = hovered_interactable.try_reserve_item()
 		if reserved_item != null:
-			state = HandState.DRAGGING
 			source_interactable = hovered_interactable
 			item_reserved.emit(reserved_item)
+			return true
+	return false
 
 func try_place():
 	if hovered_interactable != null:
@@ -101,46 +132,25 @@ func handle_drop():
 		_drop()
 
 func _unhandled_input(event):
+	# Because fresh touches need to wait for a physics process step before we know what interactable is hovered,
+	# only take action on release
+	if event is InputEventScreenDrag:
+		cursor_pos = event.position
+		is_touch_input = true
 	if event is InputEventScreenTouch:
+		cursor_pos = event.position
 		is_touch_input = true
 		if event.index == 0:
-			if event.pressed:
-				match state:
-					HandState.EMPTY:
-						try_pick()
-					HandState.DRAGGING:
-						pass
-					HandState.HOLDING:
-						try_place()
-			else:
-				if state == HandState.DRAGGING:
-					if source_interactable == hovered_interactable:
-						state = HandState.HOLDING
-					else:
-						try_place()
+			just_pressed = event.pressed
+			just_released = !event.pressed
 	#return # TEST: disable mouse input
+	if event is InputEventMouseMotion:
+		cursor_pos = event.position
 	if event is InputEventMouseButton:
+		cursor_pos = event.position
 		is_touch_input = false
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				match state:
-					HandState.EMPTY:
-						try_pick()
-					HandState.DRAGGING:
-						pass
-					HandState.HOLDING:
-						try_place()
-			else:
-				match state:
-					HandState.EMPTY:
-						pass
-					HandState.DRAGGING:
-						# cursor hasn't moved off of original interactable between press and release
-						if source_interactable == hovered_interactable:
-							state = HandState.HOLDING
-						else:
-							try_place()
-					HandState.HOLDING:
-						pass
+			just_pressed = event.pressed
+			just_released = !event.pressed
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			handle_drop()
