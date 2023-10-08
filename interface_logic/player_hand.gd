@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 enum HandState {
 	EMPTY,
@@ -27,12 +27,36 @@ signal item_reserved(item)
 signal item_placed(item)
 signal item_dropped(item)
 signal item_rejected(item)
+# TODO: hook these up again, could still be useful for visuals
 signal hover_entered(interactable)
 signal hover_exited(interactable)
 
 func _init():
 	hovered_interactable = null
 	reserved_item = null
+
+func _physics_process(delta):
+	if active:
+		# raycast to find hovered_interactable
+		var mouse_pos = get_viewport().get_mouse_position()
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsPointQueryParameters2D.new()
+		query.position = mouse_pos
+		query.collide_with_areas = true
+		# TODO: set collision mask
+		# only need the first result for now
+		var hits = space_state.intersect_point(query, 1)
+		if hits.size() > 0:
+			var hit = hits[0].collider
+			if hit is Interactable:
+				hovered_interactable = hit
+			elif hit.get_parent() is Interactable:
+				hovered_interactable = hit.get_parent()
+			else:
+				print_debug(hit.name)
+				hovered_interactable = null
+		else:
+			hovered_interactable = null
 
 func try_pick():
 	if hovered_interactable != null:
@@ -77,8 +101,26 @@ func handle_drop():
 		_drop()
 
 func _unhandled_input(event):
-	return
+	if event is InputEventScreenTouch:
+		is_touch_input = true
+		if event.index == 0:
+			if event.pressed:
+				match state:
+					HandState.EMPTY:
+						try_pick()
+					HandState.DRAGGING:
+						pass
+					HandState.HOLDING:
+						try_place()
+			else:
+				if state == HandState.DRAGGING:
+					if source_interactable == hovered_interactable:
+						state = HandState.HOLDING
+					else:
+						try_place()
+	#return # TEST: disable mouse input
 	if event is InputEventMouseButton:
+		is_touch_input = false
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				match state:
@@ -102,34 +144,3 @@ func _unhandled_input(event):
 						pass
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			handle_drop()
-
-func _on_Interactable_mouse_entered(interactable: Interactable):
-	if active:
-		hovered_interactable = interactable
-		hover_entered.emit(interactable)
-
-func _on_Interactable_mouse_exited(interactable: Interactable):
-	if active:
-		if hovered_interactable == interactable:
-			hovered_interactable = null
-		hover_exited.emit(interactable)
-
-func _on_Interactable_touched(interactable: Interactable, pressed: bool):
-	if active:
-		is_touch_input = true
-		hovered_interactable = interactable
-		hover_entered.emit(interactable)
-		if pressed:
-			match state:
-				HandState.EMPTY:
-					try_pick()
-				HandState.DRAGGING:
-					pass
-				HandState.HOLDING:
-					try_place()
-		else:
-			if state == HandState.DRAGGING:
-				if source_interactable == hovered_interactable:
-					state = HandState.HOLDING
-				else:
-					try_place()

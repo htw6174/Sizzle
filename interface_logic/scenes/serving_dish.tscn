@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4m5qpvlsqjeq"]
+[gd_scene load_steps=20 format=3 uid="uid://b4m5qpvlsqjeq"]
 
 [ext_resource type="Script" path="res://interface_logic/serving_dish.gd" id="1_t30tj"]
 [ext_resource type="Texture2D" uid="uid://6k1drdyoty0r" path="res://sprites/bowl shadow.png" id="2_8dm08"]
@@ -10,6 +10,7 @@
 [ext_resource type="Gradient" path="res://fade_gradient.tres" id="5_mxx36"]
 [ext_resource type="Animation" uid="uid://bbj280mplg4a3" path="res://animations/dish_exit.tres" id="5_naa52"]
 [ext_resource type="Animation" uid="uid://b325t31xi88of" path="res://animations/dish_complete.tres" id="6_e11s2"]
+[ext_resource type="Texture2D" uid="uid://rd3u64qrdf7k" path="res://sprites/close.png" id="7_ejpqf"]
 [ext_resource type="PackedScene" uid="uid://cdjp61ph76t6h" path="res://custom_resources/dishes/Dishes.tscn" id="7_wllwa"]
 [ext_resource type="Script" path="res://interface_logic/serving_bell.gd" id="8_4bbi2"]
 [ext_resource type="AudioStream" uid="uid://dypucbx5wo1dh" path="res://audio/149268__organicmanpl__ding-3_doubled.wav" id="9_005w7"]
@@ -81,13 +82,16 @@ _data = {
 "dish_complete": ExtResource("6_e11s2")
 }
 
-[node name="ServingArea" type="Node2D" node_paths=PackedStringArray("dish_tree_root", "sprites_anchor", "serving_effects")]
+[node name="ServingArea" type="Area2D" node_paths=PackedStringArray("dish_tree_root", "sprites_anchor", "serving_effects")]
 script = ExtResource("1_t30tj")
 dish_tree_root = NodePath("Dishes")
 sprites_anchor = NodePath("DishAnchor/Dish/Plate/SpritesAnchor")
 serving_effects = NodePath("DishAnchor")
 
 [node name="Dishes" parent="." instance=ExtResource("7_wllwa")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(30, 2, 30, 11, 15, 17, -16, 17, -31, 11, -31, 1, -16, -16, 16, -16)
 
 [node name="Bell" type="Area2D" parent="." node_paths=PackedStringArray("audio_player")]
 position = Vector2(-30, 20)
@@ -116,6 +120,16 @@ texture_normal = ExtResource("3_t77at")
 ignore_texture_size = true
 stretch_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="Reset"]
+modulate = Color(1, 1, 1, 0.690196)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 9.0
+texture = ExtResource("7_ejpqf")
+expand_mode = 1
+
 [node name="DishAnchor" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
 script = ExtResource("3_ap1qx")
 animation_player = NodePath("AnimationPlayer")
@@ -137,11 +151,6 @@ texture = ExtResource("3_t77at")
 region_rect = Rect2(0, 0, 39, 20)
 
 [node name="SpritesAnchor" type="Node2D" parent="DishAnchor/Dish/Plate"]
-
-[node name="Area2D" type="Area2D" parent="DishAnchor/Dish"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DishAnchor/Dish/Area2D"]
-polygon = PackedVector2Array(30, 2, 30, 11, 15, 17, -16, 17, -31, 11, -31, 1, -16, -16, 16, -16)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="DishAnchor/Dish"]
 emitting = false
@@ -165,7 +174,3 @@ libraries = {
 [connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
 [connection signal="dish_complete_effects_finished" from="DishAnchor" to="." method="_on_dish_effects_exit_finished"]
 [connection signal="animation_finished" from="DishAnchor/AnimationPlayer" to="DishAnchor" method="_on_animation_player_animation_finished"]
-[connection signal="input_event" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_input_event"]
-[connection signal="mouse_entered" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_mouse_entered"]
-[connection signal="mouse_exited" from="DishAnchor/Dish/Area2D" to="." method="_on_Area2D_mouse_exited"]
-[connection signal="animation_finished" from="DishAnchor/Dish/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

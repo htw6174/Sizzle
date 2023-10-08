@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bty1wv1nnje36" path="res://particles/steam_small_particles.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://crsjlu6pr71xh" path="res://sprites/exclamation point.png" id="8"]
 
-[node name="Tool" type="Node2D" node_paths=PackedStringArray("processor_effects", "timer", "item_sprite")]
+[node name="Tool" type="Area2D" node_paths=PackedStringArray("processor_effects", "timer", "item_sprite")]
 script = ExtResource("1")
 processor_effects = NodePath("ToolEffects")
 timer = NodePath("Timer")
@@ -61,13 +61,11 @@ offset_bottom = 14.0
 theme = ExtResource("4")
 max_value = 1.0
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15)
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(20, 0, 10, 15, -10, 15, -20, 0, -10, -15, 10, -15)
 
 [connection signal="final_ingredient_produced" from="." to="ToolEffects" method="_on_tool_final_ingredient_produced"]
 [connection signal="intermediate_ingredient_produced" from="." to="ToolEffects" method="_on_tool_intermediate_ingredient_produced"]
@@ -80,7 +78,4 @@ one_shot = true
 [connection signal="process_step_changed" from="." to="ToolEffects" method="_on_Tool_process_step_changed"]
 [connection signal="process_step_finished" from="." to="ToolEffects" method="_on_Tool_process_step_finished"]
 [connection signal="process_step_started" from="." to="ToolEffects" method="_on_Tool_process_step_started"]
-[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

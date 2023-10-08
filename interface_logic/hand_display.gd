@@ -1,7 +1,7 @@
 extends Control
 
 @export var cursor_widget: Control
-@export var cursor_icon: TextureRect
+@export var cursor_icon: Sprite2D
 @export var cursor_panel: Control
 @export var cursor_label: Label
 @export var cursor_tooltip: Label
@@ -10,6 +10,8 @@ extends Control
 @export var touch_icon: TextureRect
 @export var touch_label: Label
 @export var touch_tooltip: Label
+
+@onready var touch_widget_orig_x = touch_widget.position.x
 
 @export var audio_player: AudioStreamPlayer
 @export var audio_rejected: AudioStream
@@ -81,15 +83,16 @@ func _on_PlayerHand_item_dropped(item):
 		audio_player.play()
 
 func _on_PlayerHand_item_rejected(item):
-	var shake_node: Control
+	# FIXME: doesn't do this effect if rejected from end of drag
+	var shake_node: CanvasItem
+	var start_pos = 0
 	if PlayerHand.is_touch_input:
-		shake_node = cursor_icon
-	else:
 		shake_node = touch_widget
+		start_pos = touch_widget_orig_x
+	else:
+		shake_node = cursor_icon
 	
-	var start_pos = shake_node.position.x
 	# little shake animation
-	# FIXME no shakey
 	shake_node.position.x -= 32
 	if tween:
 		tween.kill()

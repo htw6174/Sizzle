@@ -16,7 +16,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_m4h4y")
 cursor_widget = NodePath("Cursor Widget")
-cursor_icon = NodePath("Cursor Widget/Cursor Icon")
+cursor_icon = NodePath("Cursor Widget/Cursor Icon Sprite")
 cursor_panel = NodePath("Cursor Widget/PanelContainer")
 cursor_label = NodePath("Cursor Widget/PanelContainer/VBoxContainer/Label")
 cursor_tooltip = NodePath("Cursor Widget/PanelContainer/VBoxContainer/Tooltip")
@@ -31,6 +31,8 @@ audio_rejected = ExtResource("2_m81d8")
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
+
+[node name="Cursor Icon Sprite" type="Sprite2D" parent="Cursor Widget"]
 
 [node name="Cursor Icon" type="TextureRect" parent="Cursor Widget"]
 layout_mode = 0
