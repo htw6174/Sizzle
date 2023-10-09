@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=12 format=3 uid="uid://dnq5ht80kaedg"]
+
+[ext_resource type="Resource" uid="uid://cfqfm53q2t8qv" path="res://custom_resources/ingredients/fried_eggs.tres" id="1_dkw44"]
+[ext_resource type="Script" path="res://custom_resources/customer.gd" id="1_h3scy"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="2_xufh8"]
+[ext_resource type="Resource" uid="uid://cxem20rpp4vn8" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="3_1d3vw"]
+[ext_resource type="Resource" uid="uid://ce7232d2m005u" path="res://custom_resources/ingredients/cooked_sausage.tres" id="4_xjxoi"]
+[ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="5_n1i1j"]
+[ext_resource type="Resource" uid="uid://c32ddnlycf2ai" path="res://custom_resources/ingredients/olive_oil.tres" id="6_pduqw"]
+[ext_resource type="Resource" uid="uid://dj3jrw36f0mnt" path="res://custom_resources/ingredients/sliced_tomato.tres" id="7_ou55y"]
+[ext_resource type="Resource" uid="uid://7c55o10ic1ep" path="res://custom_resources/ingredients/chopped_carrot.tres" id="8_kd1lk"]
+[ext_resource type="Resource" uid="uid://dn46qaof0dls5" path="res://custom_resources/ingredients/greens.tres" id="9_0450g"]
+[ext_resource type="Texture2D" uid="uid://dmicrv1v2scfe" path="res://sprites/rough customers/forager.png" id="11_nte15"]
+
+[resource]
+script = ExtResource("1_h3scy")
+name_key = "CUSTOMER7"
+texture = ExtResource("11_nte15")
+request = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("9_0450g")])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("6_pduqw"), ExtResource("7_ou55y"), ExtResource("8_kd1lk")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_dkw44"), ExtResource("2_xufh8"), ExtResource("3_1d3vw"), ExtResource("4_xjxoi"), ExtResource("5_n1i1j")])

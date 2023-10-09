@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Customer" load_steps=6 format=3 uid="uid://b2a1416jwjudr"]
+[gd_resource type="Resource" script_class="Customer" load_steps=7 format=3 uid="uid://b2a1416jwjudr"]
 
 [ext_resource type="Script" path="res://custom_resources/customer.gd" id="1_6i0w6"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="2_72dh8"]
 [ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="2_b6g6d"]
 [ext_resource type="Texture2D" uid="uid://hy7nvu6ohgq7" path="res://sprites/rough customers/twerp.png" id="2_ha6pn"]
+[ext_resource type="Resource" uid="uid://dksevll6hva85" path="res://custom_resources/ingredients/spices.tres" id="3_ellkr"]
 [ext_resource type="Resource" uid="uid://b8bq8yqcx2mrc" path="res://custom_resources/ingredients/herbs.tres" id="3_m8dml"]
 
 [resource]
@@ -12,4 +13,4 @@ name_key = "CUSTOMER4"
 texture = ExtResource("2_ha6pn")
 request = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_b6g6d")])
 loves = Array[Resource("res://custom_resources/ingredient.gd")]([])
-hates = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_72dh8"), ExtResource("3_m8dml")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_72dh8"), ExtResource("3_m8dml"), ExtResource("3_ellkr")])

@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://bb2t5e2nqwpnl"]
+[gd_resource type="Resource" script_class="Customer" load_steps=7 format=3 uid="uid://bb2t5e2nqwpnl"]
 
 [ext_resource type="Script" path="res://custom_resources/customer.gd" id="1_rs03n"]
+[ext_resource type="Resource" uid="uid://dksevll6hva85" path="res://custom_resources/ingredients/spices.tres" id="1_sd5w6"]
 [ext_resource type="Texture2D" uid="uid://crudy5hs06ijq" path="res://sprites/rough customers/handsome lad.png" id="2_7fgik"]
+[ext_resource type="Resource" uid="uid://ce7232d2m005u" path="res://custom_resources/ingredients/cooked_sausage.tres" id="2_exmhi"]
+[ext_resource type="Resource" uid="uid://cfqfm53q2t8qv" path="res://custom_resources/ingredients/fried_eggs.tres" id="3_8mgyg"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="4_qy44q"]
 
 [resource]
 script = ExtResource("1_rs03n")
 name_key = "CUSTOMER1"
 texture = ExtResource("2_7fgik")
 request = Array[Resource("res://custom_resources/ingredient.gd")]([])
-loves = Array[Resource("res://custom_resources/ingredient.gd")]([])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_sd5w6"), ExtResource("2_exmhi"), ExtResource("3_8mgyg"), ExtResource("4_qy44q")])
 hates = Array[Resource("res://custom_resources/ingredient.gd")]([])

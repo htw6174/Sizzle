@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://ocjhqo2dan05"]
-
-[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_f13g4"]
-
-[resource]
-script = ExtResource("1_f13g4")
-speaker_name = ""
-lines = Array[String](["Thanks."])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=5 format=3 uid="uid://dg8yroj0m704k"]
+
+[ext_resource type="Resource" uid="uid://ds1dcdd14dpk3" path="res://custom_resources/ingredients/vegetable_stew.tres" id="1_eqeva"]
+[ext_resource type="Script" path="res://custom_resources/customer.gd" id="1_thhu4"]
+[ext_resource type="Texture2D" uid="uid://crudy5hs06ijq" path="res://sprites/rough customers/handsome lad.png" id="2_jges6"]
+[ext_resource type="Resource" uid="uid://cj62d0gb7mo5t" path="res://custom_resources/ingredients/hearty_stew.tres" id="2_uya1j"]
+
+[resource]
+script = ExtResource("1_thhu4")
+name_key = "CUSTOMER8"
+texture = ExtResource("2_jges6")
+request = Array[Resource("res://custom_resources/ingredient.gd")]([])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_eqeva"), ExtResource("2_uya1j")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([])

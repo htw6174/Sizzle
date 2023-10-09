@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://ckei7t13i3lyt"]
-
-[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_npshb"]
-
-[resource]
-script = ExtResource("1_npshb")
-speaker_name = "Plucky Adventurer"
-lines = Array[String](["Yo! Got anything new to try? All they serve in town is the same old stuff."])

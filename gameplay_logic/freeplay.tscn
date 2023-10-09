@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2cyc0bai6i2i"]
+[gd_scene load_steps=14 format=3 uid="uid://b2cyc0bai6i2i"]
 
 [ext_resource type="Script" path="res://gameplay_logic/freeplay_controller.gd" id="1_2d7kg"]
 [ext_resource type="PackedScene" uid="uid://dw4s7rjoypis6" path="res://interface_logic/scenes/customer.tscn" id="2_j1bmb"]
@@ -9,9 +9,13 @@
 [ext_resource type="Resource" uid="uid://b2a1416jwjudr" path="res://custom_resources/customers/kiddo.tres" id="7_pcwhk"]
 [ext_resource type="Resource" uid="uid://crqm7rpxbxn8d" path="res://custom_resources/customers/starving.tres" id="8_n2jer"]
 [ext_resource type="Resource" uid="uid://6cixa18732f1" path="res://custom_resources/customers/traveler.tres" id="9_qywrd"]
+[ext_resource type="Resource" uid="uid://dnq5ht80kaedg" path="res://custom_resources/customers/forager.tres" id="10_ybacf"]
+[ext_resource type="Resource" uid="uid://6kaj7ljuniul" path="res://custom_resources/customers/forager2.tres" id="11_xue55"]
+[ext_resource type="Resource" uid="uid://2mr6rx8tnmn5" path="res://custom_resources/customers/starving2.tres" id="12_po1n6"]
+[ext_resource type="Resource" uid="uid://dg8yroj0m704k" path="res://custom_resources/customers/sadlad.tres" id="13_y8g3a"]
 
 [node name="Freeplay" type="Node"]
 script = ExtResource("1_2d7kg")
 customer_scene = ExtResource("2_j1bmb")
 dish_scene = ExtResource("3_hidyq")
-customer_pool = Array[Resource("res://custom_resources/customer.gd")]([ExtResource("4_gk2s8"), ExtResource("5_wj2ql"), ExtResource("6_4cgkl"), ExtResource("7_pcwhk"), ExtResource("8_n2jer"), ExtResource("9_qywrd")])
+customer_pool = Array[Resource("res://custom_resources/customer.gd")]([ExtResource("4_gk2s8"), ExtResource("5_wj2ql"), ExtResource("6_4cgkl"), ExtResource("7_pcwhk"), ExtResource("8_n2jer"), ExtResource("9_qywrd"), ExtResource("10_ybacf"), ExtResource("11_xue55"), ExtResource("12_po1n6"), ExtResource("13_y8g3a")])

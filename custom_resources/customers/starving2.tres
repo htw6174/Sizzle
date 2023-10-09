@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=7 format=3 uid="uid://2mr6rx8tnmn5"]
+
+[ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="1_oy4yc"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="2_mfg4l"]
+[ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="3_kla4y"]
+[ext_resource type="Resource" uid="uid://cxem20rpp4vn8" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="4_qwfyy"]
+[ext_resource type="Script" path="res://custom_resources/customer.gd" id="5_u0hkk"]
+[ext_resource type="Texture2D" uid="uid://dl4nh2w2sxx25" path="res://sprites/rough customers/big boy.png" id="6_6e2ra"]
+
+[resource]
+script = ExtResource("5_u0hkk")
+name_key = "CUSTOMER9"
+texture = ExtResource("6_6e2ra")
+request = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_oy4yc")])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_oy4yc"), ExtResource("2_mfg4l"), ExtResource("3_kla4y"), ExtResource("4_qwfyy")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([])

@@ -81,12 +81,16 @@ func _on_dish_served(dish_step, added_ingredients: Array):
 	if current_customer == null:
 		return
 	var rating = current_customer.rate_dish(added_ingredients)
-	if rating >= 1:
+	if rating > 1:
+		Game.show_text("FEEDBACK_GREAT", current_customer.name_key)
+	elif rating == 1:
 		Game.show_text("FEEDBACK_GOOD", current_customer.name_key)
-	elif rating < 0:
+	elif rating == 0:
+		Game.show_text("FEEDBACK_NEUTRAL", current_customer.name_key)
+	elif rating == -1:
 		Game.show_text("FEEDBACK_BAD", current_customer.name_key)
 	else:
-		Game.show_text("FEEDBACK_NEUTRAL", current_customer.name_key)
+		Game.show_text("FEEDBACK_AWFUL", current_customer.name_key)
 	
 	# TODO: calling this immediately after the dialogue should queue a UI event to happen after the dialogue is finished
 	# Actually, same with having the customer exit. Should be able to build up a queue of visual events, while letting all the game logic stuff happen immediately

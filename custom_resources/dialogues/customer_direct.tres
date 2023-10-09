@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://d234yxw8iwv5k"]
-
-[ext_resource type="Script" path="res://custom_resources/dialogue.gd" id="1_qiksf"]
-
-[resource]
-script = ExtResource("1_qiksf")
-speaker_name = "Serious Woman"
-lines = Array[String](["Hey.", "Eggs. Hash browns. Fried sausage. Side of tomatoes.", "Got all that?"])
