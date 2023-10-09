@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=4 format=3 uid="uid://6cixa18732f1"]
+
+[ext_resource type="Resource" uid="uid://cxem20rpp4vn8" path="res://custom_resources/ingredients/cooked_meatballs.tres" id="1_ccyss"]
+[ext_resource type="Script" path="res://custom_resources/customer.gd" id="2_k0qhj"]
+[ext_resource type="Texture2D" uid="uid://dvlrlnyccr3rs" path="res://sprites/rough customers/swashbuckler.png" id="3_xurs4"]
+
+[resource]
+script = ExtResource("2_k0qhj")
+name_key = "CUSTOMER5"
+texture = ExtResource("3_xurs4")
+request = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_ccyss")])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([])

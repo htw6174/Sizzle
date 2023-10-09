@@ -53,12 +53,14 @@ func update_cursor_widget():
 		cursor_panel.visible = false
 
 func update_touch_widget():
-	touch_tooltip.visible = touch_tooltip.text != ""
 	cursor_icon.visible = PlayerHand.state == PlayerHand.HandState.DRAGGING
 	if PlayerHand.reserved_item != null:
 		touch_label.text = PlayerHand.reserved_item.display_name
 	if PlayerHand.state == PlayerHand.HandState.DRAGGING and PlayerHand.hovered_interactable != null:
-		touch_tooltip.text = ": %s" % PlayerHand.hovered_interactable.display_name
+		touch_tooltip.text = "to %s" % PlayerHand.hovered_interactable.display_name
+	else:
+		touch_tooltip.text = ""
+	touch_tooltip.visible = touch_tooltip.text != ""
 
 func _on_PlayerHand_item_reserved(item):
 	if item is Ingredient:

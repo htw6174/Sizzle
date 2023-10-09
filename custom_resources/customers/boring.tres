@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="Customer" load_steps=5 format=3 uid="uid://don8etxbmqf82"]
+[gd_resource type="Resource" script_class="Customer" load_steps=6 format=3 uid="uid://don8etxbmqf82"]
 
-[ext_resource type="Resource" uid="uid://c0kcmr4m04kci" path="res://custom_resources/dialogues/customer_boring.tres" id="1_jipsg"]
+[ext_resource type="Resource" uid="uid://dksevll6hva85" path="res://custom_resources/ingredients/spices.tres" id="1_2wsv3"]
+[ext_resource type="Resource" uid="uid://c32ddnlycf2ai" path="res://custom_resources/ingredients/olive_oil.tres" id="1_005v0"]
 [ext_resource type="Script" path="res://custom_resources/customer.gd" id="1_nlyl4"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_noodles.tres" id="2_cr5lc"]
 [ext_resource type="Texture2D" uid="uid://lyy8y5pm45el" path="res://sprites/rough customers/old man.png" id="2_r2vjj"]
 
 [resource]
 script = ExtResource("1_nlyl4")
+name_key = "CUSTOMER2"
 texture = ExtResource("2_r2vjj")
-dialogue = ExtResource("1_jipsg")
-request = Array[Resource("res://custom_resources/ingredient.gd")]([])
-loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_cr5lc")])
-hates = Array[Resource("res://custom_resources/ingredient.gd")]([])
+request = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_cr5lc")])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_005v0")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_2wsv3")])

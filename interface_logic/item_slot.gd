@@ -5,6 +5,8 @@ class_name ItemSlot extends Interactable
 var held_item: Ingredient
 var processing_tool: ProcessingTool
 
+const empty_name: String = "Worktable (Empty)"
+
 func _ready():
 	super()
 	processing_tool = Cookbook.get_tool_by_type(tool_type)
@@ -12,7 +14,7 @@ func _ready():
 		display_name = held_item.display_name
 		item_sprite.texture = held_item.texture
 	else:
-		display_name = "Empty"
+		display_name = empty_name
 
 func try_insert_item(item: Ingredient) -> bool:
 	if held_item == null:
@@ -34,7 +36,7 @@ func try_insert_item(item: Ingredient) -> bool:
 func try_reserve_item() -> Ingredient:
 	if held_item != null:
 		is_item_reserved = true
-		display_name = "Empty"
+		display_name = empty_name
 		item_sprite.modulate = Color(1, 1, 1, 0.5)
 		item_reserved.emit(held_item)
 		return held_item
@@ -46,7 +48,7 @@ func try_take_item() -> Ingredient:
 		is_item_reserved = false
 		var temp_item = held_item
 		held_item = null
-		display_name = "Empty"
+		display_name = empty_name
 		item_sprite.texture = null
 		item_removed.emit(temp_item)
 		return temp_item

@@ -4,11 +4,6 @@ class_name FreeplayController
 
 @export var customer_scene: PackedScene
 @export var dish_scene: PackedScene
-@export var customers_dir: String
-
-@export var dialogue_good: Dialogue
-@export var dialogue_neutral: Dialogue
-@export var dialogue_bad: Dialogue
 
 @export var customers_per_day: int = 4
 
@@ -24,18 +19,6 @@ var serving_dish: ServingDish = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# load customer resources
-	var dir = DirAccess.open(customers_dir)
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if !dir.current_is_dir():
-			var res = load(customers_dir + file_name)
-			if res != null:
-				if res is Customer:
-					customer_pool.append(res)
-		file_name = dir.get_next()
-	
 	# setup serving area
 	var serving_dish_instance = dish_scene.instantiate()
 	serving_dish = serving_dish_instance as ServingDish
@@ -81,7 +64,7 @@ func next_customer():
 	current_customer = customers_in_line.back()
 	prop_customer.sprite.texture = current_customer.texture
 	prop_customer.enter()
-	Game.play_dialogue(current_customer.dialogue)
+	Game.play_dialogue(current_customer.name_key)
 
 func end_customer():
 	if prop_customer:
@@ -99,11 +82,11 @@ func _on_dish_served(dish_step, added_ingredients: Array):
 		return
 	var rating = current_customer.rate_dish(added_ingredients)
 	if rating >= 1:
-		Game.play_dialogue(dialogue_good)
+		Game.show_text("FEEDBACK_GOOD", current_customer.name_key)
 	elif rating < 0:
-		Game.play_dialogue(dialogue_bad)
+		Game.show_text("FEEDBACK_BAD", current_customer.name_key)
 	else:
-		Game.play_dialogue(dialogue_neutral)
+		Game.show_text("FEEDBACK_NEUTRAL", current_customer.name_key)
 	
 	# TODO: calling this immediately after the dialogue should queue a UI event to happen after the dialogue is finished
 	# Actually, same with having the customer exit. Should be able to build up a queue of visual events, while letting all the game logic stuff happen immediately

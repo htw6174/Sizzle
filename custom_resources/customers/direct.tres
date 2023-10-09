@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="Customer" load_steps=8 format=3 uid="uid://cg07q53onjuvd"]
+[gd_resource type="Resource" script_class="Customer" load_steps=9 format=3 uid="uid://cg07q53onjuvd"]
 
-[ext_resource type="Resource" uid="uid://d234yxw8iwv5k" path="res://custom_resources/dialogues/customer_direct.tres" id="1_csmud"]
 [ext_resource type="Script" path="res://custom_resources/customer.gd" id="1_qw2wj"]
+[ext_resource type="Resource" uid="uid://c0a1nvjr7w54r" path="res://custom_resources/ingredients/pancake.tres" id="1_w0503"]
 [ext_resource type="Texture2D" uid="uid://xccuk8qhcht4" path="res://sprites/rough customers/blacksmith.png" id="2_bhr0i"]
 [ext_resource type="Resource" uid="uid://cfqfm53q2t8qv" path="res://custom_resources/ingredients/fried_eggs.tres" id="2_mnk0n"]
+[ext_resource type="Resource" uid="uid://b8bq8yqcx2mrc" path="res://custom_resources/ingredients/herbs.tres" id="2_qn0fu"]
 [ext_resource type="Resource" uid="uid://ce7232d2m005u" path="res://custom_resources/ingredients/cooked_sausage.tres" id="3_tola7"]
 [ext_resource type="Resource" uid="uid://ds1lc2v8mtccv" path="res://custom_resources/ingredients/hash_browns.tres" id="4_m0w46"]
 [ext_resource type="Resource" uid="uid://dj3jrw36f0mnt" path="res://custom_resources/ingredients/sliced_tomato.tres" id="5_jgnsc"]
 
 [resource]
 script = ExtResource("1_qw2wj")
+name_key = "CUSTOMER3"
 texture = ExtResource("2_bhr0i")
-dialogue = ExtResource("1_csmud")
-loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_mnk0n"), ExtResource("3_tola7"), ExtResource("4_m0w46"), ExtResource("5_jgnsc")])
-hates = Array[Resource("res://custom_resources/ingredient.gd")]([])
+request = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_mnk0n"), ExtResource("3_tola7"), ExtResource("4_m0w46"), ExtResource("5_jgnsc")])
+loves = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("2_qn0fu")])
+hates = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("1_w0503")])

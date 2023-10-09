@@ -19,9 +19,6 @@ var is_tooltip_hidden: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#mouse_entered.connect(PlayerHand._on_Interactable_mouse_entered)
-	#mouse_exited.connect(PlayerHand._on_Interactable_mouse_exited)
-	#touched.connect(PlayerHand._on_Interactable_touched)
 	pass
 
 # *** Virtual: should override

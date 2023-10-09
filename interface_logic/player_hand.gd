@@ -50,13 +50,12 @@ func _physics_process(delta):
 		query.collide_with_areas = true
 		# TODO: set collision mask
 		# only need the first result for now
+		# FIXME: hit order is inconsistent across different frames, which causes selection jitter when leaving the mouse on an overlap
 		var hits = space_state.intersect_point(query, 1)
 		if hits.size() > 0:
 			var hit = hits[0].collider
 			if hit is Interactable:
 				hovered_interactable = hit
-			elif hit.get_parent() is Interactable:
-				hovered_interactable = hit.get_parent()
 			else:
 				print_debug("Hit %s, but should have hit interactable instead" % hit.name)
 				hovered_interactable = null
@@ -132,8 +131,7 @@ func handle_drop():
 		_drop()
 
 func _unhandled_input(event):
-	# Because fresh touches need to wait for a physics process step before we know what interactable is hovered,
-	# only take action on release
+	# Don't take actions here that need to know what interactable is hovered, only set control state to interpret later
 	if event is InputEventScreenDrag:
 		cursor_pos = event.position
 		is_touch_input = true

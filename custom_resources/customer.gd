@@ -1,8 +1,8 @@
 extends Resource
 class_name Customer
 
+@export var name_key: String
 @export var texture: Texture2D
-@export var dialogue: Dialogue
 @export var request: Array[Ingredient]
 @export var loves: Array[Ingredient]
 @export var hates: Array[Ingredient]
@@ -31,7 +31,7 @@ func rate_dish(ingredients: Array[Ingredient]) -> int:
 	
 	# TODO: more interesting algo. For now make it super simple
 	if ingredients.size() == 0:
-		rating -= 1
+		rating -= 10
 	if request.size() > 0 && miss_count == 0:
 		rating += 1
 	if miss_count > 0:

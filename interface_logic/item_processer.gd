@@ -59,8 +59,8 @@ func try_insert_item(item: Ingredient) -> bool:
 	if active_process_step:
 		# moving from one step to another
 		if Cookbook.is_ingredient_valid_optional(active_process_step, item):
-			advance_processing_step(Cookbook.get_optional_step_by_ingredient(active_process_step, item))
 			_item_inserted(item)
+			advance_processing_step(Cookbook.get_optional_step_by_ingredient(active_process_step, item))
 			return true
 		else:
 			return false
@@ -121,11 +121,14 @@ func set_display_name():
 		display_name = "{0} with {1}".format([display_name, ingredients_list])
 
 func set_tooltip():
-	var ingredient_name_array = PackedStringArray()
-	for ingredient in previous_step_ingredients:
-		ingredient_name_array.append(ingredient.display_name)
-	var ingredients_list = "\n- ".join(ingredient_name_array)
-	tooltip = "Contains: \n- {0}".format([ingredients_list])
+	if previous_step_ingredients.size() > 0:
+		var ingredient_name_array = PackedStringArray()
+		for ingredient in previous_step_ingredients:
+			ingredient_name_array.append(ingredient.display_name)
+		var ingredients_list = "\n- ".join(ingredient_name_array)
+		tooltip = "Contains: \n- {0}".format([ingredients_list])
+	else:
+		tooltip = ""
 
 func reset():
 	current_step_ingredients.clear()
@@ -135,6 +138,7 @@ func reset():
 	active_process_step = null
 	result_item = null
 	set_display_name()
+	set_tooltip()
 
 func check_options(item: Ingredient):
 	var next_step_options = Cookbook.get_recipes(processing_tool, item)
@@ -172,7 +176,7 @@ func advance_processing_step(next_step: ProcessStep):
 func start_processing_countdown():
 	timer.start(active_process_step.time_to_complete)
 	current_state = ToolStates.PROCESSING
-	display_name = processing_tool.verb
+	display_name = "%s..." % processing_tool.verb.capitalize()
 	process_step_started.emit()
 
 func finish_recipe():

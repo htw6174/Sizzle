@@ -1,0 +1,44 @@
+key,en
+TUTORIAL1.1,"Hey champ, welcome to Sizzle!"
+TUTORIAL1.2,I'm here to help you through your first few dishes.
+TUTORIAL1.3,"Let's start off simple. Go ahead and grab that raw steak on the table over there, and slap it down into the skillet. Once it's done cooking, place it on the big plate and hit the serving bell."
+TUTORIAL2.1,Great! You're a real steak serving pro. Now let's try something a bit more complex. I'm thinking... Kebabs!
+TUTORIAL2.2,Take the steak and bring it over to the cutting board. We want nice big chopped meat chunks for this recipe. 
+TUTORIAL2.3,Grab some skewers from the table and place them on those spots next to the plate. You can combine ingredients there.
+TUTORIAL2.4,"Then simply drag the chopped meat from the cutting block over to the skewers, and bam! That's a raw kebab."
+TUTORIAL2.5,"Finally, put that sucker on the grill and sear it up! I want three kebabs on that plate."
+TUTORIAL2.6,"If you run out of space on the table, drop unused ingredients in the trash on the bottom right."
+TUTORIAL3.1,"Oh boy, smells delicious! You're doing great. Now let's make something a bit more complex."
+TUTORIAL3.2,It's time for Spaghetti!
+TUTORIAL3.3,"First, boil some noodles in that there saucepan. Then, mince up some meat on the cutting block and throw it in the skillet for some meatballs."
+TUTORIAL3.4,"Make some tomato sauce by sticking tomatos in the saucepan. You can make a more complex and flavorful sauce by adding garlic or herbs, but that's up to you."
+TUTORIAL3.5,"Finally, combine all your ingredients on the plate, and top with some nice fresh herbs."
+TUTORIAL4.1,Wow! That looks amazing. You're picking this up fast! I think you're ready. Press play and start serving some folks!
+CUSTOMER1.1,"Yo! Can you make me some food? I've been living on travel rations for weeks, and I need something hot and fresh."
+CUSTOMER1.2,If I see one more piece of Hard-tack i'm gonna barf.
+CUSTOMER2.1,"Ahhhh, hello there!"
+CUSTOMER2.2,Do I smell some delicious home-cooked meals being prepared? Wonderful. May I partake?
+CUSTOMER2.3,Just some plain noodles if ya please.
+CUSTOMER2.4,No salt.
+CUSTOMER3.1,Hey.
+CUSTOMER3.2,Eggs. Hash browns. Fried sausage. Side of tomatoes.
+CUSTOMER3.3,...
+CUSTOMER3.4,Please.
+CUSTOMER4.1,"Ooh, something smells good!"
+CUSTOMER4.2,Can you make pancakes?
+CUSTOMER5.1,"Can you make me some Crispy Cutlet Kalabash? You know, from the Banner Lodge in Silver City?"
+CUSTOMER5.2,"Oh, you don't know what that is?"
+CUSTOMER5.3,"Um, I don't really know how to describe it..."
+CUSTOMER5.4,...can you just make something with meatballs?
+CUSTOMER6.1,"Whew, I'm starving!"
+CUSTOMER6.2,Make me the most filling meal you can!
+CUSTOMER7.1,"Hey, can you make me something fresh and light?"
+CUSTOMER7.2,"I've been eating fried food all week, I think my body is demanding leafy greens."
+CUSTOMER8.1,I think my soul is injured. I need something warm and comforting to heal it.
+CUSTOMER9.1,Steak! Steak! Steak! I need MEAT! PLEASE!
+CUSTOMER10.1,Just some eggs for me. Nothing too heavy please.
+FEEDBACK_GREAT,Wow! Exactly what I wanted. Thank you so much!
+FEEDBACK_GOOD,"Ooh, looks good! Thank you!"
+FEEDBACK_NEUTRAL,Thanks.
+FEEDBACK_BAD,"Um, thank you."
+FEEDBACK_AWFUL,Are you sure this is my order?

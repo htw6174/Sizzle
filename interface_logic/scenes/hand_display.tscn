@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cbxh75587unbg" path="res://sprites/cooked steak.png" id="3_5aa2x"]
 
 [node name="HandDisplay" type="Control" node_paths=PackedStringArray("cursor_widget", "cursor_icon", "cursor_panel", "cursor_label", "cursor_tooltip", "touch_widget", "touch_icon", "touch_label", "touch_tooltip", "audio_player")]
-top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

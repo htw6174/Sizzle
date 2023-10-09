@@ -63,9 +63,8 @@ _data = {
 "dialogue_out": ExtResource("4_6f030")
 }
 
-[node name="Dialogue" type="Control" node_paths=PackedStringArray("portrait", "animation_player", "name_label", "dialogue_label")]
+[node name="Dialogue" type="Control" node_paths=PackedStringArray("_portrait", "_animation_player", "_name_label", "_dialogue_label")]
 top_level = true
-z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,10 +74,10 @@ grow_vertical = 2
 script = ExtResource("1_oxbvp")
 start_animation = "dialogue_in"
 finish_animation = "dialogue_out"
-portrait = NodePath("CharacterPortrait")
-animation_player = NodePath("AnimationPlayer")
-name_label = NodePath("Text/NameContainer/NameLabel")
-dialogue_label = NodePath("Text/DialogueContainer/DialogueLabel")
+_portrait = NodePath("CharacterPortrait")
+_animation_player = NodePath("AnimationPlayer")
+_name_label = NodePath("Text/NameContainer/NameLabel")
+_dialogue_label = NodePath("Text/DialogueContainer/DialogueLabel")
 
 [node name="CharacterPortrait" type="TextureRect" parent="."]
 layout_mode = 0
@@ -111,7 +110,7 @@ mouse_filter = 1
 
 [node name="NameLabel" type="Label" parent="Text/NameContainer"]
 layout_mode = 2
-text = "Foody McStuffins"
+text = "TUTORIAL"
 
 [node name="DialogueContainer" type="PanelContainer" parent="Text"]
 layout_mode = 0

@@ -111,6 +111,10 @@ action_interact={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://lang/Sizzle Text - dialogue.en.translation", "res://lang/Sizzle Text - characters.en.translation")
+
 [layer_names]
 
 2d_physics/layer_1="wall_topdown"

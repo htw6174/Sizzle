@@ -91,13 +91,15 @@ func try_insert_item(item: Ingredient) -> bool:
 
 func set_tooltip():
 	if dish_step == dish_tree_root:
-		tooltip = "Serving Area"
+		display_name = "Serving Area"
+		tooltip = ""
 	else:
+		display_name = dish_step.name
 		var ingredient_name_array = PackedStringArray()
 		for ingredient in added_ingredients:
 			ingredient_name_array.append(ingredient.display_name)
 		var ingredients_list = "\n- ".join(ingredient_name_array)
-		tooltip = "{0}\n- {1}".format([dish_step.name, ingredients_list])
+		tooltip = "Ingredients: \n- {0}".format([ingredients_list])
 
 func _on_bell_rung():
 	serving_effects.serve()

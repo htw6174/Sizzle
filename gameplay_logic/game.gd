@@ -86,8 +86,11 @@ func begin_freeplay():
 	freeplay = freeplay_scene.instantiate() as FreeplayController
 	self.add_child(freeplay)
 
-func play_dialogue(dialogue: Dialogue):
-	dialogue_player.start_dialogue(dialogue)
+func play_dialogue(key: String, speaker: String = "", portrait: Texture2D = null):
+	dialogue_player.start_dialogue(key, speaker, portrait)
+
+func show_text(key: String, speaker: String = "", portrait: Texture2D = null):
+	dialogue_player.show_text(key, speaker, portrait)
 
 func open_recipe_book():
 	recipe_book.open_ingredient_index()

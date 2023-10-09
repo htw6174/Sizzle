@@ -3,7 +3,8 @@ class_name TutorialController
 
 @export var dish_scene: PackedScene
 
-@export var dialogues: Array[Dialogue] # last should be a closing note
+@export var dialogues: Array[String] # last should be a closing note
+@export var portrait: Texture2D
 @export var active_ingredient_group: String
 
 var serving_dish: ServingDish = null
@@ -28,7 +29,7 @@ func _process(delta):
 	pass
 
 func next_step():
-	Game.play_dialogue(dialogues[tutorial_step])
+	Game.play_dialogue(dialogues[tutorial_step], "TUTORIAL", portrait)
 	if tutorial_step >= step_count:
 		tutorial_step = 0
 		Game.dialogue_player.dialogue_finished.connect(_on_final_dialogue_finished, CONNECT_ONE_SHOT)
