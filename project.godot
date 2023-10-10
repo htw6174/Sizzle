@@ -113,7 +113,7 @@ action_interact={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://lang/Sizzle Text - dialogue.en.translation", "res://lang/Sizzle Text - characters.en.translation")
+locale/translations=PackedStringArray("res://lang/characters.en.translation", "res://lang/dialogue.en.translation")
 
 [layer_names]
 
