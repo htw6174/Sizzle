@@ -53,38 +53,52 @@ func update_cursor_widget():
 		cursor_panel.visible = false
 
 func update_touch_widget():
-	cursor_icon.visible = PlayerHand.state == PlayerHand.HandState.DRAGGING
+	#cursor_icon.visible = PlayerHand.state == PlayerHand.HandState.DRAGGING
 	if PlayerHand.reserved_item != null:
 		touch_label.text = PlayerHand.reserved_item.display_name
+	elif PlayerHand.state == PlayerHand.HandState.EMPTY and PlayerHand.hovered_interactable != null:
+		touch_widget.visible = true
+		touch_icon.texture = null
+		touch_label.text = PlayerHand.hovered_interactable.display_name
+		touch_tooltip.text = PlayerHand.hovered_interactable.tooltip
 	if PlayerHand.state == PlayerHand.HandState.DRAGGING and PlayerHand.hovered_interactable != null:
 		touch_tooltip.text = "to %s" % PlayerHand.hovered_interactable.display_name
 	else:
 		touch_tooltip.text = ""
 	touch_tooltip.visible = touch_tooltip.text != ""
 
-func _on_PlayerHand_item_reserved(item):
-	if item is Ingredient:
-		cursor_icon.texture = item.texture
-		touch_icon.texture = item.texture
-		audio_player.stream = item.audio_pickup
-		audio_player.play()
+func _on_PlayerHand_item_reserved(item: Ingredient, source: Interactable):
+	# ensure animations for other actions don't interfere
+	if tween:
+		tween.kill()
+	cursor_icon.position = Vector2(0, 0)
+	cursor_icon.texture = item.texture
+	touch_icon.texture = item.texture
+	audio_player.stream = item.audio_pickup
+	audio_player.play()
 
-func _on_PlayerHand_item_placed(item):
+func _on_PlayerHand_item_placed(item: Ingredient, placed_in: Interactable):
 	cursor_icon.texture = null
 	touch_icon.texture = null
-	if item is Ingredient:
-		audio_player.stream = item.audio_drop
-		audio_player.play()
+	audio_player.stream = item.audio_drop
+	audio_player.play()
 
-func _on_PlayerHand_item_dropped(item):
+func _on_PlayerHand_item_dropped(item: Ingredient, source: Interactable):
 	# TODO: animation for sprite returning to source
-	cursor_icon.texture = null
 	touch_icon.texture = null
-	if item is Ingredient:
-		audio_player.stream = item.audio_drop
-		audio_player.play()
+	audio_player.stream = item.audio_drop
+	audio_player.play()
+	
+	# return to origin animation
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(cursor_icon, "global_position", source.global_position, 0.5).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	# TODO: chain to end of tween
+	tween.tween_callback(cursor_icon.set_texture.bind(null))
+	#cursor_icon.texture = null
 
-func _on_PlayerHand_item_rejected(item):
+func _on_PlayerHand_item_rejected(item: Ingredient, rejected_from: Interactable):
 	# FIXME: doesn't do this effect if rejected from end of drag
 	var shake_node: CanvasItem
 	var start_pos = 0

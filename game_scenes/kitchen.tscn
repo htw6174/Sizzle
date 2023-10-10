@@ -429,6 +429,7 @@ pickable_item = ExtResource("34_i0jaf")
 display_name = "Olive Oil"
 
 [node name="Cheat" type="Node2D" parent="Foreground/Ingredients"]
+process_mode = 4
 visible = false
 position = Vector2(196, 21)
 

@@ -29,13 +29,13 @@ var just_pressed: bool = false
 var just_released: bool = false
 var cursor_pos: Vector2
 
-signal item_reserved(item)
-signal item_placed(item)
-signal item_dropped(item)
-signal item_rejected(item)
+signal item_reserved(item: Ingredient, source: Interactable)
+signal item_placed(item: Ingredient, placed_in: Interactable)
+signal item_dropped(item: Ingredient, source: Interactable)
+signal item_rejected(item: Ingredient, rejected_from: Interactable)
 # TODO: hook these up again, could still be useful for visuals
-signal hover_entered(interactable)
-signal hover_exited(interactable)
+signal hover_entered(interactable: Interactable)
+signal hover_exited(interactable: Interactable)
 
 func _init():
 	hovered_interactable = null
@@ -56,6 +56,9 @@ func _physics_process(delta):
 			var hit = hits[0].collider
 			if hit is Interactable:
 				hovered_interactable = hit
+			elif hit is IngredientIcon:
+				# TODO: should show toolitp but not allow interaction
+				pass
 			else:
 				print_debug("Hit %s, but should have hit interactable instead" % hit.name)
 				hovered_interactable = null
@@ -92,7 +95,7 @@ func try_pick() -> bool:
 		reserved_item = hovered_interactable.try_reserve_item()
 		if reserved_item != null:
 			source_interactable = hovered_interactable
-			item_reserved.emit(reserved_item)
+			item_reserved.emit(reserved_item, source_interactable)
 			return true
 	return false
 
@@ -101,19 +104,19 @@ func try_place():
 		if hovered_interactable.try_insert_item(reserved_item):
 			var taken_item = source_interactable.try_take_item()
 			assert(taken_item == reserved_item)
-			item_placed.emit(reserved_item)
+			item_placed.emit(reserved_item, hovered_interactable)
 			state = HandState.EMPTY
 			source_interactable = null
 			reserved_item = null
 		else:
 			if hovered_interactable is ItemSlot && source_interactable is ItemSlot:
 				if ItemSlot.try_swap_item(source_interactable, hovered_interactable):
-					item_placed.emit(reserved_item)
+					item_placed.emit(reserved_item, hovered_interactable)
 					state = HandState.EMPTY
 					source_interactable = null
 					reserved_item = null
 			else:
-				item_rejected.emit(reserved_item)
+				item_rejected.emit(reserved_item, hovered_interactable)
 				if state == HandState.DRAGGING:
 					_drop()
 	else:
@@ -121,7 +124,7 @@ func try_place():
 
 func _drop():
 	if source_interactable.try_return_item():
-		item_dropped.emit(reserved_item)
+		item_dropped.emit(reserved_item, source_interactable)
 		state = HandState.EMPTY
 		source_interactable = null
 		reserved_item = null

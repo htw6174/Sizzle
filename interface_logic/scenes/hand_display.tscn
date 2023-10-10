@@ -73,6 +73,7 @@ offset_top = 4.0
 offset_right = -4.0
 offset_bottom = 4.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Touch Widget"]
 layout_mode = 1
@@ -82,6 +83,7 @@ anchor_right = 1.0
 offset_left = -132.0
 offset_bottom = 40.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Touch Widget/PanelContainer"]
 layout_mode = 2
