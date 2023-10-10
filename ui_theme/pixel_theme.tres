@@ -105,3 +105,4 @@ RichTextLabel/constants/text_highlight_h_padding = 3
 RichTextLabel/constants/text_highlight_v_padding = 3
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_7cyfa")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_owmw0")
+TooltipPanel/styles/panel = ExtResource("1")

@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://n152vr00kv6l"]
+[gd_scene load_steps=2 format=3 uid="uid://n152vr00kv6l"]
 
-[ext_resource type="Texture2D" uid="uid://cbxh75587unbg" path="res://sprites/cooked steak.png" id="1_cjjo4"]
 [ext_resource type="Script" path="res://gui_logic/ingredient_icon.gd" id="2_7lnd3"]
 
 [node name="Ingredient Icon" type="TextureButton"]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
-texture_normal = ExtResource("1_cjjo4")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("2_7lnd3")

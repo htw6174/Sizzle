@@ -24,6 +24,7 @@ func _ready():
 	self.add_child(_processes)
 	#load_resources(ingredients_directory, Ingredient, ingredients)
 	scrape_ingredients(_processes)
+	sort_ingredients()
 
 # Only works when running from editor, need better general solution
 #func load_resources(directory: String, type: Variant, dest: Array):
@@ -51,6 +52,12 @@ func scrape_ingredients(node: Node):
 			if !tools.has(child):
 				tools.append(child)
 		scrape_ingredients(child)
+
+func _ingredient_compare_alphabetical(a: Ingredient, b: Ingredient) -> bool:
+	return a.display_name.naturalnocasecmp_to(b.display_name) < 0
+
+func sort_ingredients():
+	ingredients.sort_custom(_ingredient_compare_alphabetical)
 
 func get_tool_by_type(type: ToolTypes) -> ProcessingTool:
 	var tools = _processes.get_children()

@@ -34,7 +34,7 @@ offset_top = 16.0
 offset_right = 32.0
 offset_bottom = 48.0
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -51,7 +51,6 @@ layout_mode = 2
 
 [node name="Component 1" parent="HBoxContainer/Components" instance=ExtResource("1_ay1o2")]
 layout_mode = 2
-texture_normal = null
 
 [node name="Time" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -66,4 +65,3 @@ stretch_mode = 5
 
 [node name="Result" parent="HBoxContainer" instance=ExtResource("1_ay1o2")]
 layout_mode = 2
-texture_normal = null

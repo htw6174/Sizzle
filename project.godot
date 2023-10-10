@@ -48,6 +48,7 @@ singletons=[]
 [gui]
 
 theme/custom="res://ui_theme/pixel_theme.tres"
+timers/tooltip_delay_sec=0.0
 
 [importer_defaults]
 

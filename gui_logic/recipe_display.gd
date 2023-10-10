@@ -32,6 +32,7 @@ func update_display():
 		var tool = recipe_step.get_parent()
 		if tool is ProcessingTool:
 			tool_icon.texture = tool.icon
+			tool_icon.tooltip_text = tool.name
 		
 		# Clear old components
 		var to_clear = components_parent.get_children()

@@ -24,8 +24,10 @@ func _process(delta):
 func update_display():
 	if ingredient:
 		self.texture_normal = ingredient.texture
+		self.tooltip_text = ingredient.display_name
 	else:
 		self.texture_normal = null
+		self.tooltip_text = ""
 
 func _on_pressed():
 	Game.inspect_ingredient(ingredient)
