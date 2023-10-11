@@ -20,7 +20,7 @@ var processing_tool: ProcessingTool
 
 var can_accept_items: bool:
 	get:
-		return current_state == ToolStates.EMPTY || current_state == ToolStates.FINISHED_WITH_OPTIONS
+		return current_state == ToolStates.EMPTY || current_state == ToolStates.WAITING || current_state == ToolStates.FINISHED_WITH_OPTIONS
 
 var active_process_step: ProcessStep = null
 var recipe_component_index: int = 0
@@ -66,7 +66,9 @@ func try_insert_item(item: Ingredient) -> bool:
 			return false
 	else:
 		# entering recipe tree
-		if Cookbook.does_ingredient_have_recipe(processing_tool, item):
+		var temp_current = current_step_ingredients.duplicate()
+		temp_current.append(item)
+		if Cookbook.does_list_have_recipe(processing_tool, temp_current):
 			item_sprite.texture = item.texture
 			_item_inserted(item)
 			check_options(item)
@@ -78,6 +80,7 @@ func _item_inserted(item: Ingredient):
 	current_step_ingredients.append(item)
 	item_sprite.modulate = Color(1, 1, 1, 1)
 	set_display_name()
+	set_tooltip()
 	item_inserted.emit(item)
 
 func try_reserve_item() -> Ingredient:
@@ -113,16 +116,12 @@ func try_return_item() -> bool:
 
 func set_display_name():
 	display_name = processing_tool.name
-	if current_step_ingredients.size() > 0:
+
+func set_tooltip():
+	if current_step_ingredients.size() > 0 || previous_step_ingredients.size() > 0:
 		var ingredient_name_array = PackedStringArray()
 		for ingredient in current_step_ingredients:
 			ingredient_name_array.append(ingredient.display_name)
-		var ingredients_list = ", ".join(ingredient_name_array)
-		display_name = "{0} with {1}".format([display_name, ingredients_list])
-
-func set_tooltip():
-	if previous_step_ingredients.size() > 0:
-		var ingredient_name_array = PackedStringArray()
 		for ingredient in previous_step_ingredients:
 			ingredient_name_array.append(ingredient.display_name)
 		var ingredients_list = "\n- ".join(ingredient_name_array)
@@ -140,12 +139,18 @@ func reset():
 	set_display_name()
 	set_tooltip()
 
+func check_step_requirements(step: ProcessStep):
+	if step.check_requirements(current_step_ingredients):
+		advance_processing_step(step)
+	else:
+		current_state = ToolStates.WAITING
+
 func check_options(item: Ingredient):
 	var next_step_options = Cookbook.get_recipes(processing_tool, item)
 	if next_step_options.size() == 0:
 		pass
 	elif next_step_options.size() == 1:
-		advance_processing_step(next_step_options[0])
+		check_step_requirements(next_step_options[0])
 	else:
 		# TODO: present options
 		Game.prompt_recipe_selection(next_step_options, _on_recipe_selected)

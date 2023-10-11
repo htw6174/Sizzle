@@ -23,8 +23,8 @@ func _ready():
 	_processes = process_scene.instantiate()
 	self.add_child(_processes)
 	#load_resources(ingredients_directory, Ingredient, ingredients)
-	scrape_ingredients(_processes)
-	sort_ingredients()
+	_scrape_ingredients(_processes)
+	_sort_ingredients()
 
 # Only works when running from editor, need better general solution
 #func load_resources(directory: String, type: Variant, dest: Array):
@@ -39,24 +39,25 @@ func _ready():
 #					dest.append(res)
 #		file_name = dir.get_next()
 
-func scrape_ingredients(node: Node):
+func _scrape_ingredients(node: Node):
 	var children = node.get_children()
 	for child in children:
 		if child is ProcessStep:
 			for component in child.ingredients:
 				if !ingredients.has(component):
 					ingredients.append(component)
-			if !ingredients.has(child.result):
+			# quick hack to prevent optional results from showing up
+			if !ingredients.has(child.result) and !(child.get_parent() is ProcessStep):
 				ingredients.append(child.result)
 		if child is ProcessingTool:
 			if !tools.has(child):
 				tools.append(child)
-		scrape_ingredients(child)
+		_scrape_ingredients(child)
 
 func _ingredient_compare_alphabetical(a: Ingredient, b: Ingredient) -> bool:
 	return a.display_name.naturalnocasecmp_to(b.display_name) < 0
 
-func sort_ingredients():
+func _sort_ingredients():
 	ingredients.sort_custom(_ingredient_compare_alphabetical)
 
 func get_tool_by_type(type: ToolTypes) -> ProcessingTool:
@@ -83,6 +84,21 @@ func does_ingredient_have_recipe(tool: ProcessingTool, ingredient: Ingredient) -
 		if recipe is ProcessStep:
 			if recipe.ingredients.has(ingredient):
 				return true
+	return false
+
+func does_list_have_recipe(tool: ProcessingTool, ingredients: Array[Ingredient]) -> bool:
+	var recipes = tool.get_children()
+	for recipe in recipes:
+		if recipe is ProcessStep:
+			# check that all items in ingredients have a match in recipe.ingredients
+			var temp_reqs = recipe.ingredients.duplicate()
+			var is_match = true
+			for ingredient in ingredients:
+				if temp_reqs.has(ingredient):
+					temp_reqs.erase(ingredient)
+				else:
+					is_match = false
+			if is_match: return true
 	return false
 
 func does_step_have_optionals(step: ProcessStep) -> bool:
@@ -127,6 +143,8 @@ func get_recipes_by_component(component_ingredient: Ingredient) -> Array[Process
 			if step is ProcessStep:
 				if step.ingredients.has(component_ingredient):
 					recipes.append(step)
+#				if is_ingredient_valid_optional(step, component_ingredient):
+#					recipes.append(step)
 	return recipes
 
 func get_recipes_by_result(result_ingredient: Ingredient) -> Array[ProcessStep]:

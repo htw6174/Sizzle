@@ -11,3 +11,4 @@ display_name = "Hearty Stew"
 texture = ExtResource("2_flo0n")
 audio_pickup = ExtResource("2_j1l15")
 audio_drop = ExtResource("1_n466k")
+description = "Made by adding meat chunks to a vegetable stew."

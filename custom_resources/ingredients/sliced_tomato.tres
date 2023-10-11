@@ -7,3 +7,4 @@
 script = ExtResource("1_dcoko")
 display_name = "Tomato Slices"
 texture = ExtResource("2_kv4oh")
+description = "Refreshing breakfast side or salad topping."

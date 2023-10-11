@@ -28,6 +28,8 @@ var audio_drop_fallback = preload("res://audio/handling/pap_drop.wav")
 		else:
 			return audio_drop
 
+@export_multiline var description: String
+
 func _init(p_display_name = "unnamed ingredient", p_texture = null):
 	display_name = p_display_name
 	texture = p_texture

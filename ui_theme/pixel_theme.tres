@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bahxjt4a2qkvs"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bahxjt4a2qkvs"]
 
 [ext_resource type="StyleBox" uid="uid://54axactnw8ts" path="res://ui_theme/uibox.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://kysqv5y43nqm" path="res://ui_theme/pixel_font.tres" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://c7v1nvn3fckcv" path="res://ui_theme/uibox_hover.tres" id="4"]
 [ext_resource type="StyleBox" uid="uid://2mvby2xel401" path="res://ui_theme/style_box_flat.tres" id="4_wleqn"]
 [ext_resource type="StyleBox" uid="uid://dolx67yyy7nux" path="res://ui_theme/progress_bar.tres" id="5"]
+[ext_resource type="StyleBox" uid="uid://ce8dqx6gutxx1" path="res://ui_theme/uitab.tres" id="6_q5sjr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svakg"]
 content_margin_left = 4.0
@@ -105,4 +106,7 @@ RichTextLabel/constants/text_highlight_h_padding = 3
 RichTextLabel/constants/text_highlight_v_padding = 3
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_7cyfa")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_owmw0")
+TabBar/colors/font_selected_color = Color(0, 0, 0, 1)
+TabBar/styles/tab_hovered = ExtResource("6_q5sjr")
+TabBar/styles/tab_selected = ExtResource("6_q5sjr")
 TooltipPanel/styles/panel = ExtResource("1")

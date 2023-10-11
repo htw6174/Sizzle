@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://3ylrhhgktglu"]
 
-[ext_resource path="res://custom_resources/ingredient.gd" type="Script" id=1]
-[ext_resource path="res://sprites/garlic.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://custom_resources/ingredient.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://hn6sktmf3vw6" path="res://sprites/garlic.png" id="2"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 display_name = "Garlic"
-texture = ExtResource( 2 )
+texture = ExtResource("2")
+description = "Can be added to tomato sauce for a flavorful kick."

@@ -7,3 +7,4 @@
 script = ExtResource("1")
 display_name = "Chopped Meat"
 texture = ExtResource("2")
+description = "Large chunks that stick easily on a skewer. Can be added to a stew to make it more rich and filling."

@@ -11,3 +11,4 @@ display_name = "Batter - Milk & Eggs"
 texture = ExtResource("2_t3ej2")
 audio_pickup = ExtResource("2_5v0a5")
 audio_drop = ExtResource("1_25ycx")
+description = "Not good for much as is - add flour to finish making batter."

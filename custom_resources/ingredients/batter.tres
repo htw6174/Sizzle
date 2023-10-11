@@ -11,3 +11,4 @@ display_name = "Batter"
 texture = ExtResource("2_yvvo3")
 audio_pickup = ExtResource("2_u4i2t")
 audio_drop = ExtResource("1_uqcgh")
+description = "The creamy consistency is perfect for making pancakes."

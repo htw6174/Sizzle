@@ -11,3 +11,4 @@ display_name = "Salad Greens"
 texture = ExtResource("2_6gdpe")
 audio_pickup = ExtResource("2_0se5p")
 audio_drop = ExtResource("1_41r1d")
+description = "Fresh and ready-to-use base for light dishes."

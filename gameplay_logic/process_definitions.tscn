@@ -19,9 +19,9 @@
 [ext_resource type="Resource" path="res://custom_resources/ingredients/raw_kebab.tres" id="16_v5gvi"]
 [ext_resource type="Resource" path="res://custom_resources/ingredients/cooked_kebab.tres" id="17_o3cnr"]
 [ext_resource type="Texture2D" uid="uid://dkw7wx1tgjuee" path="res://sprites/saucepan.png" id="18_v8p0w"]
-[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_garlic.tres" id="19_phtf2"]
+[ext_resource type="Resource" uid="uid://3ylrhhgktglu" path="res://custom_resources/ingredients/veg_garlic.tres" id="19_phtf2"]
 [ext_resource type="Resource" uid="uid://bq4nke4t8rmgr" path="res://custom_resources/ingredients/tomato_sauce_plain.tres" id="19_yifip"]
-[ext_resource type="Resource" path="res://custom_resources/ingredients/veg_tomato.tres" id="20_in82s"]
+[ext_resource type="Resource" uid="uid://dib387l8e35jk" path="res://custom_resources/ingredients/veg_tomato.tres" id="20_in82s"]
 [ext_resource type="Resource" uid="uid://bxd1yx3nkkrph" path="res://custom_resources/ingredients/tomato_sauce_garlic.tres" id="21_7oalr"]
 [ext_resource type="Resource" uid="uid://rrxmpltai3nf" path="res://custom_resources/ingredients/grain_noodles.tres" id="22_0b0qc"]
 [ext_resource type="Resource" uid="uid://b8bq8yqcx2mrc" path="res://custom_resources/ingredients/herbs.tres" id="22_k2vm4"]
@@ -123,7 +123,7 @@ icon = ExtResource("18_v8p0w")
 script = ExtResource("1_ll2jl")
 ingredients = Array[Resource("res://custom_resources/ingredient.gd")]([ExtResource("20_in82s")])
 result = ExtResource("19_yifip")
-time_to_complete = 2.0
+time_to_complete = 4.0
 
 [node name="Garlic" type="Node" parent="Pot/Tomato Sauce"]
 script = ExtResource("1_ll2jl")

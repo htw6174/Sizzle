@@ -11,3 +11,4 @@ display_name = "Herbs"
 texture = ExtResource("2")
 audio_pickup = ExtResource("2_ewxlu")
 audio_drop = ExtResource("1_j802h")
+description = "Can be added to tomato sauce for a fresh aromatic flavor, or used to top a number of dishes."

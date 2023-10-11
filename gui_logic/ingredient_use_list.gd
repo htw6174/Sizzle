@@ -12,6 +12,8 @@ class_name IngredientUses
 			# TODO: any reason to clear the page on unassignment?
 			pass
 
+@export var as_output_label: Control
+@export var as_component_label: Control
 @export var as_output_parent: Control
 @export var as_component_parent: Control
 @export var in_dish_parent: Control # TODO
@@ -39,6 +41,7 @@ func update_display():
 	
 	# Create how to make list
 	var created_by_steps = Cookbook.get_recipes_by_result(ingredient)
+	as_output_label.visible = created_by_steps.size() > 0
 	for step in created_by_steps:
 		var new_display = recipe_display_scene.instantiate() as RecipeDisplay
 		new_display.recipe_step = step
@@ -46,6 +49,7 @@ func update_display():
 	
 	# Create how to use list
 	var usage_steps = Cookbook.get_recipes_by_component(ingredient)
+	as_component_label.visible = usage_steps.size() > 0
 	for step in usage_steps:
 		var new_display = recipe_display_scene.instantiate() as RecipeDisplay
 		new_display.recipe_step = step

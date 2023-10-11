@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ce8dqx6gutxx1"]
+
+[ext_resource type="Texture2D" uid="uid://wgh62unic15x" path="res://ui_theme/box 1 test.png" id="1_10grc"]
+
+[resource]
+texture = ExtResource("1_10grc")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 16, 12)

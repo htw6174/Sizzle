@@ -8,6 +8,11 @@ class_name IngredientDescription
 		ingredient = value
 		icon.texture = ingredient.texture
 		title.text = ingredient.display_name
+		if ingredient.description != "":
+			description.visible = true
+			description.text = ingredient.description
+		else:
+			description.visible = false
 
 @export var icon: TextureRect
 @export var title: Label
