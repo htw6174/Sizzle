@@ -11,3 +11,4 @@ display_name = "Olive Oil"
 texture = ExtResource("2_lu6vy")
 audio_pickup = ExtResource("2_cdg70")
 audio_drop = ExtResource("1_q7krc")
+description = "The light taste makes it a pleasant topping for many simple dishes."

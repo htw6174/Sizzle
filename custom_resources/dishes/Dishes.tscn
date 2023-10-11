@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cdjp61ph76t6h"]
+[gd_scene load_steps=92 format=3 uid="uid://cdjp61ph76t6h"]
 
 [ext_resource type="Script" path="res://custom_resources/dish_step.gd" id="1_08qek"]
 [ext_resource type="Resource" uid="uid://dv1dh53g7bdvv" path="res://custom_resources/ingredients/cooked_steak.tres" id="2_u5083"]
@@ -55,6 +55,19 @@ script = ExtResource("4_16unn")
 name = "Protein"
 required = true
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_bmac3")])
+
+[sub_resource type="Resource" id="Resource_6bci4"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("8_ddarv")
+texture = ExtResource("27_04lnv")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_bxt4d"]
+script = ExtResource("4_16unn")
+name = "Seasoning"
+required = false
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_6bci4")])
 
 [sub_resource type="Resource" id="Resource_xihxg"]
 script = ExtResource("4_s67f8")
@@ -163,6 +176,18 @@ script = ExtResource("4_16unn")
 name = "Protein"
 required = false
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_vns0j")])
+
+[sub_resource type="Resource" id="Resource_bonch"]
+script = ExtResource("4_s67f8")
+ingredient = ExtResource("35_vosge")
+depth = 0
+background_depth = 0
+
+[sub_resource type="Resource" id="Resource_wrhss"]
+script = ExtResource("4_16unn")
+name = "Oil"
+required = false
+options = Array[ExtResource("4_s67f8")]([SubResource("Resource_bonch")])
 
 [sub_resource type="Resource" id="Resource_5iahs"]
 script = ExtResource("4_s67f8")
@@ -278,7 +303,7 @@ background_depth = 0
 [sub_resource type="Resource" id="Resource_si2b2"]
 script = ExtResource("4_16unn")
 name = "Tomatoes"
-required = true
+required = false
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_ebo30")])
 
 [sub_resource type="Resource" id="Resource_3grcf"]
@@ -290,7 +315,7 @@ background_depth = 0
 [sub_resource type="Resource" id="Resource_2p46n"]
 script = ExtResource("4_16unn")
 name = "Oil"
-required = true
+required = false
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_3grcf")])
 
 [sub_resource type="Resource" id="Resource_6rx5t"]
@@ -303,7 +328,7 @@ background_depth = 0
 [sub_resource type="Resource" id="Resource_c5ju4"]
 script = ExtResource("4_16unn")
 name = "Carrots"
-required = true
+required = false
 options = Array[ExtResource("4_s67f8")]([SubResource("Resource_6rx5t")])
 
 [sub_resource type="Resource" id="Resource_d25ud"]
@@ -346,6 +371,10 @@ script = ExtResource("1_08qek")
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_88wet")])
 
+[node name="Steak" type="Node" parent="Steak"]
+script = ExtResource("1_08qek")
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_bxt4d")])
+
 [node name="Pancakes" type="Node" parent="."]
 script = ExtResource("1_08qek")
 components = Array[ExtResource("4_16unn")]([SubResource("Resource_it7rn")])
@@ -368,7 +397,7 @@ components = Array[ExtResource("4_16unn")]([SubResource("Resource_h6u7h")])
 
 [node name="Topped Noodles" type="Node" parent="Noodles"]
 script = ExtResource("1_08qek")
-components = Array[ExtResource("4_16unn")]([SubResource("Resource_1wkvr"), SubResource("Resource_wk5lf")])
+components = Array[ExtResource("4_16unn")]([SubResource("Resource_1wkvr"), SubResource("Resource_wk5lf"), SubResource("Resource_wrhss")])
 
 [node name="Topped Noodles" type="Node" parent="Noodles/Topped Noodles"]
 script = ExtResource("1_08qek")

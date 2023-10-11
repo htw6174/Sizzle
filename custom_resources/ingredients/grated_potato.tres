@@ -7,3 +7,4 @@
 script = ExtResource("1_fucly")
 display_name = "Grated Potatoes"
 texture = ExtResource("2_4up7d")
+description = "Cook quickly when fried."
